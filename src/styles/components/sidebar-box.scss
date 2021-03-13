@@ -1,0 +1,4 @@
+.sidebar-box {
+  @apply w-full rounded-2xl relative shadow-xl bg-ob-deep-800 mb-8 p-8 hover:shadow-2xl duration-300;
+  transition-property: border-color, opacity, box-shadow, transform;
+}

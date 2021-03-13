@@ -1,0 +1,232 @@
+export class Post {
+  title = ''
+  slug = ''
+  date: { month: string; day: number; year: number } = {
+    month: '',
+    day: 0,
+    year: 0
+  }
+  updated = ''
+  comments = false
+  path = ''
+  excerpt: string | null = null
+  keywords: string | null = null
+  cover = ''
+  content: string | null = null
+  text = ''
+  link = ''
+  raw: string | null = null
+  photos: string[] = []
+  categories: Category[] = []
+  tags: Tag[] = []
+  count_time = {}
+  toc = ''
+
+  constructor(raw?: { [key: string]: Array<string> | string }) {
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          if (key === 'categories') {
+            Object.assign(this, {
+              [key]: (raw[key] as Array<never>).map(
+                (one: { [key: string]: [] }) => new Category(one)
+              )
+            })
+          } else if (key === 'tags') {
+            Object.assign(this, {
+              [key]: (raw[key] as Array<never>).map(
+                (one: { [key: string]: [] }) => new Tag(one)
+              )
+            })
+          } else {
+            if (key === 'date') {
+              const m = new Date(raw[key] as string)
+
+              const translateMonth = `settings.months[${m.getMonth()}]`
+
+              raw[key] = Object.create({
+                month: translateMonth,
+                day: m.getUTCDate(),
+                year: m.getUTCFullYear()
+              })
+            }
+            Object.assign(this, { [key]: raw[key] })
+          }
+        }
+      }
+    }
+  }
+}
+
+export class PostList {
+  data: Post[] = []
+  pageCount = 0
+  pageSize = 0
+  total = 0
+
+  constructor(raw?: { [key: string]: [] }) {
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          if (key === 'data') {
+            Object.assign(this, {
+              [key]: raw[key].map((one: { [key: string]: [] }) => new Post(one))
+            })
+          } else {
+            Object.assign(this, { [key]: raw[key] })
+          }
+        }
+      }
+    }
+  }
+}
+
+export class SpecificPostsList {
+  data: Post[] = []
+  pageCount = 0
+  pageSize = 0
+  total = 0
+
+  constructor(raw?: { [key: string]: [] }) {
+    if (raw && raw.postlist) {
+      Object.assign(this, {
+        data: raw.postlist.map((one: { [key: string]: [] }) => new Post(one)),
+        pageCount: raw.postlist.length,
+        pageSize: raw.postlist.length,
+        total: raw.postlist.length
+      })
+    }
+  }
+}
+
+export class FeaturePosts {
+  top_feature = {}
+  features: Post[] = []
+
+  constructor(raw?: []) {
+    if (raw) {
+      Object.assign(this, { top_feature: new Post(raw.shift()) })
+      Object.assign(this, {
+        features: raw.map((one: { [key: string]: [] }) => new Post(one))
+      })
+    }
+  }
+}
+
+export class Categories {
+  data: Category[] = []
+
+  constructor(raw?: []) {
+    if (raw) {
+      Object.assign(this, {
+        data: raw.map((one: { [key: string]: [] }) => new Category(one))
+      })
+    }
+  }
+}
+
+export class Category {
+  name = ''
+  slug = ''
+  path = ''
+  count = 0
+  parent = ''
+
+  constructor(raw?: { [key: string]: [] }) {
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          Object.assign(this, { [key]: raw[key] })
+        }
+      }
+
+      if (!(raw instanceof Category)) {
+        this.parent = this.slug
+          .split('/')
+          .filter((v, i, a) => i !== a.length - 1)
+          .join('/')
+      }
+    }
+  }
+}
+
+export class Tags {
+  data: Tag[] = []
+
+  constructor(raw?: []) {
+    if (raw) {
+      Object.assign(this, {
+        data: raw.map((one: { [key: string]: [] }) => new Tag(one))
+      })
+    }
+  }
+}
+
+export class Tag {
+  name = ''
+  slug = ''
+  path = ''
+  count = 0
+
+  constructor(raw?: { [key: string]: [] }) {
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          Object.assign(this, { [key]: raw[key] })
+        }
+      }
+    }
+  }
+}
+
+export class Archives {
+  data: {
+    month: string
+    year: string
+    posts: Post[]
+  }[] = []
+  pageCount = 0
+  pageSize = 0
+  total = 0
+
+  constructor(raw?: { [key: string]: [] }) {
+    const postData = new Map()
+
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          if (key === 'data') {
+            // Use the natural of hashmap keys to
+            // group posts with month and year
+            raw[key].forEach((one: { [key: string]: [] }) => {
+              const post = new Post(one)
+              const groupKey = `${post.date.month}-${post.date.year}`
+
+              if (postData.has(groupKey)) {
+                const groupedPost = postData.get(groupKey)
+                groupedPost.posts.push(post)
+              } else {
+                postData.set(groupKey, {
+                  month: post.date.month,
+                  year: post.date.year,
+                  posts: [post]
+                })
+              }
+            })
+            // Covert map back to object array
+            const data = []
+            for (const item of postData.values()) {
+              data.push(item)
+            }
+            // Assigning data
+            Object.assign(this, {
+              data: data
+            })
+          } else {
+            Object.assign(this, { [key]: raw[key] })
+          }
+        }
+      }
+    }
+  }
+}

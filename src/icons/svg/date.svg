@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path stroke-linecap="round" stroke-miterlimit="10" stroke-width="1" stroke="" fill="none" d="M20 22H4C2.9 22 2 21.1 2 20V6C2 4.9 2.9 4 4 4H20C21.1 4 22 4.9 22 6V20C22 21.1 21.1 22 20 22Z"></path>
+<path stroke-linecap="round" stroke-miterlimit="10" stroke-width="1" stroke="" fill="none" d="M20 22H4C2.9 22 2 21.1 2 20V10H22V20C22 21.1 21.1 22 20 22Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M16 2V6"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M8 2V6"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M5 14H7"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M9 14H11"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M13 14H15"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M17 14H19"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M5 18H7"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M9 18H11"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M13 18H15"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke="" d="M17 18H19"></path>
+</svg>

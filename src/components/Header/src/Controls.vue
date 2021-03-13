@@ -1,0 +1,76 @@
+<template>
+  <div class="header-controls absolute z-10 top-10 right-0 flex">
+    <span class="ob-drop-shadow"><svg-icon icon-class="search" /></span>
+    <Dropdown v-if="enableMultiLanguage" @command="handleClick">
+      <span class="ob-drop-shadow">
+        <svg-icon icon-class="globe" />
+        <span v-if="$i18n.locale == 'cn'">中文</span>
+        <span v-if="$i18n.locale == 'en'">EN</span>
+      </span>
+      <DropdownMenu>
+        <DropdownItem name="en">English</DropdownItem>
+        <DropdownItem name="cn">中文</DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+    <span no-hover-effect class="ob-drop-shadow"><ThemeToggle /></span>
+  </div>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { Dropdown, DropdownMenu, DropdownItem } from '@/components/Dropdown'
+import ThemeToggle from '@/components/ToggleSwitch/ThemeToggle.vue'
+import { useAppStore } from '@/stores/app'
+
+export default defineComponent({
+  name: 'Controls',
+  components: {
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    ThemeToggle
+  },
+  setup() {
+    const appStore = useAppStore()
+
+    const handleClick = (name: string): void => {
+      appStore.changeLocale(name)
+    }
+
+    return {
+      handleClick,
+      enableMultiLanguage: computed(
+        () => appStore.themeConfig.site.multi_language
+      )
+    }
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+.header-controls {
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 250ms ease;
+    padding-right: 0.5rem;
+    &[no-hover-effect] {
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &:hover {
+      opacity: 0.5;
+    }
+    .svg-icon {
+      stroke: #fff;
+      height: 2rem;
+      width: 2rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+</style>

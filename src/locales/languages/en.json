@@ -1,0 +1,48 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "archives": "Archives",
+    "categories": "Categories",
+    "tags": "Tags",
+    "post": "Article",
+    "not-found": "Page not found"
+  },
+  "home": {
+    "recommended": "Top Articles"
+  },
+  "titles": {
+    "articles": "ARTICLES",
+    "about": "About Me",
+    "category_list": "Categories",
+    "tag_list": "Tags",
+    "toc": "Table of Content"
+  },
+  "settings": {
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "articles": "Articles",
+    "categories": "Categories",
+    "tags": "Tags",
+    "words": "Words",
+    "visitor_count": "Total visitor count",
+    "visit_count": "Total visit count",
+    "button-all": "All",
+    "paginator": {
+      "newer": "Newer",
+      "older": "Older"
+    }
+  }
+}

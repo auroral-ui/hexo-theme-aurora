@@ -1,0 +1,15 @@
+@import './theme-variables.scss';
+
+/* Base css */
+@import 'tailwindcss/base';
+
+/* Components css */
+@import 'tailwindcss/components';
+@import './components/article.scss';
+@import './components/sidebar-box.scss';
+
+/* Utilities css */
+@import 'tailwindcss/utilities';
+
+@import './fonts.scss';
+@import './transitions.scss';

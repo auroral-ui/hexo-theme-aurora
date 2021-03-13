@@ -1,0 +1,48 @@
+{
+  "menu": {
+    "home": "首页",
+    "about": "关于",
+    "archives": "归档",
+    "categories": "分类",
+    "tags": "标签",
+    "post": "文章",
+    "not-found": "无法找到页面"
+  },
+  "home": {
+    "recommended": "推荐文章"
+  },
+  "titles": {
+    "articles": "文章列表",
+    "about": "关于我",
+    "category_list": "分类目录",
+    "tag_list": "标签目录",
+    "toc": "文章目录"
+  },
+  "settings": {
+    "months": [
+      "一月",
+      "二月",
+      "三月",
+      "四月",
+      "五月",
+      "六月",
+      "七月",
+      "八月",
+      "九月",
+      "十月",
+      "十一月",
+      "十二月"
+    ],
+    "articles": "文章",
+    "categories": "分类",
+    "tags": "标签",
+    "words": "文字",
+    "visitor_count": "总共访客数",
+    "visit_count": "总共访问数",
+    "button-all": "全部",
+    "paginator": {
+      "newer": "最新",
+      "older": "以往"
+    }
+  }
+}

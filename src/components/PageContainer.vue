@@ -1,0 +1,91 @@
+<template>
+  <div class="flex flex-col">
+    <div class="post-header">
+      <h1 v-if="post.title" class="post-title text-white uppercase">
+        {{ post.title }}
+      </h1>
+      <ob-skeleton v-else width="100%" height="3.5rem" />
+    </div>
+    <div class="main-grid">
+      <div class="relative">
+        <div
+          v-if="post.content"
+          class="post-html bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+          v-html="post.content"
+          v-scroll-spy="{ sectionSelector: 'h1, h2, h3, h4, h5, h6' }"
+        />
+        <div
+          v-else
+          class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+        >
+          <ob-skeleton
+            tag="div"
+            :count="1"
+            height="36px"
+            width="150px"
+            class="mb-6"
+          />
+          <br />
+          <ob-skeleton
+            tag="div"
+            :count="35"
+            height="16px"
+            width="100px"
+            class="mr-2"
+          />
+          <br />
+          <br />
+          <ob-skeleton
+            tag="div"
+            :count="25"
+            height="16px"
+            width="100px"
+            class="mr-2"
+          />
+        </div>
+      </div>
+      <div class="col-span-1">
+        <Sidebar>
+          <Toc :toc="post.toc" />
+        </Sidebar>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { Sidebar, Toc } from '@/components/Sidebar'
+
+export default defineComponent({
+  name: 'ObPageContainer',
+  components: { Sidebar, Toc },
+  props: {
+    post: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
+  setup() {
+    const { t } = useI18n()
+
+    return { t }
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+.post-title {
+  font-size: clamp(1.2rem, calc(1rem + 3.5vw), 4rem);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+.post-stats {
+  @apply w-full flex flex-row text-sm lg:text-base mb-6;
+  span {
+    @apply text-white stroke-current flex flex-row items-center pr-4;
+  }
+}
+</style>
