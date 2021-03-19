@@ -33,6 +33,8 @@
 </details>
 <br/>
 
+> :warning: Current build is still **under development**, it is **NOT READY FOR PRODUCTION**. Please do not use this theme for your current blog. However if you would like to take a preview of the current theme, feel free to install it and view it in your local machine.
+
 ## 相关
 
 做了一个 [`Typro`](https://typora.io/) 主题 [`Obsidian`](https://github.com/TriDiamond/typro-theme-obsidian) 专门给写博客的你们.
