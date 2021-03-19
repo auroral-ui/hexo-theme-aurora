@@ -1,7 +1,7 @@
 <template>
   <Sticky :stickyTop="32" endingElId="footer" dynamicElClass=".sidebar-box">
     <div class="sidebar-box">
-      <SubTitle :title="'titles.toc'" />
+      <SubTitle :title="'titles.toc'" icon="toc" />
       <div
         v-if="tocData"
         v-html="tocData"

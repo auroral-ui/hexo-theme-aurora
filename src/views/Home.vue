@@ -4,7 +4,7 @@
       <FeatureList :data="featurePosts" />
     </Feature>
     <span>
-      <Title id="article-list" :title="'titles.articles'" />
+      <Title id="article-list" :title="'titles.articles'" icon="article" />
     </span>
     <div class="main-grid">
       <div class="flex flex-col relative">

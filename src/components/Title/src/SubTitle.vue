@@ -2,6 +2,7 @@
   <p
     class="relative flex items-center pb-2 mb-4 text-xl text-ob-bright uppercase"
   >
+    <svg-icon v-if="icon" :icon-class="icon" class="inline-block mr-2" />
     {{ t(titleStr) }}
     <span
       class="absolute bottom-0 h-1 w-14 rounded-full"
@@ -21,7 +22,8 @@ export default defineComponent({
     title: {
       type: String,
       requried: true
-    }
+    },
+    icon: String
   },
   setup(props) {
     const appStore = useAppStore()
