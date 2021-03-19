@@ -5,6 +5,7 @@
 
 import request from '@/utils/external-request'
 import { AxiosResponse } from 'axios'
+import { formatTime } from '@/utils'
 
 const COMMENT_CACHE_KEY = 'github-comment-cache-key'
 const GITHUB_API_URL = 'https://api.github.com/repos'
@@ -20,6 +21,11 @@ export type GithubAttributes = {
   clientSecret: string
   /** Github app admin username */
   admin: string
+  /**
+   * Locale request
+   * @default 'en'
+   */
+  lang?: string
 }
 
 interface GithubCommentsInterface {
@@ -43,7 +49,8 @@ export class GithubComments implements GithubCommentsInterface {
     clientId: '',
     clientSecret: '',
     admin: '',
-    authorizationToken: ''
+    authorizationToken: '',
+    lang: 'en'
   }
   comments = []
 
@@ -54,7 +61,7 @@ export class GithubComments implements GithubCommentsInterface {
   /**
    * Initialize the required configs.
    */
-  init(options: GithubAttributes) {
+  async init(options: GithubAttributes): Promise<void> {
     /**
      * Initializing the configs.
      */
@@ -64,16 +71,29 @@ export class GithubComments implements GithubCommentsInterface {
     this.configs.admin = options.admin
     this.configs.authorizationToken =
       'Basic ' + window.btoa(options.clientId + ':' + options.clientSecret)
-
-    const cacheComments = this.getCache()
-    if (cacheComments.isValid()) {
-      this.comments = cacheComments.data
-    } else {
-      this.getCommentData()
-    }
+    if (options.lang) this.configs.lang = options.lang
   }
 
-  setCache(comments: any) {
+  async getComments(): Promise<any> {
+    return new Promise((resolve) => {
+      const cacheComments = this.getCache()
+      if (cacheComments.isValid()) {
+        this.comments = cacheComments.data
+        resolve(this.comments)
+      } else {
+        this.fetchCommentData().then((comments) => {
+          resolve(comments)
+        })
+      }
+    })
+  }
+
+  /**
+   * Saving comments into cache avoiding high frequent
+   * requesting Github api.
+   * @param comments Fresh comment data for caching.
+   */
+  setCache(comments: { [key: string]: any }): void {
     const cacheComments = new CommentCache(comments)
     localStorage.setItem(COMMENT_CACHE_KEY, JSON.stringify(cacheComments))
   }
@@ -97,16 +117,22 @@ export class GithubComments implements GithubCommentsInterface {
    * Fetching the comment data.
    * @param authorizationToken GitHub authorization token
    */
-  getCommentData() {
+  async fetchCommentData(): Promise<any> {
     const url =
       this.configs.repo +
       '/comments?sort=created&direction=desc&per_page=7&page=1'
 
-    this.fetchGithub(url, this.configs.authorizationToken).then((response) => {
-      const { data } = response
-      this.comments = data.map((item: { [key: string]: any }) => {
-        return new GithubComment(item)
-      })
+    return new Promise((resolve) => {
+      this.fetchGithub(url, this.configs.authorizationToken).then(
+        (response) => {
+          const { data } = response
+          this.comments = data.map((item: { [key: string]: any }) => {
+            return new GithubComment(item, this.configs)
+          })
+          this.setCache(this.comments)
+          resolve(this.comments)
+        }
+      )
     })
   }
 
@@ -148,17 +174,25 @@ class CommentCache implements CommentCacheInterface {
   }
 
   isValid(): boolean {
+    /**
+     * One minute cache to keep the requests to Github API
+     * are at 1 minute intervals.
+     */
     if (this.data.length !== 0 || new Date().getTime() - this.time > 60 * 1000)
       return true
     return false
   }
 }
 
-class GithubComment {
+/**
+ * Base on the restful API of GitHub
+ * @see https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
+ */
+export class GithubComment {
   id = 0
   body = ''
   node_id = 0
-  url = ''
+  html_url = ''
   issue_url = ''
   created_at = ''
   updated_at = ''
@@ -166,29 +200,45 @@ class GithubComment {
   filtered = false
   user = {
     id: 0,
+    login: '',
     avatar_url: '',
-    url: ''
+    html_url: ''
   }
+  is_admin = false
+  cache_flag = true
 
   /**
    * Model class for Site meta settings
    *
-   * @param raw - Config data generated from Hexo
+   * @param raw Config data generated from Hexo
+   * @param admin Name of the repo admin
    */
-  constructor(raw?: { [key: string]: any }) {
+  constructor(raw?: { [key: string]: any }, options?: GithubAttributes) {
     if (raw) {
+      let cachedData = false
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
           if (key === 'user') {
             this.user.id = raw[key].id
             this.user.avatar_url = raw[key].avatar_url
-            this.user.url = raw[key].url
+            this.user.html_url = raw[key].html_url
+            this.user.login = raw[key].login
+            if (options && options.admin && options.admin !== '') {
+              this.is_admin = options.admin === raw[key].login ? true : false
+            }
           } else {
             Object.assign(this, { [key]: raw[key] })
           }
+
+          if (!cachedData && key === 'cache_flag') cachedData = true
         }
       }
-      this.filterBody()
+      // Skip filters if it's cache data.
+      if (!cachedData) {
+        const lang = options && options.lang ? 'en' : 'cn'
+        this.filterBody()
+        this.transformTime(lang)
+      }
     }
   }
 
@@ -196,7 +246,7 @@ class GithubComment {
    * Filter out the code blocks, images, links,
    * and quote blocks in the comment string.
    */
-  filterBody() {
+  filterBody(): void {
     if (this.body.length === 0) return
     let content = this.body.trim().replace('&nbsp;', '')
     const hasFirstQuoteMark = content.indexOf('>') > -1
@@ -248,12 +298,12 @@ class GithubComment {
         .replaceAll('\n\n', '\n')
         // Replace all images
         .replace(
-          /![\s\w\](?:http(s)?:\/\/)+[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+\)/g,
+          /![\s\w\](?:http(s)?://)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+\)/g,
           '[img]'
         )
         // Replacing all links.
         .replace(
-          /(?:http(s)?:\/\/)+[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+/g,
+          /(?:http(s)?:\/\/)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+/g,
           '[link]'
         )
     }
@@ -264,5 +314,23 @@ class GithubComment {
     }
 
     this.body = content
+  }
+
+  /**
+   * Transforming the created_at field into a
+   * human readable time format.
+   *
+   * eg. `10 minutes ago.`
+   */
+  transformTime(lang: 'en' | 'cn'): void {
+    const templates = {
+      en: 'commented [TIME]',
+      cn: '[TIME]评论了'
+    }
+
+    this.created_at = formatTime(this.created_at, {
+      template: templates[lang],
+      lang: lang
+    })
   }
 }

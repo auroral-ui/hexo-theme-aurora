@@ -106,6 +106,9 @@ site_meta:
 #   # Ensure uniqueness and length less than 50
 #   id: location.pathname
 #   # Facebook-like distraction
+#   language: en
+#   distractionFreeMode: true
+#   recent_comment: true
 
 # For local development only!
 gitalk:
@@ -123,6 +126,7 @@ gitalk:
   # Facebook-like distraction
   language: en
   distractionFreeMode: true
+  recentComment: true
 
 # Valine comment plugin (recommended!)
 # see https://valine.js.org/quickstart.html
@@ -135,6 +139,7 @@ valine:
   visitor: true
   lang: en
   meta: ['nick', 'mail']
+  recentComment: true
 
 # Enable Busuanzi statistic plugin
 # see http://ibruce.info/2015/04/04/busuanzi/

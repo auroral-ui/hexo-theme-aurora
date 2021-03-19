@@ -12,12 +12,13 @@
     "recommended": "Top Articles"
   },
   "titles": {
-    "articles": "ARTICLES",
+    "articles": "Articles",
     "about": "About Me",
     "category_list": "Categories",
     "tag_list": "Tags",
     "toc": "Table of Content",
-    "comment": "Comments"
+    "comment": "Comments",
+    "recent_comment": "Recent Comments"
   },
   "settings": {
     "months": [

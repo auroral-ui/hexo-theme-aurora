@@ -344,6 +344,7 @@ interface PluginsData {
     id: string
     language: string
     distractionFreeMode: boolean
+    recentComment: boolean
   }
 
   valine: {
@@ -355,6 +356,7 @@ interface PluginsData {
     visitor: boolean
     lang: string
     meta: MetaAttributes[]
+    recentComment: boolean
   }
   recent_comments: boolean
   busuanzi: boolean
@@ -371,7 +373,8 @@ export class Plugins implements PluginsData {
     admin: ['TriDiamond'],
     id: 'location.pathname',
     language: 'en',
-    distractionFreeMode: false
+    distractionFreeMode: false,
+    recentComment: false
   }
   valine = {
     enable: false,
@@ -381,7 +384,8 @@ export class Plugins implements PluginsData {
     placeholder: 'Leave your thoughts behind~',
     visitor: true,
     lang: '',
-    meta: []
+    meta: [],
+    recentComment: false
   }
   recent_comments = false
   busuanzi = false

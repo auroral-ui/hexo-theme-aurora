@@ -17,7 +17,8 @@
     "category_list": "分类目录",
     "tag_list": "标签目录",
     "toc": "文章目录",
-    "comment": "评论区"
+    "comment": "评论区",
+    "recent_comment": "最近评论"
   },
   "settings": {
     "months": [

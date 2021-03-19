@@ -28,7 +28,6 @@ import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
 import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
-import { GithubComments } from '@/utils/github-comments'
 
 export default defineComponent({
   name: 'App',
@@ -68,14 +67,6 @@ export default defineComponent({
         }
       })
     }
-
-    const githubComments = new GithubComments({
-      repo: 'dev-blog-comments',
-      clientId: 'd87b2e254d88d4cb57ed',
-      clientSecret: 'a883f47d4643fd2ca43a2cae9b66bbd2aa02012f',
-      owner: 'TriDiamond',
-      admin: 'TriDiamond'
-    })
 
     onBeforeMount(initialApp)
 
