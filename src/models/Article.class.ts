@@ -41,6 +41,7 @@ export class Article extends Post implements Detail {
 
 export class Page implements Detail {
   title = ''
+  uid = ''
   date = {
     month: '',
     day: 0,

@@ -20,7 +20,12 @@ export const usePostStore = defineStore({
   state: () => ({
     featurePosts: new FeaturePosts(),
     posts: new PostList(),
-    postTotal: 0
+    postTotal: 0,
+    cachePost: {
+      title: '',
+      body: '',
+      uid: ''
+    }
   }),
   getters: {},
   actions: {
@@ -58,6 +63,13 @@ export const usePostStore = defineStore({
       return new Promise((resolve) => {
         resolve(new SpecificPostsList(data))
       })
+    },
+    /**
+     * Setting the cache post data
+     * @param data Cache data
+     */
+    setCache(data: { title: string; body: string; uid: string }) {
+      this.cachePost = data
     }
   }
 })

@@ -1,13 +1,14 @@
 /**
  * Mostly use the hexo-generator-restful,
+ * but fully customized for hexo theme ObsidiaNext
  * @see https://github.com/yscoder/hexo-generator-restful
+ * @author TriDiamond <code.tridiamond@gmail.com>
  *
- * - added the photos fields and other useful stuffs
- * - added the `features` post data
- * - added truncate for filtering html tags
- * - added statistics
- *
- * @author TriDiamond <tridiamond6@gmail.com>
+ * - added the photos fields and other useful stuffs.
+ * - added the `features` post data.
+ * - added truncate for filtering html tags.
+ * - added statistics.
+ * - added post unique ID property used for gitalk.
  */
 
 'use strict'
@@ -15,6 +16,7 @@
 const pagination = require('hexo-pagination')
 const truncate = require('truncate-html')
 const toToc = require('./helpers/toc-helper')
+const crypto = require('crypto')
 
 truncate.setup({
   stripTags: true,
@@ -112,12 +114,17 @@ function fetchCover(str) {
   return covers ? covers[0] : null
 }
 
+function generateUid(str) {
+  return crypto.createHash('md5').update(str).digest('hex')
+}
+
 function generator(cfg, site) {
   let restful = {
       site: true,
       posts_size: cfg.per_page,
       posts_props: {
         title: true,
+        uid: true,
         slug: true,
         date: true,
         updated: true,
@@ -153,6 +160,7 @@ function generator(cfg, site) {
     postMap = function (post) {
       return {
         title: posts_props('title', post.title),
+        uid: posts_props('uid', generateUid('post_uid___' + post.title)),
         slug: posts_props('slug', post.slug),
         date: posts_props('date', post.date),
         updated: posts_props('updated', post.updated),
@@ -324,39 +332,7 @@ function generator(cfg, site) {
 
         return {
           path: path,
-          data: JSON.stringify({
-            title: post.title,
-            slug: post.slug,
-            date: post.date,
-            updated: post.updated,
-            comments: post.comments,
-            path: path,
-            photos: post.photos,
-            link: post.link,
-            excerpt: filterHTMLTags(post.excerpt),
-            covers: post.cover,
-            keywords: cfg.keyword,
-            content: post.content,
-            feature: post.feature,
-            count_time: symbolsCountTime(post.content),
-            categories: post.categories.map(function (cat) {
-              return {
-                name: cat.name,
-                slug: cat.slug,
-                count: cat.posts.length,
-                path: 'api/categories/' + cat.slug + '.json'
-              }
-            }),
-            tags: post.tags.map(function (tag) {
-              return {
-                name: tag.name,
-                slug: tag.slug,
-                count: tag.posts.length,
-                path: 'api/tags/' + tag.slug + '.json'
-              }
-            }),
-            toc: toToc(post.content)
-          })
+          data: JSON.stringify(postMap(post))
         }
       })
     )
@@ -387,6 +363,7 @@ function generator(cfg, site) {
           path: path,
           data: JSON.stringify({
             title: page.title,
+            id: generateUid('page_uid___' + page.title),
             date: page.date,
             updated: page.updated,
             comments: page.comments,

@@ -13,7 +13,7 @@
     </div>
     <img
       class="logo-image"
-      :src="themeConfig.avatar.source_path"
+      :src="themeConfig.site.logo || themeConfig.site.avatar"
       alt="site-logo"
     />
   </div>

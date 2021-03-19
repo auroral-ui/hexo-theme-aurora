@@ -113,6 +113,9 @@
             class="mr-2"
           />
         </div>
+        <template v-if="post.title && post.text && post.uid">
+          <Comment :title="post.title" :body="post.text" :uid="post.uid" />
+        </template>
       </div>
       <div>
         <Sidebar>
@@ -127,16 +130,17 @@
 import { Sidebar, Toc } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, onBeforeMount, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import Comment from '@/components/Comment.vue'
 
 import '@/styles/prism-dracula.css'
 import { useMetaStore } from '@/stores/meta'
 
 export default defineComponent({
   name: 'ObPost',
-  components: { Sidebar, Toc },
+  components: { Sidebar, Toc, Comment },
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()
@@ -151,7 +155,7 @@ export default defineComponent({
       })
     }
 
-    onMounted(() => {
+    onBeforeMount(() => {
       fetchData()
       window.scrollTo({
         top: 0

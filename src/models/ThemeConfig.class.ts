@@ -4,10 +4,11 @@ interface ThemeRaw {
     menu: GeneralOptions
     custom_menu: GeneralOptions
     avatar: GeneralOptions
-    layout: GeneralOptions
+    Theme: GeneralOptions
     site: StringConfig
     socials: StringConfig
     site_meta: GeneralOptions
+    plugins: GeneralOptions
     version: { number: string }
   }
 }
@@ -29,16 +30,18 @@ export class ThemeConfig {
   menu: ThemeMenu = new ThemeMenu()
   /** Avatar config data */
   avatar: Avatar = new Avatar()
-  /** Layout config data */
-  layout: Layout = new Layout()
+  /** Theme config data */
+  theme: Theme = new Theme()
   /** Site config data */
   site: Site = new Site()
   /** Socials config data */
   socials: Social = new Social()
   /** Meta data for the site */
   site_meta: SiteMeta = new SiteMeta()
+  /** Plugin configs */
+  plugins: Plugins = new Plugins()
   /** Theme version */
-  version = '2.0.0'
+  version = ''
 
   /**
    * Model class for Hexo theme config
@@ -50,9 +53,10 @@ export class ThemeConfig {
     if (rawConfig) {
       this.menu = new ThemeMenu(rawConfig.menu)
       this.avatar = new Avatar(rawConfig.avatar)
-      this.layout = new Layout(rawConfig.layout)
+      this.theme = new Theme(rawConfig.Theme)
       this.site = new Site(rawConfig.site)
       this.socials = new Social(rawConfig.socials)
+      this.plugins = new Plugins(rawConfig)
       this.version = rawConfig.version.number
       this.site_meta = new SiteMeta(rawConfig.site_meta)
     }
@@ -143,7 +147,6 @@ export class Menu {
 }
 
 export class Avatar {
-  enable = false
   source_path = ''
 
   /**
@@ -162,7 +165,7 @@ export class Avatar {
   }
 }
 
-interface ObLayout {
+interface ObTheme {
   /**
    * Theme mode
    *
@@ -174,7 +177,7 @@ interface ObLayout {
    *
    * @remarks Consist of 3 colors
    */
-  theme_gradient: {
+  gradient: {
     color_1: string
     color_2: string
     color_3: string
@@ -190,9 +193,9 @@ interface ObLayout {
   }
 }
 
-export class Layout implements ObLayout {
+export class Theme implements ObTheme {
   dark_mode = 'auto'
-  theme_gradient = {
+  gradient = {
     color_1: '#24c6dc',
     color_2: '#5433ff',
     color_3: '#ff0099'
@@ -218,8 +221,8 @@ export class Layout implements ObLayout {
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
           Object.assign(this, { [key]: raw[key] })
-          if (key === 'theme_gradient') {
-            const headerGradientCss = `linear-gradient(130deg, ${this.theme_gradient.color_1}, ${this.theme_gradient.color_2} 41.07%, ${this.theme_gradient.color_3} 76.05%)`
+          if (key === 'gradient') {
+            const headerGradientCss = `linear-gradient(130deg, ${this.gradient.color_1}, ${this.gradient.color_2} 41.07%, ${this.gradient.color_3} 76.05%)`
             Object.assign(this, {
               header_gradient_css: headerGradientCss
             })
@@ -279,6 +282,12 @@ export class Site {
   language = 'en'
   /** Allow use to change blog's locale */
   multi_language = true
+  /** Site logo or brand logo */
+  logo = ''
+  /** Author avatar */
+  avatar = ''
+  /** China server beian info */
+  beian = ''
 
   /**
    * Model class for Site general settings
@@ -304,6 +313,78 @@ export class SiteMeta {
     locale: 'en',
     prismjs: []
   }
+
+  /**
+   * Model class for Site meta settings
+   *
+   * @param raw - Config data generated from Hexo
+   */
+  constructor(raw?: GeneralOptions) {
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          Object.assign(this, { [key]: raw[key] })
+        }
+      }
+    }
+  }
+}
+
+type MetaAttributes = 'nick' | 'mail' | 'link'
+
+interface PluginsData {
+  gitalk: {
+    enable: boolean
+    autoExpand: boolean
+    clientID: string
+    clientSecret: string
+    repo: string
+    owner: string
+    admin: Array<string>
+    id: string
+    language: string
+    distractionFreeMode: boolean
+  }
+
+  valine: {
+    enable: boolean
+    app_id: string
+    app_key: string
+    avatar: string
+    placeholder: string
+    visitor: boolean
+    lang: string
+    meta: MetaAttributes[]
+  }
+  recent_comments: boolean
+  busuanzi: boolean
+}
+
+export class Plugins implements PluginsData {
+  gitalk = {
+    enable: false,
+    autoExpand: true,
+    clientID: '',
+    clientSecret: '',
+    repo: 'blog-comments',
+    owner: 'TriDiamond',
+    admin: ['TriDiamond'],
+    id: 'location.pathname',
+    language: 'en',
+    distractionFreeMode: false
+  }
+  valine = {
+    enable: false,
+    app_id: '',
+    app_key: '',
+    avatar: 'mp',
+    placeholder: 'Leave your thoughts behind~',
+    visitor: true,
+    lang: '',
+    meta: []
+  }
+  recent_comments = false
+  busuanzi = false
 
   /**
    * Model class for Site meta settings

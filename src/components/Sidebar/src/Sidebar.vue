@@ -11,9 +11,11 @@
       >
         <div class="flex flex-col justify-center items-center">
           <img
-            v-if="themeConfig.avatar.source_path !== ''"
+            v-if="
+              themeConfig.site.avatar !== '' || themeConfig.site.logo !== ''
+            "
             class="diamond-avatar h-28 w-28 shadow-xl m-0"
-            :src="themeConfig.avatar.source_path"
+            :src="themeConfig.site.avatar || themeConfig.site.logo"
             alt="avatar"
           />
           <ob-skeleton v-else width="7rem" height="7rem" circle />
@@ -142,7 +144,7 @@ export default defineComponent({
     return {
       themeConfig: computed(() => appStore.themeConfig),
       gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       socials: computed(() => {
         return appStore.themeConfig.socials

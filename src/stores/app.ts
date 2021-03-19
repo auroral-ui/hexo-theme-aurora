@@ -50,7 +50,9 @@ export const useAppStore = defineStore({
     /** Nprogress's timeout timer id number */
     NPTimeout: -1,
     /** Loading status' timeout timer id number */
-    loadingTimeout: -1
+    loadingTimeout: -1,
+    /** Tracking if the blog config is ready */
+    configReady: false
   }),
   getters: {
     getTheme(): string {
@@ -63,9 +65,11 @@ export const useAppStore = defineStore({
   actions: {
     /** Fetching Hexo and Hexo theme's config data */
     async fetchConfig() {
+      this.configReady = false
       const { data } = await fetchHexoConfig()
       this.themeConfig = new ThemeConfig(data)
       this.hexoConfig = new HexoConfig(data)
+      this.configReady = true
     },
     /** Fetching blog's statistics */
     async fetchStat() {

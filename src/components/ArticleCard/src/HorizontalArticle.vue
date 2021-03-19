@@ -110,7 +110,7 @@ export default defineComponent({
 
     return {
       bannerHoverGradient: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       post,
       t

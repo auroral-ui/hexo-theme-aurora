@@ -1,23 +1,32 @@
 #! ---------------------------------------------------------------
-#! ObsidiaNext Theme
+#! ObsidiaNext Theme for Hexo
 #! ---------------------------------------------------------------
 #! Designed & Coded By TriDiamond
 #! ---------------------------------------------------------------
 # Theme version
 # !! DO NOT EDIT THIS !!
 version:
-  number: '2.0-alpha'
+  number: '-alpha.1'
 
 #! ---------------------------------------------------------------
-#! Theme general settings
+#! Site Configs
+#！ @docs https://obsidianext.tridiamond.tech/guide/configuration.html
 #! ---------------------------------------------------------------
-# Avatar
-avatar:
-  enable: true
-  # source_path: https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg
-  source_path: https://img-blog.csdnimg.cn/20210313122054101.png
+site:
+  subtitle: TriDiamond's Blog
+  author: 三钻
+  nick: TriDiamond
+  description: 一位正在重塑知识的技术人 <br /> @ <b>公众号：技术银河</b>
+  language: cn
+  multi_language: true
+  logo: https://img-blog.csdnimg.cn/20210313122054101.png
+  avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+  beian: ''
 
-# Default Menus
+#! ---------------------------------------------------------------
+#! Menu Configs
+#！ @docs https://obsidianext.tridiamond.tech/guide/menu.html
+#! ---------------------------------------------------------------
 menu:
   Tags: true
   Archives: true
@@ -34,23 +43,29 @@ menu:
         name: 'Obsidian Theme'
         path: 'https://github.com/tridiamond'
 
-# Custom menus
-custom-menu:
+#! ---------------------------------------------------------------
+#! Theme Config
+#! @docs https://obsidianext.tridiamond.tech/guide/theme.html
+#! ---------------------------------------------------------------
+theme:
+  # Theme dark mode
+  # "enable" can be set as:
+  #   true: force default to be dark-mode
+  #   false: force default to be light-mode
+  #   'auto': adapt to system's mode
+  dark_mode: true
 
-# Site info specially for the theme
-site:
-  subtitle: TriDiamond's Blog
-  author: 三钻
-  nick: TriDiamond
-  description: 一位正在重塑知识的技术人 <br /> @ <b>公众号：技术银河</b>
-  language: cn
-  multi_language: true
-
-beian:
-  number: ''
+  # Gradient colors used for the theme
+  # This consist of 3 gradient colors
+  # each can be customized
+  gradient:
+    color_1: '#24c6dc'
+    color_2: '#5433ff'
+    color_3: '#ff0099'
 
 #! ---------------------------------------------------------------
-#! Social media links
+#! Social Configs
+#! @docs https://obsidianext.tridiamond.tech/guide/social.html
 #! ---------------------------------------------------------------
 socials:
   github: 'https://github.com/TriDiamond'
@@ -64,61 +79,8 @@ socials:
   juejin: 'https://juejin.cn/user/1873223546578589'
 
 #! ---------------------------------------------------------------
-#! Theme Layout settings
-#! ---------------------------------------------------------------
-layout:
-  # Theme dark mode
-  # "enable" can be set as:
-  #   true: force default to be dark-mode
-  #   false: force default to be light-mode
-  #   'auto': adapt to system's mode
-  dark_mode: true
-
-  # Gradient colors used for the theme
-  # This consist of 3 gradient colors
-  # each can be customized
-  theme_gradient:
-    color_1: '#24c6dc'
-    color_2: '#5433ff'
-    color_3: '#ff0099'
-
-#! ---------------------------------------------------------------
-#! Plugins
-#! ---------------------------------------------------------------
-
-# Gitalk comment plugin
-# see https://github.com/gitalk/gitalk
-gitalk:
-  enable: true
-  autoExpand: true
-  clientID: 'ec894e2b66f752e8b7fb'
-  clientSecret: '3ccc2e92bb350688fe2c2dc2930189b62622bfb1'
-  repo: 'blog-comments'
-  owner: 'TriDiamond'
-  admin: ['TriDiamond']
-  # Ensure uniqueness and length less than 50
-  id: location.pathname
-  # Facebook-like distraction
-
-# Valine comment plugin (recommended!)
-# see https://valine.js.org/quickstart.html
-valine:
-  enable: false
-  app_id: QHCOIEBlyjBUMAjaE5ilzafk-gzGzoHsz
-  app_key: ggeGwz8ypB9uiAIYSRH5T0PF
-  notify: false
-  verify: false
-  avatar: 'mp'
-  placeholder: 'Leave your throughs behind~'
-  visitor: true
-
-# Enable Busuanzi statistic plugin
-# see http://ibruce.info/2015/04/04/busuanzi/
-busuanzi:
-  enable: true
-
-#! ---------------------------------------------------------------
-#! Site meta
+#! Site Meta Configs
+#! @docs https://obsidianext.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 site_meta:
   # CDN switcher
@@ -126,3 +88,55 @@ site_meta:
   # -> cn will use China's cdn
   # -> en will use international cdn
   cdn: en
+
+#! ---------------------------------------------------------------
+#! Plugins
+#! ---------------------------------------------------------------
+
+# Gitalk comment plugin
+# see https://github.com/gitalk/gitalk
+# gitalk:
+#   enable: true
+#   autoExpand: true
+#   clientID: 'ec894e2b66f752e8b7fb'
+#   clientSecret: '3ccc2e92bb350688fe2c2dc2930189b62622bfb1'
+#   repo: 'blog-comments'
+#   owner: 'TriDiamond'
+#   admin: ['TriDiamond']
+#   # Ensure uniqueness and length less than 50
+#   id: location.pathname
+#   # Facebook-like distraction
+
+# For local development only!
+gitalk:
+  enable: true
+  autoExpand: true
+  clientID: 'd87b2e254d88d4cb57ed'
+  clientSecret: 'a883f47d4643fd2ca43a2cae9b66bbd2aa02012f'
+  repo: 'dev-blog-comments'
+  owner: 'TriDiamond'
+  admin: ['TriDiamond']
+  # Ensure uniqueness and length less than 50
+  # If using 'pathname' ensure length is less than 50 characters
+  # or use 'uid' instead for better compatibility (If you use other theme before, this will lost your comments)
+  id: uid
+  # Facebook-like distraction
+  language: en
+  distractionFreeMode: true
+
+# Valine comment plugin (recommended!)
+# see https://valine.js.org/quickstart.html
+valine:
+  enable: false
+  app_id: QHCOIEBlyjBUMAjaE5ilzafk-gzGzoHsz
+  app_key: ggeGwz8ypB9uiAIYSRH5T0PF
+  avatar: ''
+  placeholder: Leave your thoughts behind~
+  visitor: true
+  lang: en
+  meta: ['nick', 'mail']
+
+# Enable Busuanzi statistic plugin
+# see http://ibruce.info/2015/04/04/busuanzi/
+busuanzi:
+  enable: true

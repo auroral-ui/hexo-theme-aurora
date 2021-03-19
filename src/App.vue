@@ -28,6 +28,7 @@ import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
 import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
+import { GithubComments } from '@/utils/github-comments'
 
 export default defineComponent({
   name: 'App',
@@ -48,7 +49,7 @@ export default defineComponent({
     const initialApp = async () => {
       intialCopyrightScript()
       await appStore.fetchConfig().then(() => {
-        appStore.initializeTheme(appStore.themeConfig.layout.dark_mode)
+        appStore.initializeTheme(appStore.themeConfig.theme.dark_mode)
         appStore.setDefaultLocale(appStore.themeConfig.site.language)
         metaStore.addScripts(appStore.themeConfig.site_meta.cdn.prismjs)
       })
@@ -67,6 +68,14 @@ export default defineComponent({
         }
       })
     }
+
+    const githubComments = new GithubComments({
+      repo: 'dev-blog-comments',
+      clientId: 'd87b2e254d88d4cb57ed',
+      clientSecret: 'a883f47d4643fd2ca43a2cae9b66bbd2aa02012f',
+      owner: 'TriDiamond',
+      admin: 'TriDiamond'
+    })
 
     onBeforeMount(initialApp)
 
@@ -87,7 +96,7 @@ export default defineComponent({
       scripts: computed(() => metaStore.scripts),
       themeConfig: computed(() => appStore.themeConfig),
       headerBaseBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       appWrapperClass,
       loadingBarClass

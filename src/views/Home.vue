@@ -173,7 +173,7 @@ export default defineComponent({
 
     const activeTabStyle = (slug: string) => {
       if (slug === activeTab.value)
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       return {}
     }
 
@@ -193,10 +193,10 @@ export default defineComponent({
 
     return {
       gradientText: computed(
-        () => appStore.themeConfig.layout.background_gradient_style
+        () => appStore.themeConfig.theme.background_gradient_style
       ),
       gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       themeConfig: computed(() => appStore.themeConfig),
       categories: computed(() => categoryStore.categories),

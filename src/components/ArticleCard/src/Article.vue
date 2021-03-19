@@ -102,7 +102,7 @@ export default defineComponent({
 
     return {
       gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       post: computed(() => props.data),
       t

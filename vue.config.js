@@ -73,6 +73,10 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
+    },
+    externals: {
+      valine: 'Valine',
+      gitalk: 'Gitalk'
     }
   },
   chainWebpack(config) {

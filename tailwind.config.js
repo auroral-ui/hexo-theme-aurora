@@ -19,6 +19,9 @@ module.exports = {
           800: 'var(--background-secondary)',
           900: 'var(--background-primary)'
         }
+      },
+      boxShadow: {
+        ob: 'var(--accent-shadow)'
       }
     }
   },

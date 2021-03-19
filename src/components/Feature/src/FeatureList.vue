@@ -60,10 +60,10 @@ export default defineComponent({
 
     return {
       gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       gradientText: computed(
-        () => appStore.themeConfig.layout.background_gradient_style
+        () => appStore.themeConfig.theme.background_gradient_style
       ),
       featurePosts,
       t

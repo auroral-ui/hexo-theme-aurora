@@ -23,17 +23,18 @@
                 <b class="font-extrabold border-b-2 border-ob hover:text-ob">
                   Hexo
                 </b>
-                Engine
               </a>
               & Themed by
               <a href="https://github.com/TriDiamond/hexo-theme-obsidian">
                 <b class="font-extrabold border-b-2 border-ob hover:text-ob">
-                  Obsidian {{ themeConfig.version }}
+                  ObsidiaNext {{ themeConfig.version }}
                 </b>
               </a>
               .
             </li>
-            <!-- <li>备案信息：xxxxxxxxxxx</li> -->
+            <li v-if="themeConfig.site.beian !== ''">
+              备案信息：{{ themeConfig.site.beian }}
+            </li>
           </ul>
           <ul>
             <li>
@@ -57,9 +58,9 @@
           class="hidden lg:flex lg:col-span-1 justify-center lg:justify-end row-span-1 relative"
         >
           <img
-            v-show="themeConfig.avatar.source_path"
+            v-show="themeConfig.site.avatar"
             class="diamond-avatar h-20 w-20 shadow-xl m-0 opacity-40"
-            :src="themeConfig.avatar.source_path"
+            :src="themeConfig.site.avatar"
             alt="avatar"
           />
         </div>
@@ -81,10 +82,10 @@ export default defineComponent({
 
     return {
       gradientText: computed(
-        () => appStore.themeConfig.layout.background_gradient_style
+        () => appStore.themeConfig.theme.background_gradient_style
       ),
       gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       currentYear: computed(() => new Date().getUTCFullYear()),
       themeConfig: computed(() => appStore.themeConfig),

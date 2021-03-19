@@ -52,7 +52,7 @@ export default defineComponent({
       loading,
       categories: computed(() => categoryStore.categories),
       gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.layout.header_gradient_css }
+        return { background: appStore.themeConfig.theme.header_gradient_css }
       })
     }
   }

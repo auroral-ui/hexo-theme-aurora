@@ -1,5 +1,6 @@
 export class Post {
   title = ''
+  uid = ''
   slug = ''
   date: { month: string; day: number; year: number } = {
     month: '',

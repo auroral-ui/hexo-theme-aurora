@@ -1,4 +1,6 @@
 {
+  "baseUrl": "types",
+  "typeRoots": ["types"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -14,6 +16,7 @@
     "baseUrl": ".",
     "types": ["webpack-env", "mocha", "chai"],
     "paths": {
+      "typings/*": ["typings/*"],
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
@@ -25,7 +28,8 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "src/components/utils/clickaway.js",
-    "src/utils/mixin/emitter.js"
+    "src/utils/mixin/emitter.js",
+    "typings/*.d.ts"
   ],
   "exclude": ["node_modules", "**/dist/**", "**/source/**"]
 }
