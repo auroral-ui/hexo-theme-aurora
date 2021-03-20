@@ -43,9 +43,12 @@
     "visit_count": "总共访问数",
     "button-all": "全部",
     "paginator": {
-      "newer": "最新",
-      "older": "以往"
+      "newer": "新的",
+      "older": "以往",
+      "prev": "上一篇更回味",
+      "next": "下一篇更精彩"
     },
-    "more-tags": "查看更多"
+    "more-tags": "查看更多",
+    "admin-user": "博主"
   }
 }

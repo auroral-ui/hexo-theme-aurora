@@ -4,11 +4,13 @@
  * @see https://github.com/yscoder/hexo-generator-restful
  * @author TriDiamond <code.tridiamond@gmail.com>
  *
- * - added the photos fields and other useful stuffs.
- * - added the `features` post data.
- * - added truncate for filtering html tags.
- * - added statistics.
- * - added post unique ID property used for gitalk.
+ * - Added the photos fields and other useful stuffs.
+ * - Added the `features` post data.
+ * - Added truncate for filtering html tags.
+ * - Added statistics.
+ * - Added post unique ID property used for gitalk.
+ * - Added previous and next post.
+ * - Enhanced performance by reducing the number of unnecessary iterations.
  */
 
 'use strict'
@@ -237,6 +239,17 @@ function generator(cfg, site) {
         })
       }
     },
+    navPostMap = function (post) {
+      return {
+        title: post.title,
+        text: post.text,
+        categories: post.categories,
+        tags: post.tags,
+        slug: post.slug,
+        cover: post.cover,
+        count_time: post.count_time
+      }
+    },
     apiData = []
 
   if (restful.site) {
@@ -279,7 +292,25 @@ function generator(cfg, site) {
     }
   }
 
-  const postlist = posts.map(postMap)
+  const index = 0
+  // const postlist = posts.map(postMap)
+  /**
+   * Added previous and next post fields.
+   */
+  let prevPost = {}
+  const postlist = []
+  if (restful.post) {
+    posts.forEach((post, index) => {
+      let current = postMap(post)
+      current.prev_post = prevPost
+      current.next_post = {}
+      prevPost = navPostMap(current)
+      if ((index !== 0) & (index !== posts.length - 1)) {
+        postlist[index - 1].next_post = navPostMap(current)
+      }
+      postlist.push(current)
+    })
+  }
 
   if (restful.posts_size > 0) {
     const page_posts = [],
@@ -322,7 +353,7 @@ function generator(cfg, site) {
     let featurePosts = []
     const tempFeaturePost = []
     apiData = apiData.concat(
-      posts.map(function (post) {
+      postlist.map(function (post) {
         if (post.feature && featurePosts.length <= 2) {
           featurePosts.push(post)
         } else if (tempFeaturePost.length <= 2) {
@@ -332,7 +363,7 @@ function generator(cfg, site) {
 
         return {
           path: path,
-          data: JSON.stringify(postMap(post))
+          data: JSON.stringify(post)
         }
       })
     )
@@ -348,7 +379,7 @@ function generator(cfg, site) {
     }
     apiData.push({
       path: 'api/features.json',
-      data: JSON.stringify(featurePosts.map(postMap))
+      data: JSON.stringify(featurePosts)
     })
     statistic.posts = posts.length
   }

@@ -113,8 +113,30 @@
             class="mr-2"
           />
         </div>
+        <div class="flex flex-row justify-start items-end my-8">
+          <div
+            class="w-full h-full self-stretch mr-4"
+            v-if="post.prev_post.title"
+          >
+            <SubTitle
+              title="settings.paginator.prev"
+              icon="arrow-left-circle"
+            />
+            <Article :data="post.prev_post" />
+          </div>
+          <div class="w-full h-full self-stretch" v-if="post.next_post.title">
+            <SubTitle
+              title="settings.paginator.next"
+              side="right"
+              icon="arrow-right-circle"
+            />
+            <Article :data="post.next_post" />
+          </div>
+        </div>
         <template v-if="post.title && post.text && post.uid">
-          <Comment :title="post.title" :body="post.text" :uid="post.uid" />
+          <div id="comments-section">
+            <Comment :title="post.title" :body="post.text" :uid="post.uid" />
+          </div>
         </template>
       </div>
       <div>
@@ -130,17 +152,19 @@
 import { Sidebar, Toc } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { defineComponent, onBeforeMount, ref } from 'vue'
+import { defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
+import { SubTitle } from '@/components/Title'
+import { Article } from '@/components/ArticleCard'
 
 import '@/styles/prism-dracula.css'
 import { useMetaStore } from '@/stores/meta'
 
 export default defineComponent({
   name: 'ObPost',
-  components: { Sidebar, Toc, Comment },
+  components: { Sidebar, Toc, Comment, SubTitle, Article },
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()
@@ -149,18 +173,25 @@ export default defineComponent({
     const post = ref(new Post())
 
     const fetchData = async () => {
+      post.value = new Post()
       await postStore.fetchPost(String(route.params.slug)).then((response) => {
         post.value = response
         metaStore.setTitle(post.value.title)
       })
-    }
-
-    onBeforeMount(() => {
-      fetchData()
       window.scrollTo({
         top: 0
       })
-    })
+    }
+
+    watch(
+      () => route.params,
+      (toParams, previousParams) => {
+        if (route.fullPath.indexOf('#') === -1 && toParams !== previousParams)
+          fetchData()
+      }
+    )
+
+    onBeforeMount(fetchData)
 
     return { post, t }
   }

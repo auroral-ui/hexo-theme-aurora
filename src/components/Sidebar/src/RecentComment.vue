@@ -17,10 +17,18 @@
           />
           <div class="flex-1 text-xs">
             <div class="text-xs">
-              <span class="text-ob pr-2">{{ comment.user.login }}</span>
+              <span class="text-ob pr-2">
+                {{ comment.user.login }}
+                <b
+                  class="text-ob-secondary bg-ob-deep-800 py-0.5 px-1.5 rounded-md opacity-75"
+                  v-if="comment.is_admin"
+                >
+                  {{ t('settings.admin-user') }}
+                </b>
+              </span>
               <p class="text-gray-500">{{ comment.created_at }}</p>
             </div>
-            <div class="text-xs text-gray-300">
+            <div class="text-xs text-ob-bright">
               {{ comment.body }}
             </div>
           </div>
@@ -33,15 +41,18 @@
 <script lang="ts">
 import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { SubTitle } from '@/components/Title'
-import { GithubComments } from '@/utils/github-comments'
+import { GithubComments } from '@/utils/github-api'
+import { LeanCloudComments } from '@/utils/leancloud-api'
 import { useAppStore } from '@/stores/app'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ObRecentComment',
   components: { SubTitle },
   setup() {
     const appStore = useAppStore()
-    let gbComments = ref([])
+    const { t } = useI18n()
+    let recentComments = ref([])
 
     const initRecentComment = () => {
       if (!appStore.configReady) return
@@ -58,13 +69,23 @@ export default defineComponent({
         })
 
         githubComments.getComments().then((response) => {
-          gbComments.value = response
+          recentComments.value = response
         })
       } else if (
         appStore.themeConfig.plugins.valine.enable &&
         appStore.themeConfig.plugins.valine.recentComment
       ) {
-        console.log('valine')
+        const leadCloudComments = new LeanCloudComments({
+          appId: appStore.themeConfig.plugins.valine.app_id,
+          appKey: appStore.themeConfig.plugins.valine.app_key,
+          avatar: appStore.themeConfig.plugins.valine.avatar,
+          admin: appStore.themeConfig.plugins.valine.admin,
+          lang: appStore.themeConfig.plugins.valine.lang
+        })
+
+        leadCloudComments.getRecentComments(7).then((response) => {
+          recentComments.value = response
+        })
       }
     }
 
@@ -82,8 +103,9 @@ export default defineComponent({
 
     return {
       comments: computed(() => {
-        return gbComments.value
-      })
+        return recentComments.value
+      }),
+      t
     }
   }
 })

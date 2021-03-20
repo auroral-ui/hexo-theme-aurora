@@ -5,7 +5,7 @@
 
 import request from '@/utils/external-request'
 import { AxiosResponse } from 'axios'
-import { formatTime } from '@/utils'
+import { formatTime, filterHTMLContent } from '@/utils'
 
 const COMMENT_CACHE_KEY = 'github-comment-cache-key'
 const GITHUB_API_URL = 'https://api.github.com/repos'
@@ -55,13 +55,6 @@ export class GithubComments implements GithubCommentsInterface {
   comments = []
 
   constructor(options: GithubAttributes) {
-    this.init(options)
-  }
-
-  /**
-   * Initialize the required configs.
-   */
-  async init(options: GithubAttributes): Promise<void> {
     /**
      * Initializing the configs.
      */
@@ -211,7 +204,7 @@ export class GithubComment {
    * Model class for Site meta settings
    *
    * @param raw Config data generated from Hexo
-   * @param admin Name of the repo admin
+   * @param options GithubAttributes
    */
   constructor(raw?: { [key: string]: any }, options?: GithubAttributes) {
     if (raw) {
@@ -296,22 +289,9 @@ export class GithubComment {
         .replaceAll('\r\n\r\n', '\n')
         // Removing all double new lines.
         .replaceAll('\n\n', '\n')
-        // Replace all images
-        .replace(
-          /![\s\w\](?:http(s)?://)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+\)/g,
-          '[img]'
-        )
-        // Replacing all links.
-        .replace(
-          /(?:http(s)?:\/\/)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+/g,
-          '[link]'
-        )
     }
 
-    if (content.length > 28) {
-      content = content.substr(0, 28)
-      content += '...'
-    }
+    content = filterHTMLContent(content, 28)
 
     this.body = content
   }

@@ -44,8 +44,11 @@
     "button-all": "All",
     "paginator": {
       "newer": "Newer",
-      "older": "Older"
+      "older": "Older",
+      "prev": "Previous",
+      "next": "Next"
     },
-    "more-tags": "View more"
+    "more-tags": "View more",
+    "admin-user": "Owner"
   }
 }

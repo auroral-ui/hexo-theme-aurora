@@ -1,3 +1,5 @@
+import pack from '../../package.json'
+
 interface ThemeRaw {
   /** Hexo config data */
   theme_config: {
@@ -9,7 +11,6 @@ interface ThemeRaw {
     socials: StringConfig
     site_meta: GeneralOptions
     plugins: GeneralOptions
-    version: { number: string }
   }
 }
 
@@ -41,7 +42,7 @@ export class ThemeConfig {
   /** Plugin configs */
   plugins: Plugins = new Plugins()
   /** Theme version */
-  version = ''
+  version = pack.version
 
   /**
    * Model class for Hexo theme config
@@ -57,7 +58,6 @@ export class ThemeConfig {
       this.site = new Site(rawConfig.site)
       this.socials = new Social(rawConfig.socials)
       this.plugins = new Plugins(rawConfig)
-      this.version = rawConfig.version.number
       this.site_meta = new SiteMeta(rawConfig.site_meta)
     }
   }
@@ -356,6 +356,7 @@ interface PluginsData {
     visitor: boolean
     lang: string
     meta: MetaAttributes[]
+    admin: string
     recentComment: boolean
   }
   recent_comments: boolean
@@ -385,6 +386,7 @@ export class Plugins implements PluginsData {
     visitor: true,
     lang: '',
     meta: [],
+    admin: '',
     recentComment: false
   }
   recent_comments = false

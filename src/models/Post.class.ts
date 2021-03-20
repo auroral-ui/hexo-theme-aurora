@@ -22,6 +22,18 @@ export class Post {
   tags: Tag[] = []
   count_time = {}
   toc = ''
+  next_post = {
+    title: '',
+    text: '',
+    categories: [],
+    tags: []
+  }
+  prev_post = {
+    title: '',
+    text: '',
+    categories: [],
+    tags: []
+  }
 
   constructor(raw?: { [key: string]: Array<string> | string }) {
     if (raw) {

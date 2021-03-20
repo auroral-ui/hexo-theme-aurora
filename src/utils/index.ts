@@ -73,3 +73,28 @@ export function formatTime(
 
   return configs.template.replace('[TIME]', formattedTime)
 }
+
+export function filterHTMLContent(content: string, length?: number): string {
+  if (!length) length = 28
+
+  content = content
+    // Replace all images
+    .replace(
+      /![\s\w\](?:http(s)?://)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+\)/g,
+      '[img]'
+    )
+    // Replacing all links.
+    .replace(
+      /(?:http(s)?:\/\/)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+/g,
+      '[link]'
+    )
+    // Removing all html tags
+    .replace(/(&nbsp;|<([^>]+)>)/gi, '')
+
+  if (content.length > length) {
+    content = content.substr(0, length)
+    content += '...'
+  }
+
+  return content
+}

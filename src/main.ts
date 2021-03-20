@@ -16,7 +16,7 @@ import './router/guard' // router guards
 
 import { registerSvgIcon } from '@/icons'
 import { registerObSkeleton } from '@/components/LoadingSkeleton'
-import { registerScrollSpy, Easing } from 'vue3-scroll-spy'
+import { registerScrollSpy } from 'vue3-scroll-spy'
 
 const app = createApp(App)
   .use(createPinia())
@@ -26,9 +26,7 @@ const app = createApp(App)
 
 registerSvgIcon(app)
 registerObSkeleton(app)
-registerScrollSpy(app, {
-  easing: Easing.Cubic.In
-})
+registerScrollSpy(app)
 
 app.mount('#app')
 

@@ -3,10 +3,6 @@
 #! ---------------------------------------------------------------
 #! Designed & Coded By TriDiamond
 #! ---------------------------------------------------------------
-# Theme version
-# !! DO NOT EDIT THIS !!
-version:
-  number: '-alpha.1'
 
 #! ---------------------------------------------------------------
 #! Site Configs
@@ -93,29 +89,12 @@ site_meta:
 #! Plugins
 #! ---------------------------------------------------------------
 
-# Gitalk comment plugin
-# see https://github.com/gitalk/gitalk
-# gitalk:
-#   enable: true
-#   autoExpand: true
-#   clientID: 'ec894e2b66f752e8b7fb'
-#   clientSecret: '3ccc2e92bb350688fe2c2dc2930189b62622bfb1'
-#   repo: 'blog-comments'
-#   owner: 'TriDiamond'
-#   admin: ['TriDiamond']
-#   # Ensure uniqueness and length less than 50
-#   id: location.pathname
-#   # Facebook-like distraction
-#   language: en
-#   distractionFreeMode: true
-#   recent_comment: true
-
 # For local development only!
 gitalk:
   enable: true
   autoExpand: true
-  clientID: 'd87b2e254d88d4cb57ed'
-  clientSecret: 'a883f47d4643fd2ca43a2cae9b66bbd2aa02012f'
+  clientID: ''
+  clientSecret: ''
   repo: 'dev-blog-comments'
   owner: 'TriDiamond'
   admin: ['TriDiamond']
@@ -132,13 +111,14 @@ gitalk:
 # see https://valine.js.org/quickstart.html
 valine:
   enable: false
-  app_id: QHCOIEBlyjBUMAjaE5ilzafk-gzGzoHsz
-  app_key: ggeGwz8ypB9uiAIYSRH5T0PF
+  app_id:
+  app_key:
   avatar: ''
   placeholder: Leave your thoughts behind~
   visitor: true
   lang: en
   meta: ['nick', 'mail']
+  admin: 'TriDiamond'
   recentComment: true
 
 # Enable Busuanzi statistic plugin

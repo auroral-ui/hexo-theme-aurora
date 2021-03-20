@@ -77,9 +77,9 @@
   );
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(232, 57, 255, 0.06),
-        0 10px 10px -5px rgba(53, 11, 59, 0.1);
+    0 10px 10px -5px rgba(53, 11, 59, 0.1);
   --sub-accent-shadow: 0 20px 25px -5px rgba(71, 190, 255, 0.06),
-        0 10px 10px -5px rgba(11, 42, 59, 0.1);
+    0 10px 10px -5px rgba(11, 42, 59, 0.1);
 }
 
 .theme-dark {
@@ -151,9 +151,9 @@
   );
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(11, 42, 59, 0.5),
-        0 10px 10px -5px rgba(11, 42, 59, 0.14);
+    0 10px 10px -5px rgba(11, 42, 59, 0.14);
   --sub-accent-shadow: 0 20px 25px -5px rgba(53, 11, 59, 0.5),
-        0 10px 10px -5px rgba(53, 11, 59, 0.14);
+    0 10px 10px -5px rgba(53, 11, 59, 0.14);
 }
 
 .ob-text-bright {
@@ -348,5 +348,5 @@
 }
 
 a:hover {
-  opacity: 0.6;
+  @apply hover:opacity-50 transition-all;
 }
