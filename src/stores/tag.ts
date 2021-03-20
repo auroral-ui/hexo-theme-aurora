@@ -17,6 +17,14 @@ export const useTagStore = defineStore({
         this.tags = new Tags(data).data
         resolve(this.tags)
       })
+    },
+    async fetchTagsByCount(count: number) {
+      const { data } = await fetchAllTags()
+      return new Promise((resolve) => {
+        const maxLength = data.length > count ? count : data.length
+        this.tags = new Tags(data.splice(0, maxLength)).data
+        resolve(this.tags)
+      })
     }
   }
 })

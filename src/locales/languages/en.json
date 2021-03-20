@@ -45,6 +45,7 @@
     "paginator": {
       "newer": "Newer",
       "older": "Older"
-    }
+    },
+    "more-tags": "View more"
   }
 }
