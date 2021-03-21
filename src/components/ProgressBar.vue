@@ -1,0 +1,46 @@
+<template>
+  <div id="progress-bar" class="rounded-full" :style="progressBarStyle"></div>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  name: 'ObProgressBar',
+  setup() {
+    const progress = ref(0)
+
+    const scrollHandler = () =>
+      setTimeout(() => {
+        progress.value =
+          (window.pageYOffset /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100
+      }, 16)
+
+    document.addEventListener('scroll', scrollHandler)
+
+    return {
+      progressBarStyle: computed(() => {
+        return { width: `${progress.value}%` }
+      })
+    }
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+#progress-bar {
+  content: '';
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  height: 3px;
+  background: var(--main-gradient);
+  span {
+    position: absolute;
+    top: -3px;
+    right: 0;
+  }
+}
+</style>

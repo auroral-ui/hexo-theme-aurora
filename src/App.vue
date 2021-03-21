@@ -5,16 +5,15 @@
       <div class="app-banner-base" :style="headerBaseBackground" />
       <div class="relative z-10">
         <router-view v-slot="{ Component }">
-          <transition name="fade-transform" mode="out-in">
-            <!-- <keep-alive> -->
+          <transition name="fade-slide-y" mode="out-in">
             <component :is="Component" />
-            <!-- </keep-alive> -->
           </transition>
         </router-view>
       </div>
     </div>
     <Footer />
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
+    <ProgressBar />
   </div>
   <teleport to="head">
     <title>{{ title }}</title>
@@ -28,12 +27,14 @@ import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
 import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
+import ProgressBar from '@/components/ProgressBar.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     HeaderMain,
-    Footer
+    Footer,
+    ProgressBar
   },
   setup() {
     const appStore = useAppStore()
