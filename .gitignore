@@ -1,3 +1,6 @@
+# ignored config files.
+_config.*.yml
+
 .DS_Store
 node_modules
 /dist
