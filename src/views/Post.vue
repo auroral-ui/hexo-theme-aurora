@@ -185,9 +185,8 @@ export default defineComponent({
 
     watch(
       () => route.params,
-      (toParams, previousParams) => {
-        if (route.fullPath.indexOf('#') === -1 && toParams !== previousParams)
-          fetchData()
+      (toParams) => {
+        if (toParams.slug && route.fullPath.indexOf('#') === -1) fetchData()
       }
     )
 
