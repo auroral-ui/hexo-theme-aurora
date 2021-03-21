@@ -31,38 +31,48 @@ export const usePostStore = defineStore({
   actions: {
     async fetchFeaturePosts() {
       const { data } = await fetchFeature()
-      return new Promise((resolve) => {
-        this.featurePosts = new FeaturePosts(data)
-        resolve(this.featurePosts)
-      })
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          this.featurePosts = new FeaturePosts(data)
+          resolve(this.featurePosts)
+        }, 200)
+      )
     },
     async fetchPostsList(page?: number): Promise<PostList> {
       if (!page) page = 1
       const { data } = await fetchPostsList(page)
-      return new Promise((resolve) => {
-        this.posts = new PostList(data)
-        this.postTotal = this.posts.total
-        resolve(this.posts)
-      })
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          this.posts = new PostList(data)
+          this.postTotal = this.posts.total
+          resolve(this.posts)
+        }, 200)
+      )
     },
     async fetchArchives(page?: number): Promise<Archives> {
       if (!page) page = 1
       const { data } = await fetchPostsList(page)
-      return new Promise((resolve) => {
-        resolve(new Archives(data))
-      })
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          resolve(new Archives(data))
+        }, 200)
+      )
     },
     async fetchPost(slug: string): Promise<Post> {
       const { data } = await fetchPostBySlug(slug)
-      return new Promise((resolve) => {
-        resolve(new Post(data))
-      })
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          resolve(new Post(data))
+        }, 200)
+      )
     },
     async fetchPostsByCategory(category: string): Promise<SpecificPostsList> {
       const { data } = await fetchPostsListByCategory(category)
-      return new Promise((resolve) => {
-        resolve(new SpecificPostsList(data))
-      })
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          resolve(new SpecificPostsList(data))
+        }, 200)
+      )
     },
     /**
      * Setting the cache post data

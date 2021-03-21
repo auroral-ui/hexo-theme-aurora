@@ -74,7 +74,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, ref } from 'vue'
+import { computed, defineComponent, onMounted, ref } from 'vue'
 import { Feature, FeatureList } from '@/components/Feature'
 import { Article } from '@/components/ArticleCard'
 import { Title } from '@/components/Title'
@@ -146,7 +146,7 @@ export default defineComponent({
           : 0
     }
 
-    onBeforeMount(fetchData)
+    onMounted(fetchData)
 
     const expandHandler = () => {
       expanderClass.value.expanded = !expanderClass.value.expanded

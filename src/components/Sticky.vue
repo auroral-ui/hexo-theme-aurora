@@ -106,55 +106,65 @@ export default defineComponent({
       this.isSticky = false
     },
     handleScroll() {
-      const documentHeight = document.documentElement.scrollHeight
-      const width = this.$el.getBoundingClientRect().width
-      const height = this.$el.getBoundingClientRect().height
+      /**
+       * setTimeout is added due to the warning of
+       * "This site appears to use a scroll-linked
+       * positioning effect. This may not work well
+       * with asynchronous panning; " (On FireFox)
+       */
+      setTimeout(() => {
+        const documentHeight = document.documentElement.scrollHeight
+        const width = this.$el.getBoundingClientRect().width
+        const height = this.$el.getBoundingClientRect().height
 
-      // Use `Dynamic Element Class` when your content will change
-      // which will affect the height of your fixed container
-      // this will update the height of your fixed container
-      if (this.dynamicElClass !== '') {
-        const dynamicEl = this.$el.querySelector(this.dynamicElClass)
-        this.height = dynamicEl.getBoundingClientRect().height || height
-      }
-
-      const scrollTop = window.scrollY
-      this.width = width || 'auto'
-      const offsetTop = this.$el.getBoundingClientRect().top
-
-      // When the fixed container reaches the ending element container
-      // Fix position property will be turned off, and the fixed container
-      // will stop right before the ending element.
-      const endingEl =
-        this.endingElId !== '' ? document.getElementById(this.endingElId) : null
-      const endingElMarginTop =
-        endingEl && endingEl instanceof HTMLElement
-          ? parseInt(window.getComputedStyle(endingEl).marginTop, 10)
-          : 0
-      const endingPos =
-        endingEl && endingEl instanceof HTMLElement
-          ? documentHeight -
-            scrollTop -
-            height -
-            this.stickyTop -
-            this.stickyBottom -
-            endingEl.getBoundingClientRect().height -
-            endingElMarginTop
-          : documentHeight
-
-      if (offsetTop < this.stickyTop) {
-        this.active = false
-        if (endingPos <= 0) {
-          this.isBottom = true
-          this.sticky(-1, 'absolute')
-        } else {
-          this.isBottom = false
-          this.sticky(this.stickyTop, 'fixed')
+        // Use `Dynamic Element Class` when your content will change
+        // which will affect the height of your fixed container
+        // this will update the height of your fixed container
+        if (this.dynamicElClass !== '') {
+          const dynamicEl = this.$el.querySelector(this.dynamicElClass)
+          this.height = dynamicEl.getBoundingClientRect().height || height
         }
-        return
-      }
 
-      this.handleReset()
+        const scrollTop = window.scrollY
+        this.width = width || 'auto'
+        const offsetTop = this.$el.getBoundingClientRect().top
+
+        // When the fixed container reaches the ending element container
+        // Fix position property will be turned off, and the fixed container
+        // will stop right before the ending element.
+        const endingEl =
+          this.endingElId !== ''
+            ? document.getElementById(this.endingElId)
+            : null
+        const endingElMarginTop =
+          endingEl && endingEl instanceof HTMLElement
+            ? parseInt(window.getComputedStyle(endingEl).marginTop, 10)
+            : 0
+        const endingPos =
+          endingEl && endingEl instanceof HTMLElement
+            ? documentHeight -
+              scrollTop -
+              height -
+              this.stickyTop -
+              this.stickyBottom -
+              endingEl.getBoundingClientRect().height -
+              endingElMarginTop
+            : documentHeight
+
+        if (offsetTop < this.stickyTop) {
+          this.active = false
+          if (endingPos <= 0) {
+            this.isBottom = true
+            this.sticky(-1, 'absolute')
+          } else {
+            this.isBottom = false
+            this.sticky(this.stickyTop, 'fixed')
+          }
+          return
+        }
+
+        this.handleReset()
+      }, 16)
     },
     handleResize() {
       if (this.isSticky) {

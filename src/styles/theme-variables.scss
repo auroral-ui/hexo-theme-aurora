@@ -150,9 +150,9 @@
     var(--background-secondary)
   );
   --trans-ease: all 250ms ease;
-  --accent-shadow: 0 20px 25px -5px rgba(11, 42, 59, 0.5),
+  --accent-shadow: 0 20px 25px -5px rgba(11, 42, 59, 0.35),
     0 10px 10px -5px rgba(11, 42, 59, 0.14);
-  --sub-accent-shadow: 0 20px 25px -5px rgba(53, 11, 59, 0.5),
+  --sub-accent-shadow: 0 20px 25px -5px rgba(53, 11, 59, 0.35),
     0 10px 10px -5px rgba(53, 11, 59, 0.14);
 }
 
@@ -211,21 +211,22 @@
   @apply mb-4;
   .post-labels {
     b {
-      @apply text-white;
+      @apply text-white text-xs uppercase opacity-80;
       text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     }
     ul {
       @apply inline-flex pl-2;
       li {
-        @apply text-white mr-3;
+        @apply text-white text-xs mr-3 opacity-70;
         text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
       }
     }
   }
   .post-title {
-    @apply py-2;
+    @apply mt-2 mb-4;
     font-size: clamp(1.2rem, calc(1rem + 3.5vw), 4rem);
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
   }
   .post-stats {
     @apply w-full flex flex-row text-sm lg:text-base mb-4;
@@ -348,5 +349,5 @@
 }
 
 a:hover {
-  @apply hover:opacity-50 transition-all;
+  @apply hover:opacity-50 hover:text-ob transition-all;
 }

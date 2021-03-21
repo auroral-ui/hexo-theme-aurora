@@ -4,7 +4,12 @@
       <h1 v-if="post.title" class="post-title text-white uppercase">
         {{ post.title }}
       </h1>
-      <ob-skeleton v-else width="100%" height="3.5rem" />
+      <ob-skeleton
+        v-else
+        class="post-title text-white uppercase"
+        width="100%"
+        height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
+      />
     </div>
     <div class="main-grid">
       <div class="relative">
@@ -79,6 +84,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .post-title {
+  @apply my-2;
   font-size: clamp(1.2rem, calc(1rem + 3.5vw), 4rem);
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
 }

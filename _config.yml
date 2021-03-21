@@ -93,8 +93,8 @@ site_meta:
 gitalk:
   enable: true
   autoExpand: true
-  clientID: ''
-  clientSecret: ''
+  clientID: 'd87b2e254d88d4cb57ed'
+  clientSecret: 'e55f9aba8980abb49e3aa55b78129ae83364156b'
   repo: 'dev-blog-comments'
   owner: 'TriDiamond'
   admin: ['TriDiamond']
@@ -111,8 +111,8 @@ gitalk:
 # see https://valine.js.org/quickstart.html
 valine:
   enable: false
-  app_id:
-  app_key:
+  app_id: QHCOIEBlyjBUMAjaE5ilzafk
+  app_key: ggeGwz8ypB9uiAIYSRH5T0PF
   avatar: ''
   placeholder: Leave your thoughts behind~
   visitor: true

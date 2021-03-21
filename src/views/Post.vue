@@ -9,9 +9,7 @@
           width="35px"
         />
         <b v-else>
-          <span class="opacity-40">「</span>
           {{ post.categories[0].name }}
-          <span class="opacity-40">」</span>
         </b>
         <ul>
           <ob-skeleton
@@ -24,33 +22,36 @@
           />
           <template v-else>
             <li v-for="tag in post.tags" :key="tag.slug">
-              <em class="opacity-70">
-                <b class="opacity-50">#</b> {{ tag.name }}
-              </em>
+              <b class="opacity-50">#</b> {{ tag.name }}
             </li>
           </template>
         </ul>
       </span>
 
       <h1 v-if="post.title" class="post-title text-white">{{ post.title }}</h1>
-      <ob-skeleton v-else width="100%" height="3.5rem" />
+      <ob-skeleton
+        v-else
+        class="post-title text-white uppercase"
+        width="100%"
+        height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
+      />
 
       <div class="post-stats" v-if="post.count_time.symbolsTime && post.date">
         <span>
           <svg-icon icon-class="clock-outline" style="stroke: white" />
-          <em class="pl-2">
+          <em class="pl-2 opacity-70">
             {{ post.count_time.symbolsTime }}
           </em>
         </span>
         <span>
           <svg-icon icon-class="text-outline" style="stroke: white" />
-          <em class="pl-2">
+          <em class="pl-2 opacity-70">
             {{ post.count_time.symbolsCount }}
           </em>
         </span>
         <span v-if="post.date.month">
           <svg-icon icon-class="date-outline" style="stroke: white" />
-          <em class="pl-2">
+          <em class="pl-2 opacity-70">
             {{ t(post.date.month) }} {{ post.date.day }}, {{ post.date.year }}
           </em>
         </span>
@@ -152,7 +153,7 @@
 import { Sidebar, Toc } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { defineComponent, onBeforeMount, ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
@@ -174,12 +175,12 @@ export default defineComponent({
 
     const fetchData = async () => {
       post.value = new Post()
+      window.scrollTo({
+        top: 0
+      })
       await postStore.fetchPost(String(route.params.slug)).then((response) => {
         post.value = response
         metaStore.setTitle(post.value.title)
-      })
-      window.scrollTo({
-        top: 0
       })
     }
 
@@ -190,7 +191,7 @@ export default defineComponent({
       }
     )
 
-    onBeforeMount(fetchData)
+    onMounted(fetchData)
 
     return { post, t }
   }

@@ -25,83 +25,31 @@
           </ol>
         </div>
       </div>
-      <ul
-        class="grid grid-cols-3 bg-ob-deep-800 rounded-xl shadow-2xl justify-items-center overflow-hidden"
-      >
-        <li
-          class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
-          @click="goBack"
-        >
-          <svg-icon class="inline-block text-3xl" icon-class="go-back" />
-        </li>
-        <li
-          class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
-          @click="backToTop"
-        >
-          <svg-icon class="inline-block text-3xl" icon-class="back-to-top" />
-        </li>
-        <li
-          class="flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
-          @click="jumpToComments"
-        >
-          <svg-icon class="inline-block text-3xl" icon-class="quote" />
-        </li>
-      </ul>
+      <Navigator />
     </div>
   </Sticky>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, toRefs } from 'vue'
+import { computed, defineComponent, toRefs } from 'vue'
 import { SubTitle } from '@/components/Title'
 import Sticky from '@/components/Sticky.vue'
-import { useRouter } from 'vue-router'
+import Navigator from './Navigator.vue'
 
 export default defineComponent({
   name: 'ObTOC',
-  components: { SubTitle, Sticky },
+  components: { SubTitle, Sticky, Navigator },
   props: {
     toc: String
   },
   setup(props) {
     const tocData = toRefs(props).toc
-    const router = useRouter()
-    const commentOffset = ref(0)
-
-    const backToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-    }
-
-    const goBack = () => {
-      router.back()
-    }
-
-    const jumpToComments = () => {
-      const commentEl = document.getElementById('comments-section')
-      if (commentEl) {
-        // 120 is the height of the header element
-        commentOffset.value =
-          commentEl && commentEl instanceof HTMLElement
-            ? commentEl.offsetTop + 120 - 30
-            : 0
-      }
-      window.scrollTo({
-        top: commentOffset.value,
-        behavior: 'smooth'
-      })
-    }
 
     return {
       tocData,
-      goBack,
-      backToTop,
-      jumpToComments,
       sideBoxStyle: computed(() => {
         return {
-          maxHeight: `${window.innerHeight - 64 - 64 - 52 - 54}px`,
+          maxHeight: `${window.innerHeight - 64 - 64 - 52 - 74}px`,
           overflow: 'scroll'
         }
       })

@@ -11,9 +11,11 @@ export const useArticleStore = defineStore({
   actions: {
     async fetchArticle(source: string): Promise<Page> {
       const { data } = await fetchImplicitPageBySource(source)
-      return new Promise((resolve) => {
-        resolve(new Page(data))
-      })
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          resolve(new Page(data))
+        }, 200)
+      )
     }
   }
 })

@@ -11,7 +11,10 @@
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "env:local": "node ./build/scripts/config-script.js local",
+    "env:prod": "node ./build/scripts/config-script.js prod",
+    "env:pub": "node ./build/scripts/config-script.js publish"
   },
   "dependencies": {
     "axios": "^0.21.1",

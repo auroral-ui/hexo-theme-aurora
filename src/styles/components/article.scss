@@ -1,5 +1,5 @@
 .article {
-  @apply rounded-2xl bg-ob-deep-800 shadow-lg grid grid-rows-3 overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 duration-300 h-full;
+  @apply rounded-2xl bg-ob-deep-800 shadow-lg grid grid-rows-3 overflow-hidden hover:shadow-ob transition-shadow h-full;
   transition-property: border-color, opacity, box-shadow, transform;
   &:hover {
     .article-thumbnail .thumbnail-screen {
@@ -55,7 +55,7 @@
 }
 
 .feature-article {
-  @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-98 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800 hover:shadow-2xl transform hover:-translate-y-1 duration-300;
+  @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-98 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800 hover:shadow-ob transition-shadow;
   transition-property: transform, shadow;
   &:hover {
     .thumbnail-screen {

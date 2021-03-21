@@ -1,31 +1,18 @@
 // global transition css
 
-/* fade */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.28s;
+/* fade-slide */
+.fade-slide-y-enter-active {
+  transition: all 0.3s ease;
 }
 
-.fade-enter,
-.fade-leave-active {
+.fade-slide-y-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.fade-slide-y-enter-from,
+.fade-slide-y-leave-to {
+  transform: translateY(10px);
   opacity: 0;
-}
-
-/* fade-transform */
-.fade-transform-leave-active,
-.fade-transform-enter-active {
-  transition-duration: 0.5s;
-  transition-property: opacity, transform;
-}
-
-.fade-transform-enter {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-.fade-transform-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
 }
 
 /* breadcrumb transition */
