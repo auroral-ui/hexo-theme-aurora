@@ -336,6 +336,7 @@ pre[class*='language-'] {
 }
 .token.operator {
   color: rgba(139, 233, 253, 1);
+  background: transparent;
 }
 .token.char {
   color: rgba(255, 135, 157, 1);
