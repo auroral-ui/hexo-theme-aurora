@@ -1,80 +1,84 @@
 <template>
   <div class="flex flex-col">
-    <div class="post-header">
-      <span class="post-labels">
-        <ob-skeleton
-          v-if="post.categories.length <= 0"
-          tag="b"
-          height="20px"
-          width="35px"
-        />
-        <b v-else>
-          {{ post.categories[0].name }}
-        </b>
-        <ul>
+    <div class="main-grid">
+      <div class="post-header">
+        <span class="post-labels">
           <ob-skeleton
-            v-if="post.tags.length <= 0"
-            :count="2"
-            tag="li"
-            height="16px"
+            v-if="post.categories.length <= 0"
+            tag="b"
+            height="20px"
             width="35px"
-            class="mr-2"
           />
-          <template v-else>
-            <li v-for="tag in post.tags" :key="tag.slug">
-              <b class="opacity-50">#</b> {{ tag.name }}
-            </li>
-          </template>
-        </ul>
-      </span>
+          <b v-else>
+            {{ post.categories[0].name }}
+          </b>
+          <ul>
+            <ob-skeleton
+              v-if="post.tags.length <= 0"
+              :count="2"
+              tag="li"
+              height="16px"
+              width="35px"
+              class="mr-2"
+            />
+            <template v-else>
+              <li v-for="tag in post.tags" :key="tag.slug">
+                <b class="opacity-50">#</b> {{ tag.name }}
+              </li>
+            </template>
+          </ul>
+        </span>
 
-      <h1 v-if="post.title" class="post-title text-white">{{ post.title }}</h1>
-      <ob-skeleton
-        v-else
-        class="post-title text-white uppercase"
-        width="100%"
-        height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
-      />
+        <h1 v-if="post.title" class="post-title text-white">
+          {{ post.title }}
+        </h1>
+        <ob-skeleton
+          v-else
+          class="post-title text-white uppercase"
+          width="100%"
+          height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
+        />
 
-      <div class="post-stats" v-if="post.count_time.symbolsTime && post.date">
-        <span>
-          <svg-icon icon-class="clock-outline" style="stroke: white" />
-          <em class="pl-2 opacity-70">
-            {{ post.count_time.symbolsTime }}
-          </em>
-        </span>
-        <span>
-          <svg-icon icon-class="text-outline" style="stroke: white" />
-          <em class="pl-2 opacity-70">
-            {{ post.count_time.symbolsCount }}
-          </em>
-        </span>
-        <span v-if="post.date.month">
-          <svg-icon icon-class="date-outline" style="stroke: white" />
-          <em class="pl-2 opacity-70">
-            {{ t(post.date.month) }} {{ post.date.day }}, {{ post.date.year }}
-          </em>
-        </span>
-      </div>
-      <div v-else class="post-stats">
-        <span>
-          <svg-icon icon-class="clock" />
-          <em class="pl-2">
-            <ob-skeleton width="40px" height="16px" />
-          </em>
-        </span>
-        <span>
-          <svg-icon icon-class="text" />
-          <em class="pl-2">
-            <ob-skeleton width="40px" height="16px" />
-          </em>
-        </span>
-        <span>
-          <svg-icon icon-class="date" />
-          <em class="pl-2">
-            <ob-skeleton width="100px" height="16px" />
-          </em>
-        </span>
+        <div class="post-stats" v-if="post.count_time.symbolsTime && post.date">
+          <span>
+            <svg-icon icon-class="clock-outline" style="stroke: white" />
+            <em class="pl-2 opacity-70">
+              {{ post.count_time.symbolsTime }}
+            </em>
+          </span>
+          <span>
+            <svg-icon icon-class="text-outline" style="stroke: white" />
+            <em class="pl-2 opacity-70">
+              {{ post.count_time.symbolsCount }}
+            </em>
+          </span>
+          <span v-if="post.date.month">
+            <svg-icon icon-class="date-outline" style="stroke: white" />
+            <em class="pl-2 opacity-70">
+              {{ t(post.date.month) }} {{ post.date.day }}, {{ post.date.year }}
+            </em>
+          </span>
+        </div>
+        <div v-else class="post-stats">
+          <span>
+            <svg-icon icon-class="clock" />
+            <em class="pl-2">
+              <ob-skeleton width="40px" height="16px" />
+            </em>
+          </span>
+          <span>
+            <svg-icon icon-class="text" />
+            <em class="pl-2">
+              <ob-skeleton width="40px" height="16px" />
+            </em>
+          </span>
+          <span>
+            <svg-icon icon-class="date" />
+            <em class="pl-2">
+              <ob-skeleton width="100px" height="16px" />
+            </em>
+          </span>
+        </div>
       </div>
     </div>
     <div class="main-grid">
@@ -153,7 +157,7 @@
 import { Sidebar, Toc } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { defineComponent, onMounted, ref, watch } from 'vue'
+import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
@@ -162,6 +166,7 @@ import { Article } from '@/components/ArticleCard'
 
 import '@/styles/prism-dracula.css'
 import { useMetaStore } from '@/stores/meta'
+import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ObPost',
@@ -169,6 +174,7 @@ export default defineComponent({
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()
+    const appStore = useAppStore()
     const route = useRoute()
     const { t } = useI18n()
     const post = ref(new Post())
@@ -181,6 +187,7 @@ export default defineComponent({
       await postStore.fetchPost(String(route.params.slug)).then((response) => {
         post.value = response
         metaStore.setTitle(post.value.title)
+        appStore.setHeaderImage(response.cover)
       })
     }
 
@@ -192,6 +199,9 @@ export default defineComponent({
     )
 
     onMounted(fetchData)
+    onBeforeUnmount(() => {
+      appStore.resetHeaderImage()
+    })
 
     return { post, t }
   }

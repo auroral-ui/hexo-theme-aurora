@@ -1,5 +1,9 @@
 <template>
-  <div id="progress-bar" class="rounded-full" :style="progressBarStyle"></div>
+  <div
+    id="progress-bar"
+    class="rounded-full shadow-2xl"
+    :style="progressBarStyle"
+  ></div>
 </template>
 
 <script lang="ts">
@@ -37,10 +41,5 @@ export default defineComponent({
   top: 0;
   height: 3px;
   background: var(--main-gradient);
-  span {
-    position: absolute;
-    top: -3px;
-    right: 0;
-  }
 }
 </style>

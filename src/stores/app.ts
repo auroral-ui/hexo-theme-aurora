@@ -52,7 +52,9 @@ export const useAppStore = defineStore({
     /** Loading status' timeout timer id number */
     loadingTimeout: -1,
     /** Tracking if the blog config is ready */
-    configReady: false
+    configReady: false,
+    /** Header image url */
+    headerImage: ''
   }),
   getters: {
     getTheme(): string {
@@ -127,6 +129,14 @@ export const useAppStore = defineStore({
       this.loadingTimeout = setTimeout(() => {
         this.appLoading = false
       }, 300)
+    },
+    /** Setting the image url for the header */
+    setHeaderImage(imageUrl: string) {
+      this.headerImage = imageUrl
+    },
+    /** Resetting the header image to null */
+    resetHeaderImage() {
+      this.headerImage = ''
     }
   }
 })

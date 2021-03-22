@@ -1,9 +1,7 @@
 <template>
-  <div
-    class="grid grid-cols-none grid-flow-row lg:grid-rows-1 lg:grid-cols-5 py-8 gap-8 box-border"
-  >
+  <div class="inverted-main-grid py-8 gap-8 box-border">
     <div
-      class="relative overflow-hidden row-span-1 h-56 lg:h-auto lg:row-span-2 lg:col-span-1 rounded-2xl bg-ob-deep-800 shadow-lg"
+      class="relative overflow-hidden h-56 lg:h-auto rounded-2xl bg-ob-deep-800 shadow-lg"
     >
       <div
         class="ob-gradient-plate opacity-90 relative z-10 bg-ob-deep-900 rounded-2xl flex justify-start items-end px-8 pb-10 shadow-md"
@@ -22,7 +20,7 @@
       />
     </div>
 
-    <ul class="grid row-span-2 lg:grid-cols-2 lg:col-span-4 gap-8">
+    <ul class="grid lg:grid-cols-2 gap-8">
       <template v-if="featurePosts.length > 0">
         <li v-for="post in featurePosts" :key="post.slug">
           <Article :data="post" />

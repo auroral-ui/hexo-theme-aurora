@@ -2,7 +2,8 @@
   <div :class="[appWrapperClass, theme]">
     <div class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8">
       <HeaderMain />
-      <div class="app-banner-base" :style="headerBaseBackground" />
+      <div class="app-banner app-banner-image" :style="headerImage" />
+      <div class="app-banner app-banner-screen" :style="headerBaseBackground" />
       <div class="relative z-10">
         <router-view v-slot="{ Component }">
           <transition name="fade-slide-y" mode="out-in">
@@ -87,6 +88,9 @@ export default defineComponent({
       theme: computed(() => appStore.theme),
       scripts: computed(() => metaStore.scripts),
       themeConfig: computed(() => appStore.themeConfig),
+      headerImage: computed(() => {
+        return { backgroundImage: `url(${appStore.headerImage})` }
+      }),
       headerBaseBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
@@ -116,7 +120,7 @@ export default defineComponent({
   }
 }
 
-.app-banner-base {
+.app-banner {
   content: '';
   display: block;
   height: 600px;
@@ -230,6 +234,16 @@ export default defineComponent({
     99% 64.75%,
     100% 65.7%
   );
+}
+
+.app-banner-image {
+  z-index: 1;
+  background-size: cover;
+}
+
+.app-banner-screen {
+  z-index: 2;
+  opacity: 0.91;
 }
 
 #nav {

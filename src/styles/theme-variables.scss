@@ -194,7 +194,8 @@
   animation: 1.5s ease-in-out 0s infinite normal none running SkeletonLoading;
 }
 
-.main-grid {
+.main-grid,
+.inverted-main-grid {
   display: flex;
   flex-direction: column;
 }
@@ -204,6 +205,11 @@
     display: grid;
     gap: var(--gap);
     grid-template-columns: minmax(0, 1fr) 320px;
+  }
+  .inverted-main-grid {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: 245px minmax(0, 1fr);
   }
 }
 
