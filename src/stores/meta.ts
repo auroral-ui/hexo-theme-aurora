@@ -35,7 +35,7 @@ export const useMetaStore = defineStore({
       const appStore = useAppStore()
       const subtitle = appStore.themeConfig.site.subtitle || 'Blog'
       if (this.title === '') return subtitle
-      return `${this.title} - ${subtitle}`
+      return `${this.title} | ${subtitle}`
     }
   },
   actions: {

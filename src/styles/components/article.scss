@@ -129,9 +129,7 @@
 }
 
 .post-html {
-  @apply bg-ob-deep-800 p-4 lg:p-14 rounded-2xl shadow-xl min-h-screen mb-8 lg:mb-0;
-  // min-width: 0;
-  // overflow: auto;
+  @apply bg-ob-deep-800 p-4 lg:p-14 rounded-2xl shadow-xl mb-8 lg:mb-0;
   h1,
   h2,
   h3,

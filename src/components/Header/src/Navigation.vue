@@ -1,6 +1,6 @@
 <template>
   <nav class="items-center flex-1 hidden lg:flex">
-    <ul class="w-full flex flex-row list-none px-6 text-white">
+    <ul class="w-full flex flex-row list-none px-6 text-white cursor-pointer">
       <li
         class="not-italic font-medium text-xs h-full relative flex flex-col items-center justify-center cursor-pointer text-center py-4 px-2"
         v-for="route in routes"
@@ -70,7 +70,11 @@ export default defineComponent({
       }
     }
 
-    return { routes: computed(() => appStore.themeConfig.menu), pushPage, t }
+    return {
+      routes: computed(() => appStore.themeConfig.menu.menus),
+      pushPage,
+      t
+    }
   }
 })
 </script>

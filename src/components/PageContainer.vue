@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <div class="post-header">
       <h1 v-if="post.title" class="post-title text-white uppercase">
-        {{ post.title }}
+        {{ pageTitle }}
       </h1>
       <ob-skeleton
         v-else
@@ -15,7 +15,7 @@
       <div class="relative">
         <div
           v-if="post.content"
-          class="post-html bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+          class="post-html"
           v-html="post.content"
           v-scroll-spy="{ sectionSelector: 'h1, h2, h3, h4, h5, h6' }"
         />
@@ -48,6 +48,7 @@
             class="mr-2"
           />
         </div>
+        <slot />
       </div>
       <div class="col-span-1">
         <Sidebar>
@@ -59,7 +60,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, toRefs } from 'vue'
+import { computed, defineComponent, onMounted, onUnmounted, toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Sidebar, Toc } from '@/components/Sidebar'
 import { useAppStore } from '@/stores/app'
@@ -73,12 +74,17 @@ export default defineComponent({
       default: () => {
         return {}
       }
+    },
+    title: {
+      type: String,
+      default: ''
     }
   },
   setup(props) {
     const appStore = useAppStore()
     const { t } = useI18n()
     const post = toRefs(props).post
+    const title = toRefs(props).title
 
     onMounted(() => {
       appStore.setHeaderImage(post.value.cover)
@@ -88,7 +94,13 @@ export default defineComponent({
       appStore.resetHeaderImage()
     })
 
-    return { t }
+    return {
+      pageTitle: computed(() => {
+        if (title.value !== '') return title.value
+        return post.value.title
+      }),
+      t
+    }
   }
 })
 </script>

@@ -83,12 +83,13 @@
     </div>
     <div class="main-grid">
       <div>
-        <div
-          v-if="post.content"
-          class="post-html"
-          v-html="post.content"
-          v-scroll-spy="{ sectionSelector: 'h1, h2, h3, h4, h5, h6' }"
-        />
+        <template v-if="post.content">
+          <div
+            class="post-html"
+            v-html="post.content"
+            v-scroll-spy="{ sectionSelector: 'h1, h2, h3, h4, h5, h6' }"
+          />
+        </template>
         <div
           v-else
           class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"

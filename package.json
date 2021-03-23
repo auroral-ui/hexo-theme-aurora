@@ -28,7 +28,7 @@
     "vue-i18n": "^9.0.0-rc.4",
     "vue-router": "^4.0.3",
     "vue3-click-away": "^1.1.0",
-    "vue3-scroll-spy": "^1.0.7"
+    "vue3-scroll-spy": "^1.0.8"
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^2.0.0-beta.3",

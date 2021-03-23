@@ -64,23 +64,17 @@ export class ThemeConfig {
 }
 
 interface ObMenu {
-  Home: { name: string; path: string; i18n: string }
-  About: { name: string; path: string; i18n: string }
-  Archives?: { name: string; path: string; i18n: string }
-  Tags?: { name: string; path: string; i18n: string }
+  menus: { [pathName: string]: Menu }
 }
 
 export class ThemeMenu implements ObMenu {
-  Home: Menu = new Menu({
-    name: 'Home',
-    path: '/',
-    i18n: 'home'
-  })
-  About: Menu = new Menu({
-    name: 'About',
-    path: '/about',
-    i18n: 'about'
-  })
+  menus: { [pathName: string]: Menu } = {
+    Home: new Menu({
+      name: 'Home',
+      path: '/',
+      i18n: 'home'
+    })
+  }
 
   /**
    * Model class for Hexo theme's menu set
@@ -89,6 +83,11 @@ export class ThemeMenu implements ObMenu {
    */
   constructor(raw?: GeneralOptions) {
     const extract: GeneralOptions = {
+      About: {
+        name: 'About',
+        path: '/about',
+        i18n: 'about'
+      },
       Archives: {
         name: 'Archives',
         path: '/archives',
@@ -106,13 +105,15 @@ export class ThemeMenu implements ObMenu {
       // Theme default menus
       for (const menu of defaultMenus) {
         if (typeof raw[menu] === 'boolean' && raw[menu]) {
-          Object.assign(this, { [menu]: new Menu(extract[menu]) })
+          Object.assign(this.menus, { [menu]: new Menu(extract[menu]) })
         }
       }
       // Theme custom menus
       for (const otherMenu of Object.keys(raw)) {
         if (defaultMenus.indexOf(otherMenu) < 0 && raw[otherMenu].name) {
-          Object.assign(this, { [otherMenu]: new Menu(raw[otherMenu]) })
+          Object.assign(this.menus, {
+            [otherMenu]: new Menu(raw[otherMenu])
+          })
         }
       }
     }

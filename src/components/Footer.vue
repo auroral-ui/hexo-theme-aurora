@@ -19,13 +19,13 @@
             </li>
             <li>
               Powered by
-              <a href="https://github.com/TriDiamond/hexo-theme-obsidian">
+              <a href="https://hexo.io/">
                 <b class="font-extrabold border-b-2 border-ob hover:text-ob">
                   Hexo
                 </b>
               </a>
               & Themed by
-              <a href="https://github.com/TriDiamond/hexo-theme-obsidian">
+              <a href="https://github.com/obsidianext/hexo-theme-obsidianext">
                 <b class="font-extrabold border-b-2 border-ob hover:text-ob">
                   ObsidiaNext {{ themeConfig.version }}
                 </b>

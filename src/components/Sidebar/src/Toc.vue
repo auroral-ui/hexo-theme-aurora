@@ -1,30 +1,17 @@
 <template>
   <Sticky :stickyTop="32" endingElId="footer" dynamicElClass="#sticky-sidebar">
     <div id="sticky-sidebar">
-      <div class="sidebar-box mb-4">
-        <SubTitle :title="'titles.toc'" icon="toc" />
-        <div
-          v-if="tocData"
-          v-html="tocData"
-          v-scroll-spy-active="{ selector: '.toc-item' }"
-          v-scroll-spy-link
-          :style="sideBoxStyle"
-        />
-        <div v-else>
-          <ol>
-            <ob-skeleton :count="1" height="16px" width="50px" />
-            <li class="ml-6" v-for="n in 2" :key="n">
-              <ob-skeleton :count="1" height="16px" width="50px" />
-            </li>
-          </ol>
-          <ol>
-            <ob-skeleton :count="1" height="16px" width="50px" />
-            <li class="ml-6" v-for="n in 2" :key="n">
-              <ob-skeleton :count="1" height="16px" width="50px" />
-            </li>
-          </ol>
+      <transition name="fade-slide-y" mode="out-in">
+        <div v-show="showToc" class="sidebar-box mb-4">
+          <SubTitle :title="'titles.toc'" icon="toc" />
+          <div
+            v-html="tocData"
+            v-scroll-spy-active="{ selector: '.toc-item' }"
+            v-scroll-spy-link
+            :style="sideBoxStyle"
+          />
         </div>
-      </div>
+      </transition>
       <Navigator />
     </div>
   </Sticky>
@@ -47,6 +34,9 @@ export default defineComponent({
 
     return {
       tocData,
+      showToc: computed(() => {
+        return tocData !== undefined && tocData.value === '' ? false : true
+      }),
       sideBoxStyle: computed(() => {
         return {
           maxHeight: `${window.innerHeight - 64 - 64 - 52 - 74}px`,

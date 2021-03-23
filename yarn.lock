@@ -261,9 +261,9 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.12.0":
-  version "7.13.11"
-  resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.13.11.tgz#f93ebfc99d21c1772afbbaa153f47e7ce2f50b88"
-  integrity sha512-PhuoqeHoO9fc4ffMEVk4qb/w/s2iOSWohvbHxLtxui0eBg3Lg5gN1U8wp1V1u61hOWkPQJJyJzGH6Y+grwkq8Q==
+  version "7.13.12"
+  resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.13.12.tgz#ba320059420774394d3b0c0233ba40e4250b81d1"
+  integrity sha512-4T7Pb244rxH24yR116LAuJ+adxXXnHhZaLJjegJVKSdoNCe4x1eDBaud5YIcQFcqzsaD5BHvJw5BQ0AZapdCRw==
 
 "@babel/parser@^7.12.13", "@babel/parser@^7.13.0", "@babel/parser@^7.13.10":
   version "7.13.10"
@@ -870,10 +870,19 @@
     globals "^11.1.0"
     lodash "^4.17.19"
 
-"@babel/types@^7.0.0", "@babel/types@^7.12.0", "@babel/types@^7.12.1", "@babel/types@^7.12.13", "@babel/types@^7.13.0", "@babel/types@^7.4.4":
+"@babel/types@^7.0.0", "@babel/types@^7.12.1", "@babel/types@^7.12.13", "@babel/types@^7.13.0", "@babel/types@^7.4.4":
   version "7.13.0"
   resolved "https://registry.npmjs.org/@babel/types/-/types-7.13.0.tgz#74424d2816f0171b4100f0ab34e9a374efdf7f80"
   integrity sha512-hE+HE8rnG1Z6Wzo+MhaKE5lM5eMx71T4EHJgku2E3xIfaULhDcxiiRxUYgwX8qwP1BBSlag+TdGOt6JAidIZTA==
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.12.11"
+    lodash "^4.17.19"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@^7.12.0":
+  version "7.13.12"
+  resolved "https://registry.npmjs.org/@babel/types/-/types-7.13.12.tgz#edbf99208ef48852acdff1c8a681a1e4ade580cd"
+  integrity sha512-K4nY2xFN4QMvQwkQ+zmBDp6ANMbVNw6BbxWmYA4qNjhR9W+Lj/8ky5MEY2Me5r+B2c6/v6F53oMndG+f9s3IiA==
   dependencies:
     "@babel/helper-validator-identifier" "^7.12.11"
     lodash "^4.17.19"
@@ -10565,9 +10574,9 @@ vue3-click-away@^1.1.0:
   integrity sha1-SXAVm8TFuA8KrG8NDMkzPBUGJNY=
 
 vue3-scroll-spy@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/vue3-scroll-spy/-/vue3-scroll-spy-1.0.7.tgz#7c4da43428246cfd26126cd8600d89f340ceeb9c"
-  integrity sha512-4NrFjEE6LZeKN8/ZyXGBGShr8iQ0oWPzbSmfIc7F8rSnsHW/sbHOF4hE+MUs3EdEpgXalCX6mskA6wGCRQK9kA==
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/vue3-scroll-spy/-/vue3-scroll-spy-1.0.8.tgz#1dea6928a7edd0932a629c8962792188dd26cb6b"
+  integrity sha512-7MBIteXsisL40ZIueHxYZL8OJTqMUO0jx/2N7R1pWMs8pIgNvyVbzuxlDvcwRtOvJxtyeuylg9fWAmLqxPnR4A==
   dependencies:
     "@tweenjs/tween.js" "^18.6.4"
     vue "^3.0.6"
