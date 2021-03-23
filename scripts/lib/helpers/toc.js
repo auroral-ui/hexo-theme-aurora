@@ -2,6 +2,8 @@
 
 const { tocObj, escapeHTML, encodeURL } = require('hexo-util')
 
+module.exports = getToc
+
 function getToc(str, options = {}) {
   options = Object.assign(
     {
