@@ -61,6 +61,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "page" */ '../views/Page.vue'),
     props: true
   },
+  {
+    path: '/result',
+    name: 'result',
+    component: () =>
+      import(/* webpackChunkName: "result" */ '../views/Result.vue'),
+    props: true
+  },
   // 404 page must be placed at the end !!!
   { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
 ]

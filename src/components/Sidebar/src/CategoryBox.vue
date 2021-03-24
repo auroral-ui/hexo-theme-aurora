@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-box">
-    <SubTitle :title="'titles.category_list'" />
+    <SubTitle :title="'titles.category_list'" icon="category" />
     <ul class="flex justify-event flex-wrap gap-2 pt-2 cursor-pointer">
       <template v-if="categories.length > 0">
         <li

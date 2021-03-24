@@ -65,6 +65,7 @@
       </div>
       <div>
         <Sidebar>
+          <Profile />
           <RecentComment />
           <TagBox />
         </Sidebar>
@@ -78,7 +79,7 @@ import { computed, defineComponent, onMounted, ref } from 'vue'
 import { Feature, FeatureList } from '@/components/Feature'
 import { Article } from '@/components/ArticleCard'
 import { Title } from '@/components/Title'
-import { Sidebar, TagBox, RecentComment } from '@/components/Sidebar'
+import { Sidebar, TagBox, RecentComment, Profile } from '@/components/Sidebar'
 import { usePostStore } from '@/stores/post'
 import { FeaturePosts, PostList } from '@/models/Post.class'
 import { useAppStore } from '@/stores/app'
@@ -97,7 +98,8 @@ export default defineComponent({
     Sidebar,
     TagBox,
     Paginator,
-    RecentComment
+    RecentComment,
+    Profile
   },
   setup() {
     useMetaStore().setTitle('home')

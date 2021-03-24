@@ -147,6 +147,7 @@
       </div>
       <div>
         <Sidebar>
+          <Profile />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>
@@ -155,7 +156,7 @@
 </template>
 
 <script lang="ts">
-import { Sidebar, Toc } from '@/components/Sidebar'
+import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
 import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -171,7 +172,7 @@ import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ObPost',
-  components: { Sidebar, Toc, Comment, SubTitle, Article },
+  components: { Sidebar, Toc, Comment, SubTitle, Article, Profile },
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()

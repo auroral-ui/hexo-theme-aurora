@@ -52,6 +52,7 @@
       </div>
       <div class="col-span-1">
         <Sidebar>
+          <Profile />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>
@@ -62,12 +63,12 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, onUnmounted, toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Sidebar, Toc } from '@/components/Sidebar'
+import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ObPageContainer',
-  components: { Sidebar, Toc },
+  components: { Sidebar, Toc, Profile },
   props: {
     post: {
       type: Object,
