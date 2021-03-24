@@ -9,6 +9,8 @@
  * - Added post unique ID property used for gitalk.
  * - Added previous and next post.
  * - Enhanced performance by reducing the number of unnecessary iterations.
+ * - Added multi-author support.
+ * - Enhanced the performance of the post list script.
  */
 
 const SiteGenerator = require('./site')

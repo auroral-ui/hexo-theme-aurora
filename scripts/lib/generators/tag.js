@@ -1,5 +1,9 @@
 const pagination = require('hexo-pagination')
-const { tagMapper, tagPageMapper, postMapper } = require('../helpers/mapper')
+const {
+  tagMapper,
+  tagPageMapper,
+  postListMapper
+} = require('../helpers/mapper')
 
 class TagGenerator {
   data = []
@@ -30,7 +34,7 @@ class TagGenerator {
             count: item.posts.length,
             path: 'api/tags/' + item.slug + '.json',
             postlist: item.posts.map((post) => {
-              return postMapper(post, configs)
+              return postListMapper(post, configs)
             })
           }
         })

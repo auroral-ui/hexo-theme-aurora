@@ -2,7 +2,7 @@ const pagination = require('hexo-pagination')
 const {
   categoryMapper,
   categoryPageMapper,
-  postMapper
+  postListMapper
 } = require('../helpers/mapper')
 
 class CategoryGenerator {
@@ -45,7 +45,7 @@ class CategoryGenerator {
             count: item.posts.length,
             path: 'api/categories/' + item.slug + '.json',
             postlist: item.posts.map((post) => {
-              return postMapper(post, configs)
+              return postListMapper(post, configs)
             })
           }
         })

@@ -1,3 +1,42 @@
+export class NavPost {
+  title = ''
+  uid = ''
+  slug = ''
+  date = ''
+  updated = ''
+  comments = ''
+  path = ''
+  keywords = ''
+  cover = ''
+  text = ''
+  link = ''
+  photos = ''
+  count_time = {}
+  categories = {}
+  tags = {}
+  author = {}
+
+  constructor(raw?: { [key: string]: Array<any> | string }) {
+    if (raw) {
+      for (const key of Object.keys(this)) {
+        if (key === 'date') {
+          const m = new Date(raw[key] as string)
+
+          const translateMonth = `settings.months[${m.getMonth()}]`
+
+          raw[key] = Object.create({
+            month: translateMonth,
+            day: m.getUTCDate(),
+            year: m.getUTCFullYear()
+          })
+        }
+
+        Object.assign(this, { [key]: raw[key] })
+      }
+    }
+  }
+}
+
 export class Post {
   title = ''
   uid = ''
@@ -22,20 +61,17 @@ export class Post {
   tags: Tag[] = []
   count_time = {}
   toc = ''
-  next_post = {
-    title: '',
-    text: '',
-    categories: [],
-    tags: []
-  }
-  prev_post = {
-    title: '',
-    text: '',
-    categories: [],
-    tags: []
+  next_post = {}
+  prev_post = {}
+  author = {
+    name: '',
+    avatar: '',
+    link: ''
   }
 
-  constructor(raw?: { [key: string]: Array<string> | string }) {
+  constructor(raw?: {
+    [key: string]: Array<any> | string | { [key: string]: any }
+  }) {
     if (raw) {
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
@@ -51,6 +87,10 @@ export class Post {
                 (one: { [key: string]: [] }) => new Tag(one)
               )
             })
+          } else if (key === 'prev_post' || key === 'next_post') {
+            Object.assign(this, {
+              [key]: new NavPost(raw[key] as { [key: string]: any })
+            })
           } else {
             if (key === 'date') {
               const m = new Date(raw[key] as string)
@@ -63,6 +103,7 @@ export class Post {
                 year: m.getUTCFullYear()
               })
             }
+
             Object.assign(this, { [key]: raw[key] })
           }
         }

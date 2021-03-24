@@ -36,48 +36,34 @@
       <p v-if="post.text">{{ post.text }}</p>
       <ob-skeleton v-else tag="p" :count="4" height="16px" />
 
-      <div class="article-footer" v-if="post.count_time">
-        <span class="stroke-current flex flex-row items-center pr-4">
-          <svg-icon icon-class="clock" />
-          <em class="pl-2">
-            {{ post.count_time.symbolsTime }}
-          </em>
-        </span>
-        <span class="stroke-current flex flex-row items-center pr-4">
-          <svg-icon icon-class="text" />
-          <em class="pl-2">
-            {{ post.count_time.symbolsCount }}
-          </em>
-        </span>
-        <span
-          class="stroke-current hidden lg:flex flex-row items-center pr-4"
-          v-if="post.date"
-        >
-          <svg-icon icon-class="date" />
-          <em class="pl-2">
-            {{ t(post.date.month) }} {{ post.date.day }}, {{ post.date.year }}
-          </em>
-        </span>
+      <div class="article-footer" v-if="post.author && post.date">
+        <div class="flex flex-row items-center">
+          <img
+            class="hover:opacity-50 cursor-pointer"
+            :src="post.author.avatar || ''"
+            alt="author avatar"
+            @click="handleAuthorClick(post.author.link)"
+          />
+          <span class="text-ob-dim">
+            <strong
+              class="text-ob-normal pr-1.5 hover:text-ob hover:opacity-50 cursor-pointer"
+              @click="handleAuthorClick(post.author.link)"
+            >
+              {{ post.author.name }}
+            </strong>
+            {{ t('settings.shared-on') }} {{ t(post.date.month) }}
+            {{ post.date.day }}, {{ post.date.year }}
+          </span>
+        </div>
       </div>
-      <div v-else class="article-footer">
-        <span class="stroke-current flex flex-row items-center pr-4">
-          <svg-icon icon-class="clock" />
-          <em class="pl-2 mt-2">
-            <ob-skeleton width="40px" height="16px" />
-          </em>
-        </span>
-        <span class="stroke-current flex flex-row items-center pr-4">
-          <svg-icon icon-class="text" />
-          <em class="pl-2 mt-2">
-            <ob-skeleton width="40px" height="16px" />
-          </em>
-        </span>
-        <span class="stroke-current hidden lg:flex flex-row items-center pr-4">
-          <svg-icon icon-class="date" />
-          <em class="pl-2 mt-2">
-            <ob-skeleton width="100px" height="16px" />
-          </em>
-        </span>
+
+      <div class="article-footer" v-else>
+        <div class="flex flex-row items-center mt-6">
+          <ob-skeleton class="mr-2" height="28px" width="28px" :circle="true" />
+          <span class="text-ob-dim mt-1">
+            <ob-skeleton height="20px" width="150px" />
+          </span>
+        </div>
       </div>
     </div>
   </li>
@@ -100,11 +86,17 @@ export default defineComponent({
     const appStore = useAppStore()
     const { t } = useI18n()
 
+    const handleAuthorClick = (link: string) => {
+      if (link === '') link = window.location.href
+      window.location.href = link
+    }
+
     return {
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       post: computed(() => props.data),
+      handleAuthorClick,
       t
     }
   }

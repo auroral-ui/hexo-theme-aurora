@@ -2,6 +2,7 @@ const symbolsCountTime = require('../helpers/symbols-count-time')
 const truncateHTML = require('../helpers/truncate-html')
 const toc = require('../helpers/toc')
 const { generateUid, fetchCovers } = require('../helpers/utils')
+const { config } = require('chai')
 
 /**
  * Post Mappers
@@ -27,7 +28,49 @@ function postMapper(post, configs) {
     count_time: symbolsCountTime(post.content),
     categories: post.categories ? postCategoryMapper(post) : [],
     tags: post.tags ? postTagMapper(post) : [],
-    toc: toc(post.content)
+    toc: toc(post.content),
+    author: authorMapper(post.author, configs),
+    mapped: true
+  }
+}
+
+function authorMapper(author, configs) {
+  const configAuthors = configs.theme_config.authors
+
+  if (author) {
+    if (typeof author === 'string' && configAuthors[author]) {
+      return configAuthors[author]
+    } else {
+      return author
+    }
+  } else {
+    return {
+      name: configs.theme_config.site.author,
+      avatar: configs.theme_config.site.avatar,
+      link: ''
+    }
+  }
+}
+
+function postListMapper(post, configs) {
+  if (!post.mapped) post = postMapper(post, configs)
+  return {
+    title: post.title,
+    uid: post.uid,
+    slug: post.slug,
+    date: post.date,
+    updated: post.updated,
+    comments: post.comments,
+    path: post.path,
+    keywords: configs.keywords,
+    cover: post.cover,
+    text: post.text,
+    link: post.link,
+    photos: post.photos,
+    count_time: post.count_time,
+    categories: post.categories,
+    tags: post.tags,
+    author: post.author
   }
 }
 
@@ -51,18 +94,6 @@ function postTagMapper(post) {
       path: 'api/tags/' + tag.slug + '.json'
     }
   })
-}
-
-function navPostMapper(post) {
-  return {
-    title: post.title,
-    text: post.text,
-    categories: post.categories,
-    tags: post.tags,
-    slug: post.slug,
-    cover: post.cover,
-    count_time: post.count_time
-  }
 }
 
 /**
@@ -147,7 +178,7 @@ function pageMapper(page) {
 
 module.exports = {
   postMapper,
-  navPostMapper,
+  postListMapper,
   categoryMapper,
   categoryPageMapper,
   tagMapper,

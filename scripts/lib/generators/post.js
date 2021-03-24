@@ -1,15 +1,17 @@
-const { postMapper, navPostMapper } = require('../helpers/mapper')
+const { postMapper, postListMapper } = require('../helpers/mapper')
 
 class PostGenerator {
   data = []
   pagination = []
   features = []
   configs = {}
+  authors = {}
 
   constructor(posts, configs) {
     this.data = posts
     this.configs = configs
     this.transform()
+    this.authors = this.configs.theme_config.authors || {}
   }
 
   /**
@@ -31,9 +33,9 @@ class PostGenerator {
       let current = postMapper(post, this.configs)
       current.prev_post = prevPost
       current.next_post = {}
-      prevPost = navPostMapper(current)
+      prevPost = postListMapper(current, this.configs)
       if ((index !== 0) & (index !== this.data.length - 1)) {
-        dummyList[index - 1].next_post = navPostMapper(current)
+        dummyList[index - 1].next_post = postListMapper(current, this.configs)
       }
       dummyList.push(current)
 
@@ -81,7 +83,7 @@ class PostGenerator {
     const length = this.count()
     const pageSize = 12
     const pageCount = Math.ceil(length / pageSize)
-    const postData = this.data
+    const postData = this.data.map(postListMapper)
 
     for (let i = 0; i < length; i += pageSize) {
       pageJson.push({
@@ -127,7 +129,7 @@ class PostGenerator {
     if (this.count <= 0) return data
     data.push({
       path: 'api/features.json',
-      data: JSON.stringify(this.features)
+      data: JSON.stringify(this.features.map(postListMapper))
     })
     return data
   }
