@@ -6,7 +6,9 @@
       class="bg-ob-deep-900 text-center px-3 py-1 rounded-tl-md rounded-bl-md text-sm"
       :style="stylingTag()"
     >
-      <em class="opacity-50"># </em>{{ name }}
+      <router-link :to="{ name: 'tags-search', params: { slug: slug } }">
+        <em class="opacity-50"># </em>{{ name }}
+      </router-link>
     </span>
     <b
       class="bg-ob-deep-900 text-ob-secondary text-center px-2 py-1 rounded-tr-md rounded-br-md text-sm opacity-70"
@@ -24,6 +26,7 @@ export default defineComponent({
   name: 'ObTagItem',
   props: {
     name: String,
+    slug: String,
     count: {
       type: Number,
       default: 0

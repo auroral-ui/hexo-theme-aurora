@@ -109,7 +109,7 @@ function tagMapper(tag) {
 function tagPageMapper(tag) {
   const data = !tag.data ? tag : tag.data
   return {
-    path: 'api/tags/' + tag.slug + '.json',
+    path: data.path,
     data: JSON.stringify({
       name: data.name,
       slug: data.slug,

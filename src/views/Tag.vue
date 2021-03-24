@@ -11,6 +11,7 @@
             v-for="tag in tags"
             :key="tag.slug"
             :name="tag.name"
+            :slug="tag.slug"
             :count="tag.count"
             size="xl"
           />

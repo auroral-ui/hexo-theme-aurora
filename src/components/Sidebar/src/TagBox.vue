@@ -7,6 +7,7 @@
           v-for="tag in tags"
           :key="tag.slug"
           :name="tag.name"
+          :slug="tag.slug"
           :count="tag.count"
           size="xs"
         />
@@ -15,7 +16,9 @@
         >
           <span class="text-center px-3 py-1 rounded-md text-sm">
             <b class="border-b-2 border-ob hover:text-ob">
-              {{ t('settings.more-tags') }} ...
+              <router-link to="/tags">
+                {{ t('settings.more-tags') }} ...
+              </router-link>
             </b>
           </span>
         </div>

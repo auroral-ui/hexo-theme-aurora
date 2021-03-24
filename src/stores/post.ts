@@ -10,7 +10,8 @@ import {
   fetchFeature,
   fetchPostsList,
   fetchPostBySlug,
-  fetchPostsListByCategory
+  fetchPostsListByCategory,
+  fetchPostsListByTag
 } from '@/api'
 
 export const usePostStore = defineStore({
@@ -73,6 +74,14 @@ export const usePostStore = defineStore({
           resolve(new SpecificPostsList(data))
         }, 200)
       )
+    },
+    async fetchPostsByTag(slug: string): Promise<SpecificPostsList> {
+      const { data } = await fetchPostsListByTag(slug)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(new SpecificPostsList(data))
+        }, 200)
+      })
     },
     /**
      * Setting the cache post data

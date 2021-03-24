@@ -26,28 +26,25 @@ const routes = [
   {
     path: '/categories',
     name: 'categories',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "categories" */ '../views/Category.vue')
   },
   {
     path: '/archives',
     name: 'archives',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "archives" */ '../views/Archives.vue')
   },
   {
     path: '/tags',
     name: 'tags',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "tags" */ '../views/Tag.vue')
+  },
+  {
+    path: '/tags/:slug',
+    name: 'tags-search',
+    component: () =>
+      import(/* webpackChunkName: "result" */ '../views/Result.vue')
   },
   {
     path: '/post/:slug',
