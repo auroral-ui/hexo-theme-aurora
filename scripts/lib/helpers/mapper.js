@@ -1,8 +1,11 @@
 const symbolsCountTime = require('../helpers/symbols-count-time')
 const truncateHTML = require('../helpers/truncate-html')
 const toc = require('../helpers/toc')
-const { generateUid, fetchCovers } = require('../helpers/utils')
-const { config } = require('chai')
+const {
+  generateUid,
+  fetchCovers,
+  filterHTMLCharacters
+} = require('../helpers/utils')
 
 /**
  * Post Mappers
@@ -176,6 +179,24 @@ function pageMapper(page) {
   }
 }
 
+function searchMapper(post) {
+  return {
+    id: post.uid,
+    title: post.title,
+    content: filterHTMLCharacters(post.content),
+    slug: post.slug,
+    date: post.date,
+    categories_index: post.categories.reduce(flattenMapper, ''),
+    tags_index: post.tags.reduce(flattenMapper, ''),
+    author_index: post.author.name
+  }
+}
+
+function flattenMapper(result, data) {
+  if (result === '') return data.name
+  return result + ',' + data.name
+}
+
 module.exports = {
   postMapper,
   postListMapper,
@@ -183,5 +204,6 @@ module.exports = {
   categoryPageMapper,
   tagMapper,
   tagPageMapper,
-  pageMapper
+  pageMapper,
+  searchMapper
 }

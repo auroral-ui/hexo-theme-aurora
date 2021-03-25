@@ -94,6 +94,8 @@ exports.filterHTMLCharacters = function (str) {
   str = String(str)
     // Removing all html tags
     .replace(/(&nbsp;|<([^>]+)>)/gi, '')
+    // Removing all line breakers.
+    .replaceAll('\n', ' ')
   return str
 }
 

@@ -23,6 +23,16 @@ const getSystemMode = (): string => {
   else return 'theme-light'
 }
 
+const setTheme = (theme: string) => {
+  if (theme === 'theme-dark') {
+    document.body.classList.remove('theme-light')
+    document.body.classList.add('theme-dark')
+  } else {
+    document.body.classList.remove('theme-dark')
+    document.body.classList.add('theme-light')
+  }
+}
+
 /**
  * Storing the core data of the application
  */
@@ -54,7 +64,11 @@ export const useAppStore = defineStore({
     /** Tracking if the blog config is ready */
     configReady: false,
     /** Header image url */
-    headerImage: ''
+    headerImage: '',
+    /** Is search modal opened */
+    openSearchModal: false,
+    /** If current window with is for mobile */
+    isMobile: false
   }),
   getters: {
     getTheme(): string {
@@ -85,7 +99,9 @@ export const useAppStore = defineStore({
     initializeTheme(isDarkMode?: boolean | string) {
       if (!Cookies.get('theme') && isDarkMode !== 'auto') {
         this.theme = isDarkMode ? 'theme-dark' : 'theme-light'
+        setTheme(this.theme)
       }
+      setTheme(this.theme)
     },
     /** Switch between dark and light mode */
     toggleTheme(isDark?: boolean) {
@@ -94,6 +110,7 @@ export const useAppStore = defineStore({
           ? 'theme-dark'
           : 'theme-light'
       Cookies.set('theme', this.theme)
+      setTheme(this.theme)
     },
     /** Changing the local of the app */
     changeLocale(locale: string) {
@@ -137,6 +154,18 @@ export const useAppStore = defineStore({
     /** Resetting the header image to null */
     resetHeaderImage() {
       this.headerImage = ''
+    },
+    changeOpenModal(status: boolean) {
+      this.openSearchModal = status
+    },
+    handleEscKey() {
+      if (this.openSearchModal) this.openSearchModal = false
+    },
+    handleSearchOpen() {
+      if (!this.openSearchModal) this.openSearchModal = true
+    },
+    changeMobileState(isMobile: boolean) {
+      this.isMobile = isMobile
     }
   }
 })

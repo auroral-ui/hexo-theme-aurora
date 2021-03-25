@@ -11,6 +11,7 @@ import {
 } from '@/models/Post.class'
 import { Article, Page } from '@/models/Article.class'
 import { Statistic } from '@/models/Statistic.class'
+import { SearchIndexes } from '@/models/Search.class'
 
 // GET /api/site.json
 export async function fetchHexoConfig(): Promise<AxiosResponse<any>> {
@@ -71,4 +72,9 @@ export async function fetchFeature(): Promise<AxiosResponse<any>> {
 // GET /api/statistic.json
 export async function fetchStatistic(): Promise<AxiosResponse<any>> {
   return request.get<Statistic>('/statistic.json')
+}
+
+// GET /api/search.json
+export async function fetchSearchIndexes(): Promise<AxiosResponse<any>> {
+  return request.get<SearchIndexes[]>('/search.json')
 }

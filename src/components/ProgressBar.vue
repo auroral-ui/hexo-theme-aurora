@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 
 export default defineComponent({
   name: 'ObProgressBar',
@@ -22,7 +22,13 @@ export default defineComponent({
           100
       }, 16)
 
-    document.addEventListener('scroll', scrollHandler)
+    onMounted(() => {
+      document.addEventListener('scroll', scrollHandler)
+    })
+
+    onUnmounted(() => {
+      document.removeEventListener('scroll', scrollHandler)
+    })
 
     return {
       progressBarStyle: computed(() => {

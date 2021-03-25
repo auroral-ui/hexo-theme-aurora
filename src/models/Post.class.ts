@@ -19,19 +19,21 @@ export class NavPost {
   constructor(raw?: { [key: string]: Array<any> | string }) {
     if (raw) {
       for (const key of Object.keys(this)) {
-        if (key === 'date') {
-          const m = new Date(raw[key] as string)
+        if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          if (key === 'date') {
+            const m = new Date(raw[key] as string)
 
-          const translateMonth = `settings.months[${m.getMonth()}]`
+            const translateMonth = `settings.months[${m.getMonth()}]`
 
-          raw[key] = Object.create({
-            month: translateMonth,
-            day: m.getUTCDate(),
-            year: m.getUTCFullYear()
-          })
+            raw[key] = Object.create({
+              month: translateMonth,
+              day: m.getUTCDate(),
+              year: m.getUTCFullYear()
+            })
+          }
+
+          Object.assign(this, { [key]: raw[key] })
         }
-
-        Object.assign(this, { [key]: raw[key] })
       }
     }
   }

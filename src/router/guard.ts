@@ -38,4 +38,5 @@ router.afterEach(() => {
   const appStore = useAppStore()
   // finish progress bar
   appStore.endLoading()
+  document.getElementById('App-Container')?.focus()
 })

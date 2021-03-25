@@ -1,6 +1,11 @@
 <template>
   <div :class="[appWrapperClass, theme]">
-    <div class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8">
+    <div
+      id="App-Container"
+      class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8"
+      @keydown.meta.k.stop.prevent="handleOpenModal"
+      tabindex="-1"
+    >
       <HeaderMain />
       <div class="app-banner app-banner-image" :style="headerImage" />
       <div class="app-banner app-banner-screen" :style="headerBaseBackground" />
@@ -23,12 +28,20 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  onBeforeMount,
+  onUnmounted,
+  ref,
+  watch
+} from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
 import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
+import { useSearchStore } from './stores/search'
 
 export default defineComponent({
   name: 'App',
@@ -40,6 +53,8 @@ export default defineComponent({
   setup() {
     const appStore = useAppStore()
     const metaStore = useMetaStore()
+    const searchStore = useSearchStore()
+    const MOBILE_WITH = 996 // Using the mobile width by Bootstrap design.
 
     const appWrapperClass = 'app-wrapper'
     const loadingBarClass = ref({
@@ -49,6 +64,7 @@ export default defineComponent({
     /** Intiallizing App config and other setups */
     const initialApp = async () => {
       intialCopyrightScript()
+      initResizeEvent()
       await appStore.fetchConfig().then(() => {
         appStore.initializeTheme(appStore.themeConfig.theme.dark_mode)
         appStore.setDefaultLocale(appStore.themeConfig.site.language)
@@ -56,21 +72,45 @@ export default defineComponent({
       })
     }
 
+    const copyEventHandler = (event: any) => {
+      const pagelink = `\n\nRead more at: ${document.location.href}`
+      if (event.clipboardData) {
+        event.clipboardData.setData('text', document.getSelection() + pagelink)
+        event.preventDefault()
+      }
+    }
+
     /** Adding copy listner */
     const intialCopyrightScript = () => {
-      document.addEventListener('copy', (event) => {
-        const pagelink = `\n\nRead more at: ${document.location.href}`
-        if (event.clipboardData) {
-          event.clipboardData.setData(
-            'text',
-            document.getSelection() + pagelink
-          )
-          event.preventDefault()
-        }
-      })
+      document.addEventListener('copy', copyEventHandler)
+    }
+
+    const isMobile = computed(() => {
+      return appStore.isMobile
+    })
+
+    const resizeHanler = () => {
+      const rect = document.body.getBoundingClientRect()
+      const mobileState = rect.width - 1 < MOBILE_WITH
+      if (isMobile.value !== mobileState)
+        appStore.changeMobileState(mobileState)
+    }
+
+    const initResizeEvent = () => {
+      resizeHanler()
+      document.addEventListener('resize', resizeHanler)
+    }
+
+    const handleOpenModal = () => {
+      searchStore.setOpenModal(true)
     }
 
     onBeforeMount(initialApp)
+
+    onUnmounted(() => {
+      document.removeEventListener('copy', copyEventHandler)
+      document.removeEventListener('resize', resizeHanler)
+    })
 
     /**
      * Watches the app loading status, adding the `nprogress-custom-parent`
@@ -94,8 +134,10 @@ export default defineComponent({
       headerBaseBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
+      handleEscKey: appStore.handleEscKey,
       appWrapperClass,
-      loadingBarClass
+      loadingBarClass,
+      handleOpenModal
     }
   }
 })

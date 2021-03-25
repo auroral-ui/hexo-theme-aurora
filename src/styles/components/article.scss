@@ -90,7 +90,7 @@
   .feature-content {
     @apply flex flex-col relative px-6 pb-6 lg:p-12 z-40 row-span-2 lg:row-auto;
     b {
-      @apply text-ob;
+      @apply text-ob uppercase;
     }
     ul {
       @apply inline-flex pl-4;

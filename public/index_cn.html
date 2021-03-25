@@ -39,8 +39,10 @@
     <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script>
     <!-- MD5 -->
     <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    <!-- Lodash -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   </head>
-  <body>
+  <body id="body-container">
     <noscript>
       <strong>
         We're sorry but <%= webpackConfig.name %> doesn't work properly without
@@ -48,7 +50,6 @@
       </strong>
     </noscript>
     <div id="app"></div>
-    <div id="modal-container"></div>
     <!-- built files will be auto injected -->
   </body>
 </html>
