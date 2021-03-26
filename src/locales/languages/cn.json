@@ -52,6 +52,14 @@
     },
     "more-tags": "查看更多",
     "admin-user": "博主",
-    "shared-on": "发布于"
+    "shared-on": "发布于",
+    "recently-search": "最近搜索",
+    "search-result": "一共找到 [total] 个结果",
+    "no-recent-search": "没有最近搜索记录。",
+    "no-search-result": "没有找到任何记录。",
+    "cmd-to-select": "查看",
+    "cmd-to-navigate": "选择",
+    "cmd-to-close": "关闭",
+    "searched-by": "搜索引擎"
   }
 }

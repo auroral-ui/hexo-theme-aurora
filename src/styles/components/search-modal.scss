@@ -7,7 +7,7 @@
   background-color: var(--search-modal-container-bg);
   z-index: 250;
   .search-container {
-    @apply bg-ob-deep-900 rounded-2xl shadow-2xl mt-16 mb-auto mr-auto ml-auto max-w-xl relative;
+    @apply bg-ob-deep-900 rounded-2xl shadow-2xl mt-16 mb-auto mr-2 lg:mr-auto ml-2 lg:ml-auto max-w-xl relative;
   }
   .search-form {
     @apply bg-ob-deep-800 items-center rounded-xl shadow-md flex h-14 py-0 px-3 relative w-full border-ob border-2;

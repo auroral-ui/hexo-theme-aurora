@@ -52,6 +52,14 @@
     },
     "more-tags": "View more",
     "admin-user": "Owner",
-    "shared-on": "shared on"
+    "shared-on": "shared on",
+    "recently-search": "Recently searched",
+    "search-result": "Found [total] records",
+    "no-recent-search": "No recent searches.",
+    "no-search-result": "No records found.",
+    "cmd-to-select": "to select",
+    "cmd-to-navigate": "to navigate",
+    "cmd-to-close": "to close",
+    "searched-by": "Search by"
   }
 }
