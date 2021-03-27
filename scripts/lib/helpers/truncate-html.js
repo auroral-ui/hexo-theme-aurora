@@ -9,6 +9,6 @@ truncate.setup({
   exclude: ['img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 })
 
-function truncateHTML(str) {
-  return truncate(str)
+function truncateHTML(str, length = 140) {
+  return truncate(str, { length: length })
 }

@@ -24,7 +24,7 @@ function postMapper(post, configs) {
     cover: post.cover || fetchCovers(post.content),
     content: post.excerpt ? null : post.content,
     feature: post.feature || null,
-    text: truncateHTML(post.content),
+    text: truncateHTML(post.content, post.preview || 140),
     link: post.link,
     raw: post.raw,
     photos: post.photos,
@@ -40,12 +40,10 @@ function postMapper(post, configs) {
 function authorMapper(author, configs) {
   const configAuthors = configs.theme_config.authors
 
-  if (author) {
-    if (typeof author === 'string' && configAuthors[author]) {
-      return configAuthors[author]
-    } else {
-      return author
-    }
+  if (typeof author === 'string' && configAuthors[author]) {
+    return configAuthors[author]
+  } else if (typeof author === 'object') {
+    return author
   } else {
     return {
       name: configs.theme_config.site.author,
