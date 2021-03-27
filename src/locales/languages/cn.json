@@ -60,6 +60,10 @@
     "cmd-to-select": "查看",
     "cmd-to-navigate": "选择",
     "cmd-to-close": "关闭",
-    "searched-by": "搜索引擎"
+    "searched-by": "搜索引擎",
+    "tips-back-to-top": "返回顶部",
+    "tips-open-menu": "打开菜单",
+    "tips-back-to-home": "返回首页",
+    "tips-open-search": "打开搜索"
   }
 }

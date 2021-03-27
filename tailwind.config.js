@@ -12,6 +12,7 @@ module.exports = {
         ob: 'var(--text-accent)',
         'ob-normal': 'var(--text-normal)',
         'ob-trans': 'var(--background-trans)',
+        'ob-accent-55': 'var(--bg-accent-55)',
         'ob-secondary': 'var(--text-sub-accent)',
         'ob-bright': 'var(--text-bright)',
         'ob-dim': 'var(--text-dim)',

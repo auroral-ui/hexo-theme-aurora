@@ -1,5 +1,5 @@
 <template>
-  <div :class="[appWrapperClass, theme]">
+  <div id="App-Wrapper" :class="[appWrapperClass, theme]">
     <div
       id="App-Container"
       class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8"
@@ -19,8 +19,13 @@
     </div>
     <Footer />
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
-    <ProgressBar />
   </div>
+  <div class="App-Mobile-sidebar" v-if="isMobile">
+    <div id="App-Mobile-Profile" class="App-Mobile-wrapper">
+      <MobileMenu />
+    </div>
+  </div>
+  <Navigator />
   <teleport to="head">
     <title>{{ title }}</title>
     <meta property="og:description" :content="themeConfig.site.description" />
@@ -38,17 +43,19 @@ import {
 } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
+import { useSearchStore } from './stores/search'
 import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
-import { useSearchStore } from './stores/search'
+import Navigator from '@/components/Navigator.vue'
+import MobileMenu from '@/components/MobileMenu.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     HeaderMain,
     Footer,
-    ProgressBar
+    Navigator,
+    MobileMenu
   },
   setup() {
     const appStore = useAppStore()
@@ -98,7 +105,7 @@ export default defineComponent({
 
     const initResizeEvent = () => {
       resizeHanler()
-      document.addEventListener('resize', resizeHanler)
+      window.addEventListener('resize', resizeHanler)
     }
 
     const handleOpenModal = () => {
@@ -109,7 +116,7 @@ export default defineComponent({
 
     onUnmounted(() => {
       document.removeEventListener('copy', copyEventHandler)
-      document.removeEventListener('resize', resizeHanler)
+      window.removeEventListener('resize', resizeHanler)
     })
 
     /**
@@ -135,6 +142,7 @@ export default defineComponent({
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       handleEscKey: appStore.handleEscKey,
+      isMobile: computed(() => appStore.isMobile),
       appWrapperClass,
       loadingBarClass,
       handleOpenModal
@@ -144,21 +152,44 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+body {
+  background: var(--background-primary-alt);
+}
+
+*:focus {
+  outline: none;
+}
+
 #app {
   @apply relative min-w-full min-h-screen h-full;
   font-family: Rubik, Avenir, Helvetica, Arial, sans-serif;
   .app-wrapper {
     @apply bg-ob-deep-900 min-w-full min-h-screen h-full;
+    transition-property: transform, border-radius;
+    transition-duration: 350ms;
+    transition-timing-function: ease;
+    transform-origin: 0 42%;
     .app-container {
       color: var(--text-normal);
       margin: 0 auto;
     }
   }
+
   .header-wave {
     position: absolute;
     top: 100px;
     left: 0;
     z-index: 1;
+  }
+
+  .App-Mobile-sidebar {
+    @apply fixed top-0 bottom-0 left-0;
+  }
+  .App-Mobile-wrapper {
+    @apply relative overflow-y-auto h-full -mr-4 pr-6 pl-4 pt-8 opacity-0;
+    transition: all 0.85s cubic-bezier(0, 1.8, 1, 1.2);
+    transform: translateY(-20%);
+    width: 280px;
   }
 }
 

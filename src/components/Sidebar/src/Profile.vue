@@ -161,11 +161,4 @@ export default defineComponent({
   height: 100%;
   max-height: 100%;
 }
-.diamond-clip-path {
-  clip-path: polygon(50% 3%, 91% 25%, 91% 75%, 50% 97%, 9% 75%, 9% 25%);
-  background: var(--background-trans);
-}
-.diamond-icon {
-  @apply w-12 h-12 text-xl flex items-center justify-center text-ob-bright hover:opacity-50 transition cursor-pointer;
-}
 </style>

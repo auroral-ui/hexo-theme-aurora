@@ -119,9 +119,9 @@
             class="mr-2"
           />
         </div>
-        <div class="flex flex-row justify-start items-end my-8">
+        <div class="flex flex-col lg:flex-row justify-start items-end my-8">
           <div
-            class="w-full h-full self-stretch mr-4"
+            class="w-full h-full self-stretch mr-0 lg:mr-4"
             v-if="post.prev_post.title"
           >
             <SubTitle
@@ -130,10 +130,13 @@
             />
             <Article :data="post.prev_post" />
           </div>
-          <div class="w-full h-full self-stretch" v-if="post.next_post.title">
+          <div
+            class="w-full h-full self-stretch mt-8 lg:mt-0"
+            v-if="post.next_post.title"
+          >
             <SubTitle
               title="settings.paginator.next"
-              side="right"
+              :side="!isMobile ? 'right' : 'left'"
               icon="arrow-right-circle"
             />
             <Article :data="post.next_post" />
@@ -159,7 +162,14 @@
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch
+} from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
@@ -205,7 +215,11 @@ export default defineComponent({
       appStore.resetHeaderImage()
     })
 
-    return { post, t }
+    return {
+      isMobile: computed(() => appStore.isMobile),
+      post,
+      t
+    }
   }
 })
 </script>

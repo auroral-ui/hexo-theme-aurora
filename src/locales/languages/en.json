@@ -60,6 +60,10 @@
     "cmd-to-select": "to select",
     "cmd-to-navigate": "to navigate",
     "cmd-to-close": "to close",
-    "searched-by": "Search by"
+    "searched-by": "Search by",
+    "tips-back-to-top": "Back to top",
+    "tips-open-menu": "Open menu",
+    "tips-back-to-home": "Back to home",
+    "tips-open-search": "Open search"
   }
 }

@@ -3,8 +3,12 @@
 }
 
 #search-modal {
+  --search-modal-height: 600px;
+  --search-modal-searchbox-height: 56px;
+  --search-modal-spacing: 12px;
+  --search-modal-footer-height: 44px;
   @apply fixed h-screen w-screen top-0 left-0 transition-colors;
-  background-color: var(--search-modal-container-bg);
+  background-color: rgba(26, 26, 26, 0.8);
   z-index: 250;
   .search-container {
     @apply bg-ob-deep-900 rounded-2xl shadow-2xl mt-16 mb-auto mr-2 lg:mr-auto ml-2 lg:ml-auto max-w-xl relative;

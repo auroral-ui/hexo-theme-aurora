@@ -8,33 +8,6 @@
     #ff0099 76.05%
   );
   --theme-transition: all 250ms ease;
-  --search-modal-primary-color: var(--text-accent);
-  --search-modal-highlight: var(--text-accent);
-  --search-modal-spacing: 12px;
-  --search-modal-text-color: var(--text-normal);
-  --search-modal-icon-stroke: 1.4;
-  --search-modal-muted-color: var(--text-dim);
-  --search-modal-container-bg: rgba(26, 26, 26, 0.8);
-  --search-modal-logo-color: #0fb6d6;
-  --search-modal-width: 560px;
-  --search-modal-height: 600px;
-  --search-modal-background: #f5f6f7;
-  --search-modal-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5),
-    0 3px 8px 0 #555a64;
-  --search-modal-searchbox-height: 56px;
-  --search-modal-searchbox-background: #ebedf0;
-  --search-modal-searchbox-focus-background: #fff;
-  --search-modal-searchbox-shadow: inset 0 0 0 2px
-    var(--search-modal-primary-color);
-  --search-modal-hit-height: 56px;
-  --search-modal-hit-color: #444950;
-  --search-modal-hit-active-color: #fff;
-  --search-modal-hit-background: #fff;
-  --search-modal-hit-shadow: 0 1px 3px 0 #d4d9e1;
-  --search-modal-footer-height: 44px;
-  --search-modal-footer-background: #fff;
-  --search-modal-footer-shadow: 0 -1px 0 0 #e0e3e8,
-    0 -3px 6px 0 rgba(69, 98, 155, 0.12);
 }
 
 .theme-light {

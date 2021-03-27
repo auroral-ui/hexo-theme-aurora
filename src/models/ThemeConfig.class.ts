@@ -1,5 +1,3 @@
-import pack from '../../package.json'
-
 interface ThemeRaw {
   /** Hexo config data */
   theme_config: {
@@ -11,6 +9,7 @@ interface ThemeRaw {
     socials: StringConfig
     site_meta: GeneralOptions
     plugins: GeneralOptions
+    version: string
   }
 }
 
@@ -42,7 +41,7 @@ export class ThemeConfig {
   /** Plugin configs */
   plugins: Plugins = new Plugins()
   /** Theme version */
-  version = pack.version
+  version = ''
 
   /**
    * Model class for Hexo theme config
@@ -59,6 +58,7 @@ export class ThemeConfig {
       this.socials = new Social(rawConfig.socials)
       this.plugins = new Plugins(rawConfig)
       this.site_meta = new SiteMeta(rawConfig.site_meta)
+      this.version = rawConfig.version
     }
   }
 }

@@ -10,7 +10,7 @@
     @click.self="handleStatusChange(false)"
     tabindex="-1"
   >
-    <transition name="fade-slide-y" mode="out-in">
+    <transition name="fade-bounce-pure-y" mode="out-in">
       <div class="search-container" v-if="openSearchContainer">
         <header class="flex pt-4 pr-4 pl-4">
           <form class="search-form" action="">

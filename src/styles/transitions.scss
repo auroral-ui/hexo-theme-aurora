@@ -1,5 +1,34 @@
 // global transition css
 
+/* bouncy-transition */
+.fade-bounce-y-enter-active {
+  transition: all 0.35s cubic-bezier(0, 1.8, 1, 1.2);
+}
+
+.fade-bounce-y-leave-active {
+  transition: all 0.35s cubic-bezier(0, 1.8, 1, 1.2);
+}
+
+.fade-bounce-y-enter-from,
+.fade-bounce-y-leave-to {
+  transform: translateY(20%);
+  opacity: 0;
+}
+
+.fade-bounce-pure-y-enter-active {
+  transition: transform 0.35s cubic-bezier(0, 1.8, 1, 1.2);
+}
+
+.fade-bounce-pure-y-leave-active {
+  transition: transform 0.35s cubic-bezier(0, 1.8, 1, 1.2);
+}
+
+.fade-bounce-pure-y-enter-from,
+.fade-bounce-pure-y-leave-to {
+  transform: translateY(15%);
+  opacity: 0;
+}
+
 /* fade-slide */
 .fade-slide-y-enter-active {
   transition: all 0.3s ease;

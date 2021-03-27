@@ -1,7 +1,10 @@
+const pack = require('../../../package.json')
+
 class SiteGenerator {
   data = {}
 
   constructor(configs) {
+    configs.theme_config.version = pack.version
     this.data = configs
   }
 
