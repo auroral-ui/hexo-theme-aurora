@@ -6,7 +6,7 @@
       class="bg-ob-deep-900 text-center px-3 py-1 rounded-tl-md rounded-bl-md text-sm"
       :style="stylingTag()"
     >
-      <router-link :to="{ name: 'tags-search', params: { slug: slug } }">
+      <router-link :to="{ name: 'tags-search', query: { slug: slug } }">
         <em class="opacity-50"># </em>{{ name }}
       </router-link>
     </span>

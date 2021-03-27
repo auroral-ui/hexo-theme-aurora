@@ -46,7 +46,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  onBeforeMount,
+  onUnmounted,
+  ref,
+  watch
+} from 'vue'
 import { useI18n } from 'vue-i18n'
 import {
   Sidebar,
@@ -86,6 +93,8 @@ export default defineComponent({
       pageTotal: 0,
       page: 1
     })
+    const queryKey = 'ob-query-key'
+    let querySlug = ref()
 
     const initPage = () => {
       const path = route.path
@@ -105,36 +114,44 @@ export default defineComponent({
 
     const fetchPostByTag = () => {
       isFetched.value = false
-      postStore.fetchPostsByTag(String(route.params.slug)).then((response) => {
+      postStore.fetchPostsByTag(querySlug.value).then((response) => {
         isFetched.value = true
         posts.value = response
       })
     }
 
-    const pageChangeHanlder = () => {
-      if (pageType.value === 'search') {
-        console.log(1)
+    const pageChangeHanlder = (toQuery: any = {}) => {
+      querySlug.value = toQuery.slug
+        ? String(toQuery.slug)
+        : localStorage.getItem(queryKey)
+
+      if (querySlug.value && querySlug.value !== undefined) {
+        localStorage.setItem(queryKey, querySlug.value)
+        initPage()
       }
     }
 
     watch(
-      () => route.params,
-      (toParams) => {
-        initPage()
-        if (toParams.slug) fetchPostByTag()
+      () => route.query,
+      (toQuery) => {
+        pageChangeHanlder(toQuery)
       }
     )
 
-    onBeforeMount(initPage)
+    onBeforeMount(() => {
+      pageChangeHanlder(route.query)
+    })
+
+    onUnmounted(() => {
+      localStorage.removeItem(queryKey)
+    })
 
     return {
       isEmpty: computed(() => {
         return posts.value.data.length === 0 && isFetched.value
       }),
       title: computed(() => {
-        return pageType.value === 'tags'
-          ? route.params.slug
-          : route.params.keyword
+        return querySlug.value
       }),
       posts,
       pageType,

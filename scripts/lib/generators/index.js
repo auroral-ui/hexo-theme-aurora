@@ -29,8 +29,30 @@ module.exports = function (hexo) {
   // ;['post', 'page', 'archive', 'category', 'tag'].forEach(
   //   (name) => delete hexo.extend.generator.store[name]
   // )
+  ;['page', 'archive', 'category', 'tag'].forEach(
+    (name) => delete hexo.extend.generator.store[name]
+  )
 
-  hexo.extend.generator.register('obsidianext', function (site) {
+  hexo.extend.generator.register('obsidianext-page', function (site) {
+    const pageData = []
+
+    site.pages.forEach(function (page) {
+      pageData.push({
+        path: `page/${page.path}`,
+        data: page
+      })
+    })
+
+    pageData.push({
+      path: 'tags/search/index.html',
+      data: {},
+      layout: ['index']
+    })
+
+    return pageData
+  })
+
+  hexo.extend.generator.register('obsidianext-api', function (site) {
     return generator(
       Object.assign({}, hexo.config, {
         theme_config: hexo.theme.config
