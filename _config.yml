@@ -20,16 +20,35 @@ site:
   beian: ''
 
 #! ---------------------------------------------------------------
+#! Authors Configs
+#！ @docs https://obsidianext.tridiamond.tech/guide/authors.html
+#! ---------------------------------------------------------------
+authors:
+  tom:
+    name: Tom Cat
+    avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+    link: https://github.com/TriDiamond
+  John:
+    name: John
+    avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+    link: https://github.com/TriDiamond
+
+#! ---------------------------------------------------------------
 #! Menu Configs
 #！ @docs https://obsidianext.tridiamond.tech/guide/menu.html
 #! ---------------------------------------------------------------
 menu:
+  About: true
   Tags: true
   Archives: true
   # Custom menus
-  frontend-tutorials:
-    name: 'Tutorials'
-    path: 'https://github.com/tridiamond'
+  message-board:
+    name: 'MessageBoard'
+    i18n: 'message-board'
+    path: '/page/message-board'
+  # frontend-tutorials:
+  #   name: 'Tutorials'
+  #   path: 'https://github.com/tridiamond'
   projects:
     name: 'Projects' # if no i18n is set, this will be used as menu name
     #i18n: 'project' # i18n need to be configured in src/locales/language/en.json or cn.json
@@ -93,8 +112,8 @@ site_meta:
 gitalk:
   enable: true
   autoExpand: true
-  clientID: 'd87b2e254d88d4cb57ed'
-  clientSecret: 'e55f9aba8980abb49e3aa55b78129ae83364156b'
+  clientID: ''
+  clientSecret: ''
   repo: 'dev-blog-comments'
   owner: 'TriDiamond'
   admin: ['TriDiamond']
@@ -111,8 +130,8 @@ gitalk:
 # see https://valine.js.org/quickstart.html
 valine:
   enable: false
-  app_id: QHCOIEBlyjBUMAjaE5ilzafk
-  app_key: ggeGwz8ypB9uiAIYSRH5T0PF
+  app_id:
+  app_key:
   avatar: ''
   placeholder: Leave your thoughts behind~
   visitor: true
