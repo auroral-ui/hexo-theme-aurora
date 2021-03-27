@@ -31,9 +31,9 @@ if (usableEnv.indexOf(argv._[0]) === -1) {
 
 // Fetching target config file content.
 const targetConfigFile = fs.readFileSync(
-  path.resolve(__dirname, `../_config.${argv._[0]}.yml`)
+  path.resolve(__dirname, `../../_config.${argv._[0]}.yml`)
 )
 // Writing in the new config.
-fs.writeFileSync(path.resolve(__dirname, `../_config.yml`), targetConfigFile)
+fs.writeFileSync(path.resolve(__dirname, `../../_config.yml`), targetConfigFile)
 
 console.log(chalk.green(`✔ You are now on [${argv._[0]}] environment configs.`))
