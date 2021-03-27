@@ -196,7 +196,9 @@ export default defineComponent({
       window.scrollTo({
         top: 0
       })
-      await postStore.fetchPost(String(route.params.slug)).then((response) => {
+      let slug = String(route.params.slug)
+      slug = slug.indexOf(',') ? slug.replaceAll(',', '/') : slug
+      await postStore.fetchPost(slug).then((response) => {
         post.value = response
         metaStore.setTitle(post.value.title)
         appStore.setHeaderImage(response.cover)

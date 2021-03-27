@@ -47,13 +47,13 @@ const routes = [
       import(/* webpackChunkName: "result" */ '../views/Result.vue')
   },
   {
-    path: '/post/:slug',
+    path: '/post/:slug*',
     name: 'post',
     component: () => import(/* webpackChunkName: "post" */ '../views/Post.vue'),
     props: true
   },
   {
-    path: '/page/:slug',
+    path: '/page/:slug*',
     name: 'page',
     component: () => import(/* webpackChunkName: "page" */ '../views/Page.vue'),
     props: true

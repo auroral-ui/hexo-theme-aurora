@@ -85,6 +85,7 @@ export const useAppStore = defineStore({
       const { data } = await fetchHexoConfig()
       this.themeConfig = new ThemeConfig(data)
       this.hexoConfig = new HexoConfig(data)
+      this.setDefaultLocale(this.themeConfig.site.language)
       this.configReady = true
     },
     /** Fetching blog's statistics */
