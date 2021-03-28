@@ -5,9 +5,11 @@
 <div align="center">
 
   <p align="center">
-    <img src="https://img.shields.io/github/v/release//obsidianext/hexo-obsidianext-blog">
-    <img src="https://img.shields.io/github/release-date//obsidianext/hexo-obsidianext-blog">
-    <img src="https://img.shields.io/github/license//obsidianext/hexo-obsidianext-blog">
+    <img src="https://img.shields.io/github/v/release/obsidianext/hexo-theme-obsidianext">
+    <img src="https://img.shields.io/github/release-date/obsidianext/hexo-theme-obsidianext">
+    <img src="https://img.shields.io/github/license/obsidianext/hexo-theme-obsidianext">
+    <a href="https://app.netlify.com/sites/tridiamond/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/5faa571c-5a72-4882-ac3e-4b6942ecbb87/deploy-status"></a>
   </p>
 
   <p>
@@ -16,8 +18,8 @@
   </p>
 
 **[English Doc](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/README.md)** |
-**[ChangeLog](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/CHANGELOG.md)** ｜
-**[Usage Doc](https://obsidianext.tridiamond.tech)**
+**[Change Log](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/CHANGELOG.md)** |
+**[Document](https://obsidianext.tridiamond.tech)**
 
 **[预览](http://tridiamond.tech)** |
 **[更变日志](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/CHANGELOG_CN.md)** |
@@ -125,37 +127,3 @@ Thanks for your love in advance! ☀️
 ## Join the Community
 
 <a href="https://discord.gg/VC7CrYfds5" target="_blank"><img src="https://discordapp.com/api/guilds/801943105913225246/widget.png?style=banner3" alt="ObsidiaNext Community Discord Server"></a>
-
-<style>
-  .tag {
-    display: inline-block;
-    color: white;
-    padding: 0 0.5rem;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.8rem;
-  }
-  .done-tag {
-    background: linear-gradient(
-      130deg,
-      #43cea2,
-      #36D1DC 41.07%,
-      #5B86E5 76.05%
-    );
-  }
-  .new-tag {
-    background: linear-gradient(
-      130deg,
-      rgb(36, 198, 220),
-      rgb(84, 51, 255) 41.07%,
-      rgb(255, 0, 153) 76.05%
-    );
-  }
-  .wip-tag {
-    background: linear-gradient(
-      130deg,
-      #23074d,
-      #cc5333 76.05%
-    )
-  }
-</style>

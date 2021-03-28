@@ -91,11 +91,10 @@ exports.getToc = function (str, options = {}) {
 }
 
 exports.filterHTMLCharacters = function (str) {
-  str = String(str)
-    // Removing all html tags
-    .replace(/(&nbsp;|<([^>]+)>)/gi, '')
-    // Removing all line breakers.
-    .replaceAll('\n', ' ')
+  // Removing all html tags
+  str = String(str).replace(/(&nbsp;|<([^>]+)>)/gi, '')
+  // Removing all line breakers.
+  str = String(str).replaceAll('\n', ' ')
   return str
 }
 
