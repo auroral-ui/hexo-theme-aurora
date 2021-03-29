@@ -1,10 +1,10 @@
 {
-  "name": "hexo-theme-obsidianext",
+  "name": "hexo-theme-aurora",
   "version": "1.0.0",
-  "description": "A noble dark obsidian style Hexo theme, it's responsive, hight quality, fancy, high class.",
-  "author": "TriDiamond <tridiamond6@gmail.com>",
+  "description": "Futuristic auroral theme for Hexo.",
+  "author": "TriDiamond <code.tridiamond@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/obsidianext/hexo-theme-obsidianext",
+  "repository": "https://github.com/auroral-ui/hexo-theme-aurora",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

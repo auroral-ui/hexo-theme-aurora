@@ -1,35 +1,41 @@
 <p align="center"><a href="https://tridiamond.tech" target="_blank" rel="noopener noreferrer"><img width="100" src="https://img-blog.csdnimg.cn/20210313122054101.png" alt="Obsidianext logo"></a></p>
 
-<h1 align="center">Hexo Theme: <b>Obsidianext</b></h1>
+<h1 align="center">Hexo Theme <b>Aurora</b></h1>
 
 <div align="center">
 
   <p align="center">
-    <img src="https://img.shields.io/github/v/release/obsidianext/hexo-theme-obsidianext">
-    <img src="https://img.shields.io/github/release-date/obsidianext/hexo-theme-obsidianext">
-    <img src="https://img.shields.io/github/license/obsidianext/hexo-theme-obsidianext">
+    <img src="https://img.shields.io/github/v/release/auroral-ui/hexo-theme-aurora">
+    <img src="https://img.shields.io/github/release-date/auroral-ui/hexo-theme-aurora">
+    <img src="https://img.shields.io/github/license/auroral-ui/hexo-theme-aurora">
     <a href="https://app.netlify.com/sites/tridiamond/deploys">
     <img src="https://api.netlify.com/api/v1/badges/5faa571c-5a72-4882-ac3e-4b6942ecbb87/deploy-status"></a>
   </p>
 
   <p>
-    <h2>"Simple and elegant theme for Hexo."</h2>
+    <h2>Main design concept of the theme is base on the trending "Aurora UI". <br/>Building the next generation User Interface designs.</h2>
     v1.x | Designed & Coded by TriDiamond<br/>
   </p>
 
-**[English Doc](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/README.md)** |
-**[Change Log](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/CHANGELOG.md)** |
-**[Document](https://obsidianext.tridiamond.tech)**
+**[English Doc](https://github.com/auroral-ui/hexo-theme-aurora/blob/main/README.md)** |
+**[Change Log](https://github.com/auroral-ui/hexo-theme-aurora/blob/main/CHANGELOG.md)** |
+**[Document](https://aurora.tridiamond.tech)**
 
 **[预览](http://tridiamond.tech)** |
-**[更变日志](https://github.com/obsidianext/hexo-obsidianext-blog/blob/main/CHANGELOG_CN.md)** |
-**[使用文档](https://obsidianext.tridiamond.tech/zh)**
+**[更变日志](https://github.com/auroral-ui/hexo-theme-aurorablob/main/CHANGELOG_CN.md)** |
+**[使用文档](https://aurora.tridiamond.tech/zh)**
 
 </div>
+
+---
+
+<br/>
 
 ![](https://img-blog.csdnimg.cn/202103280030531.png)
 
 ![](https://img-blog.csdnimg.cn/20210328003140590.png)
+
+## <br/>
 
 <details>
 <summary>More screenshots...</summary>
@@ -43,11 +49,9 @@
 </details>
 <br/>
 
-## What's in ObsidiaNext?
+## What's in Aurora?
 
-**Let's us take a look at the feature list and plans for ObsidiaNext:**
-
-> Last updated: **Mar 29, 2021**
+**Let's us take a look at the feature list and plans for Aurora:**
 
 ### ⭐️ Features
 
@@ -83,28 +87,14 @@
 
 - <span class="tag wip-tag">WIP</span> **`Related posts`** - _Show a list of the related posts at the end of an article. _
 
-## What might be coming?
-
-What ObsidiaNext might add in the future.
-
-> **Will host voting events in [Discord](https://discord.gg/VC7CrYfds5) from time to time. You are welcome to come build ObsidiaNext together!**
-
-- **`Image Gallery`** - _Adding an image gallery page._
-- **`Links of friends`** - _Allow you to list all your friends' blogs._
-- **`Tweeting`** - _Allow posting tweets like tweeter for you and your visitors._
-
-## Related
-
-I have made a [`Typro`](https://typora.io/) theme [`Obsidian`](https://github.com/TriDiamond/typro-theme-obsidian) especially for this blog theme.
-
 ## Feedback
 
-> Please check the [ISSUES](https://github.com/obsidianext/hexo-theme-obsidianext/issues) before try to use the following contact methods!
+> Please check the [ISSUES](https://github.com/auroral-ui/hexo-theme-aurora/issues) before try to use the following contact methods!
 > Maybe the question you have had being asked by others or it's already being answered. Thanks!
 
 You can give me feedback or issue you have through the following methods:
 
-- [Create a issue!](https://github.com/obsidianext/hexo-theme-obsidianext/issues/new)
+- [Create a issue!](https://github.com/auroral-ui/hexo-theme-aurora/issues/new)
 - Joint QQGroup `909955326`
 - [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
 

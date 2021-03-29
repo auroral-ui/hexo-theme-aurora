@@ -27,7 +27,7 @@
               & Themed by
               <a href="https://github.com/obsidianext/hexo-theme-obsidianext">
                 <b class="font-extrabold border-b-2 border-ob hover:text-ob">
-                  ObsidiaNext {{ themeConfig.version }}
+                  Aurora {{ themeConfig.version }}
                 </b>
               </a>
               .
