@@ -43,7 +43,12 @@
 </details>
 <br/>
 
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fobsidianext%2Fhexo-theme-obsidianext.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fobsidianext%2Fhexo-theme-obsidianext?ref=badge_large)
+
 ## What's in ObsidiaNext?
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fobsidianext%2Fhexo-theme-obsidianext.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fobsidianext%2Fhexo-theme-obsidianext?ref=badge_shield)
+
 
 **Let's us take a look at the feature list and plans for ObsidiaNext:**
 
