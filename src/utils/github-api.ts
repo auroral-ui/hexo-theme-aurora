@@ -171,7 +171,7 @@ class CommentCache implements CommentCacheInterface {
      * One minute cache to keep the requests to Github API
      * are at 1 minute intervals.
      */
-    if (this.data.length !== 0 || new Date().getTime() - this.time > 60 * 1000)
+    if (this.data.length !== 0 && new Date().getTime() - this.time < 60 * 1000)
       return true
     return false
   }

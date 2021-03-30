@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Fixed page generation script (#4)
 - Fixed default page generation script (#5)
+- Fixed recent comment cache logic (#6)
 
 ### 1.0.0 (2021-03-30)
 
