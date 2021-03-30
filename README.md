@@ -1,23 +1,26 @@
-<p align="center"><a href="https://tridiamond.tech" target="_blank" rel="noopener noreferrer"><img width="100" src="https://img-blog.csdnimg.cn/20210313122054101.png" alt="Obsidianext logo"></a></p>
+<div align="center">
+  <br/>
+  <a href="https://tridiamond.tech" target="_blank" rel="noopener noreferrer">
+    <img width="100" src="https://img-blog.csdnimg.cn/20210313122054101.png" alt="Obsidianext logo">
+  </a>
+  <h1>🏳️‍🌈 <b>Hexo Theme Aurora 🏳️‍🌈</b></h1>
+  <strong>Futuristic auroral theme for Hexo</strong>
+</div>
 
-<h1 align="center">Hexo Theme <b>Aurora</b></h1>
+<br/>
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/github/forks/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/github/v/release/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/github/release-date/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/github/issues/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/github/license/auroral-ui/hexo-theme-aurora">
+</p>
 
 <div align="center">
 
-  <p align="center">
-    <img src="https://img.shields.io/github/v/release/auroral-ui/hexo-theme-aurora">
-    <img src="https://img.shields.io/github/release-date/auroral-ui/hexo-theme-aurora">
-    <img src="https://img.shields.io/github/license/auroral-ui/hexo-theme-aurora">
-    <a href="https://app.netlify.com/sites/tridiamond/deploys">
-    <img src="https://api.netlify.com/api/v1/badges/5faa571c-5a72-4882-ac3e-4b6942ecbb87/deploy-status"></a>
-  </p>
-
-  <p>
-    <h2>Main design concept of the theme is base on the trending "Aurora UI". <br/>Building the next generation User Interface designs.</h2>
-    v1.x | Designed & Coded by TriDiamond<br/>
-  </p>
-
-**[English Doc](https://github.com/auroral-ui/hexo-theme-aurora/blob/main/README.md)** |
+**[Preview](http://tridiamond.tech)** |
 **[Change Log](https://github.com/auroral-ui/hexo-theme-aurora/blob/main/CHANGELOG.md)** |
 **[Document](https://aurora.tridiamond.tech)**
 
@@ -27,7 +30,7 @@
 
 </div>
 
----
+Aurora is a next generation theme using Aurora colours and UI elements. It give you the feel of smooth flow of colours and a futuristic feeling.
 
 <br/>
 
@@ -35,21 +38,7 @@
 
 ![](https://img-blog.csdnimg.cn/20210328003140590.png)
 
-## <br/>
-
-<details>
-<summary>More screenshots...</summary>
-
-![](https://img-blog.csdnimg.cn/20210328003215153.png)
-
----
-
-![](https://img-blog.csdnimg.cn/20210328003259357.png)
-
-</details>
-<br/>
-
-## What's in Aurora?
+## 🏳️‍🌈 What's in Aurora?
 
 **Let's us take a look at the feature list and plans for Aurora:**
 
@@ -81,13 +70,13 @@
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
 
-## What is yet to come?
+## 🚀 What is yet to come?
 
 **Everything listed here are currently under development.**
 
 - <span class="tag wip-tag">WIP</span> **`Related posts`** - _Show a list of the related posts at the end of an article. _
 
-## Feedback
+## 🍼 Feedback
 
 > Please check the [ISSUES](https://github.com/auroral-ui/hexo-theme-aurora/issues) before try to use the following contact methods!
 > Maybe the question you have had being asked by others or it's already being answered. Thanks!
@@ -98,7 +87,7 @@ You can give me feedback or issue you have through the following methods:
 - Joint QQGroup `909955326`
 - [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
 
-## Donation
+## 💰 Donation
 
 Are you **enjoying this project** ? 👋
 
@@ -114,6 +103,11 @@ Thanks for your love in advance! ☀️
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | <a href="https://www.buymeacoffee.com/tridiamond" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a> | <a href="https://afdian.net/@tridiamond" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a> |
 
-## Join the Community
+## 💬 Join the Community
+
+- Discord
 
 <a href="https://discord.gg/VC7CrYfds5" target="_blank"><img src="https://discordapp.com/api/guilds/801943105913225246/widget.png?style=banner3" alt="ObsidiaNext Community Discord Server"></a>
+
+- Joint QQGroup `909955326`
+- [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
