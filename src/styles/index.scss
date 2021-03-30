@@ -23,3 +23,7 @@
 .diamond-icon {
   @apply w-12 h-12 text-xl flex items-center justify-center text-ob-bright hover:opacity-50 transition cursor-pointer;
 }
+
+html {
+  scrollbar-color: rgba(82, 82, 82, 0.8) transparent;
+}
