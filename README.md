@@ -95,21 +95,21 @@ You can express your ❤️ by _buying me a coffee_ ☕️ to keep this project 
 
 If there are enough coffee ☕️ I would like to become a **full time open source developer**! Keep producing more _awesome themes and applications to the world_!
 
-However you could just **sharing this project with your friends**, that would _help me a lot as well_! 👊
+However you could just **share this project with your friends**, that would _help me a lot as well_! 👊
 
 Thanks for your love in advance! ☀️
 
-|                                                                                                    Donating using Paypal                                                                                                     |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://www.buymeacoffee.com/tridiamond" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a> |
+|                                                                                                                Donating using Paypal                                                                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://www.buymeacoffee.com/tridiamond" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60" width="217" style="height: 60px !important;width: 217px !important;" ></a> |
 
 > All donator will be enlisted as Coffee Supporter and displayed in the Sponsor list in this section.
 
 ---
 
-|                                              Wechat 微信支付                                               |                                             Alipay 支付宝支付                                              |
-| :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
-| <img src="https://img-blog.csdnimg.cn/20210330175112304.png" alt="Buy Me A Coffee" style="height: 180px" > | <img src="https://img-blog.csdnimg.cn/20210330175153827.png" alt="Buy Me A Coffee" style="height: 180px" > |
+|                                         Wechat 微信支付                                         |                                        Alipay 支付宝支付                                        |
+| :---------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+| <img src="https://img-blog.csdnimg.cn/20210330175112304.png" alt="Buy Me A Coffee" width="150"> | <img src="https://img-blog.csdnimg.cn/20210330175153827.png" alt="Buy Me A Coffee" width="150"> |
 
 > 所有赞助人将被列为咖啡支持者，并在本节的赞助人名单中显示。
 
