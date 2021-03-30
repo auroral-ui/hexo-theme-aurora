@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### 1.0.1 (2021-03-30)
+
+#### Bug Fixes
+
+- Fixed page generation script (#4)
+- Fixed default page generation script (#5)
+
 ### 1.0.0 (2021-03-30)
 
 #### ⭐️ Features
