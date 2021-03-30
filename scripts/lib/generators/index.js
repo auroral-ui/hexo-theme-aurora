@@ -24,6 +24,7 @@ const chalk = require('chalk')
 
 module.exports = function (hexo) {
   let apiData = []
+  const defaultPages = ['Tags', 'Archives']
 
   // Remove hexo default generators
   // ;['post', 'page', 'archive', 'category', 'tag'].forEach(
@@ -35,15 +36,37 @@ module.exports = function (hexo) {
 
   hexo.extend.generator.register('obsidianext-page', function (site) {
     const pageData = []
+    const themeConfig = hexo.theme.config
 
-    site.pages.forEach(function (page) {
-      pageData.push({
-        path: `page/${page.path}`,
-        data: {},
-        layout: ['index']
-      })
+    // Generating default pages
+    defaultPages.forEach(function (page) {
+      if (themeConfig.menu[page]) {
+        pageData.push({
+          path: `${page.toLocaleLowerCase()}/index.html`,
+          data: {},
+          layout: ['index']
+        })
+      }
     })
 
+    site.pages.forEach(function (page) {
+      // About page need to be generated to the root of `public` folder.
+      if (page.type === 'about') {
+        pageData.push({
+          path: page.path,
+          data: {},
+          layout: ['index']
+        })
+      } else {
+        // All other custom pages are generated into `page` folder.
+        pageData.push({
+          path: `page/${page.path}`,
+          data: {},
+          layout: ['index']
+        })
+      }
+    })
+    // Generate the page for tag search.
     pageData.push({
       path: 'tags/search/index.html',
       data: {},
