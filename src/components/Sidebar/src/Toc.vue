@@ -40,7 +40,8 @@ export default defineComponent({
       sideBoxStyle: computed(() => {
         return {
           maxHeight: `${window.innerHeight - 64 - 64 - 52 - 74}px`,
-          overflow: 'scroll'
+          overflowY: 'scroll',
+          overflowX: 'hidden'
         }
       })
     }
