@@ -269,7 +269,7 @@ export default defineComponent({
     opacity: 0.6;
   }
   .Ob-Navigator-tips {
-    @apply absolute bg-ob-deep-800 py-1 px-1.5 z-50 text-xs whitespace-nowrap rounded-md shadow;
+    @apply absolute bg-ob-deep-800 py-1 px-1.5 z-50 text-xs text-ob-bright whitespace-nowrap rounded-md shadow;
     pointer-events: none;
     opacity: 0;
     right: 60%;
