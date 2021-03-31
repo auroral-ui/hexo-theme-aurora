@@ -93,7 +93,9 @@ exports.getToc = function (str, options = {}) {
 exports.filterHTMLCharacters = function (str) {
   // Removing all html tags
   // Removing all line breakers.
-  return String(str).replace(/(&nbsp;|<([^>]+)>)/gi, '').replace('/\n/gm', ' ')
+  return String(str)
+    .replace(/(&nbsp;|<([^>]+)>)/gi, '')
+    .replace('/\n/gm', ' ')
 }
 
 exports.generateUid = function (str) {
