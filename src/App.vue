@@ -73,7 +73,6 @@ export default defineComponent({
       intialCopyrightScript()
       initResizeEvent()
       await appStore.fetchConfig().then(() => {
-        appStore.initializeTheme(appStore.themeConfig.theme.dark_mode)
         metaStore.addScripts(appStore.themeConfig.site_meta.cdn.prismjs)
       })
     }

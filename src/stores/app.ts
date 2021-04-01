@@ -86,6 +86,7 @@ export const useAppStore = defineStore({
       this.themeConfig = new ThemeConfig(data)
       this.hexoConfig = new HexoConfig(data)
       this.setDefaultLocale(this.themeConfig.site.language)
+      this.initializeTheme(this.themeConfig.theme.dark_mode)
       this.configReady = true
     },
     /** Fetching blog's statistics */
@@ -100,6 +101,7 @@ export const useAppStore = defineStore({
     initializeTheme(isDarkMode?: boolean | string) {
       if (!Cookies.get('theme') && isDarkMode !== 'auto') {
         this.theme = isDarkMode ? 'theme-dark' : 'theme-light'
+        Cookies.set('theme', this.theme)
         setTheme(this.theme)
       }
       setTheme(this.theme)

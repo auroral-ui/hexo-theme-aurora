@@ -4,7 +4,7 @@ interface ThemeRaw {
     menu: GeneralOptions
     custom_menu: GeneralOptions
     avatar: GeneralOptions
-    Theme: GeneralOptions
+    theme: GeneralOptions
     site: StringConfig
     socials: StringConfig
     site_meta: GeneralOptions
@@ -53,7 +53,7 @@ export class ThemeConfig {
     if (rawConfig) {
       this.menu = new ThemeMenu(rawConfig.menu)
       this.avatar = new Avatar(rawConfig.avatar)
-      this.theme = new Theme(rawConfig.Theme)
+      this.theme = new Theme(rawConfig.theme)
       this.site = new Site(rawConfig.site)
       this.socials = new Social(rawConfig.socials)
       this.plugins = new Plugins(rawConfig)
