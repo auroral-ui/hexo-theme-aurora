@@ -13,7 +13,7 @@ site:
   author: 三钻
   nick: TriDiamond
   description: 一位正在重塑知识的技术人 <br /> @ <b>公众号：技术银河</b>
-  language: cn
+  language: en
   multi_language: true
   logo: https://img-blog.csdnimg.cn/20210313122054101.png
   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
@@ -102,7 +102,7 @@ site_meta:
   # -> can be `cn` or `en`
   # -> cn will use China's cdn
   # -> en will use international cdn
-  cdn: en
+  cdn: cn
 
 #! ---------------------------------------------------------------
 #! Plugins
