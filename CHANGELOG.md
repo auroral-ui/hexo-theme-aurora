@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+### 1.0.2 (2021-04-01)
+
+#### Improvements
+
+- Added scrollbar style for webkit browsers.
+- Article allow no category and tags, default category and tag will be displayed.
+
+#### Bug Fixes
+
+- Fixed dark_mode config not taking effect. (#14)
+- Fixed the site language setting not taking effect (#12)
+- Fixed navigator tips not showing under light mode (#9)
+- Removing unnecessary CNAME (#7)
+- Fixed content empty when excerpt exist. (#8)
+
+#### Bug Fixes
+
+- Fixed page generation script (#4)
+- Fixed default page generation script (#5)
+- Fixed recent comment cache logic (#6)
+
 ### 1.0.1 (2021-03-30)
 
 #### Bug Fixes

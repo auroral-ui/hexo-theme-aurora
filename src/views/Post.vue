@@ -3,27 +3,32 @@
     <div class="main-grid">
       <div class="post-header">
         <span class="post-labels">
-          <ob-skeleton
-            v-if="post.categories.length <= 0"
-            tag="b"
-            height="20px"
-            width="35px"
-          />
-          <b v-else>
+          <ob-skeleton v-if="loading" tag="b" height="20px" width="35px" />
+          <b
+            v-else-if="
+              !loading && post.categories && post.categories.length > 0
+            "
+          >
             {{ post.categories[0].name }}
           </b>
+          <b v-else> {{ t('settings.default-category') }} </b>
           <ul>
             <ob-skeleton
-              v-if="post.tags.length <= 0"
+              v-if="loading"
               :count="2"
               tag="li"
               height="16px"
               width="35px"
               class="mr-2"
             />
-            <template v-else>
+            <template v-else-if="!loading && post.tags && post.tags.length > 0">
               <li v-for="tag in post.tags" :key="tag.slug">
                 <b class="opacity-50">#</b> {{ tag.name }}
+              </li>
+            </template>
+            <template v-else>
+              <li>
+                <b class="opacity-50">#</b> {{ t('settings.default-tag') }}
               </li>
             </template>
           </ul>
@@ -39,45 +44,90 @@
           height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
         />
 
-        <div class="post-stats" v-if="post.count_time.symbolsTime && post.date">
-          <span>
-            <svg-icon icon-class="clock-outline" style="stroke: white" />
-            <em class="pl-2 opacity-70">
-              {{ post.count_time.symbolsTime }}
-            </em>
-          </span>
-          <span>
-            <svg-icon icon-class="text-outline" style="stroke: white" />
-            <em class="pl-2 opacity-70">
-              {{ post.count_time.symbolsCount }}
-            </em>
-          </span>
-          <span v-if="post.date.month">
-            <svg-icon icon-class="date-outline" style="stroke: white" />
-            <em class="pl-2 opacity-70">
-              {{ t(post.date.month) }} {{ post.date.day }}, {{ post.date.year }}
-            </em>
-          </span>
-        </div>
-        <div v-else class="post-stats">
-          <span>
-            <svg-icon icon-class="clock" />
-            <em class="pl-2">
-              <ob-skeleton width="40px" height="16px" />
-            </em>
-          </span>
-          <span>
-            <svg-icon icon-class="text" />
-            <em class="pl-2">
-              <ob-skeleton width="40px" height="16px" />
-            </em>
-          </span>
-          <span>
-            <svg-icon icon-class="date" />
-            <em class="pl-2">
-              <ob-skeleton width="100px" height="16px" />
-            </em>
-          </span>
+        <div class="flex flex-row items-center justify-start mt-8 mb-4">
+          <div
+            class="post-footer"
+            v-if="post.author && post.count_time.symbolsTime"
+          >
+            <img
+              class="hover:opacity-50 cursor-pointer"
+              :src="post.author.avatar || ''"
+              alt="author avatar"
+              @click="handleAuthorClick(post.author.link)"
+            />
+            <span class="text-ob-bright opacity-80">
+              <strong
+                class="text-ob-bright pr-1.5 hover:opacity-50 cursor-pointer"
+                @click="handleAuthorClick(post.author.link)"
+              >
+                {{ post.author.name }}
+              </strong>
+              <em class="opacity-70">
+                {{ t('settings.shared-on') }} {{ t(post.date.month) }}
+                {{ post.date.day }}, {{ post.date.year }}
+              </em>
+            </span>
+          </div>
+
+          <div class="post-footer" v-else>
+            <div class="flex flex-row items-center">
+              <ob-skeleton
+                class="mr-2"
+                height="28px"
+                width="28px"
+                :circle="true"
+              />
+              <span class="text-ob-dim mt-1">
+                <ob-skeleton height="20px" width="150px" />
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="post-stats"
+            v-if="post.count_time.symbolsTime && post.date"
+          >
+            <span>
+              <svg-icon icon-class="clock-outline" style="stroke: white" />
+              <em class="pl-2 opacity-70">
+                {{ post.count_time.symbolsTime }}
+              </em>
+            </span>
+            <span>
+              <svg-icon icon-class="text-outline" style="stroke: white" />
+              <em class="pl-2 opacity-70">
+                {{ post.count_time.symbolsCount }}
+              </em>
+            </span>
+            <span v-if="post.date.month">
+              <svg-icon icon-class="date-outline" style="stroke: white" />
+              <em class="pl-2 opacity-70">
+                {{ t(post.date.month) }} {{ post.date.day }},
+                {{ post.date.year }}
+              </em>
+            </span>
+          </div>
+
+          <div v-else class="post-stats">
+            <span>
+              <svg-icon icon-class="clock" />
+              <em class="pl-2">
+                <ob-skeleton width="40px" height="16px" />
+              </em>
+            </span>
+            <span>
+              <svg-icon icon-class="text" />
+              <em class="pl-2">
+                <ob-skeleton width="40px" height="16px" />
+              </em>
+            </span>
+            <span>
+              <svg-icon icon-class="date" />
+              <em class="pl-2">
+                <ob-skeleton width="100px" height="16px" />
+              </em>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -190,8 +240,10 @@ export default defineComponent({
     const route = useRoute()
     const { t } = useI18n()
     const post = ref(new Post())
+    const loading = ref(true)
 
     const fetchData = async () => {
+      loading.value = true
       post.value = new Post()
       window.scrollTo({
         top: 0
@@ -202,6 +254,7 @@ export default defineComponent({
         post.value = response
         metaStore.setTitle(post.value.title)
         appStore.setHeaderImage(response.cover)
+        loading.value = false
       })
     }
 
@@ -212,6 +265,11 @@ export default defineComponent({
       }
     )
 
+    const handleAuthorClick = (link: string) => {
+      if (link === '') link = window.location.href
+      window.location.href = link
+    }
+
     onMounted(fetchData)
     onBeforeUnmount(() => {
       appStore.resetHeaderImage()
@@ -219,6 +277,8 @@ export default defineComponent({
 
     return {
       isMobile: computed(() => appStore.isMobile),
+      handleAuthorClick,
+      loading,
       post,
       t
     }

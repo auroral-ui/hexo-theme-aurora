@@ -11,28 +11,26 @@
     </div>
     <div class="feature-content">
       <span>
-        <ob-skeleton
-          v-if="!post.categories"
-          tag="b"
-          height="20px"
-          width="35px"
-        />
-        <b v-else>
+        <b v-if="post.categories && post.categories.length > 0">
           {{ post.categories[0].name }}
         </b>
+        <b v-else-if="post.categories && post.categories.length <= 0">
+          {{ t('settings.default-category') }}
+        </b>
+        <ob-skeleton v-else tag="b" height="20px" width="35px" />
+
         <ul>
-          <ob-skeleton
-            v-if="!post.tags"
-            :count="2"
-            tag="li"
-            height="16px"
-            width="35px"
-          />
-          <template v-else>
+          <template v-if="post.tags && post.tags.length > 0">
             <li v-for="tag in post.tags" :key="tag.slug">
               <em># {{ tag.name }}</em>
             </li>
           </template>
+          <template v-if="post.tags && post.tags.length <= 0">
+            <li>
+              <em># {{ t('settings.default-tag') }}</em>
+            </li>
+          </template>
+          <ob-skeleton v-else :count="2" tag="li" height="16px" width="35px" />
         </ul>
       </span>
 

@@ -6,12 +6,22 @@
     </div>
     <div class="article-content">
       <span>
-        <b v-if="post.categories">{{ post.categories[0].name }}</b>
+        <b v-if="post.categories && post.categories.length > 0">
+          {{ post.categories[0].name }}
+        </b>
+        <b v-else-if="post.categories && post.categories.length <= 0">
+          {{ t('settings.default-category') }}
+        </b>
         <ob-skeleton v-else tag="b" height="20px" width="35px" />
 
-        <ul v-if="post.tags">
+        <ul v-if="post.tags && post.tags.length > 0">
           <li v-for="tag in post.tags" :key="tag.slug">
             <em># {{ tag.name }}</em>
+          </li>
+        </ul>
+        <ul v-else-if="post.tags && post.tags.length <= 0">
+          <li>
+            <em># {{ t('settings.default-tag') }}</em>
           </li>
         </ul>
         <ul v-else>

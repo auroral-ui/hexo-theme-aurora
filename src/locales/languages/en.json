@@ -64,6 +64,8 @@
     "tips-back-to-top": "Back to top",
     "tips-open-menu": "Open menu",
     "tips-back-to-home": "Back to home",
-    "tips-open-search": "Open search"
+    "tips-open-search": "Open search",
+    "default-category": "Article",
+    "default-tag": "unsorted"
   }
 }
