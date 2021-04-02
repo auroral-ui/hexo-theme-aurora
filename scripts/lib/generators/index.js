@@ -20,7 +20,6 @@ const PostGenerator = require('./post')
 const PageGenerator = require('./page')
 const StatisticGenerator = require('./statistic')
 const SearchGenerator = require('./search')
-const chalk = require('chalk')
 
 module.exports = function (hexo) {
   let apiData = []
@@ -119,15 +118,6 @@ module.exports = function (hexo) {
 
     const search = new SearchGenerator(posts.data)
     apiData = search.addSearchIndex(apiData)
-
-    console.log(
-      chalk.green('INFO ') +
-        chalk.red('API') +
-        chalk.green(' data') +
-        chalk.yellow(' generated') +
-        chalk.blue(' by') +
-        chalk.magenta(' Aurora.')
-    )
 
     return apiData
   }

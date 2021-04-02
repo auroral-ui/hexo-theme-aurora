@@ -2,6 +2,45 @@
 
 对这个项目的所有值得注意的变化都将记录在这个文件中。
 
+### 1.1.0 (2021-04-03)
+
+这个版本开始，主题可以简单地使用 NPM 或 Yarn 安装，让主题用户更容易使用!
+
+```shell
+npm install hexo-theme-aurora --save
+# 或者使用 Yarn
+yarn add hexo-theme-aurora
+```
+
+因为主题是使用 NPM 或者 Yarn 安装的，而不是 clone 到 themes 文件夹的。所以我们需要自己创建一个配置文件。
+
+你只需要在 Hexo 博客的根目录下创建一个 `_config.aurora.yml` 配置文件来配置主题。
+
+如果你想获得一个默认的主题配置模版，你可以执行以下命令（但是这个命令只能在 Linux 或者 MacOS 下执行，如果你用的是 Windows 系统，可以自行在 node_modules 中找到对应目录复制过来）
+
+```shell
+cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
+```
+
+有关新的配置设置和使用方法，请阅读[使用文档](https://aurora.tridiamond.tech/zh)。
+
+### 新功能
+
+- 可以使用 NPM 或 Yarn 安装主题。
+- 备案配置现在支持 `number`（备案号） 和 `link`（链接） 属性。(#18)
+- Gitalk 现在支持配置 `proxy`（代理）属性。(# 16)
+- 增加了 3 种可配置的头像风格。
+- 在 README.md 中增加了赞助商列表。
+
+### 更新与优化
+
+- 更新了失效的 QQ 头像 API 地址。
+
+### Bug 修复
+
+- 修复了推荐文章中的标签骨架显示错误。
+- 修复了 Gitalk 在自定义页面不会创建 issue 的问题。 (#20)
+
 ### 1.0.2 (2021-04-01)
 
 #### 更新

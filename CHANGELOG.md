@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+### 1.1.0 (2021-04-03)
+
+Since this version, the theme can be simply installed using NPM or Yarn, makes it much easier for theme users!
+
+```shell
+npm install hexo-theme-aurora --save
+# or use yarn
+yarn add hexo-theme-aurora
+```
+
+Config file `_config.yml` now need to be added in the root folder of your Hexo blog.
+You simply create a `_config.aurora.yml` to change the theme.
+
+To get a default theme template, simply run the following command: (This is for linux OS, for Windows, you can copy it yourself from node_modules folder. )
+
+```shell
+cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
+```
+
+For new configuration setup and usage please read the [usage document](https://aurora.tridiamond.tech).
+
+### Features
+
+- Theme can be installed by using NPM or Yarn.
+- Beian now support `number` and `link` properties. (#18)
+- Gitalk now support configuring the `proxy` property. (#16)
+- Added 3 different configurable profile avatar styles.
+- Added sponsor list to README.md
+
+### Improvements
+
+- Changed the outdated QQ avatar API url.
+
+### Bug Fixes
+
+- Fixed horizontal article's tag skeleton display error.
+- Fixed Gitalk not creating an issue on custom page. (#20)
+
 ### 1.0.2 (2021-04-01)
 
 #### Improvements

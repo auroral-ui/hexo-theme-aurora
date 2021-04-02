@@ -5,6 +5,13 @@
   "author": "TriDiamond <code.tridiamond@gmail.com>",
   "license": "MIT",
   "repository": "https://github.com/auroral-ui/hexo-theme-aurora",
+  "keywords": [
+    "hexo",
+    "hexo-theme",
+    "aurora",
+    "auroral-ui",
+    "blog"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production",
@@ -55,6 +62,8 @@
     "eslint": "^7.19.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
+    "hexo-pagination": "^1.0.0",
+    "hexo-util": "^2.4.0",
     "js-yaml": "^4.0.0",
     "node-sass": "^5.0.0",
     "postcss": "^7",

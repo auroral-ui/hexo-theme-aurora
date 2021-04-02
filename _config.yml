@@ -26,14 +26,15 @@ site:
 #！ @docs https://obsidianext.tridiamond.tech/guide/authors.html
 #! ---------------------------------------------------------------
 authors:
-  tom:
-    name: Tom Cat
-    avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-    link: https://github.com/TriDiamond
-  John:
-    name: John
-    avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-    link: https://github.com/TriDiamond
+  # Examples:
+  # tom:
+  #   name: Tom Cat
+  #   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+  #   link: https://github.com/TriDiamond
+  # John:
+  #   name: John
+  #   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+  #   link: https://github.com/TriDiamond
 
 #! ---------------------------------------------------------------
 #! Menu Configs
@@ -43,23 +44,23 @@ menu:
   About: true
   Tags: true
   Archives: true
-  # Custom menus
-  message-board:
-    name: 'MessageBoard'
-    i18n:
-      cn: '留言板'
-      en: 'Message Board'
-    path: '/page/message-board'
-  projects:
-    name: 'Projects'
-    i18n:
-      cn: '项目'
-      en: 'Projects'
-    path:
-    children:
-      obsidian:
-        name: 'Obsidian Theme'
-        path: 'https://github.com/tridiamond'
+  # Example custom menus:
+  # message-board:
+  #   name: 'MessageBoard'
+  #   i18n:
+  #     cn: '留言板'
+  #     en: 'Message Board'
+  #   path: '/page/message-board'
+  # projects:
+  #   name: 'Projects'
+  #   i18n:
+  #     cn: '项目'
+  #     en: 'Projects'
+  #   path:
+  #   children:
+  #     obsidian:
+  #       name: 'Obsidian Theme'
+  #       path: 'https://github.com/tridiamond'
 
 #! ---------------------------------------------------------------
 #! Theme Config

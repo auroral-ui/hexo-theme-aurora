@@ -12,9 +12,10 @@
 <p align="center">
   <img src="https://img.shields.io/github/stars/auroral-ui/hexo-theme-aurora">
   <img src="https://img.shields.io/github/forks/auroral-ui/hexo-theme-aurora">
-  <img src="https://img.shields.io/github/v/release/auroral-ui/hexo-theme-aurora">
-  <img src="https://img.shields.io/github/release-date/auroral-ui/hexo-theme-aurora">
   <img src="https://img.shields.io/github/issues/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/npm/v/hexo-theme-aurora">
+  <img src="https://img.shields.io/npm/dy/hexo-theme-aurora">
+  <img src="https://img.shields.io/github/last-commit/auroral-ui/hexo-theme-aurora/main">
   <img src="https://img.shields.io/github/license/auroral-ui/hexo-theme-aurora">
 </p>
 
@@ -31,6 +32,8 @@
 </div>
 
 Aurora is a next generation theme using Aurora colours and UI elements. It give you the feel of smooth flow of colours and a futuristic feeling.
+
+> This theme can be installed by using NPM or Yarn since version 1.1.0+, please check the [usage document](https://aurora.tridiamond.tech) for more details.
 
 <br/>
 
@@ -132,5 +135,5 @@ Thanks for your love in advance! ☀️
 
 <a href="https://discord.gg/VC7CrYfds5" target="_blank"><img src="https://discordapp.com/api/guilds/801943105913225246/widget.png?style=banner3" alt="ObsidiaNext Community Discord Server"></a>
 
-- Joint QQGroup `909955326`
+- Join QQGroup `909955326`
 - [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
