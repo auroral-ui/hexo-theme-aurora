@@ -11,8 +11,17 @@
           @click="pushPage(route.path)"
           v-if="route.children && route.children.length === 0"
         >
-          <span class="relative z-50" v-if="route.i18n">
-            {{ t(`menu.${route.i18n}`) }}
+          <span
+            class="relative z-50"
+            v-if="$i18n.locale === 'cn' && route.i18n.cn"
+          >
+            {{ route.i18n.cn }}
+          </span>
+          <span
+            class="relative z-50"
+            v-else-if="$i18n.locale === 'en' && route.i18n.en"
+          >
+            {{ route.i18n.en }}
           </span>
           <span class="relative z-50" v-else> {{ route.name }} </span>
         </div>
@@ -22,8 +31,17 @@
           v-else
           class="nav-link text-sm block px-1.5 py-0.5 rounded-md relative uppercase"
         >
-          <span class="relative z-50" v-if="route.i18n">
-            {{ t(`menu.${route.i18n}`) }}
+          <span
+            class="relative z-50"
+            v-if="$i18n.locale === 'cn' && route.i18n.cn"
+          >
+            {{ route.i18n.cn }}
+          </span>
+          <span
+            class="relative z-50"
+            v-else-if="$i18n.locale === 'en' && route.i18n.en"
+          >
+            {{ route.i18n.en }}
           </span>
           <span class="relative z-50" v-else> {{ route.name }} </span>
           <DropdownMenu>
@@ -32,8 +50,17 @@
               :key="sub.path"
               :name="sub.path"
             >
-              <span class="relative z-50" v-if="sub.i18n">
-                {{ t(`menu.${sub.i18n}`) }}
+              <span
+                class="relative z-50"
+                v-if="$i18n.locale === 'cn' && sub.i18n.cn"
+              >
+                {{ sub.i18n.cn }}
+              </span>
+              <span
+                class="relative z-50"
+                v-else-if="$i18n.locale === 'en' && sub.i18n.en"
+              >
+                {{ sub.i18n.en }}
               </span>
               <span class="relative z-50" v-else> {{ sub.name }} </span>
             </DropdownItem>
@@ -55,7 +82,7 @@ export default defineComponent({
   name: 'Navigation',
   components: { Dropdown, DropdownMenu, DropdownItem },
   setup() {
-    const { t } = useI18n()
+    const { t, te } = useI18n()
     const router = useRouter()
     const appStore = useAppStore()
 
@@ -73,6 +100,7 @@ export default defineComponent({
     return {
       routes: computed(() => appStore.themeConfig.menu.menus),
       pushPage,
+      te,
       t
     }
   }

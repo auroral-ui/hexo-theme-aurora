@@ -72,7 +72,10 @@ export class ThemeMenu implements ObMenu {
     Home: new Menu({
       name: 'Home',
       path: '/',
-      i18n: 'home'
+      i18n: {
+        cn: '首页',
+        en: 'Home'
+      }
     })
   }
 
@@ -86,17 +89,26 @@ export class ThemeMenu implements ObMenu {
       About: {
         name: 'About',
         path: '/about',
-        i18n: 'about'
+        i18n: {
+          cn: '关于',
+          en: 'About'
+        }
       },
       Archives: {
         name: 'Archives',
         path: '/archives',
-        i18n: 'archives'
+        i18n: {
+          cn: '归档',
+          en: 'Achieves'
+        }
       },
       Tags: {
         name: 'Tags',
         path: '/tags',
-        i18n: 'tags'
+        i18n: {
+          cn: '标签',
+          en: 'Tags'
+        }
       }
     }
 
@@ -126,7 +138,7 @@ export class Menu {
   /** Vue router path for the menu */
   path = ''
   /** Translation key for vue-i18n */
-  i18n = ''
+  i18n: { cn?: string; en?: string } = {}
   /** Sub menus */
   children: Menu[] = []
 
@@ -138,7 +150,7 @@ export class Menu {
   constructor(menu: { [key: string]: any }) {
     this.name = menu.name
     this.path = menu.path ? menu.path : null
-    this.i18n = menu.i18n ? menu.i18n : null
+    this.i18n = menu.i18n ? menu.i18n : {}
     this.children = menu.children
       ? Object.keys(menu.children).map(
           (key: string) => new Menu(menu.children[key])

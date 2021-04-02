@@ -17,7 +17,9 @@ site:
   multi_language: true
   logo: https://img-blog.csdnimg.cn/20210313122054101.png
   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-  beian: ''
+  beian:
+    number: ''
+    link: ''
 
 #! ---------------------------------------------------------------
 #! Authors Configs
@@ -44,15 +46,16 @@ menu:
   # Custom menus
   message-board:
     name: 'MessageBoard'
-    i18n: 'message-board'
+    i18n:
+      cn: '留言板'
+      en: 'Message Board'
     path: '/page/message-board'
-  # frontend-tutorials:
-  #   name: 'Tutorials'
-  #   path: 'https://github.com/tridiamond'
   projects:
-    name: 'Projects' # if no i18n is set, this will be used as menu name
-    #i18n: 'project' # i18n need to be configured in src/locales/language/en.json or cn.json
-    path: # Will not be used if there are sub-menus
+    name: 'Projects'
+    i18n:
+      cn: '项目'
+      en: 'Projects'
+    path:
     children:
       obsidian:
         name: 'Obsidian Theme'
@@ -144,3 +147,10 @@ valine:
 # see http://ibruce.info/2015/04/04/busuanzi/
 busuanzi:
   enable: true
+
+#! ---------------------------------------------------------------
+#! Injections
+#! ---------------------------------------------------------------
+injects:
+  scripts:
+  css:
