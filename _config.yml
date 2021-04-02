@@ -67,6 +67,7 @@ menu:
 #! ---------------------------------------------------------------
 theme:
   dark_mode: true
+  profile_shape: diamond # support `circle`, `diamond`, `rounded`
   gradient:
     color_1: '#24c6dc'
     color_2: '#5433ff'
@@ -83,7 +84,7 @@ socials:
   wechat: ''
   qq: ''
   weibo: 'https://weibo.com/u/7318914058'
-  zhifu: 'https://www.zhihu.com/people/tridiamond'
+  zhihu: 'https://www.zhihu.com/people/tridiamond'
   csdn: 'https://blog.csdn.net/TriDiamond6'
   juejin: 'https://juejin.cn/user/1873223546578589'
 

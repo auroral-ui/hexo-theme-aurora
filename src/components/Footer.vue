@@ -63,7 +63,7 @@
         >
           <img
             v-show="themeConfig.site.avatar"
-            class="diamond-avatar h-20 w-20 shadow-xl m-0 opacity-40"
+            :class="avatarClass"
             :src="themeConfig.site.avatar"
             alt="avatar"
           />
@@ -85,6 +85,12 @@ export default defineComponent({
     const { t } = useI18n()
 
     return {
+      avatarClass: computed(() => {
+        return {
+          'footer-avatar': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       gradientText: computed(
         () => appStore.themeConfig.theme.background_gradient_style
       ),

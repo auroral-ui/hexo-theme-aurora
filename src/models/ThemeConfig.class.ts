@@ -185,6 +185,7 @@ interface ObTheme {
    * @remarks `dark` mode or `light` mode
    * */
   dark_mode: boolean | string
+  profile_shape: string
   /**
    * Theme main set of gradient colors
    *
@@ -208,6 +209,7 @@ interface ObTheme {
 
 export class Theme implements ObTheme {
   dark_mode = 'auto'
+  profile_shape = 'diamond'
   gradient = {
     color_1: '#24c6dc',
     color_2: '#5433ff',
@@ -233,7 +235,20 @@ export class Theme implements ObTheme {
     if (raw) {
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          if (key === 'profile_shape') {
+            const allowedShapes = ['circle', 'diamond', 'rounded']
+            const convertedClasses = [
+              'circle-avatar',
+              'diamond-avatar',
+              'rounded-avatar'
+            ]
+            const shadeIndex = allowedShapes.indexOf(raw[key])
+            if (shadeIndex < 0) raw[key] = convertedClasses[1]
+            else raw[key] = convertedClasses[shadeIndex]
+          }
+
           Object.assign(this, { [key]: raw[key] })
+
           if (key === 'gradient') {
             const headerGradientCss = `linear-gradient(130deg, ${this.gradient.color_1}, ${this.gradient.color_2} 41.07%, ${this.gradient.color_3} 76.05%)`
             Object.assign(this, {
@@ -264,7 +279,7 @@ export class Social {
   weibo = ''
   csdn = ''
   juejin = ''
-  zhifu = ''
+  zhihu = ''
 
   /**
    * Model class for Social media links
