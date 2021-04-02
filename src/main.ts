@@ -31,8 +31,8 @@ registerScrollSpy(app)
 app.mount('#app')
 
 console.log(
-  '%c ObsidiaNext is developed by TriDiamond%c',
+  '%c Aurora is developed by TriDiamond%c',
   'background:#24272A; color:#73ddd7',
   '',
-  'https://github.com/TriDiamond'
+  'https://github.com/auroral-ui/hexo-theme-aurora'
 )

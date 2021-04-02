@@ -187,8 +187,22 @@
   margin: 0.25rem;
 }
 
+.ob-avatar {
+  @apply h-28 w-28 shadow-xl m-0;
+}
+.footer-avatar {
+  @apply h-20 w-20 shadow-xl m-0 opacity-40;
+}
 .diamond-avatar {
   clip-path: polygon(50% 3%, 91% 25%, 91% 75%, 50% 97%, 9% 75%, 9% 25%);
+}
+.circle-avatar {
+  @apply rounded-full border-ob-deep-900;
+  border-width: 6px;
+}
+.rounded-avatar {
+  @apply rounded-2xl border-ob-deep-900;
+  border-width: 6px;
 }
 
 .animation-text {

@@ -7,20 +7,6 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const fs = require('fs')
-const yaml = require('js-yaml')
-
-function getTemplate() {
-  try {
-    const fileContents = fs.readFileSync('./_config.yml', 'utf8')
-    const configs = yaml.load(fileContents)
-    return `./public/index_${configs.site_meta.cdn}.html`
-  } catch (e) {
-    console.log(e)
-    throw e
-  }
-}
-
 const name = process.env.VUE_APP_PROJECT_TITLE || 'Diamond App' // page title
 
 // If your port is set to 80,
@@ -73,10 +59,6 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    },
-    externals: {
-      valine: 'Valine',
-      gitalk: 'Gitalk'
     }
   },
   chainWebpack(config) {
@@ -108,7 +90,7 @@ module.exports = {
       // https://github.com/jantimon/html-webpack-plugin
       config.plugin('html').tap((args) => {
         args[0].filename = path.resolve(__dirname, './layout/index.ejs')
-        args[0].template = path.resolve(__dirname, getTemplate())
+        args[0].template = path.resolve(__dirname, './public/index_prod.html')
         return args
       })
 

@@ -72,7 +72,10 @@ export class ThemeMenu implements ObMenu {
     Home: new Menu({
       name: 'Home',
       path: '/',
-      i18n: 'home'
+      i18n: {
+        cn: '首页',
+        en: 'Home'
+      }
     })
   }
 
@@ -86,17 +89,26 @@ export class ThemeMenu implements ObMenu {
       About: {
         name: 'About',
         path: '/about',
-        i18n: 'about'
+        i18n: {
+          cn: '关于',
+          en: 'About'
+        }
       },
       Archives: {
         name: 'Archives',
         path: '/archives',
-        i18n: 'archives'
+        i18n: {
+          cn: '归档',
+          en: 'Achieves'
+        }
       },
       Tags: {
         name: 'Tags',
         path: '/tags',
-        i18n: 'tags'
+        i18n: {
+          cn: '标签',
+          en: 'Tags'
+        }
       }
     }
 
@@ -126,7 +138,7 @@ export class Menu {
   /** Vue router path for the menu */
   path = ''
   /** Translation key for vue-i18n */
-  i18n = ''
+  i18n: { cn?: string; en?: string } = {}
   /** Sub menus */
   children: Menu[] = []
 
@@ -138,7 +150,7 @@ export class Menu {
   constructor(menu: { [key: string]: any }) {
     this.name = menu.name
     this.path = menu.path ? menu.path : null
-    this.i18n = menu.i18n ? menu.i18n : null
+    this.i18n = menu.i18n ? menu.i18n : {}
     this.children = menu.children
       ? Object.keys(menu.children).map(
           (key: string) => new Menu(menu.children[key])
@@ -173,6 +185,7 @@ interface ObTheme {
    * @remarks `dark` mode or `light` mode
    * */
   dark_mode: boolean | string
+  profile_shape: string
   /**
    * Theme main set of gradient colors
    *
@@ -196,6 +209,7 @@ interface ObTheme {
 
 export class Theme implements ObTheme {
   dark_mode = 'auto'
+  profile_shape = 'diamond'
   gradient = {
     color_1: '#24c6dc',
     color_2: '#5433ff',
@@ -221,7 +235,20 @@ export class Theme implements ObTheme {
     if (raw) {
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
+          if (key === 'profile_shape') {
+            const allowedShapes = ['circle', 'diamond', 'rounded']
+            const convertedClasses = [
+              'circle-avatar',
+              'diamond-avatar',
+              'rounded-avatar'
+            ]
+            const shadeIndex = allowedShapes.indexOf(raw[key])
+            if (shadeIndex < 0) raw[key] = convertedClasses[1]
+            else raw[key] = convertedClasses[shadeIndex]
+          }
+
           Object.assign(this, { [key]: raw[key] })
+
           if (key === 'gradient') {
             const headerGradientCss = `linear-gradient(130deg, ${this.gradient.color_1}, ${this.gradient.color_2} 41.07%, ${this.gradient.color_3} 76.05%)`
             Object.assign(this, {
@@ -252,7 +279,7 @@ export class Social {
   weibo = ''
   csdn = ''
   juejin = ''
-  zhifu = ''
+  zhihu = ''
 
   /**
    * Model class for Social media links
@@ -288,7 +315,10 @@ export class Site {
   /** Author avatar */
   avatar = ''
   /** China server beian info */
-  beian = ''
+  beian = {
+    number: '',
+    link: ''
+  }
 
   /**
    * Model class for Site general settings
@@ -346,6 +376,7 @@ interface PluginsData {
     language: string
     distractionFreeMode: boolean
     recentComment: boolean
+    proxy: string
   }
 
   valine: {
@@ -376,7 +407,8 @@ export class Plugins implements PluginsData {
     id: 'location.pathname',
     language: 'en',
     distractionFreeMode: false,
-    recentComment: false
+    recentComment: false,
+    proxy: ''
   }
   valine = {
     enable: false,

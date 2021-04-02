@@ -67,6 +67,7 @@ export default defineComponent({
         !postBody || postBody === ''
           ? window.location.href
           : `${window.location.href} \n ${postBody}`
+
       const uid =
         appStore.themeConfig.plugins.gitalk.id === 'pathname'
           ? window.location.pathname
@@ -85,6 +86,11 @@ export default defineComponent({
       if (!appStore.configReady) return
 
       if (appStore.themeConfig.plugins.gitalk.enable) {
+        const proxy =
+          appStore.themeConfig.plugins.gitalk.proxy === ''
+            ? 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+            : appStore.themeConfig.plugins.gitalk.proxy
+
         const gitalk = new Gitalk({
           clientID: appStore.themeConfig.plugins.gitalk.clientID,
           clientSecret: appStore.themeConfig.plugins.gitalk.clientSecret,
@@ -95,7 +101,8 @@ export default defineComponent({
           language: appStore.themeConfig.plugins.gitalk.language,
           distractionFreeMode: true, // Facebook-like distraction free mode
           title: title,
-          body: body
+          body: body,
+          proxy: proxy
         })
 
         gitalk.render('gitalk-container')

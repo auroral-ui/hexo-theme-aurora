@@ -17,21 +17,24 @@ site:
   multi_language: true
   logo: https://img-blog.csdnimg.cn/20210313122054101.png
   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-  beian: ''
+  beian:
+    number: ''
+    link: ''
 
 #! ---------------------------------------------------------------
 #! Authors Configs
 #！ @docs https://obsidianext.tridiamond.tech/guide/authors.html
 #! ---------------------------------------------------------------
 authors:
-  tom:
-    name: Tom Cat
-    avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-    link: https://github.com/TriDiamond
-  John:
-    name: John
-    avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-    link: https://github.com/TriDiamond
+  # Examples:
+  # tom:
+  #   name: Tom Cat
+  #   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+  #   link: https://github.com/TriDiamond
+  # John:
+  #   name: John
+  #   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+  #   link: https://github.com/TriDiamond
 
 #! ---------------------------------------------------------------
 #! Menu Configs
@@ -41,38 +44,31 @@ menu:
   About: true
   Tags: true
   Archives: true
-  # Custom menus
-  message-board:
-    name: 'MessageBoard'
-    i18n: 'message-board'
-    path: '/page/message-board'
-  # frontend-tutorials:
-  #   name: 'Tutorials'
-  #   path: 'https://github.com/tridiamond'
-  projects:
-    name: 'Projects' # if no i18n is set, this will be used as menu name
-    #i18n: 'project' # i18n need to be configured in src/locales/language/en.json or cn.json
-    path: # Will not be used if there are sub-menus
-    children:
-      obsidian:
-        name: 'Obsidian Theme'
-        path: 'https://github.com/tridiamond'
+  # Example custom menus:
+  # message-board:
+  #   name: 'MessageBoard'
+  #   i18n:
+  #     cn: '留言板'
+  #     en: 'Message Board'
+  #   path: '/page/message-board'
+  # projects:
+  #   name: 'Projects'
+  #   i18n:
+  #     cn: '项目'
+  #     en: 'Projects'
+  #   path:
+  #   children:
+  #     obsidian:
+  #       name: 'Obsidian Theme'
+  #       path: 'https://github.com/tridiamond'
 
 #! ---------------------------------------------------------------
 #! Theme Config
 #! @docs https://obsidianext.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 theme:
-  # Theme dark mode
-  # "enable" can be set as:
-  #   true: force default to be dark-mode
-  #   false: force default to be light-mode
-  #   'auto': adapt to system's mode
   dark_mode: true
-
-  # Gradient colors used for the theme
-  # This consist of 3 gradient colors
-  # each can be customized
+  profile_shape: diamond # support `circle`, `diamond`, `rounded`
   gradient:
     color_1: '#24c6dc'
     color_2: '#5433ff'
@@ -89,7 +85,7 @@ socials:
   wechat: ''
   qq: ''
   weibo: 'https://weibo.com/u/7318914058'
-  zhifu: 'https://www.zhihu.com/people/tridiamond'
+  zhihu: 'https://www.zhihu.com/people/tridiamond'
   csdn: 'https://blog.csdn.net/TriDiamond6'
   juejin: 'https://juejin.cn/user/1873223546578589'
 
@@ -98,10 +94,6 @@ socials:
 #! @docs https://obsidianext.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 site_meta:
-  # CDN switcher
-  # -> can be `cn` or `en`
-  # -> cn will use China's cdn
-  # -> en will use international cdn
   cdn: cn
 
 #! ---------------------------------------------------------------
@@ -117,14 +109,11 @@ gitalk:
   repo: 'dev-blog-comments'
   owner: 'TriDiamond'
   admin: ['TriDiamond']
-  # Ensure uniqueness and length less than 50
-  # If using 'pathname' ensure length is less than 50 characters
-  # or use 'uid' instead for better compatibility (If you use other theme before, this will lost your comments)
   id: uid
-  # Facebook-like distraction
   language: en
   distractionFreeMode: true
   recentComment: true
+  proxy: ''
 
 # Valine comment plugin (recommended!)
 # see https://valine.js.org/quickstart.html
@@ -144,3 +133,10 @@ valine:
 # see http://ibruce.info/2015/04/04/busuanzi/
 busuanzi:
   enable: true
+
+#! ---------------------------------------------------------------
+#! Injections
+#! ---------------------------------------------------------------
+injects:
+  scripts:
+  css:

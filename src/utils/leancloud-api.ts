@@ -266,9 +266,9 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
   mapComments(comment: { [key: string]: any }): { [key: string]: any } {
     const mail = comment._serverData.mail
     const avatar = String(mail).endsWith('@qq.com')
-      ? 'https://q2.qlogo.cn/headimg_dl?dst_uin=' +
+      ? 'https://q4.qlogo.cn/g?b=qq&nk=' +
         mail.replace('@qq.com', '') +
-        '&spec=100'
+        '&s=100'
       : this.configs.gravatarConfig.url + '&' + md5(comment._serverData.mail)
     const admin = this.configs.leanCloudConfig.admin
 

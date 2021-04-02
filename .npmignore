@@ -1,0 +1,44 @@
+# Ignored config files.
+_config.*.yml
+
+# Ignored folders
+.DS_Store
+node_modules
+dist
+build
+public
+src
+tests
+
+# local env files
+.env
+.env.local
+.env.*.local
+.env.*
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Other ignored source files
+.editorconfig
+.eslintignore
+.eslintrc.js
+.prettierrc
+.yo-rc.json
+babel.config.js
+postcss.config.js
+tailwind.config.js
+tsconfig.json
+vue.config.js

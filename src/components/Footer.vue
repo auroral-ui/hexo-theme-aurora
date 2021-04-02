@@ -32,8 +32,12 @@
               </a>
               .
             </li>
-            <li v-if="themeConfig.site.beian !== ''">
-              备案信息：{{ themeConfig.site.beian }}
+            <li v-if="themeConfig.site.beian.number !== ''">
+              备案信息：<a :href="themeConfig.site.beian.link">
+                <b class="font-extrabold border-b-2 border-ob hover:text-ob">
+                  {{ themeConfig.site.beian.number }}
+                </b>
+              </a>
             </li>
           </ul>
           <ul>
@@ -59,7 +63,7 @@
         >
           <img
             v-show="themeConfig.site.avatar"
-            class="diamond-avatar h-20 w-20 shadow-xl m-0 opacity-40"
+            :class="avatarClass"
             :src="themeConfig.site.avatar"
             alt="avatar"
           />
@@ -81,6 +85,12 @@ export default defineComponent({
     const { t } = useI18n()
 
     return {
+      avatarClass: computed(() => {
+        return {
+          'footer-avatar': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       gradientText: computed(
         () => appStore.themeConfig.theme.background_gradient_style
       ),

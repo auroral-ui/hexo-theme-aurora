@@ -25,7 +25,7 @@
               <em># {{ tag.name }}</em>
             </li>
           </template>
-          <template v-if="post.tags && post.tags.length <= 0">
+          <template v-else-if="post.tags && post.tags.length <= 0">
             <li>
               <em># {{ t('settings.default-tag') }}</em>
             </li>

@@ -14,7 +14,7 @@
             v-if="
               themeConfig.site.avatar !== '' || themeConfig.site.logo !== ''
             "
-            class="diamond-avatar h-28 w-28 shadow-xl m-0"
+            :class="avatarClass"
             :src="themeConfig.site.avatar || themeConfig.site.logo"
             alt="avatar"
           />
@@ -90,8 +90,8 @@
                 <svg-icon icon-class="csdn" class="fill-current" />
               </a>
             </li>
-            <li class="diamond-clip-path diamond-icon" v-if="socials.zhifu">
-              <a :href="socials.zhifu" target="_blank" ref="zhifu">
+            <li class="diamond-clip-path diamond-icon" v-if="socials.zhihu">
+              <a :href="socials.zhihu" target="_blank" ref="zhifu">
                 <svg-icon icon-class="zhifu" class="fill-current" />
               </a>
             </li>
@@ -141,6 +141,12 @@ export default defineComponent({
     onMounted(fetchData)
 
     return {
+      avatarClass: computed(() => {
+        return {
+          'ob-avatar': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       themeConfig: computed(() => appStore.themeConfig),
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }

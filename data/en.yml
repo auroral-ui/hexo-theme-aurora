@@ -1,0 +1,22 @@
+scripts:
+  - <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-bash.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-javascript.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-java.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-liquid.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-markdown.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-markup-templating.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-css.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-scss.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-php.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/gitalk/1.7.0/gitalk.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/valine/1.4.14/Valine.min.js"></script>
+  - <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/blueimp-md5/2.18.0/js/md5.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/lodash.js/4.17.21/lodash.min.js"></script>
+
+css:
+  - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik"/>
+    <link href="https://cdn.jsdelivr.net/npm/gitalk/1.7.0/gitalk.min.css" rel="stylesheet"/>
