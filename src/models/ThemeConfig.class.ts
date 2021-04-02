@@ -361,6 +361,7 @@ interface PluginsData {
     language: string
     distractionFreeMode: boolean
     recentComment: boolean
+    proxy: string
   }
 
   valine: {
@@ -391,7 +392,8 @@ export class Plugins implements PluginsData {
     id: 'location.pathname',
     language: 'en',
     distractionFreeMode: false,
-    recentComment: false
+    recentComment: false,
+    proxy: ''
   }
   valine = {
     enable: false,

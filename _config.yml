@@ -66,16 +66,7 @@ menu:
 #! @docs https://obsidianext.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 theme:
-  # Theme dark mode
-  # "enable" can be set as:
-  #   true: force default to be dark-mode
-  #   false: force default to be light-mode
-  #   'auto': adapt to system's mode
   dark_mode: true
-
-  # Gradient colors used for the theme
-  # This consist of 3 gradient colors
-  # each can be customized
   gradient:
     color_1: '#24c6dc'
     color_2: '#5433ff'
@@ -101,10 +92,6 @@ socials:
 #! @docs https://obsidianext.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 site_meta:
-  # CDN switcher
-  # -> can be `cn` or `en`
-  # -> cn will use China's cdn
-  # -> en will use international cdn
   cdn: cn
 
 #! ---------------------------------------------------------------
@@ -120,14 +107,11 @@ gitalk:
   repo: 'dev-blog-comments'
   owner: 'TriDiamond'
   admin: ['TriDiamond']
-  # Ensure uniqueness and length less than 50
-  # If using 'pathname' ensure length is less than 50 characters
-  # or use 'uid' instead for better compatibility (If you use other theme before, this will lost your comments)
   id: uid
-  # Facebook-like distraction
   language: en
   distractionFreeMode: true
   recentComment: true
+  proxy: ''
 
 # Valine comment plugin (recommended!)
 # see https://valine.js.org/quickstart.html
