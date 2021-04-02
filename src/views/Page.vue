@@ -2,7 +2,7 @@
   <div>
     <Breadcrumbs :current="t('menu.about')" />
     <PageContainer :post="pageData" :title="pageTitle">
-      <div id="comments-section">
+      <div id="comments">
         <Comment
           :title="pageData.title"
           :body="pageData.text"

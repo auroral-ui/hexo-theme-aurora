@@ -47,7 +47,7 @@ export default defineComponent({
     }
 
     const jumpToComments = () => {
-      commentEl.value = document.getElementById('comments-section')
+      commentEl.value = document.getElementById('comments')
       if (commentEl.value) {
         // 120 is the height of the header element
         commentOffset.value =

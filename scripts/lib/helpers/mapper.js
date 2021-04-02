@@ -161,13 +161,14 @@ function pageMapper(page) {
     path: path,
     data: JSON.stringify({
       title: page.title,
-      id: generateUid('page_uid___' + page.title),
+      uid: generateUid('page_uid___' + page.title),
+      text: truncateHTML(page.content),
       date: page.date,
       updated: page.updated,
       comments: page.comments,
       path: path,
       covers: fetchCovers(page.content),
-      excerpt: truncateHTML(page.excerpt),
+      excerpt: page.excerpt,
       content: page.content,
       count_time: symbolsCountTime(page.content),
       toc: toc(page.content)

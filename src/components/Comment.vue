@@ -67,6 +67,7 @@ export default defineComponent({
         !postBody || postBody === ''
           ? window.location.href
           : `${window.location.href} \n ${postBody}`
+
       const uid =
         appStore.themeConfig.plugins.gitalk.id === 'pathname'
           ? window.location.pathname
