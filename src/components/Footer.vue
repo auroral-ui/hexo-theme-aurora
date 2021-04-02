@@ -32,8 +32,12 @@
               </a>
               .
             </li>
-            <li v-if="themeConfig.site.beian !== ''">
-              备案信息：{{ themeConfig.site.beian }}
+            <li v-if="themeConfig.site.beian.number !== ''">
+              备案信息：<a :href="themeConfig.site.beian.link">
+                <b class="font-extrabold border-b-2 border-ob hover:text-ob">
+                  {{ themeConfig.site.beian.number }}
+                </b>
+              </a>
             </li>
           </ul>
           <ul>

@@ -300,7 +300,10 @@ export class Site {
   /** Author avatar */
   avatar = ''
   /** China server beian info */
-  beian = ''
+  beian = {
+    number: '',
+    link: ''
+  }
 
   /**
    * Model class for Site general settings
