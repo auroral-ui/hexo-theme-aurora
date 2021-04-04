@@ -1,6 +1,4 @@
 {
-  "baseUrl": "types",
-  "typeRoots": ["types"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -15,9 +13,8 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "mocha", "chai"],
+    "types": ["webpack-env", "jest"],
     "paths": {
-      "typings/*": ["typings/*"],
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]

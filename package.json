@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-aurora",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Futuristic auroral theme for Hexo.",
   "author": "TriDiamond <code.tridiamond@gmail.com>",
   "license": "MIT",
@@ -16,8 +16,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production",
     "build:stage": "vue-cli-service build --mode staging",
-    "preview": "node build/index.js --preview",
     "test:unit": "vue-cli-service test:unit",
+    "test:unit-watch": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint",
     "env:local": "node ./build/scripts/config-script.js local",
     "env:prod": "node ./build/scripts/config-script.js prod",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core.js": "^0.4.2",
+    "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
@@ -39,11 +39,9 @@
     "vue3-scroll-spy": "^1.0.8"
   },
   "devDependencies": {
-    "@intlify/vue-i18n-loader": "^2.0.0-beta.3",
     "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat",
-    "@types/chai": "^4.2.14",
+    "@types/jest": "^26.0.22",
     "@types/js-cookie": "^2.2.6",
-    "@types/mocha": "^8.2.0",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
@@ -51,15 +49,13 @@
     "@vue/cli-plugin-eslint": "^4.5.11",
     "@vue/cli-plugin-router": "^4.5.11",
     "@vue/cli-plugin-typescript": "^4.5.11",
-    "@vue/cli-plugin-unit-mocha": "^4.5.11",
-    "@vue/cli-plugin-vuex": "^4.5.11",
+    "@vue/cli-plugin-unit-jest": "^4.5.12",
     "@vue/cli-service": "^4.5.11",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/test-utils": "^1.1.2",
+    "@vue/test-utils": "^2.0.0-0",
     "autoprefixer": "^9",
-    "chai": "^4.2.0",
     "eslint": "^7.19.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
@@ -75,6 +71,7 @@
     "svg-sprite-loader": "^5.2.1",
     "svgo": "^1.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "vue-jest": "^5.0.0-0"
   }
 }
