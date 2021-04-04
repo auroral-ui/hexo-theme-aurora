@@ -93,7 +93,23 @@ export class Writing {
     line_number: boolean
     auto_detect: boolean
     tab_replace: string
-  } | null = null // 代码块的设置
+  } = {
+    enable: false,
+    line_number: true,
+    auto_detect: false,
+    tab_replace: ''
+  } // 代码块的设置
+  prismjs: {
+    enable: boolean
+    preprocess: boolean
+    line_number: boolean
+    tab_replace: string
+  } = {
+    enable: true,
+    preprocess: false,
+    line_number: true,
+    tab_replace: ''
+  }
   constructor(raw?: { [key: string]: string | boolean }) {
     if (raw) {
       for (const key of Object.keys(this)) {

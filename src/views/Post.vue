@@ -215,6 +215,7 @@ import { usePostStore } from '@/stores/post'
 import {
   computed,
   defineComponent,
+  nextTick,
   onBeforeUnmount,
   onMounted,
   ref,
@@ -229,6 +230,8 @@ import { Article } from '@/components/ArticleCard'
 import '@/styles/prism-dracula.css'
 import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
+
+declare const Prism: any
 
 export default defineComponent({
   name: 'ObPost',
@@ -256,6 +259,18 @@ export default defineComponent({
         appStore.setHeaderImage(response.cover)
         loading.value = false
       })
+      if (appStore.hexoConfig.writing.highlight.enable) {
+        console.error(
+          '[Aurora Config Error]: Please turn off [Hightlightjs] and enable [Prismjs] instead. '
+        )
+      }
+      if (appStore.hexoConfig.writing.prismjs.preprocess) {
+        console.error(
+          "[Aurora Config Error]: Please set Hexo config's prismjs' [preprocess] property to false! "
+        )
+      }
+      await nextTick()
+      Prism.highlightAll()
     }
 
     watch(
