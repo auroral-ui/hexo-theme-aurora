@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.2 (2021-04-04)
+
+### Features
+
+- Added configuration for Favicon. (#22)
+- Added copy code button for code fence. (#24)
+
+### Bug fixes
+
+- Fixed dropdown menu triggered locale changes (#21)
+- Removed default configs from theme configs, avoid configs being carried to theme configs.
+- Fixed incorrect sum of site word count (#23)
+
+### Improvements/Changes
+
+- Improved tag click box size.
+- Changed unit test engine to Jest.
+
 ## 1.1.1 (2021-04-04)
 
 ### Bug fixes
