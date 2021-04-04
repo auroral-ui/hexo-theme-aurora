@@ -26,15 +26,6 @@ site:
 #！ @docs https://obsidianext.tridiamond.tech/guide/authors.html
 #! ---------------------------------------------------------------
 authors:
-  # Examples:
-  # tom:
-  #   name: Tom Cat
-  #   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-  #   link: https://github.com/TriDiamond
-  # John:
-  #   name: John
-  #   avatar: https://img-blog.csdnimg.cn/20210313122054101.png
-  #   link: https://github.com/TriDiamond
 
 #! ---------------------------------------------------------------
 #! Menu Configs
@@ -44,23 +35,6 @@ menu:
   About: true
   Tags: true
   Archives: true
-  # Example custom menus:
-  # message-board:
-  #   name: 'MessageBoard'
-  #   i18n:
-  #     cn: '留言板'
-  #     en: 'Message Board'
-  #   path: '/page/message-board'
-  # projects:
-  #   name: 'Projects'
-  #   i18n:
-  #     cn: '项目'
-  #     en: 'Projects'
-  #   path:
-  #   children:
-  #     obsidian:
-  #       name: 'Obsidian Theme'
-  #       path: 'https://github.com/tridiamond'
 
 #! ---------------------------------------------------------------
 #! Theme Config
@@ -79,15 +53,6 @@ theme:
 #! @docs https://obsidianext.tridiamond.tech/guide/social.html
 #! ---------------------------------------------------------------
 socials:
-  github: 'https://github.com/TriDiamond'
-  twitter: ''
-  stackoverflow: ''
-  wechat: ''
-  qq: ''
-  weibo: 'https://weibo.com/u/7318914058'
-  zhihu: 'https://www.zhihu.com/people/tridiamond'
-  csdn: 'https://blog.csdn.net/TriDiamond6'
-  juejin: 'https://juejin.cn/user/1873223546578589'
 
 #! ---------------------------------------------------------------
 #! Site Meta Configs
