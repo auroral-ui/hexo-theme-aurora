@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-### 1.1.0 (2021-04-03)
+## 1.1.1 (2021-04-04)
+
+### Bug fixes
+
+- Fixed truncate-html not in the dependencies requirement, cause `hexo g` failing.
+
+## 1.1.0 (2021-04-03)
 
 Since this version, the theme can be simply installed using NPM or Yarn, makes it much easier for theme users!
 
@@ -40,14 +46,14 @@ For new configuration setup and usage please read the [usage document](https://a
 - Fixed horizontal article's tag skeleton display error.
 - Fixed Gitalk not creating an issue on custom page. (#20)
 
-### 1.0.2 (2021-04-01)
+## 1.0.2 (2021-04-01)
 
-#### Improvements
+### Improvements
 
 - Added scrollbar style for webkit browsers.
 - Article allow no category and tags, default category and tag will be displayed.
 
-#### Bug Fixes
+### Bug Fixes
 
 - Fixed dark_mode config not taking effect. (#14)
 - Fixed the site language setting not taking effect (#12)
@@ -55,23 +61,23 @@ For new configuration setup and usage please read the [usage document](https://a
 - Removing unnecessary CNAME (#7)
 - Fixed content empty when excerpt exist. (#8)
 
-#### Bug Fixes
+### Bug Fixes
 
 - Fixed page generation script (#4)
 - Fixed default page generation script (#5)
 - Fixed recent comment cache logic (#6)
 
-### 1.0.1 (2021-03-30)
+## 1.0.1 (2021-03-30)
 
-#### Bug Fixes
+### Bug Fixes
 
 - Fixed page generation script (#4)
 - Fixed default page generation script (#5)
 - Fixed recent comment cache logic (#6)
 
-### 1.0.0 (2021-03-30)
+## 1.0.0 (2021-03-30)
 
-#### ⭐️ Features
+### ⭐️ Features
 
 - <span class="tag done-tag">✔</span> **`Featured section`** - _Can add a feature meta to any post, those will be pinned into the feature section on the home page._
 - <span class="tag done-tag">✔</span> **`Multi-language support`** - _Can dynamically switch the language of the main texts in the application._
@@ -84,14 +90,14 @@ For new configuration setup and usage please read the [usage document](https://a
 - <span class="tag new-tag">NEW</span> **`Blog search`** - _Enable to search all the articles in the blog._
 - <span class="tag new-tag">NEW</span> **`Latest comments`** - _Added a widget showing the latest comments, supported using `Gitalk` or `Valine`._
 
-#### 🎨 Theme
+### 🎨 Theme
 
 - <span class="tag done-tag">✔</span> **`Light and dark`** - _Light and dark theme support._
 - <span class="tag done-tag">✔</span> **`Magazine Layout`** - _Modern magazine grid layout._
 - <span class="tag done-tag">✔</span> **`Gradient Colours`** - _Modern gradient colour styles_.
 - <span class="tag done-tag">✔</span> **`Timeline styled archives`** - _Archived posts into a timeline format_.
 
-#### 🛠 Configuration
+### 🛠 Configuration
 
 - <span class="tag done-tag">✔</span> **`Beian Config`** - _This feature is especially for China users, for those that need to put Beian info at the footer of the blog._
 - <span class="tag done-tag">✔</span> **`Customizable menu`** - _Can customize your menu with internal links, external links, custom pages._

@@ -2,7 +2,13 @@
 
 对这个项目的所有值得注意的变化都将记录在这个文件中。
 
-### 1.1.0 (2021-04-03)
+## 1.1.1 (2021-04-04)
+
+### Bug 修复
+
+- 修复 NPM 没有 truncate-html 依赖，导致无法 `hexo g`。
+
+## 1.1.0 (2021-04-03)
 
 这个版本开始，主题可以简单地使用 NPM 或 Yarn 安装，让主题用户更容易使用!
 
@@ -41,14 +47,14 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - 修复了推荐文章中的标签骨架显示错误。
 - 修复了 Gitalk 在自定义页面不会创建 issue 的问题。 (#20)
 
-### 1.0.2 (2021-04-01)
+## 1.0.2 (2021-04-01)
 
-#### 更新
+### 更新
 
 - 添加了 webkit 浏览器的 scrollbar 样式.
 - 文章允许没有分类和标签，将会显示默认分类和标签.
 
-#### Bug 修复
+### Bug 修复
 
 - 修复了 dark_mode 配置没有效果. (#14)
 - 修复了 site 下的语言配置没有效果. (#12)
@@ -56,17 +62,17 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - 删除了没有必要的 CNAME 文件. (#7)
 - 修复了有文章不显示内容的问题. (#8)
 
-### 1.0.1 (2021-03-30)
+## 1.0.1 (2021-03-30)
 
-#### Bug 修复
+### Bug 修复
 
 - 修复页面生成脚本 (#4)
 - 修复默认页面生成脚本 (#5)
 - 修复了 Gitalk 最近评论的缓存机制 (#6)
 
-### 1.0.0 (2021-03-30)
+## 1.0.0 (2021-03-30)
 
-#### ⭐️ 博客功能
+### ⭐️ 博客功能
 
 - <span class="tag done-tag">✔</span> **`推荐区域`** - _可以在文章的 meta 中添加 `feature` 属性，让头 3 篇文章指定到首页推荐位置。_
 - <span class="tag done-tag">✔</span> **`实时多语言支持`** - _可以实时切换博客内主要文字的语言。_
@@ -79,13 +85,13 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`文章导航`** - _可以在文章详情底部跳转到上一篇或者下一篇文章。_
 - <span class="tag new-tag">NEW</span> **`最新评论`** - _给首页添加一个最新评论模块，支持使用 `gitalk` 或者 `valine`。_
 
-#### 🎨 主题
+### 🎨 主题
 
 - <span class="tag done-tag">✔</span> **`深浅主题`** - _深色与浅色主题支持._
 - <span class="tag done-tag">✔</span> **`杂志布局`** - _现代杂志 grid 布局。_
 - <span class="tag done-tag">✔</span> **`渐变色彩`** - _现代渐变色彩风格，为主题添加更多丰富的色彩。_
 
-#### 🛠 配置
+### 🛠 配置
 
 - <span class="tag done-tag">✔</span> **`备案设置`** - _这个功能专门给放在中国服务上的博客用户，可以在博客底部添加备案信息。_
 - <span class="tag done-tag">✔</span> **`自定义菜单`** - _可以自定义添加外部链接、内部链接、自定义页面。_
