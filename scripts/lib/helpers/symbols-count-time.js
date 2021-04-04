@@ -45,9 +45,12 @@ function symbolsCountTime(content, isSite) {
   var getSymbolsTotal = function (posts) {
     var symbolsResultCount = 0
     posts.forEach(function (post) {
-      symbolsResultCount += Number(
-        String(post.count_time.symbolsCount).replace(/[k]+/g, '000')
-      )
+      if (String(post.count_time.symbolsCount).indexOf('k') > -1) {
+        post.count_time.symbolsCount =
+          Number(String(post.count_time.symbolsCount).replace(/[k]+/g, '')) *
+          1000
+      }
+      symbolsResultCount += Number(post.count_time.symbolsCount)
     })
     if (symbolsResultCount > 9999) {
       symbolsResultCount = Math.round(symbolsResultCount / 1000) + 'k' // > 9999 => 11k
