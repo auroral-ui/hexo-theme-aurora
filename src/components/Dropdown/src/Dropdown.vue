@@ -48,15 +48,22 @@ export default defineComponent({
     }
 
     const onClickAway = () => {
-      if (!mouseHover.value) sharedState.active = false
+      if (!mouseHover.value) {
+        sharedState.active = false
+        eventId.value = 0
+      }
     }
 
     const hoverHandler = () => {
+      if (!sharedState.active) eventId.value = dropdownStore.setUid()
       if (mouseHover.value) sharedState.active = true
     }
 
     const leaveHandler = () => {
-      if (mouseHover.value) sharedState.active = false
+      if (mouseHover.value) {
+        sharedState.active = false
+        eventId.value = 0
+      }
     }
 
     provide('sharedState', sharedState)
