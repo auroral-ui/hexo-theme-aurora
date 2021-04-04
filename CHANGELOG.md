@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Added configuration for Favicon. (#22)
 - Added copy code button for code fence. (#24)
+- Added copy protection plugin and configuration.
 
 ### Bug fixes
 
@@ -19,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 - Improved tag click box size.
 - Changed unit test engine to Jest.
+- Removed the duplicated article date display.
 
 ## 1.1.1 (2021-04-04)
 

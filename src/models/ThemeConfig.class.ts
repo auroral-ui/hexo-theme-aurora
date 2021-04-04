@@ -344,7 +344,7 @@ export class SiteMeta {
     locale: 'en',
     prismjs: []
   }
-  favicon: string = ''
+  favicon = ''
 
   /**
    * Model class for Site meta settings
@@ -394,6 +394,21 @@ interface PluginsData {
   }
   recent_comments: boolean
   busuanzi: boolean
+  copy_protection: {
+    enable: boolean
+    author: {
+      cn: string
+      en: string
+    }
+    link: {
+      cn: string
+      en: string
+    }
+    license: {
+      cn: string
+      en: string
+    }
+  }
 }
 
 export class Plugins implements PluginsData {
@@ -425,6 +440,21 @@ export class Plugins implements PluginsData {
   }
   recent_comments = false
   busuanzi = false
+  copy_protection = {
+    enable: true,
+    author: {
+      cn: '',
+      en: ''
+    },
+    link: {
+      cn: '',
+      en: ''
+    },
+    license: {
+      cn: '',
+      en: ''
+    }
+  }
 
   /**
    * Model class for Site meta settings

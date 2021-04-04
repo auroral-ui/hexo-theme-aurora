@@ -99,13 +99,6 @@
                 {{ post.count_time.symbolsCount }}
               </em>
             </span>
-            <span v-if="post.date.month">
-              <svg-icon icon-class="date-outline" style="stroke: white" />
-              <em class="pl-2 opacity-70">
-                {{ t(post.date.month) }} {{ post.date.day }},
-                {{ post.date.year }}
-              </em>
-            </span>
           </div>
 
           <div v-else class="post-stats">
