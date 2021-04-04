@@ -74,14 +74,26 @@ export default defineComponent({
       initResizeEvent()
       await appStore.fetchConfig().then(() => {
         metaStore.addScripts(appStore.themeConfig.site_meta.cdn.prismjs)
+        // Change the favicon dynamically.
+        if (appStore.themeConfig.site_meta.favicon !== '') {
+          const link = document.querySelector("link[rel~='icon']")
+          if (link)
+            link.setAttribute('href', appStore.themeConfig.site_meta.favicon)
+        }
       })
     }
 
     const copyEventHandler = (event: any) => {
       const pagelink = `\n\nRead more at: ${document.location.href}`
-      if (event.clipboardData) {
-        event.clipboardData.setData('text', document.getSelection() + pagelink)
-        event.preventDefault()
+
+      if (document.getSelection() instanceof Selection) {
+        if (document.getSelection()?.toString() !== '' && event.clipboardData) {
+          event.clipboardData.setData(
+            'text',
+            document.getSelection() + pagelink
+          )
+          event.preventDefault()
+        }
       }
     }
 

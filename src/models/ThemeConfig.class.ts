@@ -344,6 +344,7 @@ export class SiteMeta {
     locale: 'en',
     prismjs: []
   }
+  favicon: string = ''
 
   /**
    * Model class for Site meta settings
