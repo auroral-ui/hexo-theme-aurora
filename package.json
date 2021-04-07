@@ -16,8 +16,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production",
     "build:stage": "vue-cli-service build --mode staging",
-    "test:unit": "vue-cli-service test:unit",
-    "test:unit-watch": "vue-cli-service test:unit --watch",
+    "test:unit": "vue-cli-service test:unit --coverage",
+    "test:unit-watch": "vue-cli-service test:unit --watch --coverage",
     "lint": "vue-cli-service lint",
     "env:local": "node ./build/scripts/config-script.js local",
     "env:prod": "node ./build/scripts/config-script.js prod",
@@ -71,7 +71,7 @@
     "svg-sprite-loader": "^5.2.1",
     "svgo": "^1.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "typescript": "^4.2.3",
+    "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"
   }
 }

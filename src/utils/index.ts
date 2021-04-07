@@ -23,7 +23,7 @@ export function formatTime(
       minutes: '分钟前',
       hours: '小时前',
       days: '天前',
-      months: '月前',
+      months: '个月前',
       years: '年前'
     }
   }
@@ -33,12 +33,12 @@ export function formatTime(
     if (options.lang) configs.lang = options.lang
   }
 
-  if (typeof time !== 'string') {
-    if (String('' + time).length === 10) {
-      time = parseInt(String(time)) * 1000
-    } else {
-      time = +time
-    }
+  if (typeof time === 'string') time = parseInt(time)
+
+  if (String('' + time).length === 10) {
+    time = parseInt(String(time)) * 1000
+  } else {
+    time = +time
   }
 
   const d = new Date(time).getTime()
@@ -85,7 +85,7 @@ export function filterHTMLContent(content: string, length?: number): string {
     )
     // Replacing all links.
     .replace(
-      /(?:http(s)?:\/\/)+[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'*+,;=.]+/g,
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)+/g,
       '[link]'
     )
     // Removing all html tags

@@ -9,6 +9,7 @@ build
 public
 src
 tests
+coverage
 
 # local env files
 .env

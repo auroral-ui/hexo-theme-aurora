@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
+const chalk = require('chalk')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -12,8 +13,30 @@ module.exports = function (hexo) {
     hexo.config.theme_config
   )
 
-  // Injecting locale injections
+  if (!themeConfig.site_meta) {
+    console.log(
+      chalk.red(
+        `[Aurora config error]: ${chalk.cyan(
+          'site_meta'
+        )} is not configured, please provide the site-meta configure in _config.aurora.yml`
+      )
+    )
+    return
+  }
+
+  if (!themeConfig.site_meta.cn) {
+    console.log(
+      chalk.red(
+        `[Aurora config error]: ${chalk.cyan(
+          'cdn'
+        )} in site_meta is not configured, please provide the cdn configure in _config.aurora.yml`
+      )
+    )
+    return
+  }
+
   if (themeConfig.site_meta.cdn) {
+    // Injecting locale injections
     const rawLocales = fs.readFileSync(
       resolve(`../../../data/${themeConfig.site_meta.cdn}.yml`)
     )
