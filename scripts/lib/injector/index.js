@@ -42,12 +42,24 @@ module.exports = function (hexo) {
     )
     const locales = yaml.load(rawLocales)
 
-    for (script of locales.scripts) {
+    for (let script of locales.scripts) {
       hexo.extend.injector.register('head_end', script)
     }
 
-    for (cs of locales.css) {
+    for (let cs of locales.css) {
       hexo.extend.injector.register('head_end', cs)
+    }
+
+    if (themeConfig.gitalk.enable) {
+      for (let cdn of locales.plugins.gitalk) {
+        hexo.extend.injector.register('head_ned', cdn)
+      }
+    }
+
+    if (themeConfig.valine.enable) {
+      for (let cdn of locales.plugins.valine) {
+        hexo.extend.injector.register('head_ned', cdn)
+      }
     }
   }
 
