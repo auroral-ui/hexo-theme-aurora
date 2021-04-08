@@ -2,7 +2,7 @@
   <div class="sidebar-box">
     <SubTitle :title="'titles.tag_list'" icon="tag" />
     <TagList>
-      <template v-if="tag && tags.length > 0">
+      <template v-if="tags && tags.length > 0">
         <TagItem
           v-for="tag in tags"
           :key="tag.slug"
@@ -23,7 +23,7 @@
           </span>
         </div>
       </template>
-      <template v-else-if="tag">
+      <template v-else-if="tags">
         <ob-skeleton tag="li" :count="10" height="20px" width="3rem" />
       </template>
       <template v-else>
