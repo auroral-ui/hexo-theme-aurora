@@ -51,7 +51,7 @@
           >
             <img
               class="hover:opacity-50 cursor-pointer"
-              :src="post.author.avatar || ''"
+              v-lazy="post.author.avatar || ''"
               alt="author avatar"
               @click="handleAuthorClick(post.author.link)"
             />
@@ -112,12 +112,6 @@
               <svg-icon icon-class="text" />
               <em class="pl-2">
                 <ob-skeleton width="40px" height="16px" />
-              </em>
-            </span>
-            <span>
-              <svg-icon icon-class="date" />
-              <em class="pl-2">
-                <ob-skeleton width="100px" height="16px" />
               </em>
             </span>
           </div>

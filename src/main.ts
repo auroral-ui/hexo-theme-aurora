@@ -11,6 +11,7 @@ import App from './App.vue'
 import router from './router'
 import { i18n } from './locales'
 import VueClickAway from 'vue3-click-away'
+import lazyPlugin from 'vue3-lazy'
 
 import './router/guard' // router guards
 
@@ -23,6 +24,10 @@ const app = createApp(App)
   .use(router)
   .use(i18n)
   .use(VueClickAway)
+  .use(lazyPlugin, {
+    loading: require('@/assets/default-cover.jpg'),
+    error: require('@/assets/default-cover.jpg')
+  })
 
 registerSvgIcon(app)
 registerObSkeleton(app)

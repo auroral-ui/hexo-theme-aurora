@@ -167,10 +167,16 @@ export default defineComponent({
       scripts: computed(() => metaStore.scripts),
       themeConfig: computed(() => appStore.themeConfig),
       headerImage: computed(() => {
-        return { backgroundImage: `url(${appStore.headerImage})` }
+        return {
+          backgroundImage: `url(${appStore.headerImage})`,
+          opacity: appStore.headerImage !== '' ? 1 : 0
+        }
       }),
       headerBaseBackground: computed(() => {
-        return { background: appStore.themeConfig.theme.header_gradient_css }
+        return {
+          background: appStore.themeConfig.theme.header_gradient_css,
+          opacity: appStore.headerImage !== '' ? 0.81 : 0.91
+        }
       }),
       handleEscKey: appStore.handleEscKey,
       isMobile: computed(() => appStore.isMobile),
@@ -343,9 +349,12 @@ body {
 .app-banner-image {
   z-index: 1;
   background-size: cover;
+  opacity: 0;
+  transition: ease-in-out opacity 300ms;
 }
 
 .app-banner-screen {
+  transition: ease-in-out opacity 300ms;
   z-index: 2;
   opacity: 0.91;
 }

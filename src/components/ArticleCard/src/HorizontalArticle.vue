@@ -1,12 +1,7 @@
 <template>
   <div class="feature-article">
     <div class="feature-thumbnail">
-      <img
-        v-if="post.cover"
-        class="ob-hz-thumbnail"
-        :src="post.cover"
-        alt="article-thumbnail"
-      />
+      <img v-if="post.cover" class="ob-hz-thumbnail" v-lazy="post.cover" />
       <span class="thumbnail-screen" :style="bannerHoverGradient" />
     </div>
     <div class="feature-content">
@@ -49,7 +44,7 @@
         <div class="flex flex-row items-center">
           <img
             class="hover:opacity-50 cursor-pointer"
-            :src="post.author.avatar"
+            v-lazy="post.author.avatar"
             alt=""
             @click="handleAuthorClick(post.author.link)"
           />
