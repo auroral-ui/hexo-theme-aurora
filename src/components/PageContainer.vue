@@ -52,7 +52,7 @@
       </div>
       <div class="col-span-1">
         <Sidebar>
-          <Profile />
+          <Profile author="blog-author" />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>

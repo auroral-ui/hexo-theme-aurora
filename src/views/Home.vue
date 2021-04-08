@@ -65,7 +65,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile />
+          <Profile :author="'blog-author'" />
           <RecentComment />
           <TagBox />
         </Sidebar>
@@ -204,6 +204,7 @@ export default defineComponent({
       }),
       themeConfig: computed(() => appStore.themeConfig),
       categories: computed(() => categoryStore.categories),
+      mainAuthor: computed(() => appStore.themeConfig.site.author),
       expanderClass,
       tabClass,
       expandHandler,
