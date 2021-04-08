@@ -2,6 +2,7 @@
   <li class="article">
     <div class="article-thumbnail">
       <img v-if="post.cover" v-lazy="post.cover" alt="" />
+      <img v-else src="@/assets/default-cover.jpg" />
       <span class="thumbnail-screen" :style="gradientBackground" />
     </div>
     <div class="article-content">

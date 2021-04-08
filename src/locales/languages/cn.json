@@ -66,6 +66,7 @@
     "tips-back-to-home": "返回首页",
     "tips-open-search": "打开搜索",
     "default-category": "文章",
-    "default-tag": "未分类"
+    "default-tag": "未分类",
+    "empty-tag": "目前没有标签"
   }
 }

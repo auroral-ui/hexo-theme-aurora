@@ -18,6 +18,7 @@ class TagGenerator {
   }
 
   reduceTags() {
+    if (this.count() <= 0) return
     const tags = this.data
     const posts = this.posts
     const configs = this.configs
@@ -43,12 +44,19 @@ class TagGenerator {
   }
 
   addTags(data) {
-    if (this.count <= 0) return data
-    data.push({
-      path: 'api/tags.json',
-      data: JSON.stringify(this.data.map(tagMapper))
-    })
-    data = data.concat(this.data.map(tagPageMapper))
+    if (this.count <= 0) {
+      data.push({
+        path: 'api/tags.json',
+        data: JSON.stringify([])
+      })
+    } else {
+      data.push({
+        path: 'api/tags.json',
+        data: JSON.stringify(this.data.map(tagMapper))
+      })
+      data = data.concat(this.data.map(tagPageMapper))
+    }
+
     return data
   }
 

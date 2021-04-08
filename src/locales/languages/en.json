@@ -66,6 +66,7 @@
     "tips-back-to-home": "Back to home",
     "tips-open-search": "Open search",
     "default-category": "Article",
-    "default-tag": "unsorted"
+    "default-tag": "unsorted",
+    "empty-tag": "Current no tags were found."
   }
 }
