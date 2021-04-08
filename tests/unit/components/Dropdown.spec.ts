@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import { Dropdown, DropdownItem, DropdownMenu } from '@/components/Dropdown'
 import { createPinia } from 'pinia'
@@ -60,11 +60,9 @@ describe('Component: Dropdown', () => {
     const wrapper = factory(TestDropdown)
     await wrapper.findComponent(Dropdown).trigger('click')
     expect(wrapper.find('[data-test="option1"]').exists()).toBe(true)
-    await wrapper.find('[data-test="outside-box"]').trigger('click')
-    // 300ms to wait for animation to finish.
-    setTimeout(() => {
-      expect(wrapper.find('[data-test="option1"]').exists()).toBe(false)
-    }, 300)
+    await wrapper.findComponent(Dropdown).trigger('click')
+    await nextTick()
+    expect(wrapper.find('[data-test="option1"]').exists()).toBe(false)
   })
 
   it('opening menu by hover', async () => {
@@ -78,11 +76,9 @@ describe('Component: Dropdown', () => {
     const wrapper = factory(TestDropdown, { hover: true })
     await wrapper.findComponent(Dropdown).trigger('mouseover')
     expect(wrapper.find('[data-test="option1"]').exists()).toBe(true)
-    await wrapper.find('[data-test="outside-box"]').trigger('mouseover')
-    // 300ms to wait for animation to finish.
-    setTimeout(() => {
-      expect(wrapper.find('[data-test="option1"]').exists()).toBe(false)
-    }, 300)
+    await wrapper.findComponent(Dropdown).trigger('mouseleave')
+    await nextTick()
+    expect(wrapper.find('[data-test="option1"]').exists()).toBe(false)
   })
 
   it('choosing option 1', async () => {
