@@ -17,6 +17,7 @@
   <img src="https://img.shields.io/npm/dy/hexo-theme-aurora">
   <img src="https://img.shields.io/github/last-commit/auroral-ui/hexo-theme-aurora/main">
   <img src="https://img.shields.io/github/license/auroral-ui/hexo-theme-aurora">
+  <img src="https://img.shields.io/circleci/build/github/auroral-ui/hexo-theme-aurora/main">
 </p>
 
 <div align="center">
