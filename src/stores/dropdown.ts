@@ -8,11 +8,7 @@ export const useDropdownStore = defineStore({
     commandName: '',
     uid: 0
   }),
-  getters: {
-    getCommand() {
-      return this.commandName
-    }
-  },
+  getters: {},
   actions: {
     setCommand(name: string): void {
       this.commandName = name

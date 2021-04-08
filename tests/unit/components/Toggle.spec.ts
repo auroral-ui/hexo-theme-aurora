@@ -2,7 +2,14 @@ import { shallowMount } from '@vue/test-utils'
 import Toggle from '@/components/ToggleSwitch/Toggle.vue'
 import { nextTick } from 'vue'
 
-function factory(props: { [key: string]: any }) {
+const TestToggle = {
+  components: { Toggle },
+  template: `
+    <toggle />
+  `
+}
+
+function factory(props?: { [key: string]: any }) {
   return shallowMount(Toggle, {
     props
   })
@@ -10,7 +17,8 @@ function factory(props: { [key: string]: any }) {
 
 describe('Component: Toggle.vue', () => {
   it('Toggle on', async () => {
-    const wrapper = factory({ status: true })
+    const wrapper = factory()
+    await wrapper.get('.toggler').trigger('click')
     await nextTick()
     expect(
       wrapper
@@ -23,7 +31,8 @@ describe('Component: Toggle.vue', () => {
   })
 
   it('Toggle off', async () => {
-    const wrapper = factory({ status: false })
+    const wrapper = factory({ status: true })
+    await wrapper.get('.toggler').trigger('click')
     await nextTick()
     expect(
       wrapper
