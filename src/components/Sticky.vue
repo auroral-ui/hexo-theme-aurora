@@ -142,10 +142,6 @@ export default defineComponent({
             .paddingBottom,
           10
         )
-        // const endingElMarginTop =
-        //   endingEl && endingEl instanceof HTMLElement
-        //     ? parseInt(window.getComputedStyle(endingEl).marginTop, 10)
-        //     : 0
         const endingPos =
           endingEl && endingEl instanceof HTMLElement
             ? documentHeight -
