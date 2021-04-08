@@ -11815,6 +11815,11 @@ vue3-click-away@^1.1.0:
   resolved "https://registry.npmjs.org/vue3-click-away/-/vue3-click-away-1.1.0.tgz#4970159bc4c5b80f0aac6f0d0cc9333c150624d6"
   integrity sha512-I1d/vX9vCW1on8MA7VeufV73iPL1WPaohzEJAA7SFsMDdUEEt59zW7xV3vEgS+VrwVAzcd3c1oX203RcCWS3Cw==
 
+vue3-lazy@^1.0.0-alpha.1:
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/vue3-lazy/-/vue3-lazy-1.0.0-alpha.1.tgz#326a56c2ade4430c76b7ac90d33a7fde0af9aaa6"
+  integrity sha512-dpjpKK4DC5q+wZVtS/VY3X6pYBJHxRmYanr20s39RB6o6fvbneQ/DNuz37bipYfEdrEvbSZ95Y2SCexuznQNrQ==
+
 vue3-scroll-spy@^1.0.8:
   version "1.0.8"
   resolved "https://registry.npmjs.org/vue3-scroll-spy/-/vue3-scroll-spy-1.0.8.tgz#1dea6928a7edd0932a629c8962792188dd26cb6b"

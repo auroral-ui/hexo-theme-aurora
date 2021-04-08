@@ -431,7 +431,7 @@
     line-height: 1.1;
   }
   .post-stats {
-    @apply flex flex-row text-sm lg:text-base mr-4;
+    @apply flex-row text-sm lg:text-base mr-4 hidden lg:flex;
     span {
       @apply text-white stroke-current flex flex-row items-center pr-4 opacity-80;
     }
