@@ -24,7 +24,7 @@ module.exports = function (hexo) {
     return
   }
 
-  if (!themeConfig.site_meta.cn) {
+  if (!themeConfig.site_meta.cdn) {
     console.log(
       chalk.red(
         `[Aurora config error]: ${chalk.cyan(
