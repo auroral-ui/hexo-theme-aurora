@@ -15,6 +15,10 @@
 @import './fonts.scss';
 @import './transitions.scss';
 
+.stroke-ob-bright {
+  stroke: var(--text-bright) !important;
+}
+
 .diamond-clip-path {
   clip-path: polygon(50% 3%, 91% 25%, 91% 75%, 50% 97%, 9% 75%, 9% 25%);
   background: var(--background-trans);

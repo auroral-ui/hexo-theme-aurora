@@ -1,5 +1,5 @@
 <template>
-  <div id="App-Wrapper" :class="[appWrapperClass, theme]">
+  <div id="App-Wrapper" :class="[appWrapperClass, theme]" :style="wrapperStyle">
     <div
       id="App-Container"
       class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8"
@@ -17,9 +17,9 @@
         </router-view>
       </div>
     </div>
-    <Footer />
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
   </div>
+  <Footer />
   <div class="App-Mobile-sidebar" v-if="isMobile">
     <div id="App-Mobile-Profile" class="App-Mobile-wrapper">
       <MobileMenu />
@@ -37,6 +37,7 @@ import {
   computed,
   defineComponent,
   onBeforeMount,
+  onMounted,
   onUnmounted,
   ref,
   watch
@@ -150,6 +151,21 @@ export default defineComponent({
       window.removeEventListener('resize', resizeHanler)
     })
 
+    const wrapperStyle = ref({ 'min-height': '100vh' })
+
+    onMounted(() => {
+      let wrapperHeight = screen.height
+      const footerEl = document.getElementById('footer')
+      const footerHeight = footerEl?.getBoundingClientRect().height
+      if (typeof footerHeight === 'number') {
+        wrapperHeight = wrapperHeight - footerHeight * 2
+      }
+      console.log(wrapperHeight)
+      wrapperStyle.value = {
+        'min-height': wrapperHeight + 'px'
+      }
+    })
+
     /**
      * Watches the app loading status, adding the `nprogress-custom-parent`
      * class to the nprogress container when loading.
@@ -178,6 +194,7 @@ export default defineComponent({
           opacity: appStore.headerImage !== '' ? 0.81 : 0.91
         }
       }),
+      wrapperStyle: computed(() => wrapperStyle.value),
       handleEscKey: appStore.handleEscKey,
       isMobile: computed(() => appStore.isMobile),
       appWrapperClass,
@@ -201,7 +218,7 @@ body {
   @apply relative min-w-full min-h-screen h-full;
   font-family: Rubik, Avenir, Helvetica, Arial, sans-serif;
   .app-wrapper {
-    @apply bg-ob-deep-900 min-w-full min-h-screen h-full;
+    @apply bg-ob-deep-900 min-w-full h-full pb-12;
     transition-property: transform, border-radius;
     transition-duration: 350ms;
     transition-timing-function: ease;
