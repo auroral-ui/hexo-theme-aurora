@@ -1,4 +1,5 @@
 const { postMapper, postListMapper } = require('../helpers/mapper')
+const { formatNumber } = require('../helpers/utils')
 
 class PostGenerator {
   data = []
@@ -6,6 +7,7 @@ class PostGenerator {
   features = []
   configs = {}
   authors = {}
+  postByAuthors = new Map()
 
   constructor(posts, configs) {
     this.data = posts
@@ -46,6 +48,8 @@ class PostGenerator {
         featureIndexes.length < featureLimit
       )
         featureIndexes.push(index)
+
+      this.fillAuthorPost(current)
     })
 
     // Save the feature post data.
@@ -71,6 +75,50 @@ class PostGenerator {
     this.data = this.data.sort('-date').filter(function (post) {
       return post.published
     })
+  }
+
+  /**
+   *
+   * @param {*} post
+   */
+  fillAuthorPost(post) {
+    let authorPostData = {}
+
+    if (!this.postByAuthors.has(post.author.slug)) {
+      Object.assign(authorPostData, post.author)
+      // authorPostData = Object.create(post.author)
+      authorPostData.post_list = [postListMapper(post, this.configs)]
+      authorPostData.categories = new Set()
+      authorPostData.tags = new Set()
+      authorPostData.word_count = 0
+      authorPostData.post_count = 0
+    } else {
+      authorPostData = this.postByAuthors.get(post.author.slug)
+      authorPostData.post_list.push(postListMapper(post, this.configs))
+    }
+
+    let wordCount = post.count_time.symbolsCount
+
+    if (String(wordCount).indexOf('k') > -1) {
+      wordCount = Number(String(wordCount).replace(/[k]+/g, '')) * 1000
+    }
+
+    authorPostData.word_count += Number(wordCount)
+    authorPostData.post_count += 1
+
+    if (post.categories && post.categories.length > 0) {
+      post.categories.forEach(function (category) {
+        authorPostData.categories.add(category.name)
+      })
+    }
+
+    if (post.categories && post.categories.length > 0) {
+      post.tags.forEach(function (tag) {
+        authorPostData.tags.add(tag)
+      })
+    }
+
+    this.postByAuthors.set(post.author.slug, authorPostData)
   }
 
   /**
@@ -131,6 +179,30 @@ class PostGenerator {
       path: 'api/features.json',
       data: JSON.stringify(this.features.map(postListMapper))
     })
+    return data
+  }
+
+  /**
+   * Creating Authors API data
+   * @returns Array
+   */
+  addAuthorPost(data) {
+    if (this.postByAuthors.size <= 0) return data
+
+    const postData = []
+    this.postByAuthors.forEach(function (value, key) {
+      const path = `api/authors/${key}.json`
+      value.categories = value.categories.size
+      value.tags = value.tags.size
+      value.word_count = formatNumber(value.word_count)
+
+      postData.push({
+        path: path,
+        data: JSON.stringify(value)
+      })
+    })
+
+    data = data.concat(postData)
     return data
   }
 

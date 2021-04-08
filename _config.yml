@@ -26,6 +26,14 @@ site:
 #！ @docs https://obsidianext.tridiamond.tech/guide/authors.html
 #! ---------------------------------------------------------------
 authors:
+  ##! example
+  # TriDiamond:
+  #   name: TriDiamond
+  #   avatar: https://up.enterdesk.com/edpic_source/44/ff/3d/44ff3d6bd2819d524facfcc33205d4cd.jpg
+  #   link: https://github.com/TriDiamond
+  #   description: 'Think like an artist, code like an artisan.'
+  #   socials:
+  #     github: https://tridiamond.tech
 
 #! ---------------------------------------------------------------
 #! Menu Configs

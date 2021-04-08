@@ -193,7 +193,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile />
+          <Profile :author="post.author.slug || ''" />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>
