@@ -21,8 +21,11 @@ jobs:
       - run:
           name: Run Tests
           command: yarn test:unit
+      - run:
+          name: Run Build
+          command: yarn build
 
 workflows:
-  orb-free-workflow:
+  ci-checks:
     jobs:
       - test
