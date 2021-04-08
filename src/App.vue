@@ -76,7 +76,10 @@ export default defineComponent({
       await appStore.fetchConfig().then(() => {
         metaStore.addScripts(appStore.themeConfig.site_meta.cdn.prismjs)
         // Change the favicon dynamically.
-        if (appStore.themeConfig.site_meta.favicon !== '') {
+        if (
+          appStore.themeConfig.site_meta.favicon &&
+          appStore.themeConfig.site_meta.favicon !== ''
+        ) {
           const link = document.querySelector("link[rel~='icon']")
           if (link)
             link.setAttribute('href', appStore.themeConfig.site_meta.favicon)
