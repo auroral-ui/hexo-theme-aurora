@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-# 1.2.2 (2021-04-09)
+# 1.3.0 (2021-04-09)
 
 ### ✨ New features
 
