@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+# 1.2.2 (2021-04-09)
+
+### ✨ New features
+
+- Added default cover image.
+- Added the ability of setting up a sub-folder (#34)
+- Added custom social link configuration (#38)
+
+### 🛠 Fixes
+
+- Fixed recent comment's post time is incorrect (#45)
+- Fixed article page author info's text color (#42)
+- Fixed invalid path for Axios
+
+### 🔮 Changes
+
+- Removed unused Hexo API.
+- Updated a new default cover image for articles.
+
 # 1.2.1 (2021-04-08)
 
 ### 🛠 Fixes
