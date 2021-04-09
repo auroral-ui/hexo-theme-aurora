@@ -160,7 +160,6 @@ export default defineComponent({
       if (typeof footerHeight === 'number') {
         wrapperHeight = wrapperHeight - footerHeight * 2
       }
-      console.log(wrapperHeight)
       wrapperStyle.value = {
         'min-height': wrapperHeight + 'px'
       }

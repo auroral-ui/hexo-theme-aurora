@@ -43,90 +43,7 @@
           </p>
         </div>
         <div class="h-full w-full flex flex-col flex-1 justify-end items-end">
-          <ul
-            class="flex flex-row justify-evenly flex-wrap w-full py-4 px-2 text-center items-center"
-          >
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.github"
-            >
-              <a :href="authorData.socials.github" target="_blank" ref="github">
-                <svg-icon icon-class="github" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.twitter"
-            >
-              <a
-                :href="authorData.socials.twitter"
-                target="_blank"
-                ref="twitter"
-              >
-                <svg-icon icon-class="twitter" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.stackoverflow"
-            >
-              <a
-                :href="authorData.socials.stackoverflow"
-                target="_blank"
-                ref="stackoverflow"
-              >
-                <svg-icon icon-class="stackoverflow" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.wechat"
-            >
-              <a :href="authorData.socials.wechat" target="_blank" ref="wechat">
-                <svg-icon icon-class="wechat" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.qq"
-            >
-              <a :href="authorData.socials.qq" target="_blank" ref="qq">
-                <svg-icon icon-class="qq" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.weibo"
-            >
-              <a :href="authorData.socials.weibo" target="_blank" ref="weibo">
-                <svg-icon icon-class="weibo" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.csdn"
-            >
-              <a :href="authorData.socials.csdn" target="_blank" ref="csdn">
-                <svg-icon icon-class="csdn" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.zhihu"
-            >
-              <a :href="authorData.socials.zhihu" target="_blank" ref="zhifu">
-                <svg-icon icon-class="zhifu" class="fill-current" />
-              </a>
-            </li>
-            <li
-              class="diamond-clip-path diamond-icon"
-              v-if="authorData.socials.juejin"
-            >
-              <a :href="authorData.socials.juejin" target="_blank" ref="juejin">
-                掘
-              </a>
-            </li>
-          </ul>
+          <Social :socials="authorData.socials" />
           <ul class="grid grid-cols-4 pt-4 w-full px-2 text-lg">
             <li class="col-span-1 text-center">
               <span class="text-ob-bright">{{ authorData.word_count }}</span>
@@ -159,9 +76,11 @@ import { useAppStore } from '@/stores/app'
 import { useAuthorStore } from '@/stores/author'
 import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import Social from '@/components/Social.vue'
 
 export default defineComponent({
   name: 'ObProfile',
+  components: { Social },
   props: {
     author: {
       type: String,

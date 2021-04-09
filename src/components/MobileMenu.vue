@@ -25,79 +25,7 @@
     <p v-else class="pt-6 px-10 w-full text-sm text-center flex flex-col gap-2">
       <ob-skeleton :count="2" height="20px" width="10rem" />
     </p>
-
-    <ul
-      class="flex flex-row justify-evenly flex-wrap w-full py-4 px-2 text-center items-center"
-    >
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.github"
-      >
-        <a :href="authorData.socials.github" target="_blank" ref="github">
-          <svg-icon icon-class="github" class="fill-current" />
-        </a>
-      </li>
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.twitter"
-      >
-        <a :href="authorData.socials.twitter" target="_blank" ref="twitter">
-          <svg-icon icon-class="twitter" class="fill-current" />
-        </a>
-      </li>
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.stackoverflow"
-      >
-        <a
-          :href="authorData.socials.stackoverflow"
-          target="_blank"
-          ref="stackoverflow"
-        >
-          <svg-icon icon-class="stackoverflow" class="fill-current" />
-        </a>
-      </li>
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.wechat"
-      >
-        <a :href="authorData.socials.wechat" target="_blank" ref="wechat">
-          <svg-icon icon-class="wechat" class="fill-current" />
-        </a>
-      </li>
-      <li class="diamond-clip-path diamond-icon" v-if="authorData.socials.qq">
-        <a :href="authorData.socials.qq" target="_blank" ref="qq">
-          <svg-icon icon-class="qq" class="fill-current" />
-        </a>
-      </li>
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.weibo"
-      >
-        <a :href="authorData.socials.weibo" target="_blank" ref="weibo">
-          <svg-icon icon-class="weibo" class="fill-current" />
-        </a>
-      </li>
-      <li class="diamond-clip-path diamond-icon" v-if="authorData.socials.csdn">
-        <a :href="authorData.socials.csdn" target="_blank" ref="csdn">
-          <svg-icon icon-class="csdn" class="fill-current" />
-        </a>
-      </li>
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.zhifu"
-      >
-        <a :href="authorData.socials.zhifu" target="_blank" ref="zhifu">
-          <svg-icon icon-class="zhifu" class="fill-current" />
-        </a>
-      </li>
-      <li
-        class="diamond-clip-path diamond-icon"
-        v-if="authorData.socials.juejin"
-      >
-        <a :href="authorData.socials.juejin" target="_blank" ref="juejin">掘</a>
-      </li>
-    </ul>
+    <Social :socials="authorData.socials" />
     <ul class="grid grid-cols-3 pt-4 w-full px-2 text-lg">
       <li class="col-span-1 text-center">
         <span class="text-ob-bright">{{ authorData.post_list.length }}</span>
@@ -189,10 +117,11 @@ import { useRouter } from 'vue-router'
 import { useNavigatorStore } from '@/stores/navigator'
 import { useAuthorStore } from '@/stores/author'
 import { AuthorPosts } from '@/models/Post.class'
+import Social from '@/components/Social.vue'
 
 export default defineComponent({
   name: 'ObMobileMenu',
-  components: { Dropdown, DropdownMenu, DropdownItem },
+  components: { Dropdown, DropdownMenu, DropdownItem, Social },
   setup() {
     const appStore = useAppStore()
     const authorStore = useAuthorStore()
