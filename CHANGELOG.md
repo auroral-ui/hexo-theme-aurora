@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+# 1.2.1 (2021-04-08)
+
+### 🛠 Fixes
+
+- Fixed tags not showing.
+- Changed China CDN back to bootcdn.
+
 ## 1.2.0 (2021-04-08)
 
 ### ✨ New features
