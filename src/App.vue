@@ -184,7 +184,9 @@ export default defineComponent({
       themeConfig: computed(() => appStore.themeConfig),
       headerImage: computed(() => {
         return {
-          backgroundImage: `url(${appStore.headerImage})`,
+          backgroundImage: `url(${
+            appStore.headerImage
+          }), url(${require('@/assets/default-cover.jpg')})`,
           opacity: appStore.headerImage !== '' ? 1 : 0
         }
       }),
