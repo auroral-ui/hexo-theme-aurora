@@ -29,7 +29,6 @@ export default defineComponent({
 .header-container {
   .site-header {
     max-width: var(--max-width);
-    padding: 0 calc(var(--gap) / 2);
     @apply relative flex z-50 my-0 mx-auto py-4;
   }
 }

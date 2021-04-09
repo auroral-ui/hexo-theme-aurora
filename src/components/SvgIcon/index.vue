@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
-import { isExternal } from '@/utils/validate'
+import { isExternalIcon } from '@/utils/validate'
 
 export default defineComponent({
   name: 'SvgIcon',
@@ -28,7 +28,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const isExternalClass = computed(() => isExternal(props.iconClass))
+    const isExternalClass = computed(() => isExternalIcon(props.iconClass))
 
     const iconName = computed(() => `#icon-${props.iconClass}`)
 

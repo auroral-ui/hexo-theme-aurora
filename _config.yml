@@ -1,12 +1,12 @@
 #! ---------------------------------------------------------------
-#! ObsidiaNext Theme for Hexo
+#! Aurora Theme for Hexo
 #! ---------------------------------------------------------------
 #! Designed & Coded By TriDiamond
 #! ---------------------------------------------------------------
 
 #! ---------------------------------------------------------------
 #! Site Configs
-#！ @docs https://obsidianext.tridiamond.tech/guide/configuration.html
+#！ @docs https://aurora.tridiamond.tech/guide/configuration.html
 #! ---------------------------------------------------------------
 site:
   subtitle: TriDiamond's Blog
@@ -23,7 +23,7 @@ site:
 
 #! ---------------------------------------------------------------
 #! Authors Configs
-#！ @docs https://obsidianext.tridiamond.tech/guide/authors.html
+#！ @docs https://aurora.tridiamond.tech/guide/authors.html
 #! ---------------------------------------------------------------
 authors:
   ##! example
@@ -37,7 +37,7 @@ authors:
 
 #! ---------------------------------------------------------------
 #! Menu Configs
-#！ @docs https://obsidianext.tridiamond.tech/guide/menu.html
+#！ @docs https://aurora.tridiamond.tech/guide/menu.html
 #! ---------------------------------------------------------------
 menu:
   About: true
@@ -46,7 +46,7 @@ menu:
 
 #! ---------------------------------------------------------------
 #! Theme Config
-#! @docs https://obsidianext.tridiamond.tech/guide/theme.html
+#! @docs https://aurora.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 theme:
   dark_mode: true
@@ -58,13 +58,30 @@ theme:
 
 #! ---------------------------------------------------------------
 #! Social Configs
-#! @docs https://obsidianext.tridiamond.tech/guide/social.html
+#! @docs https://aurora.tridiamond.tech/guide/social.html
 #! ---------------------------------------------------------------
 socials:
 
+custom_socials:
+  ##! Example:
+  ##! --- Using SVG
+  # bilibili:
+  #   icon: http://localhost:4000/svg/bilibili.svg
+  #   link: https://live.bilibili.com/22619211
+
+  ##! --- Using IconFont
+  # baidu:
+  #   icon: iconfont icon-baidu
+  #   link: https://live.bilibili.com/22619211
+
+  ##! --- Using FontAwesome
+  # book:
+  #   icon: far fa-address-book
+  #   link: https://live.bilibili.com/22619211
+
 #! ---------------------------------------------------------------
 #! Site Meta Configs
-#! @docs https://obsidianext.tridiamond.tech/guide/theme.html
+#! @docs https://aurora.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 site_meta:
   cdn: cn
@@ -72,6 +89,7 @@ site_meta:
 
 #! ---------------------------------------------------------------
 #! Plugins
+#! @docs https://aurora.tridiamond.tech/guide/plugins.html
 #! ---------------------------------------------------------------
 
 # For local development only!
@@ -122,6 +140,7 @@ copy_protection:
 
 #! ---------------------------------------------------------------
 #! Injections
+#! @docs https://aurora.tridiamond.tech/guide/site-meta.html#custom-meta
 #! ---------------------------------------------------------------
 injects:
   scripts:
