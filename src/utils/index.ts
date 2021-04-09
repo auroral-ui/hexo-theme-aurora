@@ -33,7 +33,10 @@ export function formatTime(
     if (options.lang) configs.lang = options.lang
   }
 
-  if (typeof time === 'string') time = parseInt(time)
+  if (typeof time === 'string') {
+    if (/[a-zA-Z]+/g.test(time)) time = new Date(time).getTime()
+    else time = parseInt(time)
+  }
 
   if (String('' + time).length === 10) {
     time = parseInt(String(time)) * 1000
@@ -43,7 +46,7 @@ export function formatTime(
 
   const d = new Date(time).getTime()
   const now = Date.now()
-  const diff = (now - d) / 1000
+  const diff = Math.floor((now - d) / 1000)
 
   let formattedTime = ''
 
