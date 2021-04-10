@@ -18,17 +18,24 @@ class CategoryGenerator {
   }
 
   addCategories(data) {
-    if (this.count() <= 0) return data
-    data.push({
-      path: 'api/categories.json',
-      data: JSON.stringify(this.data.map(categoryMapper))
-    })
-    const categoryPages = this.data.map(categoryPageMapper)
-    data = data.concat(categoryPages)
+    if (this.count() <= 0) {
+      data.push({
+        path: 'api/categories.json',
+        data: JSON.stringify([])
+      })
+    } else {
+      data.push({
+        path: 'api/categories.json',
+        data: JSON.stringify(this.data.map(categoryMapper))
+      })
+      const categoryPages = this.data.map(categoryPageMapper)
+      data = data.concat(categoryPages)
+    }
     return data
   }
 
   reduceCategories() {
+    if (this.count() <= 0) return
     const categories = this.data
     const posts = this.posts
     const configs = this.configs

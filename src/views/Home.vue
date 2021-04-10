@@ -17,7 +17,7 @@
               {{ t('settings.button-all') }}
             </span>
           </li>
-          <template v-if="categories.length > 0">
+          <template v-if="categories && categories.length > 0">
             <li
               v-for="category in categories"
               :key="category.slug"
@@ -32,7 +32,7 @@
               </b>
             </li>
           </template>
-          <template v-else>
+          <template v-else-if="categories !== null">
             <li v-for="i in 6" :key="i" style="position: relative; top: -4px">
               <ob-skeleton tag="span" width="60px" height="33px" />
             </li>
@@ -65,7 +65,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile />
+          <Profile :author="'blog-author'" />
           <RecentComment />
           <TagBox />
         </Sidebar>
@@ -203,7 +203,13 @@ export default defineComponent({
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       themeConfig: computed(() => appStore.themeConfig),
-      categories: computed(() => categoryStore.categories),
+      categories: computed(() => {
+        if (categoryStore.isLoaded && categoryStore.categories.length === 0) {
+          return null
+        }
+        return categoryStore.categories
+      }),
+      mainAuthor: computed(() => appStore.themeConfig.site.author),
       expanderClass,
       tabClass,
       expandHandler,

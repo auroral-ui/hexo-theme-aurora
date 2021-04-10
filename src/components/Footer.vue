@@ -1,9 +1,5 @@
 <template>
-  <div
-    id="footer"
-    class="relative w-full mt-12 pt-1"
-    :style="gradientBackground"
-  >
+  <div id="footer" class="relative w-full pt-1" :style="gradientBackground">
     <span class="bg-ob-deep-900 flex justify-center">
       <div
         class="bg-ob-deep-900 rounded-lg max-w-10/12 lg:max-w-screen-2xl text-sm text-ob-normal w-full py-6 px-6 grid grid-rows-1 lg:grid-rows-none lg:grid-cols-4 justify-center items-center gap-8"

@@ -92,6 +92,7 @@ module.exports = function (hexo) {
     apiData = posts.addPaginationPost(apiData)
     apiData = posts.addArticles(apiData)
     apiData = posts.addFeatures(apiData)
+    apiData = posts.addAuthorPost(apiData)
 
     const categories = new CategoryGenerator(
       site.categories,

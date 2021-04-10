@@ -136,10 +136,12 @@ export default defineComponent({
           this.endingElId !== ''
             ? document.getElementById(this.endingElId)
             : null
-        const endingElMarginTop =
-          endingEl && endingEl instanceof HTMLElement
-            ? parseInt(window.getComputedStyle(endingEl).marginTop, 10)
-            : 0
+        const wrapperEl = document.getElementById('App-Wrapper')
+        const endingElSpacing = parseInt(
+          window.getComputedStyle(wrapperEl || document.documentElement)
+            .paddingBottom,
+          10
+        )
         const endingPos =
           endingEl && endingEl instanceof HTMLElement
             ? documentHeight -
@@ -148,7 +150,7 @@ export default defineComponent({
               this.stickyTop -
               this.stickyBottom -
               endingEl.getBoundingClientRect().height -
-              endingElMarginTop
+              endingElSpacing
             : documentHeight
 
         if (offsetTop < this.stickyTop) {

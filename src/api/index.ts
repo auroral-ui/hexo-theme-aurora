@@ -3,6 +3,7 @@ import request from '@/utils/request'
 import { HexoConfig } from '@/models/HexoConfig.class'
 import { AxiosResponse } from 'axios'
 import {
+  AuthorPosts,
   Categories,
   Post,
   PostList,
@@ -77,4 +78,11 @@ export async function fetchStatistic(): Promise<AxiosResponse<any>> {
 // GET /api/search.json
 export async function fetchSearchIndexes(): Promise<AxiosResponse<any>> {
   return request.get<SearchIndexes[]>('/search.json')
+}
+
+// GET /api/authors/author-slug.json
+export async function fetchAuthorPost(
+  slug: string
+): Promise<AxiosResponse<any>> {
+  return request.get<AuthorPosts>(`/authors/${slug}.json`)
 }

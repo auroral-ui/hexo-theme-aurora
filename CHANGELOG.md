@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file.
 
+# 1.3.0 (2021-04-09)
+
+### ✨ New features
+
+- Added default cover image.
+- Added the ability of setting up a sub-folder (#34)
+- Added custom social link configuration (#38)
+
+### 🛠 Fixes
+
+- Fixed recent comment's post time is incorrect (#45)
+- Fixed article page author info's text color (#42)
+- Fixed invalid path for Axios
+
+### 🔮 Changes
+
+- Removed unused Hexo API.
+- Updated a new default cover image for articles.
+
+# 1.2.1 (2021-04-08)
+
+### 🛠 Fixes
+
+- Fixed tags not showing.
+- Changed China CDN back to bootcdn.
+
+## 1.2.0 (2021-04-08)
+
+### ✨ New features
+
+- Added default article `cover image`. (#39)
+- With `multi-author`, now you will see the statistic and author info in the article page profile. (Statistic of each author will be calculated separately.) (#26)
+- Added `unit test` for some of the features and scripts. (#31)
+- Added `lazy load` for article images.
+
+### 🔮 Changes
+
+- Updated theme `CDN injections` to improve first time loading performance (#37)
+- Making the `footer` always fix to the bottom.
+- Improved the style of `header cover image` (Added animation.)
+
+### 🛠 Fixes
+
+- Fixed `sticky` not calculated correctly after changing the behavior of the footer.
+- Fixed theme breaking when `categories` and `tags` are not bind to any articles (#33)
+- Fixed `mobile menu` is not adapted to the new menu i18n setup (#36)
+- Fixed `favicon` is not displaying when configured.
+- Fixed `site_meta`'s `cdn` condition error.
+
 ## 1.1.2 (2021-04-04)
 
 ### Features

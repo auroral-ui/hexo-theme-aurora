@@ -120,3 +120,12 @@ exports.isEmptyObject = function (value) {
   for (const key in value) return false
   return true
 }
+
+exports.formatNumber = function (value) {
+  if (value > 9999) {
+    value = Math.round(value / 1000) + 'k' // > 9999 => 11k
+  } else if (value > 999) {
+    value = Math.round(value / 100) / 10 + 'k' // > 999 => 1.1k
+  } // < 999 => 111
+  return value
+}

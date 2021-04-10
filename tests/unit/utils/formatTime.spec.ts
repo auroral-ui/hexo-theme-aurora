@@ -1,6 +1,12 @@
 import { formatTime } from '@/utils/index'
 
+const stringDateTime = new Date(+new Date() - 1).toUTCString()
+
 describe('Utils: formatTime', () => {
+  it('String time', () => {
+    expect(formatTime(String(stringDateTime))).toBe('just seconds ago')
+  })
+
   it('10 digits timestamp', () => {
     expect(formatTime(((+new Date() - 1) / 1000).toFixed(0))).toBe(
       'just seconds ago'

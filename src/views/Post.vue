@@ -51,13 +51,13 @@
           >
             <img
               class="hover:opacity-50 cursor-pointer"
-              :src="post.author.avatar || ''"
+              v-lazy="post.author.avatar || ''"
               alt="author avatar"
               @click="handleAuthorClick(post.author.link)"
             />
-            <span class="text-ob-bright opacity-80">
+            <span class="text-white opacity-80">
               <strong
-                class="text-ob-bright pr-1.5 hover:opacity-50 cursor-pointer"
+                class="text-white pr-1.5 hover:opacity-50 cursor-pointer"
                 @click="handleAuthorClick(post.author.link)"
               >
                 {{ post.author.name }}
@@ -112,12 +112,6 @@
               <svg-icon icon-class="text" />
               <em class="pl-2">
                 <ob-skeleton width="40px" height="16px" />
-              </em>
-            </span>
-            <span>
-              <svg-icon icon-class="date" />
-              <em class="pl-2">
-                <ob-skeleton width="100px" height="16px" />
               </em>
             </span>
           </div>
@@ -193,7 +187,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile />
+          <Profile :author="post.author.slug || ''" />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>

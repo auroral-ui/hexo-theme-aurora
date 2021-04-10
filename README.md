@@ -1,8 +1,8 @@
 <div align="center">
-  <br/>
   <a href="https://tridiamond.tech" target="_blank" rel="noopener noreferrer">
-    <img width="100" src="https://img-blog.csdnimg.cn/20210313122054101.png" alt="Obsidianext logo">
+    <img width="450" alt="image" src="https://user-images.githubusercontent.com/24708758/114228502-196c9000-99a9-11eb-87c7-de981ddc4872.png">
   </a>
+  <br/>
   <h1>🏳️‍🌈 <b>Hexo Theme Aurora 🏳️‍🌈</b></h1>
   <strong>Futuristic auroral theme for Hexo</strong>
 </div>
@@ -100,9 +100,10 @@ Keep me working on this project 💙
 
 You can give me feedback or issue you have through the following methods:
 
-- [Create a issue!](https://github.com/auroral-ui/hexo-theme-aurora/issues/new)
-- Joint QQGroup `909955326`
-- [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
+- **For any questions please post it to the [Github Discussion](https://github.com/auroral-ui/hexo-theme-aurora/discussions) before considering opening an issue.**
+- If you found a bug for the theme, create an [issue!](https://github.com/auroral-ui/hexo-theme-aurora/issues/new) to notify the developer for a fix.
+- Join QQGroup `909955326`
+- Join [Telegram](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A) Group
 
 ## 💰 Donation
 
@@ -132,9 +133,9 @@ Thanks for your love in advance! ☀️
 
 ## 💬 Join the Community
 
+- [Github Discussion](https://github.com/auroral-ui/hexo-theme-aurora/discussions)
+- Join QQGroup `909955326`
+- [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
 - Discord
 
 <a href="https://discord.gg/VC7CrYfds5" target="_blank"><img src="https://discordapp.com/api/guilds/801943105913225246/widget.png?style=banner3" alt="ObsidiaNext Community Discord Server"></a>
-
-- Join QQGroup `909955326`
-- [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
