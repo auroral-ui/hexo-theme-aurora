@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-bounce-y" mode="out-in">
     <div v-show="showDia" id="bot-container">
-      <div id="Aurora-Dia--body">
+      <div id="Aurora-Dia--body" :style="cssVariables">
         <div id="Aurora-Dia--tips-wrapper">
           <div id="Aurora-Dia--tips" class="Aurora-Dia--tips">早上好呀～</div>
         </div>
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from 'vue'
+import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import { useDiaStore } from '@/stores/dia'
 import { useAppStore } from '@/stores/app'
 
@@ -53,7 +53,20 @@ export default defineComponent({
       if (appStore.configReady) initializeBot()
     })
 
-    return { showDia }
+    return {
+      cssVariables: computed(() => {
+        return `
+          --aurora-dia--linear-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+          --aurora-dia--linear-gradient-hover: linear-gradient(
+            to bottom,
+            ${appStore.themeConfig.theme.gradient.color_2},
+            ${appStore.themeConfig.theme.gradient.color_3}
+          );
+          --aurora-dia--platform-light: ${appStore.themeConfig.theme.gradient.color_3};
+        `
+      }),
+      showDia
+    }
   }
 })
 </script>
@@ -176,12 +189,12 @@ export default defineComponent({
 }
 .Aurora-Dia:hover,
 .Aurora-Dia:hover > .Aurora-Dia--eyes > .Aurora--Dia-eye {
-  border-color: #2cdcff;
-  box-shadow: 0 0 5px #2cdcff;
+  border-color: var(--text-accent);
+  box-shadow: 0 0 5px var(--text-accent);
 }
 .Aurora-Dia:hover + .Aurora-Dia--platform {
-  box-shadow: 0 0 var(--auora-dia--platform-size) #2cdcff,
-    0 0 15px #2cdcff inset;
+  box-shadow: 0 0 var(--auora-dia--platform-size) var(--text-accent),
+    0 0 15px var(--text-accent) inset;
   animation: shake-pulse 0.5s linear;
 }
 
@@ -191,7 +204,7 @@ export default defineComponent({
   right: -120px;
   width: 200px;
   min-height: 60px;
-  background: var(--main-gradient);
+  background: var(--aurora-dia--linear-gradient);
   color: var(--text-normal);
   padding: 0.2rem;
   border-radius: 8px;
