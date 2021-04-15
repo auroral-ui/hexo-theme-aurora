@@ -205,9 +205,17 @@ export default defineComponent({
       configReady: computed(() => appStore.configReady),
       cssVariables: computed(() => {
         if (appStore.theme === 'theme-dark') {
-          return `--text-accent: ${appStore.themeConfig.theme.gradient.color_1}; --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_3}`
+          return `
+            --text-accent: ${appStore.themeConfig.theme.gradient.color_1};
+            --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_3};
+            --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+          `
         }
-        return `--text-accent: ${appStore.themeConfig.theme.gradient.color_3}; --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_2}`
+        return `
+          --text-accent: ${appStore.themeConfig.theme.gradient.color_3};
+          --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_2};
+          --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+        `
       }),
       appWrapperClass,
       loadingBarClass,

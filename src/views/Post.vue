@@ -125,7 +125,6 @@
             class="post-html"
             v-html="post.content"
             v-scroll-spy="{ sectionSelector: 'h1, h2, h3, h4, h5, h6' }"
-            :style="'--main-gradient: ' + linearGradient"
           />
         </template>
         <div
@@ -280,9 +279,6 @@ export default defineComponent({
 
     return {
       isMobile: computed(() => appStore.isMobile),
-      linearGradient: computed(
-        () => appStore.themeConfig.theme.header_gradient_css
-      ),
       handleAuthorClick,
       loading,
       post,
