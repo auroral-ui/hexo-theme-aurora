@@ -158,7 +158,7 @@ div.code-toolbar > .toolbar span:hover {
 }
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--foreground);
+  color: var(--foreground) !important;
   background: var(--background);
   text-shadow: none;
   font-family: PT Mono, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
