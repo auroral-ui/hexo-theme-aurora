@@ -26,6 +26,7 @@
     </div>
   </div>
   <Navigator />
+  <Dia v-if="!isMobile && configReady" />
   <teleport to="head">
     <title>{{ title }}</title>
     <meta property="og:description" :content="themeConfig.site.description" />
@@ -49,6 +50,7 @@ import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
+import Dia from '@/components/Dia.vue'
 
 export default defineComponent({
   name: 'App',
@@ -56,7 +58,8 @@ export default defineComponent({
     HeaderMain,
     Footer,
     Navigator,
-    MobileMenu
+    MobileMenu,
+    Dia
   },
   setup() {
     const appStore = useAppStore()
@@ -198,6 +201,7 @@ export default defineComponent({
       wrapperStyle: computed(() => wrapperStyle.value),
       handleEscKey: appStore.handleEscKey,
       isMobile: computed(() => appStore.isMobile),
+      configReady: computed(() => appStore.configReady),
       appWrapperClass,
       loadingBarClass,
       handleOpenModal

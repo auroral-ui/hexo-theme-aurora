@@ -65,6 +65,8 @@ export default defineComponent({
   fill: currentColor;
   stroke: var(--background-primary);
   overflow: hidden;
+  display: inline;
+  position: relative;
 }
 
 .svg-external-icon {

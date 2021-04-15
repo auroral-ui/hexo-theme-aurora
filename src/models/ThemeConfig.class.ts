@@ -318,7 +318,6 @@ export class CustomSocial {
                 /([a-zA-Z0-9\s_\\.\-():])+(.svg|.png|.jpg)$/g
               )
             ) {
-              console.log(raw[key])
               Object.assign(this.icon, { img_link: raw[key] })
             } else {
               Object.assign(this.icon, { iconfont: raw[key] })
@@ -462,6 +461,12 @@ interface PluginsData {
       en: string
     }
   }
+  aurora_bot: {
+    enable: boolean
+    locale: string
+    bot_type: string
+    tips: { [key: string]: { selector: string; text: string | string[] } }
+  }
 }
 
 export class Plugins implements PluginsData {
@@ -507,6 +512,12 @@ export class Plugins implements PluginsData {
       cn: '',
       en: ''
     }
+  }
+  aurora_bot = {
+    enable: false,
+    locale: 'en',
+    bot_type: 'dia',
+    tips: {}
   }
 
   /**

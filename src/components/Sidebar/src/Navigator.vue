@@ -18,6 +18,7 @@
     <li
       class="flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="jumpToComments"
+      data-dia="jump-to-comment"
     >
       <svg-icon class="inline-block text-3xl" icon-class="quote" />
     </li>
@@ -72,5 +73,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 #sidebar-navigator {
+  svg {
+    pointer-events: none;
+  }
 }
 </style>
