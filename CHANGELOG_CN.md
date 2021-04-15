@@ -10,6 +10,8 @@
 - 增加了 `表格` 样式。
 - 增加了 `内联代码` 样式。
 
+> 机器人 `Dia` 的配置文档请看： <br> https://aurora.tridiamond.tech/guide/plugins.html#bot-dia
+
 # 1.3.0 (2021-04-09)
 
 ### ✨ 新特性

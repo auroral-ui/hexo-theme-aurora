@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 - Added `table` styles.
 - Added `inline code` styles.
 
+> Document for configuring `Dia` bot <br> https://aurora.tridiamond.tech/guide/plugins.html#bot-dia
+
 # 1.3.0 (2021-04-09)
 
 ### ✨ New features
