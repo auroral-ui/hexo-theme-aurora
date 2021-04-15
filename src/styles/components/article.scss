@@ -339,6 +339,33 @@
     -webkit-text-fill-color: var(--text-faint);
   }
 
+  table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    display: block;
+    overflow-x: auto;
+  }
+
+  th {
+    border: 1px solid var(--background-primary-alt) !important;
+    background-color: var(--background-secondary);
+  }
+
+  td,
+  th {
+    border: 1px solid var(--background-primary-alt) !important;
+    padding: 0.6em 1em;
+  }
+
+  tr {
+    border-top: 1px solid var(--background-primary-alt) !important;
+    background-color: var(--background-primary);
+  }
+
+  tr:nth-child(2n) {
+    background-color: var(--background-secondary);
+  }
+
   em {
     color: #bb9af7 !important;
     font-family: OperatorMonoSSmLig-Book, Rubik !important;
@@ -406,6 +433,19 @@
   pre {
     overflow: auto !important;
     overflow-wrap: normal !important;
+  }
+
+  code {
+    color: var(--text-normal);
+    margin: 0;
+    font-size: 0.85em;
+    border-radius: 3px;
+    overflow-wrap: break-word;
+    background-color: var(--bg-accent-05);
+    word-wrap: break-word;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.3rem;
+    color: var(--text-accent) !important;
   }
 }
 
