@@ -5,6 +5,7 @@
       class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8"
       @keydown.meta.k.stop.prevent="handleOpenModal"
       tabindex="-1"
+      :style="cssVariables"
     >
       <HeaderMain />
       <div class="app-banner app-banner-image" :style="headerImage" />
@@ -19,7 +20,7 @@
     </div>
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
   </div>
-  <Footer />
+  <Footer :style="cssVariables" />
   <div class="App-Mobile-sidebar" v-if="isMobile">
     <div id="App-Mobile-Profile" class="App-Mobile-wrapper">
       <MobileMenu />
@@ -202,6 +203,20 @@ export default defineComponent({
       handleEscKey: appStore.handleEscKey,
       isMobile: computed(() => appStore.isMobile),
       configReady: computed(() => appStore.configReady),
+      cssVariables: computed(() => {
+        if (appStore.theme === 'theme-dark') {
+          return `
+            --text-accent: ${appStore.themeConfig.theme.gradient.color_1};
+            --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_3};
+            --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+          `
+        }
+        return `
+          --text-accent: ${appStore.themeConfig.theme.gradient.color_3};
+          --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_2};
+          --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+        `
+      }),
       appWrapperClass,
       loadingBarClass,
       handleOpenModal

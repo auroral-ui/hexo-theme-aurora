@@ -389,6 +389,14 @@
     );
   }
 
+  a strong {
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: inherit;
+    background-color: initial;
+    background-image: none;
+  }
+
   a:hover {
     text-shadow: -1px -1px 2px var(--background-modifier-border),
       -1px 1px 2px var(--background-modifier-border),
@@ -403,6 +411,7 @@
   }
 
   hr {
+    position: relative;
     margin-block-start: 4em;
     margin-block-end: 4em;
     border: none;
@@ -433,6 +442,10 @@
   pre {
     overflow: auto !important;
     overflow-wrap: normal !important;
+  }
+
+  pre code {
+    padding: 0;
   }
 
   code {
