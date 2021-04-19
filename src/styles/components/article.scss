@@ -444,6 +444,10 @@
     overflow-wrap: normal !important;
   }
 
+  pre code {
+    padding: 0;
+  }
+
   code {
     color: var(--text-normal);
     margin: 0;
