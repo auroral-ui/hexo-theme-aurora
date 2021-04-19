@@ -389,6 +389,14 @@
     );
   }
 
+  a strong {
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: inherit;
+    background-color: initial;
+    background-image: none;
+  }
+
   a:hover {
     text-shadow: -1px -1px 2px var(--background-modifier-border),
       -1px 1px 2px var(--background-modifier-border),
