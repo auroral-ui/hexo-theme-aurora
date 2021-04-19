@@ -42,19 +42,6 @@ Aurora is a next generation theme using Aurora colours and UI elements. It give 
 
 ![](https://img-blog.csdnimg.cn/20210328003140590.png)
 
-## 🏅 My sponsors (Coffee Suppliers)
-
-Keep me working on this project 💙
-
-[Click here to check out how to sponsor me.](https://github.com/auroral-ui/hexo-theme-aurora#-donation)
-
-### 🥇 Golden Supplier
-
-<p>
-  <a href="https://github.com/TriDiamond" alt="TriDiamond"><img src="https://avatars.githubusercontent.com/u/24708758?v=4" height="50" width="50"></a>
-  <a href="https://github.com/MozLee" alt="MozLee"><img src="https://q4.qlogo.cn/g?b=qq&nk=68879747&s=100" height="50" width="50"></a>
-</p>
-
 ## 🏳️‍🌈 What's in Aurora?
 
 **Let's us take a look at the feature list and plans for Aurora:**
@@ -93,17 +80,16 @@ Keep me working on this project 💙
 
 - Related posts - _Show a list of the related posts at the end of an article. _
 
-## 🍼 Feedback
+## 🏅 My sponsors (Coffee Suppliers)
 
-> Please check the [ISSUES](https://github.com/auroral-ui/hexo-theme-aurora/issues) before try to use the following contact methods!
-> Maybe the question you have had being asked by others or it's already being answered. Thanks!
+Keep me working on this project 💙
 
-You can give me feedback or issue you have through the following methods:
+### 🥇 Golden Supplier
 
-- **For any questions please post it to the [Github Discussion](https://github.com/auroral-ui/hexo-theme-aurora/discussions) before considering opening an issue.**
-- If you found a bug for the theme, create an [issue!](https://github.com/auroral-ui/hexo-theme-aurora/issues/new) to notify the developer for a fix.
-- Join QQGroup `909955326`
-- Join [Telegram](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A) Group
+<p>
+  <a href="https://github.com/TriDiamond" alt="TriDiamond"><img src="https://avatars.githubusercontent.com/u/24708758?v=4" height="50" width="50"></a>
+  <a href="https://github.com/MozLee" alt="MozLee"><img src="https://q4.qlogo.cn/g?b=qq&nk=68879747&s=100" height="50" width="50"></a>
+</p>
 
 ## 💰 Donation
 
@@ -130,6 +116,18 @@ Thanks for your love in advance! ☀️
 | <img src="https://img-blog.csdnimg.cn/20210330175112304.png" alt="Buy Me A Coffee" width="150"> | <img src="https://img-blog.csdnimg.cn/20210330175153827.png" alt="Buy Me A Coffee" width="150"> |
 
 > 所有赞助人将被列为咖啡支持者，并在本节的赞助人名单中显示。
+
+## 🍼 Feedback
+
+> Please check the [ISSUES](https://github.com/auroral-ui/hexo-theme-aurora/issues) before try to use the following contact methods!
+> Maybe the question you have had being asked by others or it's already being answered. Thanks!
+
+You can give me feedback or issue you have through the following methods:
+
+- **For any questions please post it to the [Github Discussion](https://github.com/auroral-ui/hexo-theme-aurora/discussions) before considering opening an issue.**
+- If you found a bug for the theme, create an [issue!](https://github.com/auroral-ui/hexo-theme-aurora/issues/new) to notify the developer for a fix.
+- Join QQGroup `909955326`
+- Join [Telegram](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A) Group
 
 ## 💬 Join the Community
 
