@@ -2,7 +2,48 @@
 
 对这个项目的所有值得注意的变化都将记录在这个文件中。
 
-# 1.3.0 (2021-04-09)
+## [Unreleased]
+
+## [1.4.2] - 2021-04-19
+
+### :sparkles: Added
+
+- 增加了默认作者的作者链接配置。 [#61](https://github.com/auroral-ui/hexo-theme-aurora/issues/61)
+- Dia bot 适应配置的主题梯度。 [#54](https://github.com/auroral-ui/hexo-theme-aurora/issues/54)
+
+### :crystal_ball: Changed
+
+- 内容标题下划线支持主题渐变配置。 [#56](https://github.com/auroral-ui/hexo-theme-aurora/issues/56)
+- 使用主题渐变制作所有主要颜色。
+- 增强的主题渐变适用于整个主题。
+- 将 prism 颜色方案更改为 VSCode 主题。 [Aurora Future](https://github.com/auroral-ui/hexo-theme-aurora).
+- 更新 `CHANGELOG` 的格式，使用了 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 的格式。
+
+### :wrench: Fixed
+
+- 修正了代码默认颜色受主题颜色影响的问题。
+- 修复了 HR 线的样式被打破的问题。 [#53](https://github.com/auroral-ui/hexo-theme-aurora/issues/53)
+- 修正了标签样式不对齐的问题。 [#59](https://github.com/auroral-ui/hexo-theme-aurora/issues/59)
+- 修正了粗体链接文本与破碎的风格。
+- 修正代码栅栏对齐问题。 [#57](https://github.com/auroral-ui/hexo-theme-aurora/issues/57)
+
+## [1.4.1] - 2021-04-16
+
+### 🔥 热修复补丁
+
+- 修复国际 CDN 有无效链接 (#52)
+
+## [1.4.0] - 2021-04-15
+
+### ✨ 新特性
+
+- 👾 增加了极光机器人`Dia` (**大量的功能被打包到这个机器人中**)
+- 增加了 `表格` 样式。
+- 增加了 `内联代码` 样式。
+
+> 机器人 `Dia` 的配置文档请看： <br> https://aurora.tridiamond.tech/guide/plugins.html#bot-dia
+
+## [1.3.0] - 2021-04-09
 
 ### ✨ 新特性
 
@@ -21,14 +62,14 @@
 - 删除未使用的 Hexo API。
 - 更新了文章的新默认封面图片。
 
-# 1.2.1 (2021-04-08)
+## [1.2.1] - 2021-04-08
 
 ### 🛠 修复
 
 - 修复了标签不显示的问题。
 - 把中国 CDN 改为使用 bootcdn。
 
-## 1.2.0 (2021-04-08)
+## [1.2.0] - 2021-04-08
 
 ### ✨ 新功能
 
@@ -51,7 +92,7 @@
 - 修复了 `图标` 在配置了不显示的问题。
 - 修复 `site_meta` 的 `cdn` 的错误判断。
 
-## 1.1.2 (2021-04-04)
+## [1.1.2] - 2021-04-04
 
 ### 功能
 
@@ -71,13 +112,13 @@
 - 将单元测试引擎改为 Jest
 - 删除了重复的文章日期显示
 
-## 1.1.1 (2021-04-04)
+## [1.1.1] - 2021-04-04
 
 ### Bug 修复
 
 - 修复 NPM 没有 truncate-html 依赖，导致无法 `hexo g`。
 
-## 1.1.0 (2021-04-03)
+## [1.1.0] - 2021-04-03
 
 这个版本开始，主题可以简单地使用 NPM 或 Yarn 安装，让主题用户更容易使用!
 
@@ -116,7 +157,7 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - 修复了推荐文章中的标签骨架显示错误。
 - 修复了 Gitalk 在自定义页面不会创建 issue 的问题。 (#20)
 
-## 1.0.2 (2021-04-01)
+## [1.0.2] - 2021-04-01
 
 ### 更新
 
@@ -131,7 +172,7 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - 删除了没有必要的 CNAME 文件. (#7)
 - 修复了有文章不显示内容的问题. (#8)
 
-## 1.0.1 (2021-03-30)
+## [1.0.1] - 2021-03-30
 
 ### Bug 修复
 
@@ -139,7 +180,7 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - 修复默认页面生成脚本 (#5)
 - 修复了 Gitalk 最近评论的缓存机制 (#6)
 
-## 1.0.0 (2021-03-30)
+## [1.0.0] - 2021-03-30
 
 ### ⭐️ 博客功能
 
@@ -166,3 +207,17 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag done-tag">✔</span> **`自定义菜单`** - _可以自定义添加外部链接、内部链接、自定义页面。_
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
+
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...HEAD
+[1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.2.1...v1.3.0
+[1.2.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.1.2...v1.2.0
+[1.1.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.0.2...v1.1.0
+[1.0.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/auroral-ui/hexo-theme-aurora/releases/tag/v1.0.0

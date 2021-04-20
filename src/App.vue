@@ -5,6 +5,7 @@
       class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8"
       @keydown.meta.k.stop.prevent="handleOpenModal"
       tabindex="-1"
+      :style="cssVariables"
     >
       <HeaderMain />
       <div class="app-banner app-banner-image" :style="headerImage" />
@@ -19,13 +20,14 @@
     </div>
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
   </div>
-  <Footer />
+  <Footer :style="cssVariables" />
   <div class="App-Mobile-sidebar" v-if="isMobile">
     <div id="App-Mobile-Profile" class="App-Mobile-wrapper">
       <MobileMenu />
     </div>
   </div>
   <Navigator />
+  <Dia v-if="!isMobile && configReady" />
   <teleport to="head">
     <title>{{ title }}</title>
     <meta property="og:description" :content="themeConfig.site.description" />
@@ -49,6 +51,7 @@ import HeaderMain from '@/components/Header/src/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
+import Dia from '@/components/Dia.vue'
 
 export default defineComponent({
   name: 'App',
@@ -56,7 +59,8 @@ export default defineComponent({
     HeaderMain,
     Footer,
     Navigator,
-    MobileMenu
+    MobileMenu,
+    Dia
   },
   setup() {
     const appStore = useAppStore()
@@ -198,6 +202,21 @@ export default defineComponent({
       wrapperStyle: computed(() => wrapperStyle.value),
       handleEscKey: appStore.handleEscKey,
       isMobile: computed(() => appStore.isMobile),
+      configReady: computed(() => appStore.configReady),
+      cssVariables: computed(() => {
+        if (appStore.theme === 'theme-dark') {
+          return `
+            --text-accent: ${appStore.themeConfig.theme.gradient.color_1};
+            --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_3};
+            --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+          `
+        }
+        return `
+          --text-accent: ${appStore.themeConfig.theme.gradient.color_3};
+          --text-sub-accent: ${appStore.themeConfig.theme.gradient.color_2};
+          --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
+        `
+      }),
       appWrapperClass,
       loadingBarClass,
       handleOpenModal

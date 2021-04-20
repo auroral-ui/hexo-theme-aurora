@@ -1,8 +1,52 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to the "aurora-future" extension will be documented in this file.
 
-# 1.3.0 (2021-04-09)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.4.2] - 2021-04-19
+
+### :sparkles: Added
+
+- Added author link configuration for default author. [#61](https://github.com/auroral-ui/hexo-theme-aurora/issues/61)
+- Dia bot adapted to configured theme gradient. [#54](https://github.com/auroral-ui/hexo-theme-aurora/issues/54)
+
+### :crystal_ball: Changed
+
+- Content header underline support theme gradient config [#56](https://github.com/auroral-ui/hexo-theme-aurora/issues/56)
+- Made all the main colors using the theme gradient.
+- Enhanced theme gradient to apply to the whole theme.
+- Changed prism color scheme to VSCode theme [Aurora Future](https://github.com/auroral-ui/hexo-theme-aurora).
+- Updated `CHANGELOG` style to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+
+### :wrench: Fixed
+
+- Fixed code default color being affected by theme colors.
+- Fixed HR line style broken [#53](https://github.com/auroral-ui/hexo-theme-aurora/issues/53)
+- Fixed misaligned tag style [#59](https://github.com/auroral-ui/hexo-theme-aurora/issues/59)
+- Fixed bold link text with broken style.
+- Fixed code fence alignment issue [#57](https://github.com/auroral-ui/hexo-theme-aurora/issues/57)
+
+## [1.4.1] - 2021-04-16
+
+### 🔥 Hotfix
+
+- Fixing international CDN has invalid links.(#52)
+
+## [1.4.0] - 2021-04-15
+
+### ✨ New features
+
+- 👾 Added aurora bot `Dia` (**Tons of features are packed into this bot**)
+- Added `table` styles.
+- Added `inline code` styles.
+
+> Document for configuring `Dia` bot <br> https://aurora.tridiamond.tech/guide/plugins.html#bot-dia
+
+## [1.3.0] - 2021-04-09
 
 ### ✨ New features
 
@@ -21,14 +65,14 @@ All notable changes to this project will be documented in this file.
 - Removed unused Hexo API.
 - Updated a new default cover image for articles.
 
-# 1.2.1 (2021-04-08)
+## [1.2.1] - 2021-04-08
 
 ### 🛠 Fixes
 
 - Fixed tags not showing.
 - Changed China CDN back to bootcdn.
 
-## 1.2.0 (2021-04-08)
+## [1.2.0] - 2021-04-08
 
 ### ✨ New features
 
@@ -51,7 +95,7 @@ All notable changes to this project will be documented in this file.
 - Fixed `favicon` is not displaying when configured.
 - Fixed `site_meta`'s `cdn` condition error.
 
-## 1.1.2 (2021-04-04)
+## [1.1.2] - 2021-04-04
 
 ### Features
 
@@ -71,13 +115,13 @@ All notable changes to this project will be documented in this file.
 - Changed unit test engine to Jest.
 - Removed the duplicated article date display.
 
-## 1.1.1 (2021-04-04)
+## [1.1.1] - 2021-04-04
 
 ### Bug fixes
 
 - Fixed truncate-html not in the dependencies requirement, cause `hexo g` failing.
 
-## 1.1.0 (2021-04-03)
+## [1.1.0] - 2021-04-03
 
 Since this version, the theme can be simply installed using NPM or Yarn, makes it much easier for theme users!
 
@@ -115,7 +159,7 @@ For new configuration setup and usage please read the [usage document](https://a
 - Fixed horizontal article's tag skeleton display error.
 - Fixed Gitalk not creating an issue on custom page. (#20)
 
-## 1.0.2 (2021-04-01)
+## [1.0.2] - 2021-04-01
 
 ### Improvements
 
@@ -136,7 +180,7 @@ For new configuration setup and usage please read the [usage document](https://a
 - Fixed default page generation script (#5)
 - Fixed recent comment cache logic (#6)
 
-## 1.0.1 (2021-03-30)
+## [1.0.1] - 2021-03-30
 
 ### Bug Fixes
 
@@ -144,7 +188,7 @@ For new configuration setup and usage please read the [usage document](https://a
 - Fixed default page generation script (#5)
 - Fixed recent comment cache logic (#6)
 
-## 1.0.0 (2021-03-30)
+## [1.0.0] - 2021-03-30
 
 ### ⭐️ Features
 
@@ -173,3 +217,17 @@ For new configuration setup and usage please read the [usage document](https://a
 - <span class="tag new-tag">NEW</span> **`Post navigation`** - _Can navigate to the previous and next article at the end of the article page._
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
+
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...HEAD
+[1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.2.1...v1.3.0
+[1.2.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.1.2...v1.2.0
+[1.1.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.0.2...v1.1.0
+[1.0.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/auroral-ui/hexo-theme-aurora/releases/tag/v1.0.0

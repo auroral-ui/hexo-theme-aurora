@@ -214,7 +214,7 @@ import Comment from '@/components/Comment.vue'
 import { SubTitle } from '@/components/Title'
 import { Article } from '@/components/ArticleCard'
 
-import '@/styles/prism-dracula.css'
+import '@/styles/prism-aurora-future.css'
 import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
 

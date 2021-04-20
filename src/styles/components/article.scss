@@ -339,6 +339,33 @@
     -webkit-text-fill-color: var(--text-faint);
   }
 
+  table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    display: block;
+    overflow-x: auto;
+  }
+
+  th {
+    border: 1px solid var(--background-primary-alt) !important;
+    background-color: var(--background-secondary);
+  }
+
+  td,
+  th {
+    border: 1px solid var(--background-primary-alt) !important;
+    padding: 0.6em 1em;
+  }
+
+  tr {
+    border-top: 1px solid var(--background-primary-alt) !important;
+    background-color: var(--background-primary);
+  }
+
+  tr:nth-child(2n) {
+    background-color: var(--background-secondary);
+  }
+
   em {
     color: #bb9af7 !important;
     font-family: OperatorMonoSSmLig-Book, Rubik !important;
@@ -362,6 +389,14 @@
     );
   }
 
+  a strong {
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: inherit;
+    background-color: initial;
+    background-image: none;
+  }
+
   a:hover {
     text-shadow: -1px -1px 2px var(--background-modifier-border),
       -1px 1px 2px var(--background-modifier-border),
@@ -376,6 +411,7 @@
   }
 
   hr {
+    position: relative;
     margin-block-start: 4em;
     margin-block-end: 4em;
     border: none;
@@ -406,6 +442,23 @@
   pre {
     overflow: auto !important;
     overflow-wrap: normal !important;
+  }
+
+  pre code {
+    padding: 0;
+  }
+
+  code {
+    color: var(--text-normal);
+    margin: 0;
+    font-size: 0.85em;
+    border-radius: 3px;
+    overflow-wrap: break-word;
+    background-color: var(--bg-accent-05);
+    word-wrap: break-word;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.3rem;
+    color: var(--text-accent) !important;
   }
 }
 

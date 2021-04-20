@@ -1,14 +1,18 @@
 <template>
   <div
-    class="header-controls absolute z-10 top-10 right-0 flex"
+    class="header-controls absolute top-10 right-0 flex flex-row"
     @keydown.k="handleOpenModal(true)"
     tabindex="0"
   >
-    <span class="ob-drop-shadow">
-      <svg-icon icon-class="search" @click="handleOpenModal(true)" />
+    <span
+      class="ob-drop-shadow"
+      data-dia="search"
+      @click="handleOpenModal(true)"
+    >
+      <svg-icon icon-class="search" />
     </span>
     <Dropdown v-if="enableMultiLanguage" @command="handleClick">
-      <span class="ob-drop-shadow">
+      <span class="ob-drop-shadow" data-dia="language">
         <svg-icon icon-class="globe" />
         <span v-if="$i18n.locale == 'cn'">中文</span>
         <span v-if="$i18n.locale == 'en'">EN</span>
@@ -18,7 +22,9 @@
         <DropdownItem name="cn">中文</DropdownItem>
       </DropdownMenu>
     </Dropdown>
-    <span no-hover-effect class="ob-drop-shadow"><ThemeToggle /></span>
+    <span no-hover-effect class="ob-drop-shadow" data-dia="light-switch">
+      <ThemeToggle />
+    </span>
   </div>
   <teleport to="body">
     <SearchModal />
@@ -88,6 +94,7 @@ export default defineComponent({
       height: 2rem;
       width: 2rem;
       margin-right: 0.5rem;
+      pointer-events: none;
     }
   }
   .search-bar {

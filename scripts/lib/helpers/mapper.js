@@ -48,7 +48,7 @@ function authorMapper(author, configs) {
       slug: 'blog-author',
       avatar:
         configs.theme_config.site.avatar || configs.theme_config.site.logo,
-      link: '',
+      link: configs.theme_config.site.link || '/',
       description: configs.theme_config.site.description,
       socials: configs.theme_config.socials
     })

@@ -5,6 +5,7 @@
   >
     <div
       class="ob-gradient-cut-plate absolute bg-ob-deep-900 rounded-xl opacity-90 flex justify-center items-center pt-4 px-6 shadow-lg hover:shadow-2xl duration-300"
+      data-dia="author"
     >
       <div
         class="profile absolute w-full flex flex-col justify-center items-center"

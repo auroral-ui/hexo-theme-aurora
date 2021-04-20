@@ -40,7 +40,7 @@
         v-if="post.title"
         :to="{ name: 'post', params: { slug: post.slug } }"
       >
-        <h1>{{ post.title }}</h1>
+        <h1 data-dia="article-link">{{ post.title }}</h1>
       </router-link>
       <ob-skeleton v-else tag="h1" height="3rem" />
 

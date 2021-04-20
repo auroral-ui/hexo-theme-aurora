@@ -2,20 +2,19 @@
   <div
     class="flex flex-row items-center hover:opacity-50 mr-2 mb-2 cursor-pointer transition-all"
   >
-    <router-link :to="{ name: 'tags-search', query: { slug: slug } }">
-      <span
-        class="bg-ob-deep-900 text-center px-3 py-1 rounded-tl-md rounded-bl-md text-sm"
-        :style="stylingTag()"
-      >
-        <em class="opacity-50"># </em>{{ name }}
-      </span>
+    <router-link
+      class="bg-ob-deep-900 text-center px-3 py-1 rounded-tl-md rounded-bl-md text-sm"
+      :to="{ name: 'tags-search', query: { slug: slug } }"
+      :style="stylingTag()"
+    >
+      <em class="opacity-50"># </em>{{ name }}
     </router-link>
-    <b
+    <span
       class="bg-ob-deep-900 text-ob-secondary text-center px-2 py-1 rounded-tr-md rounded-br-md text-sm opacity-70"
       :style="stylingTag()"
     >
       {{ count }}
-    </b>
+    </span>
   </div>
 </template>
 
