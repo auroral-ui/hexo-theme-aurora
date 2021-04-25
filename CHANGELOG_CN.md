@@ -4,6 +4,28 @@
 
 ## [Unreleased]
 
+## [1.4.3] - 2021-04-25
+
+### :sparkles: 新增
+
+- 增加了 mailto 链接的支持。 [#74](https://github.com/auroral-ui/hexo-theme-aurora/issues/74)
+- 页脚增加了公安备案信息 [#72](https://github.com/auroral-ui/hexo-theme-aurora/issues/72)
+- 多作者支持自定义社会链接。
+
+### :crystal_ball: 修改
+
+- 改变了作者自定义社交的配置方法。
+
+### :wrench: 修复
+
+- 修正了默认档案菜单的拼写错误 [#65](https://github.com/auroral-ui/hexo-theme-aurora/issues/65)
+- 修复了字符串 replaceAll 函数的兼容性问题 [#73](https://github.com/auroral-ui/hexo-theme-aurora/issues/73)
+- 修正了自定义社会继承到其他作者[#71](https://github.com/auroral-ui/hexo-theme-aurora/issues/71)
+
+### :poop: 删除
+
+- 删除了 fonts.scss.
+
 ## [1.4.2] - 2021-04-19
 
 ### :sparkles: Added
@@ -208,7 +230,8 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...HEAD
+[1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.3.0...v1.4.0

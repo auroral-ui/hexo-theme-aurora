@@ -78,7 +78,8 @@ function socialMapper(socials) {
     weibo: socials.weibo || '',
     zhihu: socials.zhihu || '',
     csdn: socials.csdn || '',
-    juejin: socials.juejin || ''
+    juejin: socials.juejin || '',
+    customs: socials.customs || {}
   }
 }
 

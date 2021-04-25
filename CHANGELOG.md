@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.3] - 2021-04-25
+
+### :sparkles: Added
+
+- Added support for mailto link. [#74](https://github.com/auroral-ui/hexo-theme-aurora/issues/74)
+- Added police beian info in footer [#72](https://github.com/auroral-ui/hexo-theme-aurora/issues/72)
+- Multi author supports custom social links.
+
+### :crystal_ball: Changed
+
+- Changed the configuration method of author custom socials.
+
+### :wrench: Fixed
+
+- Fixed spelling mistake for default archives menu [#65](https://github.com/auroral-ui/hexo-theme-aurora/issues/65)
+- Fixed string replaceAll function compatibility issue [#73](https://github.com/auroral-ui/hexo-theme-aurora/issues/73)
+- Fixed custom social inherited to other authors [#71](https://github.com/auroral-ui/hexo-theme-aurora/issues/71)
+
+### :poop: Deleted
+
+- Removed fonts.scss.
+
 ## [1.4.2] - 2021-04-19
 
 ### :sparkles: Added
@@ -218,7 +240,8 @@ For new configuration setup and usage please read the [usage document](https://a
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...HEAD
+[1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.3.0...v1.4.0

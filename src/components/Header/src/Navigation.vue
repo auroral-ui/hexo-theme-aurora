@@ -78,6 +78,7 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useAppStore } from '@/stores/app'
 import { Dropdown, DropdownMenu, DropdownItem } from '@/components/Dropdown'
+import { isExternal } from '@/utils/validate'
 
 export default defineComponent({
   name: 'Navigation',
@@ -89,7 +90,7 @@ export default defineComponent({
 
     const pushPage = (path: string): void => {
       if (!path) return
-      if (path.match(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g)) {
+      if (isExternal(path)) {
         window.location.href = path
       } else {
         router.push({
