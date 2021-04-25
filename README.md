@@ -80,15 +80,22 @@ Aurora is a next generation theme using Aurora colours and UI elements. It give 
 
 - Related posts - _Show a list of the related posts at the end of an article. _
 
-## 🏅 My sponsors (Coffee Suppliers)
+## 🏆 My sponsors (Coffee Suppliers)
 
 Keep me working on this project 💙
+
+### 💜 Monthly Supplier
+
+<p>
+  <a href="https://afdian.net/u/13fd58d29e8811eb91a852540025c377" style="font-size: 1.2rem;"><img src=" https://q4.qlogo.cn/g?b=qq&nk=348920728&s=100" height="50" width="50"></a>
+</p>
 
 ### 🥇 Golden Supplier
 
 <p>
   <a href="https://github.com/TriDiamond" alt="TriDiamond"><img src="https://avatars.githubusercontent.com/u/24708758?v=4" height="50" width="50"></a>
   <a href="https://github.com/MozLee" alt="MozLee"><img src="https://q4.qlogo.cn/g?b=qq&nk=68879747&s=100" height="50" width="50"></a>
+  <a href="https://gitee.com/appleaday" alt="=鱼"><img src="https://q4.qlogo.cn/g?b=qq&nk=1349703146&s=100" height="50" width="50"></a>
 </p>
 
 ## 💰 Donation
