@@ -103,7 +103,7 @@ export class ThemeMenu implements ObMenu {
         path: '/archives',
         i18n: {
           cn: '归档',
-          en: 'Achieves'
+          en: 'Archives'
         }
       },
       Tags: {
