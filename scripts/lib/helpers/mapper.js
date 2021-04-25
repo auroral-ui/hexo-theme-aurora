@@ -39,23 +39,26 @@ function authorMapper(author, configs) {
   const configAuthors = configs.theme_config.authors
 
   if (typeof author === 'string' && configAuthors[author]) {
-    return authorAttributes(configAuthors[author])
+    return authorAttributes(configAuthors[author], configs)
   } else if (typeof author === 'object') {
-    return authorAttributes(author)
+    return authorAttributes(author, configs)
   } else {
-    return authorAttributes({
-      name: configs.theme_config.site.author,
-      slug: 'blog-author',
-      avatar:
-        configs.theme_config.site.avatar || configs.theme_config.site.logo,
-      link: configs.theme_config.site.link || '/',
-      description: configs.theme_config.site.description,
-      socials: configs.theme_config.socials
-    })
+    return authorAttributes(
+      {
+        name: configs.theme_config.site.author,
+        slug: 'blog-author',
+        avatar:
+          configs.theme_config.site.avatar || configs.theme_config.site.logo,
+        link: configs.theme_config.site.link || '/',
+        description: configs.theme_config.site.description,
+        socials: configs.theme_config.socials
+      },
+      configs
+    )
   }
 }
 
-function authorAttributes(author) {
+function authorAttributes(author, configs) {
   return {
     name: author.name,
     slug:
@@ -64,11 +67,11 @@ function authorAttributes(author) {
     avatar: author.avatar || '',
     link: author.link || '',
     description: author.description || '',
-    socials: author.socials ? socialMapper(author.socials) : {}
+    socials: author.socials ? socialMapper(author.socials, author, configs) : {}
   }
 }
 
-function socialMapper(socials) {
+function socialMapper(socials, author, configs) {
   return {
     github: socials.github || '',
     twitter: socials.twitter || '',
@@ -78,7 +81,11 @@ function socialMapper(socials) {
     weibo: socials.weibo || '',
     zhihu: socials.zhihu || '',
     csdn: socials.csdn || '',
-    juejin: socials.juejin || ''
+    juejin: socials.juejin || '',
+    customs:
+      configs.theme_config.site.author === author.name
+        ? configs.theme_config.custom_socials
+        : {}
   }
 }
 

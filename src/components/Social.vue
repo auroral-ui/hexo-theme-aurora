@@ -65,8 +65,7 @@
 </template>
 
 <script lang="ts">
-import { useAppStore } from '@/stores/app'
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, toRefs } from 'vue'
 
 export default defineComponent({
   name: 'AuSocial',
@@ -78,11 +77,10 @@ export default defineComponent({
       }
     }
   },
-  setup() {
-    const appStore = useAppStore()
-
+  setup(props) {
+    const socials = toRefs(props).socials
     return {
-      customSocials: computed(() => appStore.themeConfig.custom_socials.socials)
+      customSocials: computed(() => socials.value.customs.socials)
     }
   }
 })
