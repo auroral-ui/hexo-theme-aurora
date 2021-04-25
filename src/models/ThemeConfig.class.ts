@@ -373,6 +373,11 @@ export class Site {
     number: '',
     link: ''
   }
+  /** China server police beian info */
+  police_beian = {
+    number: '',
+    link: ''
+  }
 
   /**
    * Model class for Site general settings

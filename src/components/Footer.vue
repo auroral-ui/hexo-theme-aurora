@@ -7,7 +7,7 @@
         <div
           class="flex flex-col lg:flex-row gap-6 lg:gap-12 row-span-1 lg:col-span-3 text-center lg:text-left"
         >
-          <ul>
+          <ul class="flex flex-col gap-1.5">
             <li>
               Copyright © 2019 - {{ currentYear }}
               <b class="font-extrabold"> {{ themeConfig.site.author }} </b>. All
@@ -28,12 +28,37 @@
               </a>
               .
             </li>
-            <li v-if="themeConfig.site.beian.number !== ''">
-              备案信息：<a :href="themeConfig.site.beian.link">
-                <b class="font-extrabold border-b-2 border-ob hover:text-ob">
-                  {{ themeConfig.site.beian.number }}
+            <li
+              v-if="
+                themeConfig.site.beian.number !== '' &&
+                themeConfig.site.police_beian.number !== ''
+              "
+              class="flex flex-row gap-3"
+            >
+              <span v-if="themeConfig.site.police_beian.number !== ''">
+                <img
+                  class="inline-block"
+                  :src="require('@/assets/gongan-beian-40-40.png')"
+                  alt=""
+                  width="15"
+                />
+                <b>
+                  公安备案信息：<a :href="themeConfig.site.beian.link">
+                    <b
+                      class="font-extrabold border-b-2 border-ob hover:text-ob"
+                    >
+                      {{ themeConfig.site.beian.number }}
+                    </b>
+                  </a>
                 </b>
-              </a>
+              </span>
+              <span v-if="themeConfig.site.beian.number !== ''">
+                备案信息：<a :href="themeConfig.site.beian.link">
+                  <b class="font-extrabold border-b-2 border-ob hover:text-ob">
+                    {{ themeConfig.site.beian.number }}
+                  </b>
+                </a>
+              </span>
             </li>
           </ul>
           <ul>

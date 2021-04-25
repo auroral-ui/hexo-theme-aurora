@@ -21,6 +21,9 @@ site:
   beian:
     number: ''
     link: ''
+  police_beian:
+    number: ''
+    link: ''
 
 #! ---------------------------------------------------------------
 #! Authors Configs
