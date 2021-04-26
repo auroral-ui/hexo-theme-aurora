@@ -1,5 +1,6 @@
 const chalk = require('chalk')
 const pack = require('../package.json')
+require('./lib/filters')(hexo)
 require('./lib/generators')(hexo)
 require('./lib/injector')(hexo)
 

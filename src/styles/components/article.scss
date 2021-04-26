@@ -278,6 +278,7 @@
     margin-inline-start: 0;
   }
 
+  .custom-quote,
   blockquote {
     position: relative;
     padding: 0.5rem 1rem 0.5rem 2rem;
@@ -286,44 +287,182 @@
     border-bottom-right-radius: 5px;
     margin-bottom: 2em;
     margin-right: 0 !important;
-    border-left: 3px rgba(14, 210, 247, 0.5) solid;
+    border-left: 3px var(--text-accent) solid;
     border-top: transparent;
     border-bottom: transparent;
     border-right: transparent;
     background: linear-gradient(
       135deg,
       var(--background-primary),
-      var(--background-secondary),
+      var(--background-primary) 41.07%,
+      var(--background-secondary) 76.05%,
       var(--background-secondary)
     );
   }
 
+  .custom-quote::before,
   blockquote::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0px;
     height: 2px;
-    width: 60%;
+    width: 76%;
     background: linear-gradient(
       90deg,
-      rgba(13, 185, 215, 0.5),
-      var(--background-secondary)
+      var(--text-accent),
+      var(--background-secondary) 76.05%
     );
   }
 
+  .custom-quote::after,
   blockquote::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0px;
     height: 2px;
-    width: 25%;
+    width: 45%;
     background: linear-gradient(
       90deg,
-      rgba(13, 185, 215, 0.5),
+      var(--text-accent),
+      var(--background-primary) 45%
+    );
+  }
+
+  .custom-quote-svg,
+  .custom-blockquote-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -0.65rem;
+    left: -1rem;
+    height: 2.3rem;
+    width: 2.3rem;
+    fill: currentColor;
+    stroke: var(--background-secondary);
+    overflow: hidden;
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .custom-blockquote-svg {
+    color: var(--text-accent);
+  }
+
+  .custom-quote.tip .custom-quote-svg {
+    color: var(--custom-quote-tip);
+  }
+
+  .custom-quote.tip {
+    .custom-quote-title {
+      color: var(--custom-quote-tip);
+    }
+    border-left: 3px solid var(--custom-quote-tip) !important;
+  }
+
+  .custom-quote.tip::before {
+    background: linear-gradient(
+      90deg,
+      var(--custom-quote-tip),
+      var(--background-primary)
+    );
+  }
+
+  .custom-quote.tip::after {
+    background: linear-gradient(
+      90deg,
+      var(--custom-quote-tip),
+      var(--background-primary)
+    );
+  }
+
+  .custom-quote.warning .custom-quote-svg {
+    color: var(--custom-quote-warning);
+  }
+
+  .custom-quote.warning {
+    .custom-quote-title {
+      color: var(--custom-quote-warning);
+    }
+    border-left: 3px solid var(--custom-quote-warning) !important;
+  }
+
+  .custom-quote.warning::before {
+    background: linear-gradient(
+      90deg,
+      var(--custom-quote-warning),
+      var(--background-primary)
+    );
+  }
+
+  .custom-quote.warning::after {
+    background: linear-gradient(
+      90deg,
+      var(--custom-quote-warning),
+      var(--background-primary)
+    );
+  }
+
+  .custom-quote.danger .custom-quote-svg {
+    color: var(--custom-quote-danger);
+  }
+
+  .custom-quote.danger {
+    .custom-quote-title {
+      color: var(--custom-quote-danger);
+    }
+    border-left: 3px solid var(--custom-quote-danger) !important;
+  }
+
+  .custom-quote.danger::before {
+    background: linear-gradient(
+      90deg,
+      var(--custom-quote-danger),
+      var(--background-primary)
+    );
+  }
+
+  .custom-quote.danger::after {
+    background: linear-gradient(
+      90deg,
+      var(--custom-quote-danger),
+      var(--background-primary)
+    );
+  }
+
+  .custom-details {
+    @apply rounded-xl;
+    padding: 1rem;
+    background: linear-gradient(
+      135deg,
+      var(--background-primary),
+      var(--background-primary) 41.07%,
+      var(--background-secondary) 76.05%,
       var(--background-secondary)
     );
+    summary {
+      @apply rounded-lg cursor-pointer transition-all;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none; /* Non-prefixed version, currently */
+      padding: 0.5rem 1.2rem;
+      background: linear-gradient(
+        135deg,
+        var(--bg-accent-55),
+        transparent 46.07%
+      );
+      opacity: 1;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   }
 
   strong {
