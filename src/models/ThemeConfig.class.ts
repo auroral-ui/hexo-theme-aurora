@@ -37,8 +37,6 @@ export class ThemeConfig {
   site: Site = new Site()
   /** Socials config data */
   socials: Social = new Social()
-  /** Custom socials config data */
-  custom_socials: CustomSocials = new CustomSocials()
   /** Meta data for the site */
   site_meta: SiteMeta = new SiteMeta()
   /** Plugin configs */
@@ -59,7 +57,6 @@ export class ThemeConfig {
       this.theme = new Theme(rawConfig.theme)
       this.site = new Site(rawConfig.site)
       this.socials = new Social(rawConfig.socials)
-      this.custom_socials = new CustomSocials(rawConfig.custom_socials)
       this.plugins = new Plugins(rawConfig)
       this.site_meta = new SiteMeta(rawConfig.site_meta)
       this.version = rawConfig.version
@@ -103,7 +100,7 @@ export class ThemeMenu implements ObMenu {
         path: '/archives',
         i18n: {
           cn: '归档',
-          en: 'Achieves'
+          en: 'Archives'
         }
       },
       Tags: {
@@ -284,17 +281,22 @@ export class Social {
   csdn = ''
   juejin = ''
   zhihu = ''
+  customs: CustomSocials = new CustomSocials()
 
   /**
    * Model class for Social media links
    *
    * @param raw - Config data generated from Hexo
    */
-  constructor(raw?: StringConfig) {
+  constructor(raw?: GeneralOptions) {
     if (raw) {
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
-          Object.assign(this, { [key]: raw[key] })
+          if (key === 'customs') {
+            Object.assign(this.customs, new CustomSocials(raw[key]))
+          } else {
+            Object.assign(this, { [key]: raw[key] })
+          }
         }
       }
     }
@@ -368,6 +370,11 @@ export class Site {
   avatar = ''
   /** China server beian info */
   beian = {
+    number: '',
+    link: ''
+  }
+  /** China server police beian info */
+  police_beian = {
     number: '',
     link: ''
   }

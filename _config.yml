@@ -21,6 +21,9 @@ site:
   beian:
     number: ''
     link: ''
+  police_beian:
+    number: ''
+    link: ''
 
 #! ---------------------------------------------------------------
 #! Authors Configs
@@ -62,8 +65,7 @@ theme:
 #! @docs https://aurora.tridiamond.tech/guide/social.html
 #! ---------------------------------------------------------------
 socials:
-
-custom_socials:
+  customs:
   ##! Example:
   ##! --- Using SVG
   # bilibili:

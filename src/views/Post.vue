@@ -239,7 +239,7 @@ export default defineComponent({
         top: 0
       })
       let slug = String(route.params.slug)
-      slug = slug.indexOf(',') ? slug.replaceAll(',', '/') : slug
+      slug = slug.indexOf(',') ? slug.replace(/[,]+/g, '/') : slug
       await postStore.fetchPost(slug).then((response) => {
         post.value = response
         metaStore.setTitle(post.value.title)
