@@ -30,7 +30,6 @@
   <Dia v-if="!isMobile && configReady" />
   <teleport to="head">
     <title>{{ title }}</title>
-    <meta property="og:description" :content="themeConfig.site.description" />
   </teleport>
 </template>
 

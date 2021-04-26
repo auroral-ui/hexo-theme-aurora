@@ -89,6 +89,9 @@ socials:
 site_meta:
   cdn: cn
   favicon:
+  description: ''
+  keywords: ''
+  author: ''
 
 #! ---------------------------------------------------------------
 #! Plugins

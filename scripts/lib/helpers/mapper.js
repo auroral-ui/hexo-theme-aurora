@@ -1,11 +1,7 @@
-const symbolsCountTime = require('../helpers/symbols-count-time')
-const truncateHTML = require('../helpers/truncate-html')
-const toc = require('../helpers/toc')
-const {
-  generateUid,
-  fetchCovers,
-  filterHTMLCharacters
-} = require('../helpers/utils')
+const symbolsCountTime = require('./symbols-count-time')
+const truncateHTML = require('./truncate-html')
+const toc = require('./toc')
+const { generateUid, fetchCovers, filterHTMLCharacters } = require('./utils')
 
 /**
  * Post Mappers

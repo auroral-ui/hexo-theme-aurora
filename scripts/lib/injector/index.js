@@ -63,6 +63,28 @@ module.exports = function (hexo) {
     }
   }
 
+  // SEO injections
+  if (themeConfig.site_meta.description) {
+    hexo.extend.injector.register(
+      'head_begin',
+      `<meta name="description" content="${themeConfig.site_meta.description}"></meta>`
+    )
+  }
+
+  if (themeConfig.site_meta.keywords) {
+    hexo.extend.injector.register(
+      'head_begin',
+      `<meta name="keywords" content="${themeConfig.site_meta.keywords}"></meta>`
+    )
+  }
+
+  if (themeConfig.site_meta.author) {
+    hexo.extend.injector.register(
+      'head_begin',
+      `<meta name="author" content="${themeConfig.site_meta.author}"></meta>`
+    )
+  }
+
   if (themeConfig.injects) {
     // Injecting additional custom injections
     // Injecting all scripts
