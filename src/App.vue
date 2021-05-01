@@ -174,7 +174,7 @@ export default defineComponent({
      */
     watch(
       () => appStore.appLoading,
-      (newState) => {
+      newState => {
         loadingBarClass.value['nprogress-custom-parent'] = newState
       }
     )

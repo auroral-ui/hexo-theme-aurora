@@ -153,7 +153,7 @@ export default defineComponent({
             100
           ).toFixed(0)
         )
-      }, 16)
+      }, 0)
     }
 
     const handleNavigatorToggle = () => {

@@ -4,17 +4,22 @@
     .article-tag {
       transform: translateY(-55%);
     }
+    .article,
+    .feature-article {
+      transform: scale(1.015);
+    }
   }
   .article-tag {
     @apply absolute flex items-start left-6 -top-1 pt-0.5 pb-3 px-3 rounded-md text-sm text-white font-bold shadow-lg uppercase transform;
     background: var(--main-gradient);
     z-index: 0;
-    transition: transform 100ms ease-in-out;
+    transition: transform 200ms ease-in-out;
   }
 }
 
 .article {
   @apply relative top-0 z-10 rounded-2xl bg-ob-deep-800 shadow-lg grid grid-rows-3 overflow-hidden h-full;
+  transition: transform 0.2s ease-in-out;
   .article-thumbnail {
     @apply row-span-1 relative;
     img {
@@ -70,6 +75,7 @@
 
 .feature-article {
   @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-98 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800;
+  transition: transform 0.2s ease-in-out;
   .feature-thumbnail {
     @apply relative row-span-1 lg:row-auto;
     img {
