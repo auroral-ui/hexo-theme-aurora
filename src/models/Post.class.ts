@@ -72,6 +72,8 @@ export class Post {
     avatar: '',
     link: ''
   }
+  feature = false
+  pinned = false
 
   constructor(raw?: {
     [key: string]: Array<any> | string | { [key: string]: any }

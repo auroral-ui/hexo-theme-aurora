@@ -1,15 +1,24 @@
-.article {
-  @apply rounded-2xl bg-ob-deep-800 shadow-lg grid grid-rows-3 overflow-hidden hover:shadow-ob transition-shadow h-full;
-  transition-property: border-color, opacity, box-shadow, transform;
+.article-container {
+  @apply relative h-full rounded-2xl;
   &:hover {
-    .article-thumbnail .thumbnail-screen {
-      display: none !important;
+    .article-tag {
+      transform: translateY(-55%);
     }
   }
+  .article-tag {
+    @apply absolute flex items-start left-6 -top-1 pt-0.5 pb-3 px-3 rounded-md text-sm text-white font-bold shadow-lg uppercase transform;
+    background: var(--main-gradient);
+    z-index: 0;
+    transition: transform 100ms ease-in-out;
+  }
+}
+
+.article {
+  @apply relative top-0 z-10 rounded-2xl bg-ob-deep-800 shadow-lg grid grid-rows-3 overflow-hidden h-full;
   .article-thumbnail {
     @apply row-span-1 relative;
     img {
-      @apply block absolute z-20 bg-cover bg-no-repeat object-cover w-full h-12/10;
+      @apply rounded-2xl block absolute z-20 bg-cover bg-no-repeat object-cover w-full h-12/10;
     }
     .thumbnail-screen {
       @apply z-30 absolute w-full h-12/10 left-0 pointer-events-none opacity-40;
@@ -60,13 +69,7 @@
 }
 
 .feature-article {
-  @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-98 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800 hover:shadow-ob transition-shadow;
-  transition-property: transform, shadow;
-  &:hover {
-    .thumbnail-screen {
-      background: rgba(0, 0, 0, 0) !important;
-    }
-  }
+  @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-98 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800;
   .feature-thumbnail {
     @apply relative row-span-1 lg:row-auto;
     img {

@@ -67,6 +67,8 @@
     "tips-open-search": "Open search",
     "default-category": "Article",
     "default-tag": "unsorted",
-    "empty-tag": "Current no tags were found."
+    "empty-tag": "Current no tags were found.",
+    "pinned": "Pinned",
+    "featured": "Featured"
   }
 }

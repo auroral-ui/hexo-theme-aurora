@@ -18,7 +18,8 @@ function postMapper(post, configs) {
     keywords: configs.keywords,
     cover: post.cover || fetchCovers(post.content),
     content: post.content,
-    feature: post.feature || null,
+    feature: post.feature,
+    pinned: post.pinned,
     text: truncateHTML(post.content, post.preview || 140),
     link: post.link,
     photos: post.photos,
@@ -97,7 +98,9 @@ function postListMapper(post, configs) {
     count_time: post.count_time,
     categories: post.categories,
     tags: post.tags,
-    author: post.author
+    author: post.author,
+    feature: post.feature,
+    pinned: post.pinned
   }
 }
 
