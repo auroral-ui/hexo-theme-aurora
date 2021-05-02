@@ -84,7 +84,7 @@ class PostGenerator {
           data: value
         })
         fillOutIndexes.push(i)
-      } else if (dummyData.length !== this.featureCapacity) {
+      } else if (this.isFeature && dummyData.length !== this.featureCapacity) {
         dummyData.unshift({
           index: value.date.valueOf(),
           data: value
