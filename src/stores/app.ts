@@ -92,7 +92,7 @@ export const useAppStore = defineStore({
     /** Fetching blog's statistics */
     async fetchStat() {
       const { data } = await fetchStatistic()
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.statistic = new Statistic(data)
         resolve(this.statistic)
       })

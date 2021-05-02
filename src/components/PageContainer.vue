@@ -61,7 +61,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, onUnmounted, toRefs } from 'vue'
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  onUnmounted,
+  toRefs,
+  watch
+} from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { useAppStore } from '@/stores/app'
@@ -87,8 +94,16 @@ export default defineComponent({
     const post = toRefs(props).post
     const title = toRefs(props).title
 
+    watch(
+      () => post.value.covers,
+      value => {
+        console.log(value)
+        if (value) appStore.setHeaderImage(value)
+      }
+    )
+
     onMounted(() => {
-      appStore.setHeaderImage(post.value.cover)
+      appStore.setHeaderImage(post.value.covers)
     })
 
     onUnmounted(() => {

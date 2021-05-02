@@ -57,15 +57,17 @@
 <script lang="ts">
 import { Archives } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { defineComponent, onBeforeMount, ref } from 'vue'
+import { defineComponent, onBeforeMount, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Paginator from '@/components/Paginator.vue'
+import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'Archives',
   components: { Breadcrumbs, Paginator },
   setup() {
+    const appStore = useAppStore()
     const postStore = usePostStore()
     const { t } = useI18n()
     const archives = ref(new Archives().data)
@@ -75,10 +77,11 @@ export default defineComponent({
     })
 
     const fetchData = () => {
-      postStore.fetchArchives(pagination.value.page).then((data) => {
+      postStore.fetchArchives(pagination.value.page).then(data => {
         pagination.value.pageTotal = data.total
         archives.value = data.data
       })
+      appStore.setHeaderImage(`${require('@/assets/default-cover.jpg')}`)
     }
 
     const pageChangeHanlder = (page: number) => {
@@ -91,6 +94,9 @@ export default defineComponent({
     }
 
     onBeforeMount(fetchData)
+    onUnmounted(() => {
+      appStore.resetHeaderImage()
+    })
 
     return { pageChangeHanlder, pagination, archives, t }
   }

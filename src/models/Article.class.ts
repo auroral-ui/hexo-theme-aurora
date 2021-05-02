@@ -6,7 +6,7 @@ export interface Detail {
   updated: string
   comments: boolean
   path: string
-  covers: string[] | null
+  covers: string | null
   excerpt: string | null
   content: string
   toc: string
@@ -22,7 +22,7 @@ export class Article extends Post implements Detail {
   updated = ''
   comments = false
   path = ''
-  covers: string[] | null = null
+  covers: string | null = null
   excerpt: string | null = null
   content = ''
   count_time = {}
@@ -50,7 +50,7 @@ export class Page implements Detail {
   updated = ''
   comments = false
   path = ''
-  covers: string[] | null = null
+  covers: string | null = null
   excerpt: string | null = null
   content = ''
   count_time = {}

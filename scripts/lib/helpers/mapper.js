@@ -198,7 +198,7 @@ function pageMapper(page) {
       updated: page.updated,
       comments: page.comments,
       path: path,
-      covers: fetchCovers(page.content),
+      covers: page.cover || fetchCovers(page.content),
       excerpt: page.excerpt,
       content: page.content,
       count_time: symbolsCountTime(page.content),
