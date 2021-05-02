@@ -23,7 +23,7 @@
           <ob-skeleton v-else tag="b" height="20px" width="35px" />
 
           <ul v-if="post.tags && post.tags.length > 0">
-            <li v-for="tag in post.tags" :key="tag.slug">
+            <li v-for="tag in post.min_tags" :key="tag.slug">
               <em># {{ tag.name }}</em>
             </li>
           </ul>
