@@ -1,4 +1,4 @@
-const QUOTE_REGEX = /^<p>:{3}([a-zA-Z0-9]+)\s?([\s\S]*?)(?:<\/p>\n|<br>)([\s\S]*?)(?:<p>|<br>):{3}<\/p>$/gm
+const QUOTE_REGEX = /<p>:{3}([a-zA-Z0-9]+)\s?([\s\S]*?)(?:<\/p>\n|<br>)([\s\S]*?)(?:<p>|<br>):{3}<\/p>/gm
 const QUOTE_TYPES = ['tip', 'warning', 'danger', 'details']
 const TAG_REGEX = /^<\/?([ul|ol|p]+)>/g
 const BLOCKQUOTE_REGEX = /^<blockquote>\n([\s\S]*?)\n<\/blockquote>$/gm
