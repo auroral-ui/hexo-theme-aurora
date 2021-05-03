@@ -1,10 +1,10 @@
 <template>
   <li class="article-container">
     <span v-if="post.pinned" class="article-tag">
-      <b>{{ t('settings.pinned') }}</b>
+      <b><svg-icon icon-class="pin" /> {{ t('settings.pinned') }}</b>
     </span>
     <span v-else-if="post.feature" class="article-tag">
-      <b>{{ t('settings.featured') }}</b>
+      <b><svg-icon icon-class="hot" /> {{ t('settings.featured') }}</b>
     </span>
     <div class="article">
       <div class="article-thumbnail">

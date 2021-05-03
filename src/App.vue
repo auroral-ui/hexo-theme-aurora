@@ -394,17 +394,4 @@ body {
   z-index: 2;
   opacity: 0.91;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #cccccc;
-
-    &.router-link-exact-active {
-      color: #0fb6d6;
-    }
-  }
-}
 </style>

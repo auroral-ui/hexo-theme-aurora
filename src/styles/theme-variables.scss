@@ -355,6 +355,6 @@
   }
 }
 
-a:hover {
-  @apply hover:opacity-50 hover:text-ob transition-all;
+a {
+  @apply hover:opacity-50 transition-all;
 }
