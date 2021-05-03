@@ -1,7 +1,7 @@
 const QUOTE_REGEX = /<p>:{3}([a-zA-Z0-9]+)\s?([\s\S]*?)(?:<\/p>\n|<br>)([\s\S]*?)(?:<p>|<br>):{3}<\/p>/gm
 const QUOTE_TYPES = ['tip', 'warning', 'danger', 'details']
 const TAG_REGEX = /^<\/?([ul|ol|p]+)>/g
-const BLOCKQUOTE_REGEX = /^<blockquote>\n([\s\S]*?)\n<\/blockquote>$/gm
+const BLOCKQUOTE_REGEX = /<blockquote>\n([\s\S]*?)\n<\/blockquote>/gm
 const QUOTE_LANG = {
   en: {
     tip: 'TIP',
@@ -12,7 +12,7 @@ const QUOTE_LANG = {
   cn: {
     tip: '提示',
     warning: '注意',
-    danger: '注意',
+    danger: '特别注意',
     details: '隐藏内容'
   }
 }

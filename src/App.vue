@@ -195,7 +195,7 @@ export default defineComponent({
       headerBaseBackground: computed(() => {
         return {
           background: appStore.themeConfig.theme.header_gradient_css,
-          opacity: appStore.headerImage !== '' ? 0.81 : 0.91
+          opacity: appStore.headerImage !== '' ? 0.91 : 0.99
         }
       }),
       wrapperStyle: computed(() => wrapperStyle.value),
