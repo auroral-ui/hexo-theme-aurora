@@ -32,7 +32,7 @@ export const usePostStore = defineStore({
   actions: {
     async fetchFeaturePosts() {
       const { data } = await fetchFeature()
-      return new Promise((resolve) =>
+      return new Promise(resolve =>
         setTimeout(() => {
           this.featurePosts = new FeaturePosts(data)
           resolve(this.featurePosts)
@@ -42,7 +42,7 @@ export const usePostStore = defineStore({
     async fetchPostsList(page?: number): Promise<PostList> {
       if (!page) page = 1
       const { data } = await fetchPostsList(page)
-      return new Promise((resolve) =>
+      return new Promise(resolve =>
         setTimeout(() => {
           this.posts = new PostList(data)
           this.postTotal = this.posts.total
@@ -53,7 +53,7 @@ export const usePostStore = defineStore({
     async fetchArchives(page?: number): Promise<Archives> {
       if (!page) page = 1
       const { data } = await fetchPostsList(page)
-      return new Promise((resolve) =>
+      return new Promise(resolve =>
         setTimeout(() => {
           resolve(new Archives(data))
         }, 200)
@@ -61,7 +61,7 @@ export const usePostStore = defineStore({
     },
     async fetchPost(slug: string): Promise<Post> {
       const { data } = await fetchPostBySlug(slug)
-      return new Promise((resolve) =>
+      return new Promise(resolve =>
         setTimeout(() => {
           resolve(new Post(data))
         }, 200)
@@ -69,7 +69,7 @@ export const usePostStore = defineStore({
     },
     async fetchPostsByCategory(category: string): Promise<SpecificPostsList> {
       const { data } = await fetchPostsListByCategory(category)
-      return new Promise((resolve) =>
+      return new Promise(resolve =>
         setTimeout(() => {
           resolve(new SpecificPostsList(data))
         }, 200)
@@ -77,7 +77,7 @@ export const usePostStore = defineStore({
     },
     async fetchPostsByTag(slug: string): Promise<SpecificPostsList> {
       const { data } = await fetchPostsListByTag(slug)
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         setTimeout(() => {
           resolve(new SpecificPostsList(data))
         }, 200)

@@ -14,7 +14,7 @@ export const useTagStore = defineStore({
   actions: {
     async fetchAllTags() {
       const { data } = await fetchAllTags()
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.tags = new Tags(data).data
         resolve(this.tags)
       })
@@ -22,7 +22,7 @@ export const useTagStore = defineStore({
     async fetchTagsByCount(count: number) {
       this.isLoaded = false
       const { data } = await fetchAllTags()
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.isLoaded = true
         const maxLength = data.length > count ? count : data.length
         this.tags = new Tags(data.splice(0, maxLength)).data

@@ -15,7 +15,7 @@ export const useCategoryStore = defineStore({
     async fetchCategories() {
       this.isLoaded = false
       const { data } = await fetchAllCategories()
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.isLoaded = true
         this.categories = new Categories(data).data
         resolve(this.categories)

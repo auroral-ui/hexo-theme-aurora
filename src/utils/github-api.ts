@@ -68,13 +68,13 @@ export class GithubComments implements GithubCommentsInterface {
   }
 
   async getComments(): Promise<any> {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const cacheComments = this.getCache()
       if (cacheComments.isValid()) {
         this.comments = cacheComments.data
         resolve(this.comments)
       } else {
-        this.fetchCommentData().then((comments) => {
+        this.fetchCommentData().then(comments => {
           resolve(comments)
         })
       }
@@ -115,17 +115,15 @@ export class GithubComments implements GithubCommentsInterface {
       this.configs.repo +
       '/comments?sort=created&direction=desc&per_page=7&page=1'
 
-    return new Promise((resolve) => {
-      this.fetchGithub(url, this.configs.authorizationToken).then(
-        (response) => {
-          const { data } = response
-          this.comments = data.map((item: { [key: string]: any }) => {
-            return new GithubComment(item, this.configs)
-          })
-          this.setCache(this.comments)
-          resolve(this.comments)
-        }
-      )
+    return new Promise(resolve => {
+      this.fetchGithub(url, this.configs.authorizationToken).then(response => {
+        const { data } = response
+        this.comments = data.map((item: { [key: string]: any }) => {
+          return new GithubComment(item, this.configs)
+        })
+        this.setCache(this.comments)
+        resolve(this.comments)
+      })
     })
   }
 

@@ -217,6 +217,7 @@ import { Article } from '@/components/ArticleCard'
 import '@/styles/prism-aurora-future.css'
 import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 
 declare const Prism: any
 
@@ -227,6 +228,7 @@ export default defineComponent({
     const metaStore = useMetaStore()
     const postStore = usePostStore()
     const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const route = useRoute()
     const { t } = useI18n()
     const post = ref(new Post())
@@ -243,7 +245,7 @@ export default defineComponent({
       await postStore.fetchPost(slug).then(response => {
         post.value = response
         metaStore.setTitle(post.value.title)
-        appStore.setHeaderImage(response.cover)
+        commonStore.setHeaderImage(response.cover)
         loading.value = false
       })
       if (appStore.hexoConfig.writing.highlight.enable) {
@@ -274,11 +276,11 @@ export default defineComponent({
 
     onMounted(fetchData)
     onBeforeUnmount(() => {
-      appStore.resetHeaderImage()
+      commonStore.resetHeaderImage()
     })
 
     return {
-      isMobile: computed(() => appStore.isMobile),
+      isMobile: computed(() => commonStore.isMobile),
       handleAuthorClick,
       loading,
       post,

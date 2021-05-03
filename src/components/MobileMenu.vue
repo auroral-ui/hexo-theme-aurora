@@ -132,7 +132,7 @@ export default defineComponent({
     const authorData = ref(new AuthorPosts())
 
     const fetchAuthor = async () => {
-      await authorStore.fetchAuthorData('blog-author').then((data) => {
+      await authorStore.fetchAuthorData('blog-author').then(data => {
         authorData.value = data
       })
     }

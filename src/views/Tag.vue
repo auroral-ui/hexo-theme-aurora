@@ -36,24 +36,24 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useI18n } from 'vue-i18n'
 import { useTagStore } from '@/stores/tag'
 import { TagList, TagItem } from '@/components/Tag'
-import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 
 export default defineComponent({
   name: 'Tag',
   components: { Breadcrumbs, TagList, TagItem },
   setup() {
-    const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const { t } = useI18n()
     const tagStore = useTagStore()
 
     const fetchData = async () => {
       tagStore.fetchAllTags()
-      appStore.setHeaderImage(`${require('@/assets/default-cover.jpg')}`)
+      commonStore.setHeaderImage(`${require('@/assets/default-cover.jpg')}`)
     }
 
     onBeforeMount(fetchData)
     onUnmounted(() => {
-      appStore.resetHeaderImage()
+      commonStore.resetHeaderImage()
     })
 
     return {

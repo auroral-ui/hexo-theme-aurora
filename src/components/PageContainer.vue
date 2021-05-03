@@ -71,7 +71,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
-import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 
 export default defineComponent({
   name: 'ObPageContainer',
@@ -89,7 +89,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const { t } = useI18n()
     const post = toRefs(props).post
     const title = toRefs(props).title
@@ -98,16 +98,16 @@ export default defineComponent({
       () => post.value.covers,
       value => {
         console.log(value)
-        if (value) appStore.setHeaderImage(value)
+        if (value) commonStore.setHeaderImage(value)
       }
     )
 
     onMounted(() => {
-      appStore.setHeaderImage(post.value.covers)
+      commonStore.setHeaderImage(post.value.covers)
     })
 
     onUnmounted(() => {
-      appStore.resetHeaderImage()
+      commonStore.resetHeaderImage()
     })
 
     return {

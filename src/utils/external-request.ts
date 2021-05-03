@@ -8,11 +8,11 @@ const service = axios.create({
 
 // request interceptor
 service.interceptors.request.use(
-  (config) => {
+  config => {
     // do something before request is sent
     return config
   },
-  (error) => {
+  error => {
     // do something with request error
     console.log(error) // for debug
     return Promise.reject(error)
@@ -31,11 +31,11 @@ service.interceptors.response.use(
    * Here is just an example
    * You can also judge the status by HTTP Status Code
    */
-  (response) => {
+  response => {
     // Login or other response handle place here.
     return response
   },
-  (error) => {
+  error => {
     console.log('err' + error) // for debug
     console.error(error.message)
     return Promise.reject(error)

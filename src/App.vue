@@ -44,6 +44,7 @@ import {
   watch
 } from 'vue'
 import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 import { useMetaStore } from '@/stores/meta'
 import { useSearchStore } from './stores/search'
 import HeaderMain from '@/components/Header/src/Header.vue'
@@ -63,6 +64,7 @@ export default defineComponent({
   },
   setup() {
     const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const metaStore = useMetaStore()
     const searchStore = useSearchStore()
     const MOBILE_WITH = 996 // Using the mobile width by Bootstrap design.
@@ -128,14 +130,14 @@ export default defineComponent({
     }
 
     const isMobile = computed(() => {
-      return appStore.isMobile
+      return commonStore.isMobile
     })
 
     const resizeHanler = () => {
       const rect = document.body.getBoundingClientRect()
       const mobileState = rect.width - 1 < MOBILE_WITH
       if (isMobile.value !== mobileState)
-        appStore.changeMobileState(mobileState)
+        commonStore.changeMobileState(mobileState)
     }
 
     const initResizeEvent = () => {
@@ -187,20 +189,20 @@ export default defineComponent({
       headerImage: computed(() => {
         return {
           backgroundImage: `url(${
-            appStore.headerImage
+            commonStore.headerImage
           }), url(${require('@/assets/default-cover.jpg')})`,
-          opacity: appStore.headerImage !== '' ? 1 : 0
+          opacity: commonStore.headerImage !== '' ? 1 : 0
         }
       }),
       headerBaseBackground: computed(() => {
         return {
           background: appStore.themeConfig.theme.header_gradient_css,
-          opacity: appStore.headerImage !== '' ? 0.91 : 0.99
+          opacity: commonStore.headerImage !== '' ? 0.91 : 0.99
         }
       }),
       wrapperStyle: computed(() => wrapperStyle.value),
       handleEscKey: appStore.handleEscKey,
-      isMobile: computed(() => appStore.isMobile),
+      isMobile: computed(() => commonStore.isMobile),
       configReady: computed(() => appStore.configReady),
       cssVariables: computed(() => {
         if (appStore.theme === 'theme-dark') {

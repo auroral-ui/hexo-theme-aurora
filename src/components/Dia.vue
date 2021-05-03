@@ -42,7 +42,7 @@ export default defineComponent({
 
     watch(
       () => appStore.configReady,
-      (value) => {
+      value => {
         if (value) {
           initializeBot()
         }
