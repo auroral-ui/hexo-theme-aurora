@@ -2,7 +2,7 @@
   @apply relative h-full rounded-2xl list-none;
   &:hover {
     .article-tag {
-      transform: translateY(-59%);
+      transform: translateY(-60%);
     }
     .article,
     .feature-article {
@@ -10,9 +10,15 @@
     }
   }
   .article-tag {
-    @apply absolute flex items-start left-6 -top-1 pt-0.5 pb-3 px-3 rounded-md text-sm text-white font-bold shadow-lg uppercase transform;
+    @apply absolute flex items-start left-6 -top-1 pt-1 pb-3 px-1 rounded-md text-sm text-white font-bold shadow-lg uppercase transform;
     background: var(--main-gradient);
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    > b {
+      @apply py-1 px-3 rounded;
+      width: 100%;
+      height: 100%;
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.5);
+    }
     z-index: 0;
     transition: transform 200ms ease-in-out;
   }

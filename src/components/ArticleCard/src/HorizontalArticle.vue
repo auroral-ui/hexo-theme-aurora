@@ -1,11 +1,11 @@
 <template>
   <div class="article-container">
-    <span v-if="post.pinned" class="article-tag">{{
-      t('settings.pinned')
-    }}</span>
-    <span v-else-if="post.feature" class="article-tag">{{
-      t('settings.featured')
-    }}</span>
+    <span v-if="post.pinned" class="article-tag">
+      <b>{{ t('settings.pinned') }}</b>
+    </span>
+    <span v-else-if="post.feature" class="article-tag">
+      <b>{{ t('settings.featured') }}</b>
+    </span>
     <div class="feature-article">
       <div class="feature-thumbnail">
         <img v-if="post.cover" class="ob-hz-thumbnail" v-lazy="post.cover" />
