@@ -7,13 +7,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2021-05-03
+
+### :sparkles: Added
+
+- Adaptive feature article layout (added a new `Pinned article layout!!`)
+  - Able to switch between Feature and Pinned Mode.
+  - If total article is less than 3, will switch to Pinned mode automatically.
+  - Attached `Pinned` and `Feature` tag to article card.
+  - Feature and Pinned article will be display at the top of the article list.
+  - [:book: Docs](https://aurora.tridiamond.tech/guide/theme.html#feature-layout)
+- Added VuePress like custom containers [#77](https://github.com/auroral-ui/hexo-theme-aurora/issues/77)
+  - `Info` container
+  - `Warning` container
+  - `Danger` Container
+  - `Detail` Container
+  - [:book: Preview](https://tridiamond.tech/post/aurora%2Fcustom-quotes)
+- Added more SEO meta(s) [#76](https://github.com/auroral-ui/hexo-theme-aurora/issues/76)
+  - Added `description`
+  - Added `keywords`
+  - Added `author`
+  - [:book: Docs](https://aurora.tridiamond.tech/guide/site-meta.html#seo-meta)
+
+### :crystal_ball: Changed
+
+- Improved Home page article performance
+  - Change the animation for hovering on the article card.
+  - Removed shadow change on hover.
+  - Removed image cover display change on hover.
+
+### :wrench: Fixed
+
+- Fixed pages' cover not displaying
+- Fixed scrolling issue on mobile browsers [#79](https://github.com/auroral-ui/hexo-theme-aurora/issues/79)
+- Fixed post page navigation incorrect list style
+- Fixed custom page title not adapted to i18n setting
+- Fixed social link `<a>` tag layer
+- Fixed invalid link styles
+
 ## [1.4.3] - 2021-04-25
 
 ### :sparkles: Added
 
-- Added support for mailto link. [#74](https://github.com/auroral-ui/hexo-theme-aurora/issues/74)
+- Added support for the mailto link. [#74](https://github.com/auroral-ui/hexo-theme-aurora/issues/74)
 - Added police beian info in footer [#72](https://github.com/auroral-ui/hexo-theme-aurora/issues/72)
-- Multi author supports custom social links.
+- Multi-author supports custom social links.
 
 ### :crystal_ball: Changed
 
@@ -39,14 +77,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### :crystal_ball: Changed
 
 - Content header underline support theme gradient config [#56](https://github.com/auroral-ui/hexo-theme-aurora/issues/56)
-- Made all the main colors using the theme gradient.
+- Made all the theme colours using the theme gradient.
 - Enhanced theme gradient to apply to the whole theme.
-- Changed prism color scheme to VSCode theme [Aurora Future](https://github.com/auroral-ui/hexo-theme-aurora).
+- Changed prism colour scheme to VSCode theme [Aurora Future](https://github.com/auroral-ui/hexo-theme-aurora).
 - Updated `CHANGELOG` style to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ### :wrench: Fixed
 
-- Fixed code default color being affected by theme colors.
+- Fixed code default colour being affected by theme colours.
 - Fixed HR line style broken [#53](https://github.com/auroral-ui/hexo-theme-aurora/issues/53)
 - Fixed misaligned tag style [#59](https://github.com/auroral-ui/hexo-theme-aurora/issues/59)
 - Fixed bold link text with broken style.
@@ -56,7 +94,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🔥 Hotfix
 
-- Fixing international CDN has invalid links.(#52)
+- Fixing international CDN has invalid links (#52).
 
 ## [1.4.0] - 2021-04-15
 
@@ -73,13 +111,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### ✨ New features
 
 - Added default cover image.
-- Added the ability of setting up a sub-folder (#34)
+- Added the ability to set up a sub-folder (#34)
 - Added custom social link configuration (#38)
 
 ### 🛠 Fixes
 
 - Fixed recent comment's post time is incorrect (#45)
-- Fixed article page author info's text color (#42)
+- Fixed article page author info's text colour (#42)
 - Fixed invalid path for Axios
 
 ### 🔮 Changes
@@ -99,7 +137,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### ✨ New features
 
 - Added default article `cover image`. (#39)
-- With `multi-author`, now you will see the statistic and author info in the article page profile. (Statistic of each author will be calculated separately.) (#26)
+- With `"multi-author"`, now you will see the statistic and author info in the article page profile. (Author's statistics are calculated separately.) (#26)
 - Added `unit test` for some of the features and scripts. (#31)
 - Added `lazy load` for article images.
 
@@ -111,8 +149,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🛠 Fixes
 
-- Fixed `sticky` not calculated correctly after changing the behavior of the footer.
-- Fixed theme breaking when `categories` and `tags` are not bind to any articles (#33)
+- Fixed `sticky` not calculated correctly after changing the behaviour of the footer.
+- Fixed theme breaking when `categories` and `tags` are not bound to any articles (#33)
 - Fixed `mobile menu` is not adapted to the new menu i18n setup (#36)
 - Fixed `favicon` is not displaying when configured.
 - Fixed `site_meta`'s `cdn` condition error.
@@ -129,11 +167,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed dropdown menu triggered locale changes (#21)
 - Removed default configs from theme configs, avoid configs being carried to theme configs.
-- Fixed incorrect sum of site word count (#23)
+- Fixed the incorrect sum of the site word count (#23)
 
 ### Improvements/Changes
 
-- Improved tag click box size.
+- Improved tag's clickable box size.
 - Changed unit test engine to Jest.
 - Removed the duplicated article date display.
 
@@ -141,11 +179,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Bug fixes
 
-- Fixed truncate-html not in the dependencies requirement, cause `hexo g` failing.
+- Fixed `"truncate-html"` plugin is not in the dependencies requirement, cause `hexo g` failing.
 
 ## [1.1.0] - 2021-04-03
 
-Since this version, the theme can be simply installed using NPM or Yarn, makes it much easier for theme users!
+Since this version, the theme could be installed using NPM or Yarn, which will make it much easier for theme users!
 
 ```shell
 npm install hexo-theme-aurora --save
@@ -156,37 +194,37 @@ yarn add hexo-theme-aurora
 Config file `_config.yml` now need to be added in the root folder of your Hexo blog.
 You simply create a `_config.aurora.yml` to change the theme.
 
-To get a default theme template, simply run the following command: (This is for linux OS, for Windows, you can copy it yourself from node_modules folder. )
+To get a default theme template, simply run the following command: (This is for Linux OS, for Windows, you can copy it yourself from node_modules folder. )
 
 ```shell
 cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 ```
 
-For new configuration setup and usage please read the [usage document](https://aurora.tridiamond.tech).
+To read about the new configuration, go to the [usage document](https://aurora.tridiamond.tech).
 
 ### Features
 
 - Theme can be installed by using NPM or Yarn.
 - Beian now support `number` and `link` properties. (#18)
-- Gitalk now support configuring the `proxy` property. (#16)
+- Gitalk now supports configuring the `proxy` property. (#16)
 - Added 3 different configurable profile avatar styles.
 - Added sponsor list to README.md
 
 ### Improvements
 
-- Changed the outdated QQ avatar API url.
+- Changed the outdated QQ avatar API URL.
 
 ### Bug Fixes
 
 - Fixed horizontal article's tag skeleton display error.
-- Fixed Gitalk not creating an issue on custom page. (#20)
+- Fixed Gitalk not creating an issue on the custom page. (#20)
 
 ## [1.0.2] - 2021-04-01
 
 ### Improvements
 
-- Added scrollbar style for webkit browsers.
-- Article allow no category and tags, default category and tag will be displayed.
+- Added scrollbar style for WebKit browsers.
+- When the article has no category and tags, the default category and tag will be displayed.
 
 ### Bug Fixes
 
@@ -194,7 +232,7 @@ For new configuration setup and usage please read the [usage document](https://a
 - Fixed the site language setting not taking effect (#12)
 - Fixed navigator tips not showing under light mode (#9)
 - Removing unnecessary CNAME (#7)
-- Fixed content empty when excerpt exist. (#8)
+- Fixed content empty when excerpt exists. (#8)
 
 ### Bug Fixes
 
@@ -240,7 +278,8 @@ For new configuration setup and usage please read the [usage document](https://a
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.0...v1.4.1

@@ -4,6 +4,43 @@
 
 ## [Unreleased]
 
+## [1.5.0] - 2021-05-03
+
+### :sparkles: 新增
+
+- 自适应 “推荐文章” 布局 (增加了一个新的 “`置顶文章布局`” !!)
+  - 能够在“推荐文章”和“置顶文章”模式之间自由切换
+  - 如果总文章少于 3 篇，将自动切换到“置顶文章”模式
+  - 在文章卡上添加了“置顶”和“推荐”标签
+  - [:book: 文档](https://aurora.tridiamond.tech/zh/guide/theme.html#推荐布局模式)
+- 增加了与 VuePress 一样的自定义容器 [#77](https://github.com/auroral-ui/hexo-theme-aurora/issues/77)
+  - `Info` 容器
+  - `Warning` 容器
+  - `Danger` 容器
+  - `Detail` 容器
+  - [预览](https://tridiamond.tech/post/aurora%2Fcustom-quotes)
+- 支持了更多的 SEO meta 数据 [#76](https://github.com/auroral-ui/hexo-theme-aurora/issues/76)
+  - 添加了 `description`
+  - 添加了 `keywords`
+  - 添加了 `author`
+  - [:book: 文档](https://aurora.tridiamond.tech/zh/guide/site-meta.html#seo-meta)
+
+### :crystal_ball: 修改
+
+- 改善首页文章的性能
+  - 改良了文章卡片的 hover 动画
+  - 移除 hover 时的阴影变化
+  - 移除 hover 时图像封面显示的变化
+
+### :wrench: 修复
+
+- 修复了自定义页面不显示封面图的问题
+- 修复了移动端浏览器无法滑动菜单的问题 [#79](https://github.com/auroral-ui/hexo-theme-aurora/issues/79)
+- 修复了文章详情页中文章导航的 list 样式问题
+- 修复自定义页面标题不适应 i18n 设置
+- 修复了社会链接 `<a>` 标签的层级
+- 修复了错误链接样式
+
 ## [1.4.3] - 2021-04-25
 
 ### :sparkles: 新增
@@ -230,7 +267,8 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.0...v1.4.1

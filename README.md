@@ -110,9 +110,10 @@ However you could just **share this project with your friends**, that would _hel
 
 Thanks for your love in advance! ☀️
 
-|                                                                                                                Donating using Paypal                                                                                                                 |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://www.buymeacoffee.com/tridiamond" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60" width="217" style="height: 60px !important;width: 217px !important;" ></a> |
+|                                                                                              Donating using Paypal                                                                                               |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://www.buymeacoffee.com/tridiamond" target="_blank"><img src="https://media.giphy.com/media/o7RZbs4KAA6tvM4H6j/giphy.gif" alt="Buy Me A Coffee" width="217" style="width: 217px !important;" ></a> |
+|      <a href="https://ko-fi.com/tridiamond" target="_blank"><img src="https://media.giphy.com/media/jp92jmyPqZeHheeIN6/giphy.gif" alt="Buy Me A Coffee" width="217" style="width: 217px !important;" ></a>       |
 
 > All donator will be enlisted as Coffee Supporter and displayed in the Sponsor list in this section.
 
@@ -133,14 +134,16 @@ You can give me feedback or issue you have through the following methods:
 
 - **For any questions please post it to the [Github Discussion](https://github.com/auroral-ui/hexo-theme-aurora/discussions) before considering opening an issue.**
 - If you found a bug for the theme, create an [issue!](https://github.com/auroral-ui/hexo-theme-aurora/issues/new) to notify the developer for a fix.
-- Join QQGroup `909955326`
 - Join [Telegram](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A) Group
+- [Aurora 中文社区](https://support.qq.com/products/318025)
+- 加入 QQ 群 `909955326`
 
 ## 💬 Join the Community
 
 - [Github Discussion](https://github.com/auroral-ui/hexo-theme-aurora/discussions)
 - Join QQGroup `909955326`
 - [Join Telegram Group](https://t.me/joinchat/R2m4eho2lbcHLR7nDvxd6A)
+- [Aurora 中文社区](https://support.qq.com/products/318025)
 - Discord
 
 <a href="https://discord.gg/VC7CrYfds5" target="_blank"><img src="https://discordapp.com/api/guilds/801943105913225246/widget.png?style=banner3" alt="ObsidiaNext Community Discord Server"></a>
