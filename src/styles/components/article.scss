@@ -1,5 +1,5 @@
 .article-container {
-  @apply relative h-full rounded-2xl;
+  @apply relative h-full rounded-2xl list-none;
   &:hover {
     .article-tag {
       transform: translateY(-59%);
