@@ -86,7 +86,7 @@ export class AuroraDia {
       rightEye instanceof HTMLElement &&
       eyesEl instanceof HTMLElement
     ) {
-      document.addEventListener('mousemove', (evt) => {
+      document.addEventListener('mousemove', evt => {
         clearTimeout(this.eyesAnimationTimer)
         eyesEl.classList.add('moving')
         const x = -(eyesEl.getBoundingClientRect().left - evt.clientX) / 100
@@ -182,7 +182,7 @@ class AuroraBotSoftware {
       botScriptKeys = Object.keys(botScript)
 
       if (botScriptKeys.length > 0) {
-        botScriptKeys.forEach((key) => {
+        botScriptKeys.forEach(key => {
           this.botTips[key] = botScript[key]
         })
       }
@@ -206,7 +206,7 @@ class AuroraBotSoftware {
     })
     // Mouseover tips
     if (this.botTips.mouseover && this.botTips.mouseover.length > 0) {
-      document.addEventListener('mouseover', (event) => {
+      document.addEventListener('mouseover', event => {
         for (const mouseoverEvents of this.botTips.mouseover) {
           const selector = mouseoverEvents.selector
           let text = mouseoverEvents.text
@@ -234,7 +234,7 @@ class AuroraBotSoftware {
     }
     // onClick event
     if (this.botTips.click && this.botTips.click.length > 0) {
-      document.addEventListener('click', (event) => {
+      document.addEventListener('click', event => {
         if (event.target && event.target instanceof HTMLElement)
           for (const mouseoverEvents of this.botTips.click) {
             const selector = mouseoverEvents.selector
@@ -330,7 +330,7 @@ class AuroraBotSoftware {
       [key: string]: { [key: string]: { [key: string]: string } }
     } = {}
 
-    locales.keys().forEach((key) => {
+    locales.keys().forEach(key => {
       const matched = key.match(/([A-Za-z0-9-_]+)\./i)
       if (matched && matched.length > 1) {
         const locale = matched[1]
@@ -395,16 +395,16 @@ class AuroraBotSoftware {
 
   getHitokoto() {
     fetch('https://v1.hitokoto.cn')
-      .then((response) => response.json())
-      .then((result) => {
+      .then(response => response.json())
+      .then(result => {
         this.showMessage(result.hitokoto, 6000, 9)
       })
   }
 
   getTheySaidSo() {
     fetch('https://quotes.rest/qod?language=en')
-      .then((response) => response.json())
-      .then((result) => {
+      .then(response => response.json())
+      .then(result => {
         this.showMessage(result.contents.quotes[0].quote, 6000, 9)
       })
   }

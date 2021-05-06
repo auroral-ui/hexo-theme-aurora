@@ -1,9 +1,12 @@
 <template>
   <div class="block">
-    <Feature :data="topFeature">
+    <Feature v-if="themeConfig.theme.feature" :data="topFeature">
       <FeatureList :data="featurePosts" />
     </Feature>
-    <span>
+    <template v-else>
+      <horizontal-article class="mb-8" :data="posts.data[0] || {}" />
+    </template>
+    <span v-if="themeConfig.theme.feature">
       <Title id="article-list" :title="'titles.articles'" icon="article" />
     </span>
     <div class="main-grid">
@@ -45,10 +48,19 @@
 
         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           <template v-if="posts.data.length === 0">
-            <li v-for="n in 12" :key="n">
+            <li v-for="n in 6" :key="n">
               <Article :data="{}" />
             </li>
           </template>
+
+          <template v-else-if="!themeConfig.theme.feature">
+            <template v-for="(post, key) in posts.data" :key="post.slug">
+              <li v-if="key !== 0">
+                <Article :data="post" />
+              </li>
+            </template>
+          </template>
+
           <template v-else>
             <li v-for="post in posts.data" :key="post.slug">
               <Article :data="post" />
@@ -77,7 +89,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { Feature, FeatureList } from '@/components/Feature'
-import { Article } from '@/components/ArticleCard'
+import { Article, HorizontalArticle } from '@/components/ArticleCard'
 import { Title } from '@/components/Title'
 import { Sidebar, TagBox, RecentComment, Profile } from '@/components/Sidebar'
 import { usePostStore } from '@/stores/post'
@@ -94,6 +106,7 @@ export default defineComponent({
     Feature,
     FeatureList,
     Article,
+    HorizontalArticle,
     Title,
     Sidebar,
     TagBox,
@@ -160,7 +173,7 @@ export default defineComponent({
       backToArticleTop()
       if (slug !== '') {
         posts.value = new PostList()
-        postStore.fetchPostsByCategory(slug).then((postList) => {
+        postStore.fetchPostsByCategory(slug).then(postList => {
           posts.value = postList
           pagination.value.pageTotal = postList.total
         })

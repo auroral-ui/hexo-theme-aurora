@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumbs :current="t('menu.about')" />
+    <Breadcrumbs :current="pageTitle" />
     <PageContainer :post="pageData" :title="pageTitle">
       <div id="comments">
         <Comment
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, ref } from 'vue'
+import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { useArticleStore } from '@/stores/article'
 import { Page } from '@/models/Article.class'
 import { useI18n } from 'vue-i18n'
@@ -34,36 +34,41 @@ export default defineComponent({
     const metaStore = useMetaStore()
     const pageData = ref(new Page())
     const route = useRoute()
-    const { t, te } = useI18n()
+    const { t } = useI18n()
+    const pageTitle = ref()
 
     const fetchArticle = () => {
-      articleStore.fetchArticle(String(route.params.slug)).then((response) => {
+      articleStore.fetchArticle(String(route.params.slug)).then(response => {
         pageData.value = response
 
-        let pageTitle = pageData.value.title
+        pageTitle.value = pageData.value.title
 
-        const routeInfo =
-          appStore.themeConfig.menu.menus[String(route.params.slug)]
-
-        if (routeInfo && routeInfo.i18n && te(`menu.${routeInfo.i18n}`))
-          pageTitle = t(`menu.${routeInfo.i18n}`)
-
-        metaStore.setTitle(pageTitle)
+        updateTitle(appStore.locale)
       })
     }
+
+    const updateTitle = (locale: string | undefined) => {
+      const currentLocale = locale === 'cn' ? 'cn' : 'en'
+      const routeInfo =
+        appStore.themeConfig.menu.menus[String(route.params.slug)]
+      pageTitle.value =
+        (routeInfo.i18n && routeInfo.i18n[currentLocale]) || routeInfo.name
+      metaStore.setTitle(pageTitle.value)
+    }
+
+    watch(
+      () => appStore.locale,
+      value => {
+        if (value) {
+          updateTitle(value)
+        }
+      }
+    )
 
     onBeforeMount(fetchArticle)
 
     return {
-      pageTitle: computed(() => {
-        const routeInfo =
-          appStore.themeConfig.menu.menus[String(route.params.slug)]
-
-        if (routeInfo && routeInfo.i18n && te(`menu.${routeInfo.i18n}`))
-          return t(`menu.${routeInfo.i18n}`)
-
-        return pageData.value.title
-      }),
+      pageTitle: computed(() => pageTitle.value),
       pageData,
       t
     }

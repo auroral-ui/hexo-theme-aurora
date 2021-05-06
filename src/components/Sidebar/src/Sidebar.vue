@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ObSidebar',
   setup() {
-    const appStore = useAppStore()
-    return { isMobile: computed(() => appStore.isMobile) }
+    const commonStore = useCommonStore()
+    return { isMobile: computed(() => commonStore.isMobile) }
   }
 })
 </script>

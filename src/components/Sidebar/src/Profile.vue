@@ -105,7 +105,7 @@ export default defineComponent({
 
     const fetchAuthor = async () => {
       if (author.value === '') return
-      await authorStore.fetchAuthorData(author.value).then((data) => {
+      await authorStore.fetchAuthorData(author.value).then(data => {
         authorData.value = data
       })
     }

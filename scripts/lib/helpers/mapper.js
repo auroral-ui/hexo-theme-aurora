@@ -1,11 +1,7 @@
-const symbolsCountTime = require('../helpers/symbols-count-time')
-const truncateHTML = require('../helpers/truncate-html')
-const toc = require('../helpers/toc')
-const {
-  generateUid,
-  fetchCovers,
-  filterHTMLCharacters
-} = require('../helpers/utils')
+const symbolsCountTime = require('./symbols-count-time')
+const truncateHTML = require('./truncate-html')
+const toc = require('./toc')
+const { generateUid, fetchCovers, filterHTMLCharacters } = require('./utils')
 
 /**
  * Post Mappers
@@ -22,7 +18,8 @@ function postMapper(post, configs) {
     keywords: configs.keywords,
     cover: post.cover || fetchCovers(post.content),
     content: post.content,
-    feature: post.feature || null,
+    feature: post.feature,
+    pinned: post.pinned,
     text: truncateHTML(post.content, post.preview || 140),
     link: post.link,
     photos: post.photos,
@@ -101,7 +98,9 @@ function postListMapper(post, configs) {
     count_time: post.count_time,
     categories: post.categories,
     tags: post.tags,
-    author: post.author
+    author: post.author,
+    feature: post.feature,
+    pinned: post.pinned
   }
 }
 
@@ -199,7 +198,7 @@ function pageMapper(page) {
       updated: page.updated,
       comments: page.comments,
       path: path,
-      covers: fetchCovers(page.content),
+      covers: page.cover || fetchCovers(page.content),
       excerpt: page.excerpt,
       content: page.content,
       count_time: symbolsCountTime(page.content),

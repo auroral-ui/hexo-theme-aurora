@@ -108,7 +108,7 @@ export default defineComponent({
           admin: appStore.themeConfig.plugins.gitalk.admin[0]
         })
 
-        githubComments.getComments().then((response) => {
+        githubComments.getComments().then(response => {
           recentComments.value = response
         })
       } else if (
@@ -123,7 +123,7 @@ export default defineComponent({
           lang: appStore.themeConfig.plugins.valine.lang
         })
 
-        leadCloudComments.getRecentComments(7).then((response) => {
+        leadCloudComments.getRecentComments(7).then(response => {
           recentComments.value = response
         })
       }

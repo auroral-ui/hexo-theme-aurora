@@ -21,7 +21,7 @@ export const useSearchStore = defineStore({
     async fetchSearchIndex(): Promise<SearchIndexes> {
       const { data } = await fetchSearchIndexes()
       this.searchIndexes = new SearchIndexes(data)
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         resolve(this.searchIndexes)
       })
     },

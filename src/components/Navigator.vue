@@ -108,11 +108,13 @@ import { useI18n } from 'vue-i18n'
 import { useNavigatorStore } from '@/stores/navigator'
 import { useRouter } from 'vue-router'
 import { useSearchStore } from '@/stores/search'
+import { useCommonStore } from '@/stores/common'
 
 export default defineComponent({
   name: 'ObNavigator',
   setup() {
     const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const { t } = useI18n()
     const navigatorStore = useNavigatorStore()
     const searchStore = useSearchStore()
@@ -153,7 +155,7 @@ export default defineComponent({
             100
           ).toFixed(0)
         )
-      }, 16)
+      }, 0)
     }
 
     const handleNavigatorToggle = () => {
@@ -206,7 +208,7 @@ export default defineComponent({
       showProgress: computed(() => {
         return progress.value > 5
       }),
-      isMobile: computed(() => appStore.isMobile),
+      isMobile: computed(() => commonStore.isMobile),
       openNavigator: computed(() => navigatorStore.openNavigator),
       progress,
       handleNavigatorToggle,

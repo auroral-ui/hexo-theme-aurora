@@ -63,6 +63,7 @@ export class Post {
   photos: string[] = []
   categories: Category[] = []
   tags: Tag[] = []
+  min_tags: Tag[] = []
   count_time = {}
   toc = ''
   next_post = {}
@@ -72,6 +73,8 @@ export class Post {
     avatar: '',
     link: ''
   }
+  feature = false
+  pinned = false
 
   constructor(raw?: {
     [key: string]: Array<any> | string | { [key: string]: any }
@@ -90,6 +93,9 @@ export class Post {
               [key]: (raw[key] as Array<never>).map(
                 (one: { [key: string]: [] }) => new Tag(one)
               )
+            })
+            this.min_tags = this.tags.filter((value, index) => {
+              if (index < 2) return true
             })
           } else if (key === 'prev_post' || key === 'next_post') {
             Object.assign(this, {

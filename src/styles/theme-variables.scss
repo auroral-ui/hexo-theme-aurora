@@ -84,6 +84,10 @@
   --search-modal-key-gradient: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
   --search-modal-key-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff,
     0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --custom-quote-tip: #7343d5;
+  --custom-quote-warning: #e98503;
+  --custom-quote-danger: #dd2500;
+  --custom-quote: #e93796;
 }
 
 .theme-dark {
@@ -162,6 +166,10 @@
   --search-modal-key-gradient: linear-gradient(-225deg, #3f3e3e, #2c2c2c);
   --search-modal-key-shadow: inset 0 -2px 0 0 #363636, inset 0 0 1px 1px #2e2e2e,
     0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --custom-quote-tip: #8d53ff;
+  --custom-quote-warning: #cbcb00;
+  --custom-quote-danger: #dd2500;
+  --custom-quote: #5dc3d9;
 }
 
 .ob-text-bright {
@@ -347,6 +355,6 @@
   }
 }
 
-a:hover {
-  @apply hover:opacity-50 hover:text-ob transition-all;
+a {
+  @apply hover:opacity-50 transition-all;
 }

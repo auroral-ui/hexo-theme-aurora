@@ -211,6 +211,7 @@ interface ObTheme {
 export class Theme implements ObTheme {
   dark_mode = 'auto'
   profile_shape = 'diamond'
+  feature = true
   gradient = {
     color_1: '#24c6dc',
     color_2: '#5433ff',

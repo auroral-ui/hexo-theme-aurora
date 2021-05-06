@@ -53,7 +53,7 @@ export class RecentSearchResults {
   }
 
   initData(data: { [key: string]: string }[]): void {
-    data.forEach((value) => {
+    data.forEach(value => {
       this.add(value)
     })
   }
@@ -162,7 +162,7 @@ export class SearchIndexes {
 
     const matchedResult: SearchResultType[] = []
 
-    this.indexes.forEach((data) => {
+    this.indexes.forEach(data => {
       if (!data.title || data.title.trim() === '') data.title = 'Untitled'
 
       const originalTitle = data.title.trim()

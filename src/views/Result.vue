@@ -114,7 +114,7 @@ export default defineComponent({
 
     const fetchPostByTag = () => {
       isFetched.value = false
-      postStore.fetchPostsByTag(querySlug.value).then((response) => {
+      postStore.fetchPostsByTag(querySlug.value).then(response => {
         isFetched.value = true
         posts.value = response
       })
@@ -133,7 +133,7 @@ export default defineComponent({
 
     watch(
       () => route.query,
-      (toQuery) => {
+      toQuery => {
         pageChangeHanlder(toQuery)
       }
     )

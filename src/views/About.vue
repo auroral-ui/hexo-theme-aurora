@@ -22,7 +22,7 @@ export default defineComponent({
     const { t } = useI18n()
 
     const fetchArticle = () => {
-      articleStore.fetchArticle('about').then((response) => {
+      articleStore.fetchArticle('about').then(response => {
         pageData.value = response
       })
     }

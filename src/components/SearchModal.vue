@@ -492,7 +492,7 @@ export default defineComponent({
 
     watch(
       () => searchStore.openModal,
-      (status) => {
+      status => {
         /**
          * This watch is used to delay the animation
          * of the search box container.

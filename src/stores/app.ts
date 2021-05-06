@@ -63,12 +63,8 @@ export const useAppStore = defineStore({
     loadingTimeout: -1,
     /** Tracking if the blog config is ready */
     configReady: false,
-    /** Header image url */
-    headerImage: '',
     /** Is search modal opened */
-    openSearchModal: false,
-    /** If current window with is for mobile */
-    isMobile: false
+    openSearchModal: false
   }),
   getters: {
     getTheme(): string {
@@ -92,7 +88,7 @@ export const useAppStore = defineStore({
     /** Fetching blog's statistics */
     async fetchStat() {
       const { data } = await fetchStatistic()
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.statistic = new Statistic(data)
         resolve(this.statistic)
       })
@@ -150,14 +146,6 @@ export const useAppStore = defineStore({
         this.appLoading = false
       }, 300)
     },
-    /** Setting the image url for the header */
-    setHeaderImage(imageUrl: string) {
-      this.headerImage = imageUrl
-    },
-    /** Resetting the header image to null */
-    resetHeaderImage() {
-      this.headerImage = ''
-    },
     changeOpenModal(status: boolean) {
       this.openSearchModal = status
     },
@@ -166,9 +154,6 @@ export const useAppStore = defineStore({
     },
     handleSearchOpen() {
       if (!this.openSearchModal) this.openSearchModal = true
-    },
-    changeMobileState(isMobile: boolean) {
-      this.isMobile = isMobile
     }
   }
 })

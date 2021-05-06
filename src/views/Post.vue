@@ -9,7 +9,7 @@
               !loading && post.categories && post.categories.length > 0
             "
           >
-            {{ post.categories[0].name }}
+            <span>{{ post.categories[0].name }}</span>
           </b>
           <b v-else> {{ t('settings.default-category') }} </b>
           <ul>
@@ -23,7 +23,7 @@
             />
             <template v-else-if="!loading && post.tags && post.tags.length > 0">
               <li v-for="tag in post.tags" :key="tag.slug">
-                <b class="opacity-50">#</b> {{ tag.name }}
+                <em class="opacity-50">#</em> {{ tag.name }}
               </li>
             </template>
             <template v-else>
@@ -62,10 +62,10 @@
               >
                 {{ post.author.name }}
               </strong>
-              <em class="opacity-70">
+              <span class="opacity-70">
                 {{ t('settings.shared-on') }} {{ t(post.date.month) }}
                 {{ post.date.day }}, {{ post.date.year }}
-              </em>
+              </span>
             </span>
           </div>
 
@@ -89,30 +89,30 @@
           >
             <span>
               <svg-icon icon-class="clock-outline" style="stroke: white" />
-              <em class="pl-2 opacity-70">
+              <span class="pl-2 opacity-70">
                 {{ post.count_time.symbolsTime }}
-              </em>
+              </span>
             </span>
             <span>
               <svg-icon icon-class="text-outline" style="stroke: white" />
-              <em class="pl-2 opacity-70">
+              <span class="pl-2 opacity-70">
                 {{ post.count_time.symbolsCount }}
-              </em>
+              </span>
             </span>
           </div>
 
           <div v-else class="post-stats">
             <span>
               <svg-icon icon-class="clock" />
-              <em class="pl-2">
+              <span class="pl-2">
                 <ob-skeleton width="40px" height="16px" />
-              </em>
+              </span>
             </span>
             <span>
               <svg-icon icon-class="text" />
-              <em class="pl-2">
+              <span class="pl-2">
                 <ob-skeleton width="40px" height="16px" />
-              </em>
+              </span>
             </span>
           </div>
         </div>
@@ -217,6 +217,7 @@ import { Article } from '@/components/ArticleCard'
 import '@/styles/prism-aurora-future.css'
 import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 
 declare const Prism: any
 
@@ -227,6 +228,7 @@ export default defineComponent({
     const metaStore = useMetaStore()
     const postStore = usePostStore()
     const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const route = useRoute()
     const { t } = useI18n()
     const post = ref(new Post())
@@ -240,10 +242,10 @@ export default defineComponent({
       })
       let slug = String(route.params.slug)
       slug = slug.indexOf(',') ? slug.replace(/[,]+/g, '/') : slug
-      await postStore.fetchPost(slug).then((response) => {
+      await postStore.fetchPost(slug).then(response => {
         post.value = response
         metaStore.setTitle(post.value.title)
-        appStore.setHeaderImage(response.cover)
+        commonStore.setHeaderImage(response.cover)
         loading.value = false
       })
       if (appStore.hexoConfig.writing.highlight.enable) {
@@ -262,7 +264,7 @@ export default defineComponent({
 
     watch(
       () => route.params,
-      (toParams) => {
+      toParams => {
         if (toParams.slug && route.fullPath.indexOf('#') === -1) fetchData()
       }
     )
@@ -274,11 +276,11 @@ export default defineComponent({
 
     onMounted(fetchData)
     onBeforeUnmount(() => {
-      appStore.resetHeaderImage()
+      commonStore.resetHeaderImage()
     })
 
     return {
-      isMobile: computed(() => appStore.isMobile),
+      isMobile: computed(() => commonStore.isMobile),
       handleAuthorClick,
       loading,
       post,

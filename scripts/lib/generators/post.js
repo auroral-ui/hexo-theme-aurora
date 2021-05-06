@@ -8,12 +8,15 @@ class PostGenerator {
   configs = {}
   authors = {}
   postByAuthors = new Map()
+  featureCapacity = 3
+  isFeature = true
 
   constructor(posts, configs) {
     this.data = posts
     this.configs = configs
-    this.transform()
     this.authors = this.configs.theme_config.authors || {}
+    this.isFeature = this.configs.theme_config.theme.feature
+    this.transform()
   }
 
   /**
@@ -26,47 +29,36 @@ class PostGenerator {
     let prevPost = {}
     let dummyList = []
     let featureIndexes = []
-    // Used when feature posts is not enough
-    const dummyFeaturesIndexes = []
-    const featureLimit = 3
-    this.sortByDate()
 
-    this.data.forEach((post, index) => {
+    // Used when feature posts is not enough
+    this.sortByDate()
+    this.reorderFeaturePosts()
+
+    this.data.data.forEach((post, index) => {
       let current = postMapper(post, this.configs)
       current.prev_post = prevPost
       current.next_post = {}
       prevPost = postListMapper(current, this.configs)
-      if ((index !== 0) & (index !== this.data.length - 1)) {
+      if (index !== 0 && index !== this.data.length - 1) {
         dummyList[index - 1].next_post = postListMapper(current, this.configs)
       }
       dummyList.push(current)
 
-      if (dummyFeaturesIndexes.length < featureLimit)
-        dummyFeaturesIndexes.push(index)
       if (
+        this.isFeature &&
         Boolean(current.feature) === true &&
-        featureIndexes.length < featureLimit
+        featureIndexes.length < this.featureCapacity
       )
         featureIndexes.push(index)
 
       this.fillAuthorPost(current)
     })
 
-    // Save the feature post data.
-    if (featureIndexes.length === 0) {
-      featureIndexes = dummyFeaturesIndexes
-    } else if (featureIndexes.length < featureLimit) {
-      // If feature pots are not enough.
-      // Fill in posts until reaches featureLimit.
-      dummyFeaturesIndexes.forEach(function (postIndex) {
-        if (featureIndexes.length < featureLimit && !featureIndexes[postIndex])
-          featureIndexes.push(postIndex)
+    if (this.isFeature && featureIndexes.length > 0) {
+      this.features = featureIndexes.map(function (postIndex) {
+        return dummyList[postIndex]
       })
     }
-
-    this.features = featureIndexes.map(function (postIndex) {
-      return dummyList[postIndex]
-    })
 
     this.data = dummyList
   }
@@ -77,8 +69,72 @@ class PostGenerator {
     })
   }
 
+  reorderFeaturePosts() {
+    const featureData = []
+    const dummyData = []
+    const fillOutIndexes = []
+    let data = Object.create(this.data.data)
+    // Pull out the feature posts and fill-in posts
+    this.data.data.some((value, i) => {
+      if (this.isFeature && featureData.length === this.featureCapacity)
+        return true
+      if (value.feature) {
+        featureData.unshift({
+          index: value.date.valueOf(),
+          data: value
+        })
+        fillOutIndexes.push(i)
+      } else if (this.isFeature && dummyData.length !== this.featureCapacity) {
+        dummyData.unshift({
+          index: value.date.valueOf(),
+          data: value
+        })
+        fillOutIndexes.push(i)
+      }
+    })
+
+    if (
+      !this.isFeature ||
+      (featureData.length < 3 &&
+        featureData.length + dummyData.length < this.featureCapacity)
+    ) {
+      // Switch into pin mode.
+      this.isFeature = false
+    } else {
+      // Fill until max feature capacity.
+      dummyData.some(value => {
+        if (featureData.length === this.featureCapacity) return true
+        value.data.feature = true
+        featureData.unshift(value)
+      })
+    }
+
+    // Sort by index (=== sort by latest)
+    featureData.sort((a, b) => {
+      return a.index - b.index
+    })
+
+    // Filter out all the pull out posts
+    data = data.filter((value, index) => {
+      return fillOutIndexes.indexOf(index) === -1
+    })
+
+    // Reorder all the feature / pinned post
+    featureData.forEach(value => {
+      // console.log(value.index, value.data.title, value.data.date)
+      if (!this.isFeature) value.data.pinned = true
+      data.unshift(value.data)
+    })
+
+    this.data.data = data
+
+    // console.log(this.data.data[0].title)
+    // console.log(this.data.data[1].title)
+    // console.log(this.data.data[2].title)
+  }
+
   /**
-   *
+   * Adding author's posts
    * @param {*} post
    */
   fillAuthorPost(post) {
@@ -129,7 +185,9 @@ class PostGenerator {
     if (this.count <= 0) return data
     const pageJson = []
     const length = this.count()
-    const pageSize = 12
+    // `Pinned mode` use first post as cover post.
+    // To keep the list post count event, use 13 instead of 12
+    const pageSize = this.isFeature ? 12 : 13
     const pageCount = Math.ceil(length / pageSize)
     const postData = this.data.map(postListMapper)
 

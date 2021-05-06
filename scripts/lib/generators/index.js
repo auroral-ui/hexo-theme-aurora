@@ -30,7 +30,7 @@ module.exports = function (hexo) {
   //   (name) => delete hexo.extend.generator.store[name]
   // )
   ;['page', 'archive', 'category', 'tag'].forEach(
-    (name) => delete hexo.extend.generator.store[name]
+    name => delete hexo.extend.generator.store[name]
   )
 
   hexo.extend.generator.register('obsidianext-page', function (site) {
@@ -85,14 +85,16 @@ module.exports = function (hexo) {
   })
 
   function generator(configs, site) {
-    const siteG = new SiteGenerator(configs)
-    apiData = siteG.addSiteConfig(apiData)
-
     const posts = new PostGenerator(site.posts, configs)
     apiData = posts.addPaginationPost(apiData)
     apiData = posts.addArticles(apiData)
     apiData = posts.addFeatures(apiData)
     apiData = posts.addAuthorPost(apiData)
+    // Updated feature status.
+    configs.theme_config.theme.feature = posts.isFeature
+
+    const siteG = new SiteGenerator(configs)
+    apiData = siteG.addSiteConfig(apiData)
 
     const categories = new CategoryGenerator(
       site.categories,

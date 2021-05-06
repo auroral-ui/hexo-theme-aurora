@@ -245,7 +245,7 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
    * @param limit Amount of records needed.
    */
   async getRecentComments(limit: number): Promise<any> {
-    return await new Promise((resolve) => {
+    return await new Promise(resolve => {
       this.queryAll()
         .limit(limit)
         .find()

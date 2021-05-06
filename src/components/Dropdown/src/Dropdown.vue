@@ -13,6 +13,7 @@
 <script lang="ts">
 import { defineComponent, provide, reactive, ref, toRefs, watch } from 'vue'
 import { useDropdownStore } from '@/stores/dropdown'
+import { useCommonStore } from '@/stores/common'
 
 export default defineComponent({
   emits: ['command'],
@@ -24,6 +25,7 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
+    const commonStore = useCommonStore()
     const mouseHover = toRefs(props).hover
     const dropdownStore = useDropdownStore()
     const eventId = ref(0)
@@ -48,7 +50,7 @@ export default defineComponent({
     }
 
     const onClickAway = () => {
-      if (!mouseHover.value) {
+      if (!mouseHover.value && !commonStore.isMobile) {
         sharedState.active = false
         eventId.value = 0
       }
