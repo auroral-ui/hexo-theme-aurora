@@ -83,15 +83,15 @@ export default defineComponent({
           pages: pageNumbers,
           end: 0
         }
-      } else if (pagination.page.value >= 1 && pagination.page.value <= 3) {
+      } else if (pagination.page.value >= 1 && pagination.page.value < 3) {
         return {
           head: 1,
           pages: [2, 3, '...'],
-          end: pages
+          end: pages.value
         }
       } else if (
-        pagination.page.value > 3 &&
-        pagination.page.value < pages.value - 3
+        pagination.page.value >= 3 &&
+        pagination.page.value <= pages.value - 2
       ) {
         return {
           head: 1,
@@ -102,13 +102,13 @@ export default defineComponent({
             pagination.page.value + 1,
             '...'
           ],
-          end: pages
+          end: pages.value
         }
       } else {
         return {
           head: 1,
           pages: ['...', pages.value - 2, pages.value - 1],
-          end: pages
+          end: pages.value
         }
       }
     })

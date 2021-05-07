@@ -69,7 +69,7 @@
         </ul>
 
         <Paginator
-          :pageSize="12"
+          :pageSize="pagination.pageSize"
           :pageTotal="pagination.pageTotal"
           :page="pagination.page"
           @pageChange="pageChangeHanlder"
@@ -137,6 +137,7 @@ export default defineComponent({
     const activeTab = ref('')
     const articleOffset = ref(0)
     const pagination = ref({
+      pageSize: 12,
       pageTotal: 0,
       page: 1
     })
@@ -199,6 +200,7 @@ export default defineComponent({
       await postStore.fetchPostsList(pagination.value.page).then(() => {
         posts.value = postStore.posts
         pagination.value.pageTotal = postStore.posts.total
+        pagination.value.pageSize = postStore.posts.pageSize
       })
     }
 
