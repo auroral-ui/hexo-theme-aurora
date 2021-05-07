@@ -130,10 +130,6 @@ class PostGenerator {
     })
 
     this.data.data = data
-
-    // console.log(this.data.data[0].title)
-    // console.log(this.data.data[1].title)
-    // console.log(this.data.data[2].title)
   }
 
   /**
