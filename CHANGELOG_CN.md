@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [1.5.1] - 2021-05-07
+
+### :sparkles: 新增
+
+- 添加更多 Valine 配置选项 [#82](https://github.com/auroral-ui/hexo-theme-aurora/issues/82)
+
+### :wrench: 修复
+
+- 修复文章丢失问题 [#85](https://github.com/auroral-ui/hexo-theme-aurora/issues/85)
+- 修复页码显示问题 [#84](https://github.com/auroral-ui/hexo-theme-aurora/issues/84)
+
 ## [1.5.0] - 2021-05-03
 
 ### :sparkles: 新增
@@ -267,7 +278,8 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.1...v1.4.2
