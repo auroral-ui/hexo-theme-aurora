@@ -116,6 +116,8 @@ export default defineComponent({
           visitor: appStore.themeConfig.plugins.valine.visitor,
           lang: appStore.themeConfig.plugins.valine.lang,
           meta: appStore.themeConfig.plugins.valine.meta,
+          requiredFields: appStore.themeConfig.plugins.valine.requiredFields,
+          avatarForce: appStore.themeConfig.plugins.valine.avatarForce,
           path: window.location.pathname // Make sure updating pathname
         })
       }

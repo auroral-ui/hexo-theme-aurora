@@ -124,7 +124,9 @@ valine:
   placeholder: Leave your thoughts behind~
   visitor: true
   lang: en
+  avatarForce: false
   meta: ['nick', 'mail']
+  requiredFields: []
   admin: 'TriDiamond'
   recentComment: true
 

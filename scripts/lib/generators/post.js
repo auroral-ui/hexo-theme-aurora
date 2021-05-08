@@ -102,10 +102,13 @@ class PostGenerator {
       this.isFeature = false
     } else {
       // Fill until max feature capacity.
-      dummyData.some(value => {
-        if (featureData.length === this.featureCapacity) return true
-        value.data.feature = true
-        featureData.unshift(value)
+      dummyData.some((value, index) => {
+        if (featureData.length === this.featureCapacity) {
+          fillOutIndexes.shift(fillOutIndexes.indexOf(index), 1)
+        } else {
+          value.data.feature = true
+          featureData.unshift(value)
+        }
       })
     }
 
@@ -127,10 +130,6 @@ class PostGenerator {
     })
 
     this.data.data = data
-
-    // console.log(this.data.data[0].title)
-    // console.log(this.data.data[1].title)
-    // console.log(this.data.data[2].title)
   }
 
   /**

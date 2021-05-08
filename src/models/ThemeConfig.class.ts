@@ -501,6 +501,8 @@ export class Plugins implements PluginsData {
     visitor: true,
     lang: '',
     meta: [],
+    requiredFields: [],
+    avatarForce: false,
     admin: '',
     recentComment: false
   }
