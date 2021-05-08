@@ -51,9 +51,9 @@
               <p class="text-base">{{ t('settings.words') }}</p>
             </li>
             <li class="col-span-1 text-center">
-              <span class="text-ob-bright">{{
-                authorData.post_list.length
-              }}</span>
+              <span class="text-ob-bright">
+                {{ authorData.post_list.length }}
+              </span>
               <p class="text-base">{{ t('settings.articles') }}</p>
             </li>
             <li class="col-span-1 text-center">
