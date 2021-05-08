@@ -202,12 +202,16 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
 
     const gravatarCDNs: { [key: string]: any } = {
       en: 'https://www.gravatar.com/avatar',
-      cn: 'https://cdn.v2ex.com/gravatar'
+      ja: 'https://www.gravatar.com/avatar',
+      'zh-CN': 'https://gravatar.loli.net/avatar/',
+      'zh-TW': 'https://www.gravatar.com/avatar'
     }
 
     this.configs.gravatarConfig.cdn = /^https?:\/\//.test(avatarCDN)
       ? avatarCDN
       : gravatarCDNs[String(this.configs.leanCloudConfig.lang)]
+      ? gravatarCDNs[String(this.configs.leanCloudConfig.lang)]
+      : gravatarCDNs['en']
 
     this.configs.gravatarConfig.url =
       this.configs.gravatarConfig.cdn + this.configs.gravatarConfig.params
