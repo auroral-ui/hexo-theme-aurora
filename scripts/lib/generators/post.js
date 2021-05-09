@@ -1,5 +1,5 @@
 const { postMapper, postListMapper } = require('../helpers/mapper')
-const { formatNumber } = require('../helpers/utils')
+const { formatNumber, throwError } = require('../helpers/utils')
 
 class PostGenerator {
   data = []
@@ -103,7 +103,7 @@ class PostGenerator {
     ) {
       // Switch into pin mode.
       this.isFeature = false
-    } else if (featureData.length < this.featureCapacity) {
+    } else {
       // Fill until max feature capacity.
       dummyData.some(value => {
         if (featureData.length < this.featureCapacity) {
@@ -130,6 +130,12 @@ class PostGenerator {
       if (!this.isFeature) value.data.pinned = true
       data.unshift(value.data)
     })
+
+    if (this.data.data.length !== data.length)
+      throwError(
+        'Aurora Generator Error',
+        'Mismatch post count after feature processing!'
+      )
 
     this.data.data = data
   }
