@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [1.5.3] - 2021-05-09
+
+### :hot: :wrench: 热修复补丁
+
+- 修复了首页文章数不对的情况。
+
 ## [1.5.2] - 2021-05-09
 
 ### :wrench: 修复
@@ -287,8 +293,8 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...HEAD
-[1.5.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...v1.5.2
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...HEAD
+[1.5.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...v1.5.3
 [1.5.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3
