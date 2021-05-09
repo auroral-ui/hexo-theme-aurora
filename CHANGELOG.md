@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.4] - 2021-05-09
+
+### :fire: :wrench: Hotfix
+
+- Fixed generation error with `chalk`.
+
 ## [1.5.3] - 2021-05-09
 
-### :hot: :wrench: Hotfix
+### :fire: :wrench: Hotfix
 
 - Fixed incorrect amount of article generated.
 
@@ -304,7 +310,8 @@ To read about the new configuration, go to the [usage document](https://aurora.t
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...HEAD
+[1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...v1.5.1

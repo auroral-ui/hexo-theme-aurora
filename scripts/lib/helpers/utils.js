@@ -132,9 +132,9 @@ exports.formatNumber = function (value) {
 }
 
 exports.throwError = function (type, msg) {
-  console.error(`${chalk.red(`[${type}]`)} ${chalk.orange(msg)}`)
+  console.error(`${chalk.red(`[${type}]`)} ${chalk.yellow(msg)}`)
   console.error(
-    `${chalk.green(NOTE)} ${chalk.orange(
+    `${chalk.red('[NOTE]')} ${chalk.yellow(
       'Please create an issue @ https://github.com/auroral-ui/hexo-theme-aurora/issues with the above error message. Thanks!'
     )}`
   )
