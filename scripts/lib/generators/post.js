@@ -78,15 +78,18 @@ class PostGenerator {
     this.data.data.some((value, i) => {
       if (this.isFeature && featureData.length === this.featureCapacity)
         return true
+
       if (value.feature) {
-        featureData.unshift({
-          index: value.date.valueOf(),
+        featureData.push({
+          index: i,
+          date: value.date.valueOf(),
           data: value
         })
         fillOutIndexes.push(i)
       } else if (this.isFeature && dummyData.length !== this.featureCapacity) {
-        dummyData.unshift({
-          index: value.date.valueOf(),
+        dummyData.push({
+          index: i,
+          date: value.date.valueOf(),
           data: value
         })
         fillOutIndexes.push(i)
@@ -100,21 +103,21 @@ class PostGenerator {
     ) {
       // Switch into pin mode.
       this.isFeature = false
-    } else {
+    } else if (featureData.length < this.featureCapacity) {
       // Fill until max feature capacity.
-      dummyData.some((value, index) => {
-        if (featureData.length === this.featureCapacity) {
-          fillOutIndexes.shift(fillOutIndexes.indexOf(index), 1)
-        } else {
+      dummyData.some(value => {
+        if (featureData.length < this.featureCapacity) {
           value.data.feature = true
-          featureData.unshift(value)
+          featureData.push(value)
+        } else {
+          fillOutIndexes.splice(fillOutIndexes.indexOf(value.index), 1)
         }
       })
     }
 
     // Sort by index (=== sort by latest)
     featureData.sort((a, b) => {
-      return a.index - b.index
+      return a.date - b.date
     })
 
     // Filter out all the pull out posts
@@ -124,7 +127,6 @@ class PostGenerator {
 
     // Reorder all the feature / pinned post
     featureData.forEach(value => {
-      // console.log(value.index, value.data.title, value.data.date)
       if (!this.isFeature) value.data.pinned = true
       data.unshift(value.data)
     })
