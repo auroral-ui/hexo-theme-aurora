@@ -1,8 +1,29 @@
-# Changelog
+# 更变日志
 
-对这个项目的所有值得注意的变化都将记录在这个文件中。
+对这个项目的所有值得注意的变化都将记录在这个文档中。
 
 ## [Unreleased]
+
+## [1.5.4] - 2021-05-09
+
+### :fire: :wrench: 热修复补丁
+
+- 修复了生成器中 `chalk` 的报错。
+
+## [1.5.3] - 2021-05-09
+
+### :fire: :wrench: 热修复补丁
+
+- 修复了首页文章数不对的情况。
+
+## [1.5.2] - 2021-05-09
+
+### :wrench: 修复
+
+- 修复备案无法在脚步显示的问题 [#89](https://github.com/auroral-ui/hexo-theme-aurora/issues/89)
+- 修复 Valine 头像用的 CDN 没有根据语言切换 CDN 地址 [#92](https://github.com/auroral-ui/hexo-theme-aurora/issues/92)
+- 修复媒体链接没有居中的问题 [#80](https://github.com/auroral-ui/hexo-theme-aurora/issues/80)
+- 修复推荐/置顶文章的顺序问题 [#91](https://github.com/auroral-ui/hexo-theme-aurora/issues/91)
 
 ## [1.5.1] - 2021-05-07
 
@@ -278,7 +299,9 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...HEAD
+[1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...v1.5.4
+[1.5.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...v1.5.3
 [1.5.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3

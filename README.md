@@ -98,6 +98,12 @@ Keep me working on this project 💙
   <a href="https://gitee.com/appleaday" alt="=鱼"><img src="https://q4.qlogo.cn/g?b=qq&nk=1349703146&s=100" height="50" width="50"></a>
 </p>
 
+### 🥈 Silver Supplier
+
+<p>
+  <a href="https://blog.gzxiaobai.cn" alt="神楽シロ"><img src="https://q4.qlogo.cn/g?b=qq&nk=3467365604&s=100" height="50" width="50"></a>
+</p>
+
 ## 💰 Donation
 
 Are you **enjoying this project** ? 👋

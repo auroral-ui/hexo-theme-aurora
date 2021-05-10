@@ -25,9 +25,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "src/components/utils/clickaway.js",
-    "src/utils/mixin/emitter.js",
     "typings/*.d.ts"
   ],
-  "exclude": ["node_modules", "**/dist/**", "**/source/**"]
+  "exclude": ["node_modules", "**/dist/**", "**/source/**", "**/scripts/**"]
 }

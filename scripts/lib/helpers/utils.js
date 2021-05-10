@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 const { tocObj, escapeHTML, encodeURL } = require('hexo-util')
+const chalk = require('chalk')
 
 exports.md5 = function (str, len = 20) {
   return crypto.createHash('md5').update(str).digest('hex').substring(0, len)
@@ -128,4 +129,13 @@ exports.formatNumber = function (value) {
     value = Math.round(value / 100) / 10 + 'k' // > 999 => 1.1k
   } // < 999 => 111
   return value
+}
+
+exports.throwError = function (type, msg) {
+  console.error(`${chalk.red(`[${type}]`)} ${chalk.yellow(msg)}`)
+  console.error(
+    `${chalk.red('[NOTE]')} ${chalk.yellow(
+      'Please create an issue @ https://github.com/auroral-ui/hexo-theme-aurora/issues with the above error message. Thanks!'
+    )}`
+  )
 }

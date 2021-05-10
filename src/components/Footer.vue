@@ -30,7 +30,7 @@
             </li>
             <li
               v-if="
-                themeConfig.site.beian.number !== '' &&
+                themeConfig.site.beian.number !== '' ||
                 themeConfig.site.police_beian.number !== ''
               "
               class="flex flex-row gap-3"

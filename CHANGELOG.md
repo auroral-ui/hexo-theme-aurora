@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.4] - 2021-05-09
+
+### :fire: :wrench: Hotfix
+
+- Fixed generation error with `chalk`.
+
+## [1.5.3] - 2021-05-09
+
+### :fire: :wrench: Hotfix
+
+- Fixed incorrect amount of article generated.
+
+## [1.5.2] - 2021-05-09
+
+### :wrench: Fixed
+
+- Fixed beian is not appearing on the footer [#89](https://github.com/auroral-ui/hexo-theme-aurora/issues/89)
+- Fixed Valine Gravatar CDN not switching base on lang. [#92](https://github.com/auroral-ui/hexo-theme-aurora/issues/92)
+- Fixed social links alignment issue in profile section. [#80](https://github.com/auroral-ui/hexo-theme-aurora/issues/80)
+- Fixed feature article incorrect order. [#91](https://github.com/auroral-ui/hexo-theme-aurora/issues/91)
+
 ## [1.5.1] - 2021-05-07
 
 ### :sparkles: Added
@@ -289,7 +310,10 @@ To read about the new configuration, go to the [usage document](https://aurora.t
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...HEAD
+[1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...v1.5.4
+[1.5.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...v1.5.3
+[1.5.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.4.2...v1.4.3

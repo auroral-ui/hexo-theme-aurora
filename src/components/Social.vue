@@ -2,48 +2,73 @@
   <ul
     class="flex flex-row justify-evenly flex-wrap w-full py-4 px-2 text-center items-center"
   >
-    <a :href="socials.github" target="_blank" ref="github">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.github">
+    <a
+      :href="socials.github"
+      target="_blank"
+      ref="github"
+      v-if="socials.github"
+    >
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="github" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.twitter" target="_blank" ref="twitter">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.twitter">
+    <a
+      :href="socials.twitter"
+      target="_blank"
+      ref="twitter"
+      v-if="socials.twitter"
+    >
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="twitter" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.stackoverflow" target="_blank" ref="stackoverflow">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.stackoverflow">
+    <a
+      :href="socials.stackoverflow"
+      target="_blank"
+      ref="stackoverflow"
+      v-if="socials.stackoverflow"
+    >
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="stackoverflow" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.wechat" target="_blank" ref="wechat">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.wechat">
+    <a
+      :href="socials.wechat"
+      target="_blank"
+      ref="wechat"
+      v-if="socials.wechat"
+    >
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="wechat" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.qq" target="_blank" ref="qq">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.qq">
+    <a :href="socials.qq" target="_blank" ref="qq" v-if="socials.qq">
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="qq" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.weibo" target="_blank" ref="weibo">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.weibo">
+    <a :href="socials.weibo" target="_blank" ref="weibo" v-if="socials.weibo">
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="weibo" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.csdn" target="_blank" ref="csdn">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.csdn">
+    <a :href="socials.csdn" target="_blank" ref="csdn" v-if="socials.csdn">
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="csdn" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.zhihu" target="_blank" ref="zhifu">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.zhihu">
+    <a :href="socials.zhihu" target="_blank" ref="zhifu" v-if="socials.zhihu">
+      <li class="diamond-clip-path diamond-icon">
         <svg-icon icon-class="zhifu" class="fill-current" />
       </li>
     </a>
-    <a :href="socials.juejin" target="_blank" ref="juejin">
-      <li class="diamond-clip-path diamond-icon" v-if="socials.juejin">掘</li>
+    <a
+      :href="socials.juejin"
+      target="_blank"
+      ref="juejin"
+      v-if="socials.juejin"
+    >
+      <li class="diamond-clip-path diamond-icon">掘</li>
     </a>
     <template v-if="customSocials.length > 0">
       <template v-for="social in customSocials" :key="social.name">
