@@ -87,7 +87,7 @@ Keep me working on this project 💙
 ### 💜 Monthly Supplier
 
 <p>
-  <a href="https://afdian.net/u/13fd58d29e8811eb91a852540025c377" style="font-size: 1.2rem;"><img src=" https://q4.qlogo.cn/g?b=qq&nk=348920728&s=100" height="50" width="50"></a>
+  <a href="https://afdian.net/u/13fd58d29e8811eb91a852540025c377" style="font-size: 1.2rem;"><img src="https://i.loli.net/2021/06/13/vrt68aFYPkhjyLK.png" height="50" width="50"></a>
 </p>
 
 ### 🥇 Golden Supplier
