@@ -110,8 +110,10 @@
                         </svg>
                       </div>
                       <div class="search-hit-content-wrapper">
-                        <span class="search-hit-title" v-html="result.content">
-                        </span>
+                        <span
+                          class="search-hit-title"
+                          v-html="result.content"
+                        ></span>
                         <span class="search-hit-path">{{ result.title }}</span>
                       </div>
                       <div class="search-hit-action">
@@ -166,8 +168,10 @@
                         </svg>
                       </div>
                       <div class="search-hit-content-wrapper">
-                        <span class="search-hit-title" v-html="result.content">
-                        </span>
+                        <span
+                          class="search-hit-title"
+                          v-html="result.content"
+                        ></span>
                         <span class="search-hit-path">{{ result.title }}</span>
                       </div>
                       <div class="search-hit-action">
@@ -224,7 +228,7 @@
                 height="20"
                 width="20"
               />
-              <span class="text-ob"> ObsidiaNext </span>
+              <span class="text-ob">ObsidiaNext</span>
             </a>
           </div>
           <ul class="search-commands">

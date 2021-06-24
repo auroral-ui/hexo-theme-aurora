@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.5] - 2021-06-25
+
+I have being busy with life and advancing my career path. Updates for this theme will potentially be slowing down a bit. But hey! Keep the issue coming, leave me all the ideas, I will definitely get to them as soon as I get spare time from time to time of my busy life!
+
+### :wrench: Fixed
+
+- Fixed post count mismatch when having less than 3 posts [#104](https://github.com/auroral-ui/hexo-theme-aurora/issues/104)
+- Busuanzi `enable` property will work properly to hide and show [#115](https://github.com/auroral-ui/hexo-theme-aurora/issues/115)
+
+### :crystal_ball: Changed
+
+- Updated `Pinia` to version `2.0.0-beta.3`
+- Updated all the vue files with the new prettier formatting (All the classes are wrapped! YAY!)
+
 ## [1.5.4] - 2021-05-09
 
 ### :fire: :wrench: Hotfix
@@ -310,7 +324,8 @@ To read about the new configuration, go to the [usage document](https://aurora.t
 - <span class="tag new-tag">NEW</span> **`Custom pages`** - _Can add any custom pages, need to use the customized menu to display in the menu._
 - <span class="tag new-tag">NEW</span> **`Page navbar`** - _Can set up a sidebar on the specific page, act as the sub-menu of the page._
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.5...HEAD
+[1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.1...v1.5.2

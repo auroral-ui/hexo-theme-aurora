@@ -4,6 +4,19 @@
 
 ## [Unreleased]
 
+## [1.5.5] - 2021-06-25
+
+我一直忙于生活和事业发展。这个主题的更新速度可能会慢一些。但是嘿!让问题继续出现，把所有的想法留给我，我一定会在我忙碌的生活中有空闲时间的时候去做!
+
+### :wrench: Fixed
+
+- 修复文章数量不够 3 个时，出现报错问题 [#104](https://github.com/auroral-ui/hexo-theme-aurora/issues/104)
+- Busuanzi `enable` 属性可以正常隐藏和显示 [#115](https://github.com/auroral-ui/hexo-theme-aurora/issues/115)
+
+### :crystal_ball: Changed
+
+- 升级 `Pinia` 到版本 `2.0.0-beta.3`
+
 ## [1.5.4] - 2021-05-09
 
 ### :fire: :wrench: 热修复补丁
@@ -299,7 +312,8 @@ cp -rf ./node_modules/hexo-theme-aurora/_config.yml ./_config.aurora.yml
 - <span class="tag new-tag">NEW</span> **`自定义页`** - _结合自定义菜单使用，可以加入自定义页面到导航之中。_
 - <span class="tag new-tag">NEW</span> **`页面子导航`** - _可以给 `自定义页` 加入导航。_
 
-[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...HEAD
+[unreleased]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.5...HEAD
+[1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.2...v1.5.3
 [1.5.1]: https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.0...v1.5.1

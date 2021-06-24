@@ -12,7 +12,7 @@ export const useSearchStore = defineStore({
     openModal: false
   }),
   getters: {
-    results() {
+    results(): any {
       return this.recentResults.getData()
     }
   },

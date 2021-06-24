@@ -12,7 +12,15 @@
           size="xs"
         />
         <div
-          class="flex flex-row items-center hover:opacity-50 mr-2 mb-2 cursor-pointer transition-all"
+          class="
+            flex flex-row
+            items-center
+            hover:opacity-50
+            mr-2
+            mb-2
+            cursor-pointer
+            transition-all
+          "
         >
           <span class="text-center px-3 py-1 rounded-md text-sm">
             <b class="border-b-2 border-ob hover:text-ob">

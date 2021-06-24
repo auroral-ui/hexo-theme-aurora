@@ -5,7 +5,15 @@
       <h1 class="post-title text-white uppercase">{{ t('menu.archives') }}</h1>
     </div>
     <div
-      class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+      class="
+        bg-ob-deep-800
+        px-14
+        py-16
+        rounded-2xl
+        shadow-xl
+        block
+        min-h-screen
+      "
     >
       <ul class="timeline timeline-centered">
         <template
