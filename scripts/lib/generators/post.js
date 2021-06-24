@@ -1,5 +1,5 @@
 const { postMapper, postListMapper } = require('../helpers/mapper')
-const { formatNumber, throwError } = require('../helpers/utils')
+const { formatNumber, throwError, throwInfo } = require('../helpers/utils')
 
 class PostGenerator {
   data = []
@@ -48,8 +48,9 @@ class PostGenerator {
         this.isFeature &&
         Boolean(current.feature) === true &&
         featureIndexes.length < this.featureCapacity
-      )
+      ) {
         featureIndexes.push(index)
+      }
 
       this.fillAuthorPost(current)
     })
@@ -74,27 +75,41 @@ class PostGenerator {
     const dummyData = []
     const fillOutIndexes = []
     let data = Object.create(this.data.data)
+
+    // Check if articles count > feature capacity.
+    // Switch to PIN MODE if not enough posts.
+    if (data.length < this.featureCapacity) {
+      throwInfo(
+        'Aurora Generator Warning',
+        `You need at least ${this.featureCapacity} articles to enable [FEATURE MODE], you currently have ${data.length}. [PIN MODE] is activated instead!`
+      )
+      this.isFeature = false
+    }
+
     // Pull out the feature posts and fill-in posts
-    this.data.data.some((value, i) => {
-      if (this.isFeature && featureData.length === this.featureCapacity)
-        return true
+    let currentIndex = 0
+    for (let value of this.data.data) {
+      if (this.isFeature && featureData.length === this.featureCapacity) {
+        break
+      }
 
       if (value.feature) {
         featureData.push({
-          index: i,
+          index: currentIndex,
           date: value.date.valueOf(),
           data: value
         })
-        fillOutIndexes.push(i)
+        fillOutIndexes.push(currentIndex)
       } else if (this.isFeature && dummyData.length !== this.featureCapacity) {
         dummyData.push({
-          index: i,
+          index: currentIndex,
           date: value.date.valueOf(),
           data: value
         })
-        fillOutIndexes.push(i)
+        fillOutIndexes.push(currentIndex)
       }
-    })
+      currentIndex++
+    }
 
     if (
       !this.isFeature ||
@@ -127,15 +142,19 @@ class PostGenerator {
 
     // Reorder all the feature / pinned post
     featureData.forEach(value => {
-      if (!this.isFeature) value.data.pinned = true
-      data.unshift(value.data)
+      if (!this.isFeature) {
+        value.data.pinned = true
+      } else {
+        data.unshift(value.data)
+      }
     })
 
-    if (this.data.data.length !== data.length)
+    if (this.isFeature && this.data.data.length !== data.length) {
       throwError(
         'Aurora Generator Error',
         'Mismatch post count after feature processing!'
       )
+    }
 
     this.data.data = data
   }
