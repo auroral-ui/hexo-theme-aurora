@@ -453,7 +453,9 @@ interface PluginsData {
     recentComment: boolean
   }
   recent_comments: boolean
-  busuanzi: boolean
+  busuanzi: {
+    enable: boolean
+  }
   copy_protection: {
     enable: boolean
     author: {
@@ -507,7 +509,9 @@ export class Plugins implements PluginsData {
     recentComment: false
   }
   recent_comments = false
-  busuanzi = false
+  busuanzi = {
+    enable: true
+  }
   copy_protection = {
     enable: true,
     author: {
