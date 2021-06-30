@@ -77,7 +77,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile :author="'blog-author'" />
+          <Profile :author="mainAuthor" />
           <RecentComment />
           <TagBox />
         </Sidebar>

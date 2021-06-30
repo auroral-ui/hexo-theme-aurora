@@ -152,7 +152,9 @@ export default defineComponent({
     const authorData = ref(new AuthorPosts())
 
     const fetchAuthor = async () => {
-      await authorStore.fetchAuthorData('blog-author').then(data => {
+      let author = appStore.themeConfig.site.author.toLocaleLowerCase()
+      author.replace(/[\s]+/g, '-')
+      await authorStore.fetchAuthorData(author).then(data => {
         authorData.value = data
       })
     }
