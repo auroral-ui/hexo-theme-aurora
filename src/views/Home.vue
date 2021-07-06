@@ -77,7 +77,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile :author="'blog-author'" />
+          <Profile :author="mainAuthor" />
           <RecentComment />
           <TagBox />
         </Sidebar>
@@ -224,7 +224,10 @@ export default defineComponent({
         }
         return categoryStore.categories
       }),
-      mainAuthor: computed(() => appStore.themeConfig.site.author),
+      mainAuthor: computed(() => {
+        let author = appStore.themeConfig.site.author.toLocaleLowerCase()
+        return author.replace(/[\s]+/g, '-')
+      }),
       expanderClass,
       tabClass,
       expandHandler,
