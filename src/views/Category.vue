@@ -9,7 +9,16 @@
     <div class="main-grid">
       <div class="relative">
         <div
-          class="post-html bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+          class="
+            post-html
+            bg-ob-deep-800
+            px-14
+            py-16
+            rounded-2xl
+            shadow-xl
+            block
+            min-h-screen
+          "
         ></div>
       </div>
       <div class="col-span-1">

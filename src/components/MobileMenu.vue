@@ -42,7 +42,15 @@
     </ul>
   </div>
   <ul
-    class="flex flex-col justify-center items-center mt-8 w-full list-none text-ob-bright"
+    class="
+      flex flex-col
+      justify-center
+      items-center
+      mt-8
+      w-full
+      list-none
+      text-ob-bright
+    "
   >
     <li class="pb-2 cursor-pointer" v-for="route in routes" :key="route.path">
       <div
@@ -62,12 +70,24 @@
         >
           {{ route.i18n.en }}
         </span>
-        <span class="relative z-50" v-else> {{ route.name }} </span>
+        <span class="relative z-50" v-else>{{ route.name }}</span>
       </div>
       <Dropdown
         @command="pushPage"
         v-else
-        class="flex flex-col justify-center items-center nav-link text-sm block px-1.5 py-0.5 rounded-md relative uppercase"
+        class="
+          flex flex-col
+          justify-center
+          items-center
+          nav-link
+          text-sm
+          block
+          px-1.5
+          py-0.5
+          rounded-md
+          relative
+          uppercase
+        "
       >
         <span
           class="relative z-50"
@@ -81,7 +101,7 @@
         >
           {{ route.i18n.en }}
         </span>
-        <span class="relative z-50" v-else> {{ route.name }} </span>
+        <span class="relative z-50" v-else>{{ route.name }}</span>
         <DropdownMenu expand>
           <DropdownItem
             v-for="sub in route.children"
@@ -100,7 +120,7 @@
             >
               {{ sub.i18n.en }}
             </span>
-            <span class="relative z-50" v-else> {{ sub.name }} </span>
+            <span class="relative z-50" v-else>{{ sub.name }}</span>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
@@ -132,7 +152,9 @@ export default defineComponent({
     const authorData = ref(new AuthorPosts())
 
     const fetchAuthor = async () => {
-      await authorStore.fetchAuthorData('blog-author').then(data => {
+      let author = appStore.themeConfig.site.author.toLocaleLowerCase()
+      author.replace(/[\s]+/g, '-')
+      await authorStore.fetchAuthorData(author).then(data => {
         authorData.value = data
       })
     }

@@ -1,8 +1,8 @@
 {
   "name": "hexo-theme-aurora",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "Futuristic auroral theme for Hexo.",
-  "author": "TriDiamond <code.tridiamond@gmail.com>",
+  "author": "Benny Guo <bennyxguo6@gmail.com>",
   "license": "MIT",
   "repository": "https://github.com/auroral-ui/hexo-theme-aurora",
   "keywords": [
@@ -29,7 +29,7 @@
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "pinia": "^2.0.0-alpha.7",
+    "pinia": "^2.0.0-beta.3",
     "truncate-html": "^1.0.3",
     "vue": "^3.0.7",
     "vue-class-component": "^8.0.0-rc.1",

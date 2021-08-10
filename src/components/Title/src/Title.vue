@@ -1,7 +1,17 @@
 <template>
   <p
     :id="id"
-    class="relative opacity-90 flex items-center pt-12 pb-2 mb-8 text-3xl text-ob-bright uppercase"
+    class="
+      relative
+      opacity-90
+      flex
+      items-center
+      pt-12
+      pb-2
+      mb-8
+      text-3xl text-ob-bright
+      uppercase
+    "
   >
     <svg-icon v-if="icon" :icon-class="icon" class="inline-block mr-2" />
     {{ t(titleStr) }}

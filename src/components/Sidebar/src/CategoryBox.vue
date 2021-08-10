@@ -9,12 +9,27 @@
           :key="category.slug"
         >
           <span
-            class="bg-ob-deep-900 text-center px-3 py-1 rounded-tl-md rounded-bl-md text-sm"
+            class="
+              bg-ob-deep-900
+              text-center
+              px-3
+              py-1
+              rounded-tl-md rounded-bl-md
+              text-sm
+            "
           >
             {{ category.name }}
           </span>
           <b
-            class="bg-ob-deep-900 text-ob text-center px-2 py-1 rounded-tr-md rounded-br-md text-sm opacity-70"
+            class="
+              bg-ob-deep-900
+              text-ob text-center
+              px-2
+              py-1
+              rounded-tr-md rounded-br-md
+              text-sm
+              opacity-70
+            "
           >
             {{ category.count }}
           </b>

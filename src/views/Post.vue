@@ -11,7 +11,7 @@
           >
             <span>{{ post.categories[0].name }}</span>
           </b>
-          <b v-else> {{ t('settings.default-category') }} </b>
+          <b v-else>{{ t('settings.default-category') }}</b>
           <ul>
             <ob-skeleton
               v-if="loading"
@@ -23,12 +23,14 @@
             />
             <template v-else-if="!loading && post.tags && post.tags.length > 0">
               <li v-for="tag in post.tags" :key="tag.slug">
-                <em class="opacity-50">#</em> {{ tag.name }}
+                <em class="opacity-50">#</em>
+                {{ tag.name }}
               </li>
             </template>
             <template v-else>
               <li>
-                <b class="opacity-50">#</b> {{ t('settings.default-tag') }}
+                <b class="opacity-50">#</b>
+                {{ t('settings.default-tag') }}
               </li>
             </template>
           </ul>
@@ -129,7 +131,15 @@
         </template>
         <div
           v-else
-          class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+          class="
+            bg-ob-deep-800
+            px-14
+            py-16
+            rounded-2xl
+            shadow-xl
+            block
+            min-h-screen
+          "
         >
           <ob-skeleton
             tag="div"

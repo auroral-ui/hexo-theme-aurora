@@ -42,7 +42,6 @@ function authorMapper(author, configs) {
   } else {
     return authorAttributes({
       name: configs.theme_config.site.author,
-      slug: 'blog-author',
       avatar:
         configs.theme_config.site.avatar || configs.theme_config.site.logo,
       link: configs.theme_config.site.link || '/',
@@ -55,9 +54,7 @@ function authorMapper(author, configs) {
 function authorAttributes(author) {
   return {
     name: author.name,
-    slug:
-      author.slug ||
-      String(author.name).toLocaleLowerCase().replace(/[\s]+/g, '-'),
+    slug: String(author.name).toLocaleLowerCase().replace(/[\s]+/g, '-'),
     avatar: author.avatar || '',
     link: author.link || '',
     description: author.description || '',

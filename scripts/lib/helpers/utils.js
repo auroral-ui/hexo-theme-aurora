@@ -139,3 +139,7 @@ exports.throwError = function (type, msg) {
     )}`
   )
 }
+
+exports.throwInfo = function (type, msg) {
+  console.error(`${chalk.blue(`[${type}]`)} ${chalk.yellow(msg)}`)
+}
