@@ -60,7 +60,7 @@
       </div>
       <div class="col-span-1">
         <Sidebar>
-          <Profile author="blog-author" />
+          <Profile :author="mainAuthor" />
           <Toc :toc="post.toc" />
         </Sidebar>
       </div>
@@ -80,6 +80,7 @@ import {
 import { useI18n } from 'vue-i18n'
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { useCommonStore } from '@/stores/common'
+import useMixin from '@/utils/mixin'
 
 export default defineComponent({
   name: 'ObPageContainer',
@@ -101,6 +102,7 @@ export default defineComponent({
     const { t } = useI18n()
     const post = toRefs(props).post
     const title = toRefs(props).title
+    const { mainAuthor } = useMixin()
 
     watch(
       () => post.value.covers,
@@ -123,6 +125,7 @@ export default defineComponent({
         if (title.value !== '') return title.value
         return post.value.title
       }),
+      mainAuthor,
       t
     }
   }

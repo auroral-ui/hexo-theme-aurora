@@ -99,6 +99,7 @@ import { useI18n } from 'vue-i18n'
 import { useCategoryStore } from '@/stores/category'
 import Paginator from '@/components/Paginator.vue'
 import { useMetaStore } from '@/stores/meta'
+import useMixin from '@/utils/mixin'
 
 export default defineComponent({
   name: 'Home',
@@ -120,6 +121,7 @@ export default defineComponent({
     const appStore = useAppStore()
     const categoryStore = useCategoryStore()
     const { t } = useI18n()
+    const { mainAuthor } = useMixin()
 
     /** Variables Section */
 
@@ -224,10 +226,7 @@ export default defineComponent({
         }
         return categoryStore.categories
       }),
-      mainAuthor: computed(() => {
-        let author = appStore.themeConfig.site.author.toLocaleLowerCase()
-        return author.replace(/[\s]+/g, '-')
-      }),
+      mainAuthor,
       expanderClass,
       tabClass,
       expandHandler,
