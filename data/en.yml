@@ -17,5 +17,5 @@ plugins:
     - <script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
   valine:
-    - <script src="https://cdn.jsdelivr.net/npm/valine/1.4.14/Valine.min.js"></script>
+    - <script src="https://cdn.jsdelivr.net/npm/valine/1.4.16/Valine.min.js"></script>
     - <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script>
