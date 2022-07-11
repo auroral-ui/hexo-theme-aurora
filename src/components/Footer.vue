@@ -67,11 +67,11 @@
                 />
                 <b>
                   公安备案信息：
-                  <a :href="themeConfig.site.beian.link">
+                  <a :href="themeConfig.site.police_beian.link">
                     <b
                       class="font-extrabold border-b-2 border-ob hover:text-ob"
                     >
-                      {{ themeConfig.site.beian.number }}
+                      {{ themeConfig.site.police_beian.number }}
                     </b>
                   </a>
                 </b>

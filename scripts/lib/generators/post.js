@@ -39,7 +39,7 @@ class PostGenerator {
       current.prev_post = prevPost
       current.next_post = {}
       prevPost = postListMapper(current, this.configs)
-      if (index !== 0 && index !== this.data.length - 1) {
+      if (index !== 0) {
         dummyList[index - 1].next_post = postListMapper(current, this.configs)
       }
       dummyList.push(current)
