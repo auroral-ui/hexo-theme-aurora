@@ -6,11 +6,13 @@ scripts:
   - <script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
   - <script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
   - <script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  - <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 css:
   - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/themes/prism.min.css"/>
   - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.css"/>
   - <link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" />
+  - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.css" rel="stylesheet">
 
 plugins:
   gitalk:

@@ -6,11 +6,13 @@ scripts:
   - <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
   - <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
   - <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  - <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 
 css:
   - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.min.css"/>
   - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/toolbar/prism-toolbar.css"/>
   - <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik"/>
+  - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 
 plugins:
   gitalk:

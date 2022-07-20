@@ -24,8 +24,12 @@
     "env:pub": "node ./build/scripts/config-script.js publish"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.14",
     "axios": "^0.21.1",
+    "babel-loader": "^8.2.5",
     "core-js": "^3.6.5",
+    "html-webpack-plugin": "^5.5.0",
+    "jquery": "^3.6.0",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
@@ -37,7 +41,8 @@
     "vue-router": "^4.0.3",
     "vue3-click-away": "^1.1.0",
     "vue3-lazy": "^1.0.0-alpha.1",
-    "vue3-scroll-spy": "^1.0.8"
+    "vue3-scroll-spy": "^1.0.8",
+    "webpack": "4.42.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat@2.1.2",
