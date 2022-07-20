@@ -52,6 +52,7 @@ import Footer from '@/components/Footer.vue'
 import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
 import Dia from '@/components/Dia.vue'
+import $ from 'jquery';
 
 export default defineComponent({
   name: 'App',
