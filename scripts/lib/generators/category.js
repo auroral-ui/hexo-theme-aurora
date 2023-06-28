@@ -11,7 +11,7 @@ class CategoryGenerator {
   configs = {}
 
   constructor(categories, posts, configs) {
-    this.data = categories
+    this.data = categories.length > 0 ? categories : []
     this.posts = posts
     this.configs = configs
     this.reduceCategories()
