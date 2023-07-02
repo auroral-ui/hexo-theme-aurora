@@ -27,7 +27,7 @@ export default defineComponent({
       default: ''
     }
   },
-  setup(props) {
+  setup(props: { iconClass: string; className: string }) {
     const isExternalClass = computed(() => isExternalIcon(props.iconClass))
 
     const iconName = computed(() => `#icon-${props.iconClass}`)

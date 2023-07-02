@@ -223,12 +223,12 @@
             </svg> -->
               <img
                 class="mr-1.5"
-                src="https://img-blog.csdnimg.cn/20210313122054101.png"
+                src="https://res.cloudinary.com/tridiamond/image/upload/v1625037705/ObsidianestLogo-hex_hecqbw.png"
                 alt="ObsidianNext Logo"
                 height="20"
                 width="20"
               />
-              <span class="text-ob">ObsidiaNext</span>
+              <span class="text-ob">Aurora</span>
             </a>
           </div>
           <ul class="search-commands">

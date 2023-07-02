@@ -10,13 +10,13 @@
       uppercase
     "
   >
-    <svg-icon
+    <SvgIcon
       v-if="icon && side === 'left'"
       :icon-class="icon"
       class="inline-block mr-2"
     />
     <span :class="titleClass">{{ t(titleStr) }}</span>
-    <svg-icon
+    <SvgIcon
       v-if="icon && side === 'right'"
       :icon-class="icon"
       class="inline-block ml-2"
@@ -29,9 +29,11 @@
 import { useAppStore } from '@/stores/app'
 import { computed, defineComponent, toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObSubTitle',
+  components: { SvgIcon },
   props: {
     title: {
       type: String,

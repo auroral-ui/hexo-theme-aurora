@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  es2022: true,
   env: {
     node: true
   },
@@ -16,8 +17,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-explicit-any': ['off'],
     'prettier/prettier': ['error', { semi: false }],
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-console': import.meta.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': import.meta.env.NODE_ENV === 'production' ? 'warn' : 'off'
   },
   overrides: [
     {

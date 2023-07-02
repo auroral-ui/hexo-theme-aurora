@@ -89,13 +89,13 @@
           <ul v-if="themeConfig.plugins.busuanzi.enable">
             <li>
               <span id="busuanzi_container_site_pv">
-                <svg-icon icon-class="eye" class="mr-1 text-lg inline-block" />
+                <SvgIcon icon-class="eye" class="mr-1 text-lg inline-block" />
                 <span id="busuanzi_value_site_pv" />
               </span>
             </li>
             <li>
               <span id="busuanzi_container_site_uv">
-                <svg-icon
+                <SvgIcon
                   icon-class="people"
                   class="mr-1 text-lg inline-block"
                 />
@@ -130,9 +130,11 @@
 import { computed, defineComponent } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObFooter',
+  components: { SvgIcon },
   setup() {
     const appStore = useAppStore()
     const { t } = useI18n()

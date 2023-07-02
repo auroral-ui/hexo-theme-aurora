@@ -13,7 +13,7 @@
         class="Ob-Navigator-btt"
       >
         <div>
-          <svg-icon
+          <SvgIcon
             class="text-ob-bright stroke-current"
             icon-class="nav-top"
           />
@@ -27,12 +27,12 @@
     <div class="Ob-Navigator-ball" @click.stop.prevent="handleNavigatorToggle">
       <div :style="gradient">
         <transition name="fade-bounce-y" mode="out-in">
-          <svg-icon
+          <SvgIcon
             v-if="openNavigator"
             class="text-base stroke-2"
             icon-class="close"
           />
-          <svg-icon v-else-if="!showProgress" icon-class="dots" />
+          <SvgIcon v-else-if="!showProgress" icon-class="dots" />
           <span class="text-sm" v-else>{{ progress }}%</span>
         </transition>
       </div>
@@ -45,7 +45,7 @@
         @click.stop.prevent="handleBackToTop"
       >
         <div>
-          <svg-icon
+          <SvgIcon
             class="text-ob-bright stroke-current"
             icon-class="nav-top"
           />
@@ -61,7 +61,7 @@
         v-if="isMobile"
       >
         <div>
-          <svg-icon
+          <SvgIcon
             class="text-ob-bright stroke-current"
             icon-class="nav-menu"
           />
@@ -76,7 +76,7 @@
         @click.stop.prevent="handleGoHome"
       >
         <div>
-          <svg-icon
+          <SvgIcon
             class="text-ob-bright stroke-current"
             icon-class="nav-home"
           />
@@ -91,7 +91,7 @@
         @click.stop.prevent="handleSearch"
       >
         <div>
-          <svg-icon class="text-ob-bright stroke-current" icon-class="search" />
+          <SvgIcon class="text-ob-bright stroke-current" icon-class="search" />
         </div>
         <span class="Ob-Navigator-tips">
           {{ t('settings.tips-open-search') }}
@@ -109,9 +109,11 @@ import { useNavigatorStore } from '@/stores/navigator'
 import { useRouter } from 'vue-router'
 import { useSearchStore } from '@/stores/search'
 import { useCommonStore } from '@/stores/common'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObNavigator',
+  components: { SvgIcon },
   setup() {
     const appStore = useAppStore()
     const commonStore = useCommonStore()

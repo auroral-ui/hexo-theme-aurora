@@ -18,7 +18,7 @@
       v-if="socials.github"
     >
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="github" class="fill-current" />
+        <SvgIcon icon-class="github" class="fill-current" />
       </li>
     </a>
     <a
@@ -28,7 +28,7 @@
       v-if="socials.twitter"
     >
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="twitter" class="fill-current" />
+        <SvgIcon icon-class="twitter" class="fill-current" />
       </li>
     </a>
     <a
@@ -38,7 +38,7 @@
       v-if="socials.stackoverflow"
     >
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="stackoverflow" class="fill-current" />
+        <SvgIcon icon-class="stackoverflow" class="fill-current" />
       </li>
     </a>
     <a
@@ -48,27 +48,27 @@
       v-if="socials.wechat"
     >
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="wechat" class="fill-current" />
+        <SvgIcon icon-class="wechat" class="fill-current" />
       </li>
     </a>
     <a :href="socials.qq" target="_blank" ref="qq" v-if="socials.qq">
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="qq" class="fill-current" />
+        <SvgIcon icon-class="qq" class="fill-current" />
       </li>
     </a>
     <a :href="socials.weibo" target="_blank" ref="weibo" v-if="socials.weibo">
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="weibo" class="fill-current" />
+        <SvgIcon icon-class="weibo" class="fill-current" />
       </li>
     </a>
     <a :href="socials.csdn" target="_blank" ref="csdn" v-if="socials.csdn">
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="csdn" class="fill-current" />
+        <SvgIcon icon-class="csdn" class="fill-current" />
       </li>
     </a>
     <a :href="socials.zhihu" target="_blank" ref="zhifu" v-if="socials.zhihu">
       <li class="diamond-clip-path diamond-icon">
-        <svg-icon icon-class="zhifu" class="fill-current" />
+        <SvgIcon icon-class="zhifu" class="fill-current" />
       </li>
     </a>
     <a
@@ -84,7 +84,7 @@
         <a :href="social.link" target="_blank" :ref="social.name">
           <li class="diamond-clip-path diamond-icon">
             <template v-if="social.icon.img_link">
-              <svg-icon
+              <SvgIcon
                 :icon-class="social.icon.img_link"
                 class="fill-current"
               />
@@ -101,9 +101,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'AuSocial',
+  components: { SvgIcon },
   props: {
     socials: {
       type: Object,
@@ -122,7 +124,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.custom-social-svg-icon {
+.custom-social-SvgIcon {
   width: 1em;
   height: 1em;
   font-size: 1em;

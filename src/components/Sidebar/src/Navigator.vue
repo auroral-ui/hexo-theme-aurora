@@ -23,7 +23,7 @@
       "
       @click="goBack"
     >
-      <svg-icon class="inline-block text-3xl" icon-class="go-back" />
+      <SvgIcon class="inline-block text-3xl" icon-class="go-back" />
     </li>
     <li
       class="
@@ -38,7 +38,7 @@
       "
       @click="backToTop"
     >
-      <svg-icon class="inline-block text-3xl" icon-class="back-to-top" />
+      <SvgIcon class="inline-block text-3xl" icon-class="back-to-top" />
     </li>
     <li
       class="
@@ -53,7 +53,7 @@
       @click="jumpToComments"
       data-dia="jump-to-comment"
     >
-      <svg-icon class="inline-block text-3xl" icon-class="quote" />
+      <SvgIcon class="inline-block text-3xl" icon-class="quote" />
     </li>
   </ul>
 </template>
@@ -61,9 +61,11 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
-  name: 'Example',
+  name: 'Navigator',
+  components: { SvgIcon },
   setup() {
     const router = useRouter()
     const commentOffset = ref(0)

@@ -1,12 +1,3 @@
-# Changelog
-
-All notable changes to the "aurora-future" extension will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
 ## [1.5.5] - 2021-06-25
 
 I have being busy with life and advancing my career path. Updates for this theme will potentially be slowing down a bit. But hey! Keep the issue coming, leave me all the ideas, I will definitely get to them as soon as I get spare time from time to time of my busy life!

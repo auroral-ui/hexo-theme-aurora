@@ -52,6 +52,7 @@ import Footer from '@/components/Footer.vue'
 import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
 import Dia from '@/components/Dia.vue'
+import defaultCover from '@/assets/default-cover.jpg'
 
 export default defineComponent({
   name: 'App',
@@ -107,7 +108,7 @@ export default defineComponent({
               : appStore.themeConfig.plugins.copy_protection.license.en
 
           pagelink = `\n\n---------------------------------\n${authorPlaceholder}: ${appStore.themeConfig.site.author}\n${linkPlaceholder}: ${document.location.href}\n${licensePlaceholder}`
-          intialCopyrightScript()
+          initialCopyrightScript()
         }
       })
     }
@@ -125,7 +126,7 @@ export default defineComponent({
     }
 
     /** Adding copy listner */
-    const intialCopyrightScript = () => {
+    const initialCopyrightScript = () => {
       document.addEventListener('copy', copyEventHandler)
     }
 
@@ -133,7 +134,7 @@ export default defineComponent({
       return commonStore.isMobile
     })
 
-    const resizeHanler = () => {
+    const resizeHandler = () => {
       const rect = document.body.getBoundingClientRect()
       const mobileState = rect.width - 1 < MOBILE_WITH
       if (isMobile.value !== mobileState)
@@ -141,8 +142,8 @@ export default defineComponent({
     }
 
     const initResizeEvent = () => {
-      resizeHanler()
-      window.addEventListener('resize', resizeHanler)
+      resizeHandler()
+      window.addEventListener('resize', resizeHandler)
     }
 
     const handleOpenModal = () => {
@@ -153,7 +154,7 @@ export default defineComponent({
 
     onUnmounted(() => {
       document.removeEventListener('copy', copyEventHandler)
-      window.removeEventListener('resize', resizeHanler)
+      window.removeEventListener('resize', resizeHandler)
     })
 
     const wrapperStyle = ref({ 'min-height': '100vh' })
@@ -190,7 +191,7 @@ export default defineComponent({
         return {
           backgroundImage: `url(${
             commonStore.headerImage
-          }), url(${require('@/assets/default-cover.jpg')})`,
+          }), url(${defaultCover})`,
           opacity: commonStore.headerImage !== '' ? 1 : 0
         }
       }),

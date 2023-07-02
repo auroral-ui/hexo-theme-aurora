@@ -30,7 +30,7 @@
         <h2 class="text-3xl pb-8 lg:pb-16">
           <p :style="gradientText">EDITOR'S SELECTION</p>
           <span class="relative text-2xl text-ob-bright font-semibold">
-            <svg-icon class="inline-block" icon-class="hot" />
+            <SvgIcon class="inline-block" icon-class="hot" />
             {{ t('home.recommended') }}
           </span>
         </h2>
@@ -61,11 +61,13 @@ import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import { computed, defineComponent, toRefs } from 'vue'
 import { Article } from '@/components/ArticleCard'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObFeatureList',
   components: {
-    Article
+    Article,
+    SvgIcon
   },
   props: {
     data: {

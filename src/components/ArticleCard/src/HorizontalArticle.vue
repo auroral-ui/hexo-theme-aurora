@@ -2,13 +2,13 @@
   <div class="article-container">
     <span v-if="post.pinned" class="article-tag">
       <b>
-        <svg-icon icon-class="pin" />
+        <SvgIcon icon-class="pin" />
         {{ t('settings.pinned') }}
       </b>
     </span>
     <span v-else-if="post.feature" class="article-tag">
       <b>
-        <svg-icon icon-class="hot" />
+        <SvgIcon icon-class="hot" />
         {{ t('settings.featured') }}
       </b>
     </span>
@@ -108,9 +108,11 @@
 import { computed, defineComponent, toRefs } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObHorizontalArticle',
+  components: { SvgIcon },
   props: {
     data: {
       type: Object
