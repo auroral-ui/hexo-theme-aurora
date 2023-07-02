@@ -1,12 +1,18 @@
-name: Release
+name: PR Check
+
+permissions:
+  pull-requests: write
+  contents: write
 
 on:
-  push:
-    branches: [main, beta]
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  release:
-    name: Release
+  pr-build-check:
+    name: PR Build Check
     runs-on: ubuntu-latest
 
     steps:
@@ -42,14 +48,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install semantic-release extra plugins
-        run: pnpm install --save-dev @semantic-release/changelog @semantic-release/git
-
       - name: Build
         run: pnpm build
-
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
