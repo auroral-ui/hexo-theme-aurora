@@ -5,15 +5,7 @@
       <h1 class="post-title text-white uppercase">{{ t('menu.archives') }}</h1>
     </div>
     <div
-      class="
-        bg-ob-deep-800
-        px-14
-        py-16
-        rounded-2xl
-        shadow-xl
-        block
-        min-h-screen
-      "
+      class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
     >
       <ul class="timeline timeline-centered">
         <template
@@ -70,6 +62,7 @@ import { useI18n } from 'vue-i18n'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Paginator from '@/components/Paginator.vue'
 import { useCommonStore } from '@/stores/common'
+import defaultCover from '@/assets/default-cover.jpg'
 
 export default defineComponent({
   name: 'Archives',
@@ -89,7 +82,7 @@ export default defineComponent({
         pagination.value.pageTotal = data.total
         archives.value = data.data
       })
-      commonStore.setHeaderImage(`${require('@/assets/default-cover.jpg')}`)
+      commonStore.setHeaderImage(defaultCover)
     }
 
     const pageChangeHanlder = (page: number) => {

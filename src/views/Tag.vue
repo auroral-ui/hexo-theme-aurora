@@ -38,6 +38,7 @@ import { useTagStore } from '@/stores/tag'
 import { TagList, TagItem } from '@/components/Tag'
 import { useCommonStore } from '@/stores/common'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import defaultCover from '@/assets/default-cover.jpg'
 
 export default defineComponent({
   name: 'Tag',
@@ -49,7 +50,7 @@ export default defineComponent({
 
     const fetchData = async () => {
       tagStore.fetchAllTags()
-      commonStore.setHeaderImage(`${require('@/assets/default-cover.jpg')}`)
+      commonStore.setHeaderImage(defaultCover)
     }
 
     onBeforeMount(fetchData)
