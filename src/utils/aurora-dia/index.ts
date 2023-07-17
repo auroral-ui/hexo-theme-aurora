@@ -10,7 +10,7 @@ interface AWFConfig {
 }
 
 interface MessageType {
-  [key: string]: { [key: string]: string}
+  [key: string]: { [key: string]: string }
 }
 interface MessageTranslation {
   [key: string]: MessageType
@@ -327,10 +327,13 @@ class AuroraBotSoftware {
   }
 
   loadLocaleMessages() {
-    const locales: Record<string, MessageType> = import.meta.glob('./messages/*.json', {eager: true})
+    const locales: Record<string, MessageType> = import.meta.glob(
+      './messages/*.json',
+      { eager: true }
+    )
 
     const messages: MessageTranslation = {}
-    Object.keys(locales).forEach((key) => {
+    Object.keys(locales).forEach(key => {
       const matched = key.match(/([A-Za-z0-9-_]+)\./i)
       if (matched && matched.length > 1) {
         const locale = matched[1]
@@ -388,8 +391,6 @@ class AuroraBotSoftware {
   showQuote() {
     if (this.config.locale === 'cn') {
       this.getHitokoto()
-    } else {
-      this.getTheySaidSo()
     }
   }
 
