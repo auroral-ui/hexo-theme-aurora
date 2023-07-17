@@ -9,7 +9,7 @@ import '@/styles/index.scss'
 
 import App from './App.vue'
 import router from './router'
-import { i18n } from './locales'
+import i18n from './locales'
 import VueClickAway from 'vue3-click-away'
 import VueLazyLoad from 'vue3-lazyload'
 

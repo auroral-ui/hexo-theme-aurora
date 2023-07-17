@@ -21,9 +21,12 @@ function loadLocaleMessages() {
   return messages
 }
 
-export const i18n = createI18n({
+const i18n = createI18n({
   legacy: false,
   locale: import.meta.env.VITE_APP_I18N_LOCALE || 'en',
   fallbackLocale: import.meta.env.VITE_APP_I18N_FALLBACK_LOCALE || 'en',
-  messages: loadLocaleMessages()
+  messages: loadLocaleMessages(),
+  globalInjection: true,
 })
+
+export default i18n

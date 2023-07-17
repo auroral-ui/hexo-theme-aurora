@@ -53,6 +53,7 @@ import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
 import Dia from '@/components/Dia.vue'
 import defaultCover from '@/assets/default-cover.jpg'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'App',
@@ -69,6 +70,7 @@ export default defineComponent({
     const metaStore = useMetaStore()
     const searchStore = useSearchStore()
     const MOBILE_WITH = 996 // Using the mobile width by Bootstrap design.
+    const { t } = useI18n()
 
     const appWrapperClass = 'app-wrapper'
     const loadingBarClass = ref({
@@ -221,7 +223,8 @@ export default defineComponent({
       }),
       appWrapperClass,
       loadingBarClass,
-      handleOpenModal
+      handleOpenModal,
+      t
     }
   }
 })
