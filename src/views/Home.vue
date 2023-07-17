@@ -77,7 +77,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile :author="mainAuthor" />
+          <Profile author="blog-author" />
           <RecentComment v-if="recentCommentEnable" />
           <TagBox />
         </Sidebar>
@@ -225,10 +225,6 @@ export default defineComponent({
           return null
         }
         return categoryStore.categories
-      }),
-      mainAuthor: computed(() => {
-        let author = appStore.themeConfig.site.author.toLocaleLowerCase()
-        return author.replace(/[\s]+/g, '-')
       }),
       recentCommentEnable: computed(() => {
         return (
