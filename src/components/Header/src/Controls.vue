@@ -9,11 +9,11 @@
       data-dia="search"
       @click="handleOpenModal(true)"
     >
-      <SvgIcon icon-class="search" />
+      <SvgIcon icon-class="search" stroke="var(--text-white)" />
     </span>
     <Dropdown v-if="enableMultiLanguage" @command="handleClick">
       <span class="ob-drop-shadow" data-dia="language">
-        <SvgIcon icon-class="globe" />
+        <SvgIcon icon-class="globe" stroke="var(--text-white)" />
         <span v-if="$i18n.locale == 'cn'">中文</span>
         <span v-if="$i18n.locale == 'en'">EN</span>
       </span>

@@ -1,55 +1,22 @@
 <template>
   <ul
     id="sidebar-navigator"
-    class="
-      flex flex-row
-      bg-ob-deep-800
-      rounded-xl
-      shadow-2xl
-      justify-items-center
-      overflow-hidden
-    "
+    class="flex flex-row bg-ob-deep-800 rounded-xl shadow-2xl justify-items-center overflow-hidden"
   >
     <li
-      class="
-        border-r-4 border-ob-deep-900
-        flex
-        justify-center
-        py-3
-        w-full
-        hover:opacity-50 hover:text-ob
-        transition-all
-        cursor-pointer
-      "
+      class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="goBack"
     >
       <SvgIcon class="inline-block text-3xl" icon-class="go-back" />
     </li>
     <li
-      class="
-        border-r-4 border-ob-deep-900
-        flex
-        justify-center
-        py-3
-        w-full
-        hover:opacity-50 hover:text-ob
-        transition-all
-        cursor-pointer
-      "
+      class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="backToTop"
     >
       <SvgIcon class="inline-block text-3xl" icon-class="back-to-top" />
     </li>
     <li
-      class="
-        flex
-        justify-center
-        py-3
-        w-full
-        hover:opacity-50 hover:text-ob
-        transition-all
-        cursor-pointer
-      "
+      class="flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="jumpToComments"
       data-dia="jump-to-comment"
     >
