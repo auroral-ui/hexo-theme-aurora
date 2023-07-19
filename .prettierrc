@@ -5,5 +5,4 @@
   "trailingComma": "none",
   "printWidth": 80,
   "arrowParens": "avoid"
-  // "htmlWhitespaceSensitivity": "ignore"
 }

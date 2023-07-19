@@ -5,6 +5,7 @@ _config.*.yml
 node_modules
 coverage
 /dist
+/source
 
 .pnp.*
 .yarn/*

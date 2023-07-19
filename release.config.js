@@ -20,8 +20,18 @@ module.exports = {
     [
       '@semantic-release/git',
       {
-        assets: ['README.md', 'README_CN.md', 'CHANGELOG.md', 'LICENSE', 'sources/**', 'layout/**', 'build/**', 'data/**', '__config.yml'],
-        message: 'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
+        assets: [
+          'README.md',
+          'README_CN.md',
+          'CHANGELOG.md',
+          'LICENSE',
+          'sources/**',
+          'layout/**',
+          '__config.yml',
+          'package.json'
+        ],
+        message:
+          'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
       }
     ]
   ]

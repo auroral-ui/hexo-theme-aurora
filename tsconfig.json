@@ -28,5 +28,5 @@
     "typings/*.d.ts",
     "vite.config.js"
   ],
-  "exclude": ["node_modules", "**/dist/**", "**/source/**", "**/scripts/**"]
+  "exclude": ["node_modules", "**/dist/**", "**/source/**"]
 }
