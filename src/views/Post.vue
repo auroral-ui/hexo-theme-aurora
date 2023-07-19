@@ -90,13 +90,13 @@
             v-if="post.count_time.symbolsTime && post.date"
           >
             <span>
-              <SvgIcon icon-class="clock-outline" style="stroke: white" />
+              <SvgIcon icon-class="clock-outline" stroke="var(--text-white)" />
               <span class="pl-2 opacity-70">
                 {{ post.count_time.symbolsTime }}
               </span>
             </span>
             <span>
-              <SvgIcon icon-class="text-outline" style="stroke: white" />
+              <SvgIcon icon-class="text-outline" stroke="var(--text-white)" />
               <span class="pl-2 opacity-70">
                 {{ post.count_time.symbolsCount }}
               </span>
@@ -131,15 +131,7 @@
         </template>
         <div
           v-else
-          class="
-            bg-ob-deep-800
-            px-14
-            py-16
-            rounded-2xl
-            shadow-xl
-            block
-            min-h-screen
-          "
+          class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
         >
           <ob-skeleton
             tag="div"

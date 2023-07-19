@@ -64,14 +64,15 @@ export class Post {
   categories: Category[] = []
   tags: Tag[] = []
   min_tags: Tag[] = []
-  count_time = {}
+  count_time: { symbolsTime?: string; symbolsCount?: number } = {}
   toc = ''
-  next_post = {}
-  prev_post = {}
+  next_post: { title?: string } = {}
+  prev_post: { title?: string } = {}
   author = {
     name: '',
     avatar: '',
-    link: ''
+    link: '',
+    slug: ''
   }
   feature = false
   pinned = false
