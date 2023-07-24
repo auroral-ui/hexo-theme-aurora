@@ -48,8 +48,15 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Obtain a GitHub App Installation Access Token
+        id: githubAppAuth
+        run: |
+          TOKEN="$(npx obtain-github-app-installation-access-token ci ${{ secrets.GH_APP_CREDENTIALS_TOKEN }})"
+          echo "::add-mask::$TOKEN"
+          echo "::set-output name=token::$TOKEN"
+
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
