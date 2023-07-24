@@ -4,19 +4,7 @@
     <ul>
       <template v-if="comments.length > 0">
         <li
-          class="
-            bg-ob-deep-900
-            px-2
-            py-3
-            mb-1.5
-            rounded-lg
-            flex flex-row
-            justify-items-center
-            items-center
-            shadow-sm
-            hover:shadow-ob
-            transition-shadow
-          "
+          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-center shadow-sm hover:shadow-ob transition-shadow"
           v-for="comment in comments"
           :key="comment.id"
         >
@@ -32,14 +20,7 @@
               <span class="text-ob pr-2">
                 {{ comment.user.login }}
                 <b
-                  class="
-                    text-ob-secondary
-                    bg-ob-deep-800
-                    py-0.5
-                    px-1.5
-                    rounded-md
-                    opacity-75
-                  "
+                  class="text-ob-secondary bg-ob-deep-800 py-0.5 px-1.5 rounded-md opacity-75"
                   v-if="comment.is_admin"
                 >
                   {{ t('settings.admin-user') }}
@@ -55,19 +36,7 @@
       </template>
       <template v-else>
         <li
-          class="
-            bg-ob-deep-900
-            px-2
-            py-3
-            mb-1.5
-            rounded-lg
-            flex flex-row
-            justify-items-center
-            items-center
-            shadow-sm
-            hover:shadow-ob
-            transition-shadow
-          "
+          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-center shadow-sm hover:shadow-ob transition-shadow"
           v-for="n in 7"
           :key="n"
         >
@@ -82,13 +51,7 @@
               <span class="text-ob pr-2">
                 <ob-skeleton
                   tag="b"
-                  class="
-                    text-ob-secondary
-                    bg-ob-deep-800
-                    py-0.5
-                    px-1.5
-                    rounded-md
-                  "
+                  class="text-ob-secondary bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
                   height="10px"
                   width="66px"
                 />
@@ -96,26 +59,14 @@
               <br />
               <ob-skeleton
                 tag="p"
-                class="
-                  text-ob-secondary
-                  bg-ob-deep-800
-                  py-0.5
-                  px-1.5
-                  rounded-md
-                "
+                class="text-ob-secondary bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
                 height="10px"
                 width="96px"
               />
             </div>
             <div class="text-xs text-ob-bright">
               <ob-skeleton
-                class="
-                  text-ob-secondary
-                  bg-ob-deep-800
-                  py-0.5
-                  px-1.5
-                  rounded-md
-                "
+                class="text-ob-secondary bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
                 height="10px"
                 width="126px"
               />
@@ -130,6 +81,7 @@
 <script lang="ts">
 import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { SubTitle } from '@/components/Title'
+import { RecentComment } from '@/utils'
 import { GithubComments } from '@/utils/github-api'
 import { LeanCloudComments } from '@/utils/leancloud-api'
 import { useAppStore } from '@/stores/app'
@@ -141,7 +93,7 @@ export default defineComponent({
   setup() {
     const appStore = useAppStore()
     const { t } = useI18n()
-    let recentComments = ref([])
+    let recentComments = ref<RecentComment[]>([])
 
     const initRecentComment = () => {
       if (!appStore.configReady) return

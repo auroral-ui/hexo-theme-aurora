@@ -36,7 +36,7 @@
       </template>
       <template v-else>
         <div class="flex flex-row justify-center items-center">
-          <svg-icon class="stroke-ob-bright mr-2" icon-class="warning" />
+          <SvgIcon class="stroke-ob-bright mr-2" icon-class="warning" />
           {{ t('settings.empty-tag') }}
         </div>
       </template>
@@ -50,10 +50,11 @@ import { SubTitle } from '@/components/Title'
 import { useTagStore } from '@/stores/tag'
 import { TagList, TagItem } from '@/components/Tag'
 import { useI18n } from 'vue-i18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObTag',
-  components: { SubTitle, TagList, TagItem },
+  components: { SubTitle, TagList, TagItem, SvgIcon },
   setup() {
     const tagStore = useTagStore()
     const { t } = useI18n()

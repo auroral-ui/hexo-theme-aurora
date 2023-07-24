@@ -43,3 +43,7 @@ postcss.config.js
 tailwind.config.js
 tsconfig.json
 vue.config.js
+.github
+.husky
+commitlint.config.js
+release.config.js

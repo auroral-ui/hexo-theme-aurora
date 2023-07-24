@@ -43,7 +43,7 @@
         </ul>
 
         <span :class="expanderClass" @click="expandHandler">
-          <svg-icon icon-class="chevron" />
+          <SvgIcon icon-class="chevron" />
         </span>
 
         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -77,7 +77,7 @@
       </div>
       <div>
         <Sidebar>
-          <Profile :author="mainAuthor" />
+          <Profile author="blog-author" />
           <RecentComment v-if="recentCommentEnable" />
           <TagBox />
         </Sidebar>
@@ -99,6 +99,7 @@ import { useI18n } from 'vue-i18n'
 import { useCategoryStore } from '@/stores/category'
 import Paginator from '@/components/Paginator.vue'
 import { useMetaStore } from '@/stores/meta'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'Home',
@@ -112,7 +113,8 @@ export default defineComponent({
     TagBox,
     Paginator,
     RecentComment,
-    Profile
+    Profile,
+    SvgIcon
   },
   setup() {
     useMetaStore().setTitle('home')
@@ -224,17 +226,12 @@ export default defineComponent({
         }
         return categoryStore.categories
       }),
-      mainAuthor: computed(() => {
-        let author = appStore.themeConfig.site.author.toLocaleLowerCase()
-        return author.replace(/[\s]+/g, '-')
-      }),
       recentCommentEnable: computed(() => {
         return (
-          (appStore.themeConfig.plugins.gitalk.enable &&
-            appStore.themeConfig.plugins.gitalk.recentComment) ||
-          (!appStore.themeConfig.plugins.gitalk.enable &&
-            appStore.themeConfig.plugins.valine.enable &&
-            appStore.themeConfig.plugins.valine.recentComment)
+          (!!appStore.themeConfig.plugins.gitalk.enable &&
+            !!appStore.themeConfig.plugins.gitalk.recentComment) ||
+          (!!appStore.themeConfig.plugins.valine.enable &&
+            !!appStore.themeConfig.plugins.valine.recentComment)
         )
       }),
       expanderClass,

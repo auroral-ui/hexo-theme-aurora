@@ -5,6 +5,16 @@ _config.*.yml
 node_modules
 coverage
 /dist
+/source
+/layout
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 
 # local env files

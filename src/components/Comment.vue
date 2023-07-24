@@ -1,15 +1,6 @@
 <template>
   <div
-    class="
-      bg-ob-deep-800
-      p-4
-      mt-8
-      lg:px-14 lg:py-10
-      rounded-2xl
-      shadow-xl
-      mb-8
-      lg:mb-0
-    "
+    class="bg-ob-deep-800 p-4 mt-8 lg:px-14 lg:py-10 rounded-2xl shadow-xl mb-8 lg:mb-0"
   >
     <SubTitle :title="'titles.comment'" />
     <div id="gitalk-container"></div>
@@ -124,8 +115,9 @@ export default defineComponent({
           placeholder: appStore.themeConfig.plugins.valine.placeholder,
           visitor: appStore.themeConfig.plugins.valine.visitor,
           lang: appStore.themeConfig.plugins.valine.lang,
-          meta: appStore.themeConfig.plugins.valine.meta,
-          requiredFields: appStore.themeConfig.plugins.valine.requiredFields,
+          meta: appStore.themeConfig.plugins.valine.meta ?? [],
+          requiredFields:
+            appStore.themeConfig.plugins.valine.requiredFields ?? [],
           avatarForce: appStore.themeConfig.plugins.valine.avatarForce,
           path: window.location.pathname // Make sure updating pathname
         })

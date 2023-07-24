@@ -90,13 +90,13 @@
             v-if="post.count_time.symbolsTime && post.date"
           >
             <span>
-              <svg-icon icon-class="clock-outline" style="stroke: white" />
+              <SvgIcon icon-class="clock-outline" stroke="var(--text-white)" />
               <span class="pl-2 opacity-70">
                 {{ post.count_time.symbolsTime }}
               </span>
             </span>
             <span>
-              <svg-icon icon-class="text-outline" style="stroke: white" />
+              <SvgIcon icon-class="text-outline" stroke="var(--text-white)" />
               <span class="pl-2 opacity-70">
                 {{ post.count_time.symbolsCount }}
               </span>
@@ -105,13 +105,13 @@
 
           <div v-else class="post-stats">
             <span>
-              <svg-icon icon-class="clock" />
+              <SvgIcon icon-class="clock" />
               <span class="pl-2">
                 <ob-skeleton width="40px" height="16px" />
               </span>
             </span>
             <span>
-              <svg-icon icon-class="text" />
+              <SvgIcon icon-class="text" />
               <span class="pl-2">
                 <ob-skeleton width="40px" height="16px" />
               </span>
@@ -131,15 +131,7 @@
         </template>
         <div
           v-else
-          class="
-            bg-ob-deep-800
-            px-14
-            py-16
-            rounded-2xl
-            shadow-xl
-            block
-            min-h-screen
-          "
+          class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
         >
           <ob-skeleton
             tag="div"
@@ -229,11 +221,13 @@ import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
 
+import SvgIcon from '@/components/SvgIcon/index.vue'
+
 declare const Prism: any
 
 export default defineComponent({
   name: 'ObPost',
-  components: { Sidebar, Toc, Comment, SubTitle, Article, Profile },
+  components: { Sidebar, Toc, Comment, SubTitle, Article, Profile, SvgIcon },
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()

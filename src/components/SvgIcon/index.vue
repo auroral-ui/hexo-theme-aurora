@@ -6,14 +6,24 @@
     v-bind="$attrs"
   />
   <svg v-else :class="svgClass" aria-hidden="true" v-bind="$attrs">
-    <use :href="iconName" />
+    <use
+      :href="iconName"
+      :fill="fill !== '' ? fill : svgStyle.fill"
+      :stroke="stroke !== '' ? stroke : svgStyle.stroke"
+    />
   </svg>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, PropType } from 'vue'
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
 import { isExternalIcon } from '@/utils/validate'
+import { useAppStore } from '@/stores/app'
+
+export enum SvgTypes {
+  fill = 'fill',
+  stroke = 'stroke'
+}
 
 export default defineComponent({
   name: 'SvgIcon',
@@ -25,9 +35,22 @@ export default defineComponent({
     className: {
       type: String,
       default: ''
+    },
+    fill: {
+      type: String,
+      default: ''
+    },
+    stroke: {
+      type: String,
+      default: ''
+    },
+    svgType: {
+      type: String as PropType<SvgTypes>,
+      default: 'fill'
     }
   },
-  setup(props) {
+  setup(props: { iconClass: string; className: string; svgType: SvgTypes }) {
+    const appStore = useAppStore()
     const isExternalClass = computed(() => isExternalIcon(props.iconClass))
 
     const iconName = computed(() => `#icon-${props.iconClass}`)
@@ -48,6 +71,22 @@ export default defineComponent({
     })
 
     return {
+      svgStyle: computed(() => {
+        if (props.svgType === SvgTypes.fill) {
+          return {
+            fill: 'currentColor',
+            stroke:
+              appStore.theme === 'theme-dark'
+                ? 'var(--background-primary)'
+                : 'white'
+          }
+        } else {
+          return {
+            fill: 'none',
+            stroke: appStore.theme === 'theme-dark' ? 'white' : 'currentColor'
+          }
+        }
+      }),
       isExternalClass,
       iconName,
       svgClass,
@@ -62,8 +101,6 @@ export default defineComponent({
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
-  fill: currentColor;
-  stroke: var(--background-primary);
   overflow: hidden;
   display: inline;
   position: relative;

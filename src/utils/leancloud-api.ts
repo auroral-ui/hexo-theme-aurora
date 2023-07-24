@@ -9,7 +9,7 @@
 
 // import request from '@/utils/external-request'
 // import { AxiosResponse } from 'axios'
-import { formatTime, filterHTMLContent } from '@/utils'
+import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
 import pack from '../../package.json'
 
 const VERSION = pack.version
@@ -119,8 +119,7 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
       lang: ''
     },
     gravatarConfig: {
-      // cdn: 'https://cdn.v2ex.com/gravatar/',
-      cdn: 'https://www.gravatar.com/avatar',
+      cdn: 'https://www.gravatar.com/avatar/',
       ds: ['mp', 'identicon', 'monsterid', 'wavatar', 'robohash', 'retro', ''],
       params: '',
       url: ''
@@ -196,25 +195,18 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
     this.configs.leanCloudConfig.admin = admin
     this.configs.leanCloudConfig.lang = lang
 
-    this.configs.gravatarConfig.params = `?d=${
-      ds.indexOf(avatar) > -1 ? avatar : 'mp'
-    }&v=${VERSION}`
-
-    const gravatarCDNs: { [key: string]: any } = {
-      en: 'https://www.gravatar.com/avatar',
-      ja: 'https://www.gravatar.com/avatar',
+    const gravatarCDNs: { [key: string]: string } = {
+      en: 'https://www.gravatar.com/avatar/',
+      ja: 'https://www.gravatar.com/avatar/',
       'zh-CN': 'https://gravatar.loli.net/avatar/',
-      'zh-TW': 'https://www.gravatar.com/avatar'
+      'zh-TW': 'https://www.gravatar.com/avatar/'
     }
 
-    this.configs.gravatarConfig.cdn = /^https?:\/\//.test(avatarCDN)
+    this.configs.gravatarConfig.url = /^https?:\/\//.test(avatarCDN)
       ? avatarCDN
       : gravatarCDNs[String(this.configs.leanCloudConfig.lang)]
       ? gravatarCDNs[String(this.configs.leanCloudConfig.lang)]
       : gravatarCDNs['en']
-
-    this.configs.gravatarConfig.url =
-      this.configs.gravatarConfig.cdn + this.configs.gravatarConfig.params
   }
 
   /**
@@ -273,7 +265,9 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
       ? 'https://q4.qlogo.cn/g?b=qq&nk=' +
         mail.replace('@qq.com', '') +
         '&s=100'
-      : this.configs.gravatarConfig.url + '&' + md5(comment._serverData.mail)
+      : this.configs.gravatarConfig.url +
+        md5(comment._serverData.mail) +
+        `?&v=${VERSION}`
     const admin = this.configs.leanCloudConfig.admin
 
     return {
@@ -298,7 +292,7 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
   }
 }
 
-export class LeanCloudComment {
+export class LeanCloudComment implements RecentComment {
   id = 0
   body = ''
   node_id = 0

@@ -6,7 +6,7 @@
         v-if="currentPage > 1"
         @click="pageChangeEmitter(currentPage - 1)"
       >
-        <svg-icon icon-class="arrow-left" />
+        <SvgIcon icon-class="arrow-left" />
         {{ t('settings.paginator.newer') }}
       </li>
       <li
@@ -37,7 +37,7 @@
         @click="pageChangeEmitter(currentPage + 1)"
       >
         {{ t('settings.paginator.older') }}
-        <svg-icon icon-class="arrow-right" />
+        <SvgIcon icon-class="arrow-right" />
       </li>
     </ul>
   </div>
@@ -46,9 +46,11 @@
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObPaginator',
+  components: { SvgIcon },
   emits: ['pageChange'],
   props: {
     pageTotal: {

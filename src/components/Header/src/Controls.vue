@@ -9,11 +9,11 @@
       data-dia="search"
       @click="handleOpenModal(true)"
     >
-      <svg-icon icon-class="search" />
+      <SvgIcon icon-class="search" stroke="var(--text-white)" />
     </span>
     <Dropdown v-if="enableMultiLanguage" @command="handleClick">
       <span class="ob-drop-shadow" data-dia="language">
-        <svg-icon icon-class="globe" />
+        <SvgIcon icon-class="globe" stroke="var(--text-white)" />
         <span v-if="$i18n.locale == 'cn'">中文</span>
         <span v-if="$i18n.locale == 'en'">EN</span>
       </span>
@@ -38,6 +38,7 @@ import { useAppStore } from '@/stores/app'
 import ThemeToggle from '@/components/ToggleSwitch/ThemeToggle.vue'
 import SearchModal from '@/components/SearchModal.vue'
 import { useSearchStore } from '@/stores/search'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'Controls',
@@ -46,7 +47,8 @@ export default defineComponent({
     DropdownMenu,
     DropdownItem,
     ThemeToggle,
-    SearchModal
+    SearchModal,
+    SvgIcon
   },
   setup() {
     const appStore = useAppStore()

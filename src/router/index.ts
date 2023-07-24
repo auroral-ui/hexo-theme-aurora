@@ -11,55 +11,55 @@ const routes = [
   {
     path: '/404',
     name: 'not-found',
-    component: () => import(/* webpackChunkName: "404" */ '../views/404.vue'),
+    component: () => import('../views/404.vue'),
     hidden: true
   },
   {
     path: '/about',
     name: 'about',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
+      import('../views/About.vue')
   },
   {
     path: '/categories',
     name: 'categories',
     component: () =>
-      import(/* webpackChunkName: "categories" */ '../views/Category.vue')
+      import('../views/Category.vue')
   },
   {
     path: '/archives',
     name: 'archives',
     component: () =>
-      import(/* webpackChunkName: "archives" */ '../views/Archives.vue')
+      import('../views/Archives.vue')
   },
   {
     path: '/tags',
     name: 'tags',
-    component: () => import(/* webpackChunkName: "tags" */ '../views/Tag.vue')
+    component: () => import('../views/Tag.vue')
   },
   {
     path: '/tags/search',
     name: 'tags-search',
     component: () =>
-      import(/* webpackChunkName: "result" */ '../views/Result.vue')
+      import('../views/Result.vue')
   },
   {
     path: '/post/:slug*',
     name: 'post',
-    component: () => import(/* webpackChunkName: "post" */ '../views/Post.vue'),
+    component: () => import('../views/Post.vue'),
     props: true
   },
   {
     path: '/page/:slug*',
     name: 'page',
-    component: () => import(/* webpackChunkName: "page" */ '../views/Page.vue'),
+    component: () => import('../views/Page.vue'),
     props: true
   },
   {
     path: '/result',
     name: 'result',
     component: () =>
-      import(/* webpackChunkName: "result" */ '../views/Result.vue'),
+      import('../views/Result.vue'),
     props: true
   },
   // 404 page must be placed at the end !!!
@@ -67,7 +67,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 

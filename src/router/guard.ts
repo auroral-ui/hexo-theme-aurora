@@ -1,7 +1,7 @@
 import router from '@/router'
 // import getPageTitle from '@/utils/get-page-title'
 import { useAppStore } from '@/stores/app'
-import { i18n } from '@/locales/index'
+import i18n from '@/locales/index'
 import { useMetaStore } from '@/stores/meta'
 
 router.beforeEach(async (to, from, next) => {
@@ -17,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
   metaStore.setTitle(String(title))
 
   // use beforeEach route guard to set the languages
-  i18n.global.locale = appStore.locale ? appStore.locale : 'en'
+  i18n.global.locale.value = appStore.locale ? appStore.locale : 'en'
 
   next()
 })

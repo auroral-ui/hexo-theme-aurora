@@ -1,59 +1,26 @@
 <template>
   <ul
     id="sidebar-navigator"
-    class="
-      flex flex-row
-      bg-ob-deep-800
-      rounded-xl
-      shadow-2xl
-      justify-items-center
-      overflow-hidden
-    "
+    class="flex flex-row bg-ob-deep-800 rounded-xl shadow-2xl justify-items-center overflow-hidden"
   >
     <li
-      class="
-        border-r-4 border-ob-deep-900
-        flex
-        justify-center
-        py-3
-        w-full
-        hover:opacity-50 hover:text-ob
-        transition-all
-        cursor-pointer
-      "
+      class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="goBack"
     >
-      <svg-icon class="inline-block text-3xl" icon-class="go-back" />
+      <SvgIcon class="inline-block text-3xl" icon-class="go-back" />
     </li>
     <li
-      class="
-        border-r-4 border-ob-deep-900
-        flex
-        justify-center
-        py-3
-        w-full
-        hover:opacity-50 hover:text-ob
-        transition-all
-        cursor-pointer
-      "
+      class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="backToTop"
     >
-      <svg-icon class="inline-block text-3xl" icon-class="back-to-top" />
+      <SvgIcon class="inline-block text-3xl" icon-class="back-to-top" />
     </li>
     <li
-      class="
-        flex
-        justify-center
-        py-3
-        w-full
-        hover:opacity-50 hover:text-ob
-        transition-all
-        cursor-pointer
-      "
+      class="flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="jumpToComments"
       data-dia="jump-to-comment"
     >
-      <svg-icon class="inline-block text-3xl" icon-class="quote" />
+      <SvgIcon class="inline-block text-3xl" icon-class="quote" />
     </li>
   </ul>
 </template>
@@ -61,9 +28,11 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
-  name: 'Example',
+  name: 'Navigator',
+  components: { SvgIcon },
   setup() {
     const router = useRouter()
     const commentOffset = ref(0)

@@ -9,27 +9,27 @@ import '@/styles/index.scss'
 
 import App from './App.vue'
 import router from './router'
-import { i18n } from './locales'
+import i18n from './locales'
 import VueClickAway from 'vue3-click-away'
-import lazyPlugin from 'vue3-lazy'
+import VueLazyLoad from 'vue3-lazyload'
 
 import './router/guard' // router guards
 
-import { registerSvgIcon } from '@/icons'
+import 'virtual:svg-icons-register'
 import { registerObSkeleton } from '@/components/LoadingSkeleton'
 import { registerScrollSpy } from 'vue3-scroll-spy'
+import defaultCover from '@/assets/default-cover.jpg'
 
 const app = createApp(App)
   .use(createPinia())
   .use(router)
   .use(i18n)
   .use(VueClickAway)
-  .use(lazyPlugin, {
-    loading: require('@/assets/default-cover.jpg'),
-    error: require('@/assets/default-cover.jpg')
+  .use(VueLazyLoad, {
+    loading: defaultCover,
+    error: defaultCover
   })
 
-registerSvgIcon(app)
 registerObSkeleton(app)
 registerScrollSpy(app)
 

@@ -13,7 +13,7 @@
       uppercase
     "
   >
-    <svg-icon v-if="icon" :icon-class="icon" class="inline-block mr-2" />
+    <SvgIcon v-if="icon" :icon-class="icon" class="inline-block mr-2" />
     {{ t(titleStr) }}
     <span
       class="absolute bottom-0 h-1 w-24 rounded-full"
@@ -26,9 +26,11 @@
 import { useAppStore } from '@/stores/app'
 import { computed, defineComponent, toRefs } from 'vue'
 import { useI18n } from 'vue-i18n'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObTitle',
+  components: { SvgIcon },
   props: {
     title: {
       type: String,

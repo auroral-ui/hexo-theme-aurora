@@ -4,10 +4,10 @@ const config = require('../vue.config.js')
 const rawArgv = process.argv.slice(2)
 const args = rawArgv.join(' ')
 
-if (process.env.npm_config_preview || rawArgv.includes('--preview')) {
+if (import.meta.env.npm_config_preview || rawArgv.includes('--preview')) {
   const report = rawArgv.includes('--report')
 
-  run(`vue-cli-service build ${args}`)
+  run(`vite build ${args}`)
 
   const port = 9666
   const publicPath = config.publicPath
@@ -36,5 +36,5 @@ if (process.env.npm_config_preview || rawArgv.includes('--preview')) {
     }
   })
 } else {
-  run(`vue-cli-service build ${args}`)
+  run(`vite build ${args}`)
 }

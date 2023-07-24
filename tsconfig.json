@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "jest"],
+    "types": ["vite/client", "jest", "node", "vite-plugin-svg-icons/client"],
     "paths": {
       "@/*": ["src/*"]
     },
@@ -25,7 +25,8 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "typings/*.d.ts"
+    "typings/*.d.ts",
+    "vite.config.js"
   ],
-  "exclude": ["node_modules", "**/dist/**", "**/source/**", "**/scripts/**"]
+  "exclude": ["node_modules", "**/dist/**", "**/source/**"]
 }

@@ -16,8 +16,8 @@ site:
   link: '/'
   language: en
   multi_language: true
-  logo: https://img-blog.csdnimg.cn/20210313122054101.png
-  avatar: https://img-blog.csdnimg.cn/20210313122054101.png
+  logo:
+  avatar:
   beian:
     number: ''
     link: ''

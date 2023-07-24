@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M21 10H3V22H21V10Z" undefined="1"></path>
+<path fill="" d="M17 14H13V22H17V14Z" undefined="1"></path>
+<path fill="" d="M2 10H9L15 2H8L2 10Z" undefined="1"></path>
+<path fill="" d="M9 10H22L15 2L9 10Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" stroke="" d="M17 22V14H13V22"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5" stroke="" d="M15 2L9 10"></path>
+<path stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" stroke="" d="M9 22V10"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5" stroke="" d="M2 10H22"></path>
+</svg>

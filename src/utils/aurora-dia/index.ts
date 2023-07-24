@@ -9,6 +9,13 @@ interface AWFConfig {
   resourcePath: string
 }
 
+interface MessageType {
+  [key: string]: { [key: string]: string }
+}
+interface MessageTranslation {
+  [key: string]: MessageType
+}
+
 /**
  * Enable bot with Waifu live2D
  */
@@ -57,7 +64,7 @@ export class AuroraDia {
     tips: {}
   }
   software = new AuroraBotSoftware()
-  eyesAnimationTimer: number | undefined = undefined
+  eyesAnimationTimer: NodeJS.Timeout | undefined = undefined
 
   installSoftware(configs: DiaConfig): void {
     if (configs) {
@@ -127,8 +134,8 @@ class AuroraBotSoftware {
   messageCacheKey = '__AURORA_BOT_MESSAGE__'
   mouseoverEventCacheKey = '__AURORA_BOT_MOUSE_OVER__'
   userAction = false
-  userActionTimer: number | undefined = undefined
-  messageTimer: number | undefined = undefined
+  userActionTimer: NodeJS.Timeout | undefined = undefined
+  messageTimer: NodeJS.Timeout | undefined = undefined
   messages: string[] = []
   locales: BotLocales = {}
   botTips: { [key: string]: any } = {}
@@ -320,21 +327,17 @@ class AuroraBotSoftware {
   }
 
   loadLocaleMessages() {
-    const locales = require.context(
-      './messages/',
-      true,
-      /[A-Za-z0-9-_,\s]+\.json$/i
+    const locales: Record<string, MessageType> = import.meta.glob(
+      './messages/*.json',
+      { eager: true }
     )
 
-    const messages: {
-      [key: string]: { [key: string]: { [key: string]: string } }
-    } = {}
-
-    locales.keys().forEach(key => {
+    const messages: MessageTranslation = {}
+    Object.keys(locales).forEach(key => {
       const matched = key.match(/([A-Za-z0-9-_]+)\./i)
       if (matched && matched.length > 1) {
         const locale = matched[1]
-        messages[locale] = locales(key)
+        messages[locale] = locales[key]
       }
     })
 
@@ -388,8 +391,6 @@ class AuroraBotSoftware {
   showQuote() {
     if (this.config.locale === 'cn') {
       this.getHitokoto()
-    } else {
-      this.getTheySaidSo()
     }
   }
 

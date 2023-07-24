@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import Cookies from 'js-cookie'
-import { i18n } from '@/locales/index'
+import i18n from '@/locales/index'
 import { ThemeConfig } from '@/models/ThemeConfig.class'
 import { HexoConfig } from '@/models/HexoConfig.class'
 import { fetchHexoConfig, fetchStatistic } from '@/api'
@@ -36,10 +36,9 @@ const setTheme = (theme: string) => {
 /**
  * Storing the core data of the application
  */
-export const useAppStore = defineStore({
+export const useAppStore = defineStore('app', {
   // id is the name of the store
   // it is used in devtools and allows restoring state
-  id: 'app',
   state: () => ({
     /** Current application theme mode `dark` or `light` */
     theme: Cookies.get('theme')
@@ -67,12 +66,8 @@ export const useAppStore = defineStore({
     openSearchModal: false
   }),
   getters: {
-    getTheme(): string {
-      return this.theme
-    },
-    getAppLoading(): boolean {
-      return this.appLoading
-    }
+    getTheme: (state) => state.theme,
+    getAppLoading: (state) => state.appLoading
   },
   actions: {
     /** Fetching Hexo and Hexo theme's config data */
@@ -115,7 +110,7 @@ export const useAppStore = defineStore({
     changeLocale(locale: string) {
       Cookies.set('locale', locale)
       this.locale = locale
-      i18n.global.locale = locale
+      i18n.global.locale.value = locale
     },
     /**
      * Setting the default locale of the app base on _config
@@ -138,11 +133,11 @@ export const useAppStore = defineStore({
     endLoading() {
       // Leaving the timeout, so the animation have enough time to display
       // in a situation where data loads almost instantly.
-      this.NPTimeout = setTimeout(() => {
+      this.NPTimeout = window.setTimeout(() => {
         NProgress.done()
       }, 100)
 
-      this.loadingTimeout = setTimeout(() => {
+      this.loadingTimeout = window.setTimeout(() => {
         this.appLoading = false
       }, 300)
     },

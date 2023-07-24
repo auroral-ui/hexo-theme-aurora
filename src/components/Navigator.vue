@@ -13,10 +13,7 @@
         class="Ob-Navigator-btt"
       >
         <div>
-          <svg-icon
-            class="text-ob-bright stroke-current"
-            icon-class="nav-top"
-          />
+          <SvgIcon icon-class="back-to-top" class-name="text-ob-bright" />
         </div>
         <span class="Ob-Navigator-tips">
           {{ t('settings.tips-back-to-top') }}
@@ -27,12 +24,12 @@
     <div class="Ob-Navigator-ball" @click.stop.prevent="handleNavigatorToggle">
       <div :style="gradient">
         <transition name="fade-bounce-y" mode="out-in">
-          <svg-icon
+          <SvgIcon
             v-if="openNavigator"
             class="text-base stroke-2"
             icon-class="close"
           />
-          <svg-icon v-else-if="!showProgress" icon-class="dots" />
+          <SvgIcon v-else-if="!showProgress" icon-class="dots" />
           <span class="text-sm" v-else>{{ progress }}%</span>
         </transition>
       </div>
@@ -45,10 +42,7 @@
         @click.stop.prevent="handleBackToTop"
       >
         <div>
-          <svg-icon
-            class="text-ob-bright stroke-current"
-            icon-class="nav-top"
-          />
+          <SvgIcon icon-class="back-to-top" class-name="text-ob-bright" />
         </div>
         <span class="Ob-Navigator-tips">
           {{ t('settings.tips-back-to-top') }}
@@ -61,10 +55,7 @@
         v-if="isMobile"
       >
         <div>
-          <svg-icon
-            class="text-ob-bright stroke-current"
-            icon-class="nav-menu"
-          />
+          <SvgIcon icon-class="nav-menu" class-name="text-ob-bright" />
         </div>
         <span class="Ob-Navigator-tips">
           {{ t('settings.tips-open-menu') }}
@@ -76,10 +67,7 @@
         @click.stop.prevent="handleGoHome"
       >
         <div>
-          <svg-icon
-            class="text-ob-bright stroke-current"
-            icon-class="nav-home"
-          />
+          <SvgIcon icon-class="nav-home" class-name="text-ob-bright" />
         </div>
         <span class="Ob-Navigator-tips">
           {{ t('settings.tips-back-to-home') }}
@@ -91,7 +79,11 @@
         @click.stop.prevent="handleSearch"
       >
         <div>
-          <svg-icon class="text-ob-bright stroke-current" icon-class="search" />
+          <SvgIcon
+            icon-class="nav-search"
+            class-name="text-ob-bright"
+            :svg-type="SvgTypes.stroke"
+          />
         </div>
         <span class="Ob-Navigator-tips">
           {{ t('settings.tips-open-search') }}
@@ -109,9 +101,11 @@ import { useNavigatorStore } from '@/stores/navigator'
 import { useRouter } from 'vue-router'
 import { useSearchStore } from '@/stores/search'
 import { useCommonStore } from '@/stores/common'
+import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObNavigator',
+  components: { SvgIcon },
   setup() {
     const appStore = useAppStore()
     const commonStore = useCommonStore()
@@ -133,7 +127,7 @@ export default defineComponent({
       clearTimeout(menuReopenHandler)
 
       scrolling.value = true
-      scrollingHandler = setTimeout(() => {
+      scrollingHandler = window.setTimeout(() => {
         scrolling.value = false
       }, 700)
 
@@ -141,7 +135,7 @@ export default defineComponent({
         if (navigatorStore.openNavigator === true)
           navigatorStore.setOpenNavigator(false)
         needReopen.value = true
-        menuReopenHandler = setTimeout(() => {
+        menuReopenHandler = window.setTimeout(() => {
           navigatorStore.openNavigator = true
           needReopen.value = false
         }, 700)
@@ -202,6 +196,12 @@ export default defineComponent({
     })
 
     return {
+      svgStyle: computed(() => {
+        return {
+          fill: appStore.theme === 'theme-dark' ? 'white' : 'black',
+          stroke: appStore.theme === 'theme-dark' ? 'black' : 'white'
+        }
+      }),
       gradient: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
@@ -217,6 +217,7 @@ export default defineComponent({
       handleGoHome,
       handleSearch,
       scrolling,
+      SvgTypes,
       t
     }
   }
@@ -230,7 +231,6 @@ export default defineComponent({
   opacity: 1;
   svg {
     pointer-events: none;
-    stroke: currentColor !important;
   }
   .Ob-Navigator-submenu {
     @apply absolute top-0 left-0 m-0 p-0 list-none;

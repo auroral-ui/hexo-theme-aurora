@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { i18n } from '@/locales/index'
+import i18n from '@/locales/index'
 import { useAppStore } from './app'
 
 interface StateData {

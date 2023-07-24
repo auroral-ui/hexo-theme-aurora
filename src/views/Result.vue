@@ -9,7 +9,7 @@
         <transition name="fade-slide-y" mode="out-in">
           <div v-show="isEmpty" class="post-html flex flex-col items-center">
             <h1>没有找到任何文章</h1>
-            <svg-icon icon-class="empty-search" style="font-size: 35rem" />
+            <SvgIcon icon-class="empty-search" style="font-size: 35rem" />
           </div>
         </transition>
         <div class="flex flex-col relative">
@@ -68,6 +68,7 @@ import { SpecificPostsList } from '@/models/Post.class'
 import { useRoute } from 'vue-router'
 import { usePostStore } from '@/stores/post'
 import { useMetaStore } from '@/stores/meta'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'Result',
@@ -78,7 +79,8 @@ export default defineComponent({
     TagBox,
     Paginator,
     Article,
-    CategoryBox
+    CategoryBox,
+    SvgIcon
   },
   setup() {
     const { t } = useI18n()

@@ -21,7 +21,7 @@
         </template>
         <template v-else>
           <div class="flex flex-row justify-center items-center">
-            <svg-icon class="stroke-ob-bright mr-2" icon-class="warning" />
+            <SvgIcon class="stroke-ob-bright mr-2" icon-class="warning" />
             {{ t('settings.empty-tag') }}
           </div>
         </template>
@@ -37,10 +37,12 @@ import { useI18n } from 'vue-i18n'
 import { useTagStore } from '@/stores/tag'
 import { TagList, TagItem } from '@/components/Tag'
 import { useCommonStore } from '@/stores/common'
+import SvgIcon from '@/components/SvgIcon/index.vue'
+import defaultCover from '@/assets/default-cover.jpg'
 
 export default defineComponent({
   name: 'Tag',
-  components: { Breadcrumbs, TagList, TagItem },
+  components: { Breadcrumbs, TagList, TagItem, SvgIcon },
   setup() {
     const commonStore = useCommonStore()
     const { t } = useI18n()
@@ -48,7 +50,7 @@ export default defineComponent({
 
     const fetchData = async () => {
       tagStore.fetchAllTags()
-      commonStore.setHeaderImage(`${require('@/assets/default-cover.jpg')}`)
+      commonStore.setHeaderImage(defaultCover)
     }
 
     onBeforeMount(fetchData)
