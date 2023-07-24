@@ -27,8 +27,7 @@ module.exports = {
           'LICENSE',
           'sources/**',
           'layout/**',
-          '__config.yml',
-          'package.json'
+          '__config.yml'
         ],
         message:
           'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
