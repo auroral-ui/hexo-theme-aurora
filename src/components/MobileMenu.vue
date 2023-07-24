@@ -3,7 +3,7 @@
     <img
       v-if="authorData.avatar !== ''"
       class="diamond-avatar h-28 w-28 shadow-xl m-0"
-      :src="authorData.avatar || authorData.logo"
+      :src="authorData.avatar"
       alt="avatar"
     />
     <ob-skeleton v-else width="7rem" height="7rem" circle />
@@ -42,15 +42,7 @@
     </ul>
   </div>
   <ul
-    class="
-      flex flex-col
-      justify-center
-      items-center
-      mt-8
-      w-full
-      list-none
-      text-ob-bright
-    "
+    class="flex flex-col justify-center items-center mt-8 w-full list-none text-ob-bright"
   >
     <li class="pb-2 cursor-pointer" v-for="route in routes" :key="route.path">
       <div
@@ -75,19 +67,7 @@
       <Dropdown
         @command="pushPage"
         v-else
-        class="
-          flex flex-col
-          justify-center
-          items-center
-          nav-link
-          text-sm
-          block
-          px-1.5
-          py-0.5
-          rounded-md
-          relative
-          uppercase
-        "
+        class="flex flex-col justify-center items-center nav-link text-sm px-1.5 py-0.5 rounded-md relative uppercase"
       >
         <span
           class="relative z-50"
@@ -152,11 +132,7 @@ export default defineComponent({
     const authorData = ref(new AuthorPosts())
 
     const fetchAuthor = async () => {
-      let author = appStore.themeConfig.site.author.toLocaleLowerCase()
-      author.replace(/[\s]+/g, '-')
-      await authorStore.fetchAuthorData(author).then(data => {
-        authorData.value = data
-      })
+      authorData.value = await authorStore.fetchAuthorData('blog-author')
     }
 
     const pushPage = (path: string): void => {
