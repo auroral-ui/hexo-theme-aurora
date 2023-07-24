@@ -228,11 +228,10 @@ export default defineComponent({
       }),
       recentCommentEnable: computed(() => {
         return (
-          (appStore.themeConfig.plugins.gitalk.enable &&
-            appStore.themeConfig.plugins.gitalk.recentComment) ||
-          (!appStore.themeConfig.plugins.gitalk.enable &&
-            appStore.themeConfig.plugins.valine.enable &&
-            appStore.themeConfig.plugins.valine.recentComment)
+          (!!appStore.themeConfig.plugins.gitalk.enable &&
+            !!appStore.themeConfig.plugins.gitalk.recentComment) ||
+          (!!appStore.themeConfig.plugins.valine.enable &&
+            !!appStore.themeConfig.plugins.valine.recentComment)
         )
       }),
       expanderClass,
