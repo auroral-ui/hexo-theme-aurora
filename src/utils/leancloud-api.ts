@@ -9,7 +9,7 @@
 
 // import request from '@/utils/external-request'
 // import { AxiosResponse } from 'axios'
-import { formatTime, filterHTMLContent } from '@/utils'
+import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
 import pack from '../../package.json'
 
 const VERSION = pack.version
@@ -292,7 +292,7 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
   }
 }
 
-export class LeanCloudComment {
+export class LeanCloudComment implements RecentComment {
   id = 0
   body = ''
   node_id = 0

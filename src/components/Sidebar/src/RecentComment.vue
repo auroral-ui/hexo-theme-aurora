@@ -81,6 +81,7 @@
 <script lang="ts">
 import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { SubTitle } from '@/components/Title'
+import { RecentComment } from '@/utils'
 import { GithubComments } from '@/utils/github-api'
 import { LeanCloudComments } from '@/utils/leancloud-api'
 import { useAppStore } from '@/stores/app'
@@ -92,7 +93,7 @@ export default defineComponent({
   setup() {
     const appStore = useAppStore()
     const { t } = useI18n()
-    let recentComments = ref([])
+    let recentComments = ref<RecentComment[]>([])
 
     const initRecentComment = () => {
       if (!appStore.configReady) return

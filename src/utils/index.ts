@@ -1,3 +1,23 @@
+export interface RecentComment {
+  id: number
+  body: string
+  node_id: number
+  html_url: string
+  issue_url: string
+  created_at: string
+  updated_at: string
+  author_association: string
+  filtered: boolean
+  user: {
+    id: number
+    login: string
+    avatar_url: string
+    html_url: string
+  }
+  is_admin: boolean
+  cache_flag: boolean
+}
+
 /**
  * Formatting ISO time into readable times.
  */

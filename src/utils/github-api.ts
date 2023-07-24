@@ -5,7 +5,7 @@
 
 import request from '@/utils/external-request'
 import { AxiosResponse } from 'axios'
-import { formatTime, filterHTMLContent } from '@/utils'
+import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
 
 const COMMENT_CACHE_KEY = 'github-comment-cache-key'
 const GITHUB_API_URL = 'https://api.github.com/repos'
@@ -179,7 +179,7 @@ class CommentCache implements CommentCacheInterface {
  * Base on the restful API of GitHub
  * @see https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
  */
-export class GithubComment {
+export class GithubComment implements RecentComment {
   id = 0
   body = ''
   node_id = 0
