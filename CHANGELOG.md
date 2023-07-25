@@ -1,3 +1,28 @@
+# [2.0.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.5...v2.0.0) (2023-07-25)
+
+
+### Bug Fixes
+
+* code clip-board copy button style ([05450c5](https://github.com/auroral-ui/hexo-theme-aurora/commit/05450c5de57a882ad004d92ab1e09b90af7e4913))
+* incorrect recent comment gavatar url with valine [#225](https://github.com/auroral-ui/hexo-theme-aurora/issues/225) ([bfcf168](https://github.com/auroral-ui/hexo-theme-aurora/commit/bfcf168df44723827943fcbb855de0448065dee2))
+* main author not able to load in home page ([667e1df](https://github.com/auroral-ui/hexo-theme-aurora/commit/667e1dff215164db3e86573382333b4abdd31988))
+* mobile view not able to fetch author data ([2e4d0cd](https://github.com/auroral-ui/hexo-theme-aurora/commit/2e4d0cd59ac5f84f87720cfb155298909709f934))
+* recent comment is not hiding with correct setting ([91358ad](https://github.com/auroral-ui/hexo-theme-aurora/commit/91358ad7b723b059a01275c3c35472e849ff4ce9))
+* recent comments always show ([0976e5c](https://github.com/auroral-ui/hexo-theme-aurora/commit/0976e5c196262ddbeadceac0d3684d1b62d9393a))
+* remove qod since it's rated limited to 5 calls a day ([75e99da](https://github.com/auroral-ui/hexo-theme-aurora/commit/75e99daaed9c30c7d51d185e3f9db5e453e22275))
+* typescript typing issue for Post ([1c58e55](https://github.com/auroral-ui/hexo-theme-aurora/commit/1c58e5592d8e88015326b68ffca6d057724018ec))
+* use new import for default image instead of require ([6d1b078](https://github.com/auroral-ui/hexo-theme-aurora/commit/6d1b078b5747f2fe1c007556866de2f6a4308a67))
+
+
+### Features
+
+* **vite/dependencies:** updated to Vite and all dependencies ([162df85](https://github.com/auroral-ui/hexo-theme-aurora/commit/162df85018b02de009443b1afb90d2b24b7cbe3e))
+
+
+### BREAKING CHANGES
+
+* **vite/dependencies:** changed to Vite and updated all dependencies
+
 ## [1.5.5] - 2021-06-25
 
 I have being busy with life and advancing my career path. Updates for this theme will potentially be slowing down a bit. But hey! Keep the issue coming, leave me all the ideas, I will definitely get to them as soon as I get spare time from time to time of my busy life!
