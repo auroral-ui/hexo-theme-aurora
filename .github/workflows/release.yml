@@ -1,8 +1,7 @@
-name: Release
+name: Release new version
 
 on:
-  push:
-    branches: [main, beta]
+  workflow_dispatch:
 
 jobs:
   release:
@@ -51,12 +50,10 @@ jobs:
       - name: Obtain a GitHub App Installation Access Token
         id: githubAppAuth
         run: |
-          TOKEN="$(npx obtain-github-app-installation-access-token ci ${{ secrets.GH_APP_CREDENTIALS_TOKEN }})"
-          echo "::add-mask::$TOKEN"
-          echo "::set-output name=token::$TOKEN"
+          echo "GITHUB_APP_TOKEN=$(npx obtain-github-app-installation-access-token ci ${{ secrets.GH_APP_CREDENTIALS_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.GITHUB_APP_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
