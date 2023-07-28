@@ -2,33 +2,10 @@
   <div id="footer" class="relative w-full pt-1" :style="gradientBackground">
     <span class="bg-ob-deep-900 flex justify-center">
       <div
-        class="
-          bg-ob-deep-900
-          rounded-lg
-          max-w-10/12
-          lg:max-w-screen-2xl
-          text-sm text-ob-normal
-          w-full
-          py-6
-          px-6
-          grid grid-rows-1
-          lg:grid-rows-none lg:grid-cols-4
-          justify-center
-          items-center
-          gap-8
-        "
+        class="bg-ob-deep-900 rounded-lg max-w-10/12 lg:max-w-screen-2xl text-sm text-ob-normal w-full py-6 px-6 grid grid-rows-1 lg:grid-rows-none lg:grid-cols-4 justify-center items-center gap-8"
       >
         <div
-          class="
-            flex flex-col
-            lg:flex-row
-            gap-6
-            lg:gap-12
-            row-span-1
-            lg:col-span-3
-            text-center
-            lg:text-left
-          "
+          class="flex flex-col lg:flex-row gap-6 lg:gap-12 row-span-1 lg:col-span-3 text-center lg:text-left"
         >
           <ul class="flex flex-col gap-1.5">
             <li>
@@ -59,12 +36,7 @@
               class="flex flex-row gap-3"
             >
               <span v-if="themeConfig.site.police_beian.number !== ''">
-                <img
-                  class="inline-block"
-                  :src="require('@/assets/gongan-beian-40-40.png')"
-                  alt=""
-                  width="15"
-                />
+                <img class="inline-block" :src="beianImg" alt="" width="15" />
                 <b>
                   公安备案信息：
                   <a :href="themeConfig.site.police_beian.link">
@@ -105,14 +77,7 @@
           </ul>
         </div>
         <div
-          class="
-            hidden
-            lg:flex lg:col-span-1
-            justify-center
-            lg:justify-end
-            row-span-1
-            relative
-          "
+          class="hidden lg:flex lg:col-span-1 justify-center lg:justify-end row-span-1 relative"
         >
           <img
             v-show="themeConfig.site.avatar"
@@ -131,6 +96,7 @@ import { computed, defineComponent } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import beianImg from '@/assets/gongan-beian-40-40.png'
 
 export default defineComponent({
   name: 'ObFooter',
@@ -140,6 +106,7 @@ export default defineComponent({
     const { t } = useI18n()
 
     return {
+      beianImg,
       avatarClass: computed(() => {
         return {
           'footer-avatar': true,
