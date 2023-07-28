@@ -55,8 +55,13 @@ jobs:
       - name: Release
         env:
           # GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.GITHUB_APP_TOKEN }}
-          # GITHUB_TOKEN: ${{ secrets.WORKFLOW_ACTION_TOKEN }}
-          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
+          GIT_AUTHOR_NAME: ${{ secrets. GIT_AUTHOR_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets. GIT_AUTHOR_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets. GIT_COMMITTER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets. GIT_COMMITTER_EMAIL }}
         run: |
           npx semantic-release
