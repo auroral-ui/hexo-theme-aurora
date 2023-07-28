@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -55,7 +58,7 @@ jobs:
       - name: Release
         env:
           # GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.GITHUB_APP_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
