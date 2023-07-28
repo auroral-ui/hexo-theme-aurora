@@ -55,9 +55,8 @@ jobs:
       - name: Release
         env:
           # GITHUB_TOKEN: ${{ steps.githubAppAuth.outputs.GITHUB_APP_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_ACTION_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.WORKFLOW_ACTION_TOKEN }}
+          GIT_CREDENTIALS: ${{ secrets.GIT_CREDENTIALS }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git config --local user.name bennyxguo
-          git config --local user.email bennyxguo6@gmail.com
           npx semantic-release
