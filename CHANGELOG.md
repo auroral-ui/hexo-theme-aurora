@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.0.0...v2.0.1) (2023-07-28)
+
+
+### Bug Fixes
+
+* beian image is still using require instead of import ([0174c3b](https://github.com/auroral-ui/hexo-theme-aurora/commit/0174c3b7640fe19531db22818f17c26b1fc821b4))
+* text overflowing outside of article content box [#218](https://github.com/auroral-ui/hexo-theme-aurora/issues/218) ([cf02393](https://github.com/auroral-ui/hexo-theme-aurora/commit/cf0239372f2b55fbcf252ac48f59c3e0ded2549a))
+
 # [2.0.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v1.5.5...v2.0.0) (2023-07-25)
 
 
