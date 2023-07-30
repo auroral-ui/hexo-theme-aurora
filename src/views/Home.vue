@@ -231,7 +231,9 @@ export default defineComponent({
           (!!appStore.themeConfig.plugins.gitalk.enable &&
             !!appStore.themeConfig.plugins.gitalk.recentComment) ||
           (!!appStore.themeConfig.plugins.valine.enable &&
-            !!appStore.themeConfig.plugins.valine.recentComment)
+            !!appStore.themeConfig.plugins.valine.recentComment) ||
+          (!!appStore.themeConfig.plugins.twikoo.enable &&
+            !!appStore.themeConfig.plugins.twikoo.recentComment)
         )
       }),
       expanderClass,

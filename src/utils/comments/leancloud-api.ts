@@ -10,7 +10,8 @@
 // import request from '@/utils/external-request'
 // import { AxiosResponse } from 'axios'
 import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
-import pack from '../../package.json'
+import pack from '../../../package.json'
+import { getGravatar, getGravatarUrl } from './gravatar'
 
 const VERSION = pack.version
 let AV_INITIALIZED = false
@@ -184,29 +185,12 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
    * Initializing Gravatar setup.
    */
   initGravatar(options: LeanCloudApiOption): void {
-    const ds = this.configs.gravatarConfig.ds
-    const {
-      avatar = 'undefined',
-      avatarCDN = '',
-      admin = '',
-      lang = 'en'
-    } = options
+    const { avatarCDN = '', admin = '', lang = 'en' } = options
 
     this.configs.leanCloudConfig.admin = admin
     this.configs.leanCloudConfig.lang = lang
 
-    const gravatarCDNs: { [key: string]: string } = {
-      en: 'https://www.gravatar.com/avatar/',
-      ja: 'https://www.gravatar.com/avatar/',
-      'zh-CN': 'https://gravatar.loli.net/avatar/',
-      'zh-TW': 'https://www.gravatar.com/avatar/'
-    }
-
-    this.configs.gravatarConfig.url = /^https?:\/\//.test(avatarCDN)
-      ? avatarCDN
-      : gravatarCDNs[String(this.configs.leanCloudConfig.lang)]
-      ? gravatarCDNs[String(this.configs.leanCloudConfig.lang)]
-      : gravatarCDNs['en']
+    this.configs.gravatarConfig.url = getGravatarUrl({ avatarCDN, lang })
   }
 
   /**
@@ -261,13 +245,6 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
    */
   mapComments(comment: { [key: string]: any }): { [key: string]: any } {
     const mail = comment._serverData.mail
-    const avatar = String(mail).endsWith('@qq.com')
-      ? 'https://q4.qlogo.cn/g?b=qq&nk=' +
-        mail.replace('@qq.com', '') +
-        '&s=100'
-      : this.configs.gravatarConfig.url +
-        md5(comment._serverData.mail) +
-        `?&v=${VERSION}`
     const admin = this.configs.leanCloudConfig.admin
 
     return {
@@ -283,7 +260,7 @@ export class LeanCloudComments implements LeanCloudCommentsInterface {
       user: {
         id: 0,
         login: comment._serverData.nick,
-        avatar_url: avatar,
+        avatar_url: getGravatar(this.configs.gravatarConfig.url, mail),
         html_url: comment._serverData.link
       },
       is_admin:
