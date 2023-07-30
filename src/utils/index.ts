@@ -1,13 +1,13 @@
 export interface RecentComment {
   id: number
   body: string
-  node_id: number
+  node_id?: number
   html_url: string
   issue_url: string
   created_at: string
   updated_at: string
   author_association: string
-  filtered: boolean
+  filtered?: boolean
   user: {
     id: number
     login: string
@@ -15,7 +15,19 @@ export interface RecentComment {
     html_url: string
   }
   is_admin: boolean
-  cache_flag: boolean
+  cache_flag?: boolean
+}
+
+export function formatCommentRelativeTime(
+  time: number | string,
+  lang: 'en' | 'cn'
+) {
+  const templates = {
+    en: 'commented [TIME]',
+    cn: '[TIME]评论了'
+  }
+
+  return formatTime(time, { template: templates[lang], lang: lang })
 }
 
 /**

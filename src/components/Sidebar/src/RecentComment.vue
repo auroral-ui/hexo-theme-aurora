@@ -82,10 +82,11 @@
 import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { SubTitle } from '@/components/Title'
 import { RecentComment } from '@/utils'
-import { GithubComments } from '@/utils/github-api'
-import { LeanCloudComments } from '@/utils/leancloud-api'
+import { GithubComments } from '@/utils/comments/github-api'
+import { LeanCloudComments } from '@/utils/comments/leancloud-api'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
+import { TwikooComments } from '@/utils/comments/twikoo-api'
 
 export default defineComponent({
   name: 'ObRecentComment',
@@ -127,6 +128,18 @@ export default defineComponent({
         leadCloudComments.getRecentComments(7).then(response => {
           recentComments.value = response
         })
+      } else if (
+        appStore.themeConfig.plugins.twikoo.enable &&
+        appStore.themeConfig.plugins.twikoo.recentComment
+      ) {
+        const twikooComments = new TwikooComments({
+          envId: appStore.themeConfig.plugins.twikoo.envId,
+          lang: appStore.themeConfig.plugins.twikoo.lang
+        })
+
+        twikooComments.getRecentComments(7).then(res => {
+          recentComments.value = res
+        })
       }
     }
 
@@ -134,7 +147,8 @@ export default defineComponent({
     watch(
       () => appStore.configReady,
       (newValue, oldValue) => {
-        if (!oldValue && newValue) {
+        if (!!oldValue && newValue) {
+          recentComments.value = []
           initRecentComment()
         }
       }

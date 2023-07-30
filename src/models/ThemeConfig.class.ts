@@ -452,10 +452,21 @@ interface PluginsData {
     admin: string
     recentComment: boolean
   }
+
+  twikoo: {
+    enable: boolean
+    envId: string
+    recentComment: boolean
+    region?: string
+    lang: string
+  }
+
   recent_comments: boolean
+
   busuanzi: {
     enable: boolean
   }
+
   copy_protection: {
     enable: boolean
     author: {
@@ -471,6 +482,7 @@ interface PluginsData {
       en: string
     }
   }
+
   aurora_bot: {
     enable: boolean
     locale: string
@@ -507,6 +519,13 @@ export class Plugins implements PluginsData {
     avatarForce: false,
     admin: '',
     recentComment: false
+  }
+  twikoo = {
+    enable: false,
+    envId: '',
+    region: undefined,
+    recentComment: false,
+    lang: ''
   }
   recent_comments = false
   busuanzi = {

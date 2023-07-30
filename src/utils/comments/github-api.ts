@@ -3,6 +3,8 @@
  * @author TriDiamond <code.tridiamond@gmail.com>
  */
 
+declare const Gitalk: any
+
 import request from '@/utils/external-request'
 import { AxiosResponse } from 'axios'
 import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
@@ -39,6 +41,48 @@ interface GithubCommentsInterface {
     authorizationToken: string
   }
   comments: GithubComment[]
+}
+
+interface GitHubInitConfig {
+  clientID: string
+  clientSecret: string
+  repo: string
+  owner: string
+  admin: string[]
+  language: string
+  uid: string
+  title: string
+  body: string
+  proxy: string
+}
+
+export const githubInit = ({
+  clientID,
+  clientSecret,
+  repo,
+  owner,
+  admin,
+  language,
+  uid,
+  title,
+  body,
+  proxy
+}: GitHubInitConfig) => {
+  const gitalk = new Gitalk({
+    clientID,
+    clientSecret,
+    repo, // The repository of store comments,
+    owner,
+    admin,
+    language,
+    id: uid, // Ensure uniqueness and length less than 50
+    distractionFreeMode: true, // Facebook-like distraction free mode
+    title: title,
+    body: body,
+    proxy: proxy
+  })
+
+  gitalk.render('gitalk-container')
 }
 
 export class GithubComments implements GithubCommentsInterface {
