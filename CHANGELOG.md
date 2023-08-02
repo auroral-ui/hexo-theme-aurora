@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.1.0...v2.1.1) (2023-08-02)
+
+
+### Bug Fixes
+
+* add missing waline options ([25f732f](https://github.com/auroral-ui/hexo-theme-aurora/commit/25f732f4040b3c428110985b3fa912ba09dfda12))
+
 # [2.1.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.0.1...v2.1.0) (2023-08-02)
 
 
