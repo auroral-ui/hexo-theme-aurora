@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.0.1...v2.1.0) (2023-08-02)
+
+
+### Features
+
+* add empty display for recent comments ([c4dde9b](https://github.com/auroral-ui/hexo-theme-aurora/commit/c4dde9b8f67457987b9f6cbd0e6b14b48974da63))
+* add waline comment plugin ([6f34372](https://github.com/auroral-ui/hexo-theme-aurora/commit/6f34372b10ebf4b8d8b4399d4a58441fc1712f86))
+* **plugin:** add twikoo comment plugin support ([39ccaf8](https://github.com/auroral-ui/hexo-theme-aurora/commit/39ccaf83dae75fc3e504eae14edc1ca85ca258fe))
+
 ## [2.0.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.0.0...v2.0.1) (2023-07-28)
 
 
