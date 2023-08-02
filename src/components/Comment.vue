@@ -140,7 +140,10 @@ export default defineComponent({
           reaction,
           meta,
           requiredMeta,
-          commentSorting
+          commentSorting,
+          wordLimit,
+          imageUploader,
+          pageSize
         } = appStore.themeConfig.plugins.waline
 
         waline = walineInit({
@@ -150,7 +153,10 @@ export default defineComponent({
           reaction,
           meta,
           requiredMeta,
-          commentSorting
+          commentSorting,
+          wordLimit,
+          imageUploader,
+          pageSize
         })
       }
     }
