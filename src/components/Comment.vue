@@ -477,5 +477,13 @@ export default defineComponent({
   .wl-card .wl-quote {
     border-inline-start: none;
   }
+
+  .wl-header-item {
+    @apply items-center;
+  }
+
+  .wl-header input {
+    @apply p-2 m-2;
+  }
 }
 </style>

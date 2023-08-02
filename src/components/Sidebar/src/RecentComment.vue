@@ -1,10 +1,11 @@
 <template>
-  <div class="sidebar-box">
+  <div v-if="!!enabledCommentPlugin" class="sidebar-box">
     <SubTitle :title="'titles.recent_comment'" icon="quote" />
     <ul>
-      <template v-if="comments.length > 0">
+      <template v-if="isLoading === false">
         <li
           class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-stretch shadow-sm hover:shadow-ob transition-shadow"
+          v-if="comments.length > 0"
           v-for="comment in comments"
           :key="comment.id"
         >
@@ -35,6 +36,19 @@
             </div>
           </div>
         </li>
+
+        <div
+          v-else
+          class="flex flex-row justify-center items-center text-ob-dim"
+        >
+          <SvgIcon
+            class="mr-2"
+            icon-class="warning"
+            svgType="stroke"
+            stroke="var(--text-dim)"
+          />
+          {{ t('settings.empty-recent-comments') }}
+        </div>
       </template>
       <template v-else>
         <li
@@ -81,8 +95,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
+import { computed, defineComponent, ref, watch } from 'vue'
 import { SubTitle } from '@/components/Title'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 import { RecentComment } from '@/utils'
 import { GithubComments } from '@/utils/comments/github-api'
 import { LeanCloudComments } from '@/utils/comments/leancloud-api'
@@ -93,68 +108,112 @@ import { WalineComments } from '@/utils/comments/waline-api'
 
 export default defineComponent({
   name: 'ObRecentComment',
-  components: { SubTitle },
+  components: { SubTitle, SvgIcon },
   setup() {
     const appStore = useAppStore()
     const { t } = useI18n()
     let recentComments = ref<RecentComment[]>([])
+    let loading = ref<boolean>(true)
+
+    const enabledCommentPlugin = computed<string | undefined>(() => {
+      if (
+        !!appStore.themeConfig.plugins.gitalk.enable &&
+        !!appStore.themeConfig.plugins.gitalk.recentComment
+      ) {
+        return 'gitalk'
+      }
+
+      if (
+        !!appStore.themeConfig.plugins.valine.enable &&
+        !!appStore.themeConfig.plugins.valine.recentComment
+      ) {
+        return 'valine'
+      }
+
+      if (
+        !!appStore.themeConfig.plugins.twikoo.enable &&
+        !!appStore.themeConfig.plugins.twikoo.recentComment
+      ) {
+        return 'twikoo'
+      }
+
+      if (
+        !!appStore.themeConfig.plugins.waline.enable &&
+        !!appStore.themeConfig.plugins.waline.recentComment
+      ) {
+        return 'waline'
+      }
+
+      return undefined
+    })
 
     const initRecentComment = () => {
-      if (!appStore.configReady) return
-      if (
-        appStore.themeConfig.plugins.gitalk.enable &&
-        appStore.themeConfig.plugins.gitalk.recentComment
-      ) {
-        const githubComments = new GithubComments({
-          repo: appStore.themeConfig.plugins.gitalk.repo,
-          clientId: appStore.themeConfig.plugins.gitalk.clientID,
-          clientSecret: appStore.themeConfig.plugins.gitalk.clientSecret,
-          owner: appStore.themeConfig.plugins.gitalk.owner,
-          admin: appStore.themeConfig.plugins.gitalk.admin[0]
-        })
+      if (!appStore.configReady || enabledCommentPlugin.value === undefined) {
+        loading.value = false
+        return
+      }
 
-        githubComments.getComments().then(response => {
-          recentComments.value = response
-        })
-      } else if (
-        appStore.themeConfig.plugins.valine.enable &&
-        appStore.themeConfig.plugins.valine.recentComment
-      ) {
-        const leadCloudComments = new LeanCloudComments({
-          appId: appStore.themeConfig.plugins.valine.app_id,
-          appKey: appStore.themeConfig.plugins.valine.app_key,
-          avatar: appStore.themeConfig.plugins.valine.avatar,
-          admin: appStore.themeConfig.plugins.valine.admin,
-          lang: appStore.themeConfig.plugins.valine.lang
-        })
+      switch (enabledCommentPlugin.value) {
+        case 'gitalk':
+          const githubComments = new GithubComments({
+            repo: appStore.themeConfig.plugins.gitalk.repo,
+            clientId: appStore.themeConfig.plugins.gitalk.clientID,
+            clientSecret: appStore.themeConfig.plugins.gitalk.clientSecret,
+            owner: appStore.themeConfig.plugins.gitalk.owner,
+            admin: appStore.themeConfig.plugins.gitalk.admin[0]
+          })
 
-        leadCloudComments
-          .getRecentComments(7)
-          .then(res => (recentComments.value = res))
-      } else if (
-        appStore.themeConfig.plugins.twikoo.enable &&
-        appStore.themeConfig.plugins.twikoo.recentComment
-      ) {
-        const twikooComments = new TwikooComments({
-          envId: appStore.themeConfig.plugins.twikoo.envId,
-          lang: appStore.themeConfig.plugins.twikoo.lang
-        })
+          githubComments.getComments().then(response => {
+            recentComments.value = response
+          })
 
-        twikooComments
-          .getRecentComments(7)
-          .then(res => (recentComments.value = res))
-      } else if (
-        appStore.themeConfig.plugins.waline.enable &&
-        appStore.themeConfig.plugins.waline.recentComment
-      ) {
-        const walineComments = new WalineComments({
-          serverURL: 'https://' + appStore.themeConfig.plugins.waline.serverURL,
-          lang: appStore.locale ?? 'en'
-        })
+          break
 
-        walineComments
-          .getRecentComments(7)
-          .then(res => (recentComments.value = res))
+        case 'valine':
+          const leadCloudComments = new LeanCloudComments({
+            appId: appStore.themeConfig.plugins.valine.app_id,
+            appKey: appStore.themeConfig.plugins.valine.app_key,
+            avatar: appStore.themeConfig.plugins.valine.avatar,
+            admin: appStore.themeConfig.plugins.valine.admin,
+            lang: appStore.themeConfig.plugins.valine.lang
+          })
+
+          leadCloudComments.getRecentComments(7).then(res => {
+            recentComments.value = res
+            loading.value = false
+          })
+
+          break
+
+        case 'twikoo':
+          const twikooComments = new TwikooComments({
+            envId: appStore.themeConfig.plugins.twikoo.envId,
+            lang: appStore.themeConfig.plugins.twikoo.lang
+          })
+
+          twikooComments.getRecentComments(7).then(res => {
+            recentComments.value = res
+            loading.value = false
+          })
+
+          break
+
+        case 'waline':
+          const walineComments = new WalineComments({
+            serverURL:
+              'https://' + appStore.themeConfig.plugins.waline.serverURL,
+            lang: appStore.locale ?? 'en'
+          })
+
+          walineComments.getRecentComments(7).then(res => {
+            recentComments.value = res
+            loading.value = false
+          })
+
+          break
+
+        default:
+          loading.value = false
       }
     }
 
@@ -162,20 +221,26 @@ export default defineComponent({
     watch(
       () => appStore.configReady,
       (newValue, oldValue) => {
-        if (!!oldValue && newValue) {
-          recentComments.value = []
+        if (!oldValue && newValue) {
           initRecentComment()
         }
       }
     )
 
-    onBeforeMount(initRecentComment)
-
     return {
+      isLoading: computed(() => loading.value),
       comments: computed(() => {
         return recentComments.value
       }),
+      isConfigReady: computed(() => appStore.configReady),
+      initRecentComment,
+      enabledCommentPlugin,
       t
+    }
+  },
+  mounted() {
+    if (this.isConfigReady) {
+      this.initRecentComment()
     }
   }
 })
