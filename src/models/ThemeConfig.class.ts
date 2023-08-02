@@ -469,6 +469,9 @@ export interface PluginsData {
     login: string
     meta: string[] | never[]
     requiredMeta: string[] | never[]
+    imageUploader?: boolean
+    wordLimit: number | number[]
+    pageSize: number
     commentSorting: string
   }
 
@@ -546,6 +549,9 @@ export class Plugins implements PluginsData {
     login: 'disable',
     meta: [],
     requiredMeta: [],
+    imageUploader: false,
+    wordLimit: 0,
+    pageSize: 10,
     commentSorting: 'latest'
   }
   recent_comments = false

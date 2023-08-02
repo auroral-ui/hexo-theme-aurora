@@ -36,6 +36,12 @@ interface WalineComment {
   user_id: number | null
 }
 
+interface WalineInitOptions extends WalineConfig {
+  el: string
+  dark: string
+  locale: string
+}
+
 export const walineInit = ({
   serverURL,
   lang = 'en',
@@ -43,20 +49,28 @@ export const walineInit = ({
   login = 'disable',
   meta,
   requiredMeta,
-  commentSorting
+  commentSorting,
+  wordLimit,
+  imageUploader,
+  pageSize
 }: Partial<WalineConfig>) => {
-  return init({
+  let options: Partial<WalineInitOptions> = {
     el: '#waline',
     dark: 'body[class="theme-dark"]',
     reaction,
     serverURL,
     lang,
     login,
-    local: 'zh-CN',
+    locale: 'zh-CN',
     meta,
     requiredMeta,
-    commentSorting
-  })
+    commentSorting,
+    wordLimit,
+    pageSize
+  }
+
+  if (imageUploader === false) options = { imageUploader, ...options }
+  return init(options)
 }
 
 export class WalineComments {
