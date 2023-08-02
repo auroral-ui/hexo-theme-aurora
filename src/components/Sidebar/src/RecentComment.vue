@@ -4,17 +4,19 @@
     <ul>
       <template v-if="comments.length > 0">
         <li
-          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-center shadow-sm hover:shadow-ob transition-shadow"
+          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-stretch shadow-sm hover:shadow-ob transition-shadow"
           v-for="comment in comments"
           :key="comment.id"
         >
-          <img
-            class="col-span-1 mr-2 rounded-full p-1"
-            :src="comment.user.avatar_url"
-            alt="comment-avatar"
-            height="40"
-            width="40"
-          />
+          <div class="flex justify-start items-start">
+            <img
+              class="col-span-1 mr-2 rounded-full p-1"
+              :src="comment.user.avatar_url"
+              alt="comment-avatar"
+              height="40"
+              width="40"
+            />
+          </div>
           <div class="flex-1 text-xs">
             <div class="text-xs">
               <span class="text-ob pr-2">
@@ -87,6 +89,7 @@ import { LeanCloudComments } from '@/utils/comments/leancloud-api'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import { TwikooComments } from '@/utils/comments/twikoo-api'
+import { WalineComments } from '@/utils/comments/waline-api'
 
 export default defineComponent({
   name: 'ObRecentComment',
@@ -125,9 +128,9 @@ export default defineComponent({
           lang: appStore.themeConfig.plugins.valine.lang
         })
 
-        leadCloudComments.getRecentComments(7).then(response => {
-          recentComments.value = response
-        })
+        leadCloudComments
+          .getRecentComments(7)
+          .then(res => (recentComments.value = res))
       } else if (
         appStore.themeConfig.plugins.twikoo.enable &&
         appStore.themeConfig.plugins.twikoo.recentComment
@@ -137,9 +140,21 @@ export default defineComponent({
           lang: appStore.themeConfig.plugins.twikoo.lang
         })
 
-        twikooComments.getRecentComments(7).then(res => {
-          recentComments.value = res
+        twikooComments
+          .getRecentComments(7)
+          .then(res => (recentComments.value = res))
+      } else if (
+        appStore.themeConfig.plugins.waline.enable &&
+        appStore.themeConfig.plugins.waline.recentComment
+      ) {
+        const walineComments = new WalineComments({
+          serverURL: 'https://' + appStore.themeConfig.plugins.waline.serverURL,
+          lang: appStore.locale ?? 'en'
         })
+
+        walineComments
+          .getRecentComments(7)
+          .then(res => (recentComments.value = res))
       }
     }
 

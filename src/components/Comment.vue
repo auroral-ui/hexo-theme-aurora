@@ -6,6 +6,7 @@
     <div id="gitalk-container"></div>
     <div id="vcomments"></div>
     <div id="tcomment"></div>
+    <div id="waline"></div>
   </div>
 </template>
 
@@ -17,6 +18,12 @@ import { usePostStore } from '@/stores/post'
 import { twikooInit } from '@/utils/comments/twikoo-api'
 import { githubInit } from '@/utils/comments/github-api'
 import { valineInit } from '@/utils/comments/valine-api'
+import { walineInit } from '@/utils/comments/waline-api'
+
+const languages: Record<string, string> = {
+  en: 'en',
+  cn: 'zh'
+}
 
 export default defineComponent({
   name: 'ObComment',
@@ -44,6 +51,7 @@ export default defineComponent({
     const postUid = toRefs(props).uid
     const appStore = useAppStore()
     const postStore = usePostStore()
+    let waline: any = undefined
 
     const enabledComment = (
       postTitle: string,
@@ -125,6 +133,25 @@ export default defineComponent({
       } else if (appStore.themeConfig.plugins.twikoo.enable) {
         const { envId, region, lang } = appStore.themeConfig.plugins.twikoo
         twikooInit({ envId, region, lang, path: window.location.pathname })
+      } else if (appStore.themeConfig.plugins.waline.enable) {
+        const {
+          serverURL,
+          login,
+          reaction,
+          meta,
+          requiredMeta,
+          commentSorting
+        } = appStore.themeConfig.plugins.waline
+
+        waline = walineInit({
+          serverURL,
+          lang: languages[appStore.locale ?? 'en'],
+          login,
+          reaction,
+          meta,
+          requiredMeta,
+          commentSorting
+        })
       }
     }
 
@@ -135,6 +162,19 @@ export default defineComponent({
         if (!oldValue && newValue) {
           const cachePost = postStore.cachePost
           enabledComment(cachePost.title, cachePost.body, cachePost.uid)
+        }
+      }
+    )
+
+    /** Updating comments base on current locale */
+    watch(
+      () => appStore.locale,
+      (newLocale, oldLocale) => {
+        console.log(newLocale, oldLocale)
+        if (waline && newLocale !== undefined && newLocale !== oldLocale) {
+          waline.update({
+            lang: languages[newLocale]
+          })
         }
       }
     )
@@ -378,7 +418,7 @@ export default defineComponent({
   }
 
   .tk-avatar {
-    border: 2px solid var(--text-accent);
+    border: none;
   }
 
   .tk-nick {
@@ -390,6 +430,52 @@ export default defineComponent({
     > span:first-of-type {
       color: var(--text-accent);
     }
+  }
+}
+
+#waline {
+  --waline-theme-color: var(--text-accent);
+  --waline-border: var(--background-secondary);
+  --waline-bgcolor: var(--background-primary);
+  --waline-bgcolor-light: var(--background-secondary);
+  --waline-badge-color: var(--text-accent);
+  --waline-disabled-bgcolor: var(--text-dim);
+  .wl-editor {
+    @apply p-2 box-border;
+  }
+
+  .wl-login-nick,
+  .wl-nick {
+    color: var(--text-sub-accent);
+  }
+
+  .wl-card {
+    @apply bg-ob-deep-900 p-4 rounded-lg;
+  }
+
+  .wl-num {
+    color: var(--text-accent);
+  }
+
+  .primary.wl-btn {
+    color: var(--text-bright);
+    border: none;
+    background: var(--main-gradient);
+    transition: var(--trans-ease);
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .wl-card .wl-delete,
+  .wl-card .wl-like,
+  .wl-card .wl-reply,
+  .wl-card .wl-edit {
+    color: var(--text-dim);
+  }
+
+  .wl-card .wl-quote {
+    border-inline-start: none;
   }
 }
 </style>

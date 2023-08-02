@@ -424,7 +424,7 @@ export class SiteMeta {
 
 type MetaAttributes = 'nick' | 'mail' | 'link'
 
-interface PluginsData {
+export interface PluginsData {
   gitalk: {
     enable: boolean
     autoExpand: boolean
@@ -459,6 +459,17 @@ interface PluginsData {
     recentComment: boolean
     region?: string
     lang: string
+  }
+
+  waline: {
+    enable: boolean
+    recentComment: boolean
+    serverURL: string
+    reaction: boolean
+    login: string
+    meta: string[] | never[]
+    requiredMeta: string[] | never[]
+    commentSorting: string
   }
 
   recent_comments: boolean
@@ -526,6 +537,16 @@ export class Plugins implements PluginsData {
     region: undefined,
     recentComment: false,
     lang: ''
+  }
+  waline = {
+    enable: false,
+    recentComment: false,
+    serverURL: '',
+    reaction: false,
+    login: 'disable',
+    meta: [],
+    requiredMeta: [],
+    commentSorting: 'latest'
   }
   recent_comments = false
   busuanzi = {
