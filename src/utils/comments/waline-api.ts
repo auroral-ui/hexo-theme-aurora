@@ -3,6 +3,7 @@ declare const Waline: any
 import {
   init,
   RecentComments
+  // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
 import { filterHTMLContent, formatCommentRelativeTime } from '..'
 import { PluginsData } from '@/models/ThemeConfig.class'
@@ -64,7 +65,7 @@ export class WalineComments {
     lang: ''
   }
 
-  constructor({ serverURL, lang }: WalineConfig) {
+  constructor({ serverURL, lang }: Partial<WalineConfig>) {
     this.configs.serverURL = serverURL
     this.configs.lang = lang
   }
