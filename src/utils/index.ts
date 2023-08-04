@@ -18,18 +18,6 @@ export interface RecentComment {
   cache_flag?: boolean
 }
 
-export function formatCommentRelativeTime(
-  time: number | string,
-  lang: 'en' | 'cn'
-) {
-  const templates = {
-    en: 'commented [TIME]',
-    cn: '[TIME]评论了'
-  }
-
-  return formatTime(time, { template: templates[lang], lang: lang })
-}
-
 /**
  * Formatting ISO time into readable times.
  */
@@ -88,22 +76,22 @@ export function formatTime(
   } else if (diff < 3600) {
     // Within 1 hour
     formattedTime =
-      String(Math.ceil(diff / 60)) + languages[configs.lang].minutes
+      String(Math.floor(diff / 60)) + languages[configs.lang].minutes
   } else if (diff < 3600 * 24) {
     // Within 1 day
     formattedTime =
-      String(Math.ceil(diff / 3600)) + languages[configs.lang].hours
+      String(Math.floor(diff / 3600)) + languages[configs.lang].hours
   } else if (diff < 3600 * 24 * 30) {
     // Within 1 month
     formattedTime =
-      String(Math.ceil(diff / 3600 / 24)) + languages[configs.lang].days
+      String(Math.floor(diff / 3600 / 24)) + languages[configs.lang].days
   } else if (diff < 3600 * 24 * 365) {
     // Within 1 year
     formattedTime =
-      String(Math.ceil(diff / 3600 / 24 / 30)) + languages[configs.lang].months
+      String(Math.floor(diff / 3600 / 24 / 30)) + languages[configs.lang].months
   } else {
     formattedTime =
-      String(Math.ceil(diff / 3600 / 24 / 365)) + languages[configs.lang].years
+      String(Math.floor(diff / 3600 / 24 / 365)) + languages[configs.lang].years
   }
 
   return configs.template.replace('[TIME]', formattedTime)

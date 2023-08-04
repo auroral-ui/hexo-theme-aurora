@@ -5,7 +5,7 @@ import {
   RecentComments
   // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
-import { filterHTMLContent, formatCommentRelativeTime } from '..'
+import { filterHTMLContent, formatTime } from '..'
 import { PluginsData } from '@/models/ThemeConfig.class'
 
 type WalinePlugin = PluginsData['waline']
@@ -94,10 +94,7 @@ export class WalineComments {
   }
 
   mapComment(comment: WalineComment): RecentComments {
-    const createdAt = formatCommentRelativeTime(
-      this.convertDateFormat(comment.insertedAt),
-      this.configs.lang === 'cn' ? 'cn' : 'en'
-    )
+    const createdAt = formatTime(this.convertDateFormat(comment.insertedAt))
     return {
       id: comment.objectId,
       body: filterHTMLContent(comment.comment),
