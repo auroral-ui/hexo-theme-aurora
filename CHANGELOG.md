@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.1.1...v2.1.2) (2023-08-04)
+
+
+### Bug Fixes
+
+* recent comment relative time use round to floor instead ([b5f4ae4](https://github.com/auroral-ui/hexo-theme-aurora/commit/b5f4ae4d4e651356d7e73ad3e03a44e69b0a832f))
+
 ## [2.1.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.1.0...v2.1.1) (2023-08-02)
 
 
