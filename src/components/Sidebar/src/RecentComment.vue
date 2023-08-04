@@ -4,7 +4,7 @@
     <ul>
       <template v-if="isLoading === false">
         <li
-          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-stretch shadow-sm hover:shadow-ob transition-shadow"
+          class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg flex flex-row justify-items-center items-stretch shadow-sm hover:shadow-ob transition-shadow"
           v-if="comments.length > 0"
           v-for="comment in comments"
           :key="comment.id"
@@ -19,7 +19,7 @@
             />
           </div>
           <div class="flex-1 text-xs">
-            <div class="text-xs">
+            <div class="text-xs mb-2 pt-1">
               <span class="text-ob pr-2">
                 {{ comment.user.login }}
                 <b
@@ -31,7 +31,7 @@
               </span>
               <p class="text-gray-500">{{ comment.created_at }}</p>
             </div>
-            <div class="text-xs text-ob-bright">
+            <div class="text-xs text-ob-bright pb-1">
               {{ comment.body }}
             </div>
           </div>
@@ -44,7 +44,7 @@
           <SvgIcon
             class="mr-2"
             icon-class="warning"
-            svgType="stroke"
+            :svgType="SvgTypes.stroke"
             stroke="var(--text-dim)"
           />
           {{ t('settings.empty-recent-comments') }}
@@ -105,6 +105,7 @@ import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import { TwikooComments } from '@/utils/comments/twikoo-api'
 import { WalineComments } from '@/utils/comments/waline-api'
+import { SvgTypes } from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
   name: 'ObRecentComment',
@@ -228,6 +229,7 @@ export default defineComponent({
     )
 
     return {
+      SvgTypes,
       isLoading: computed(() => loading.value),
       comments: computed(() => {
         return recentComments.value

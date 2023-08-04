@@ -1,4 +1,4 @@
-import { RecentComment, formatCommentRelativeTime } from '..'
+import { RecentComment, formatTime } from '..'
 import { getGravatar, getGravatarUrl } from './gravatar'
 
 declare const twikoo: any
@@ -74,9 +74,9 @@ export class TwikooComments {
   }
 
   mapComment(comment: TwikooComment, gravatarUrl: string): RecentComment {
-    const createdAt = formatCommentRelativeTime(
-      new Date(Number(comment.created) - 8 * 1000 * 60 * 60).toISOString(),
-      this.configs.lang === 'cn' ? 'cn' : 'en'
+    const timezoneDiff = this.configs.lang === 'cn' ? 8 * 1000 * 60 * 60 : 0
+    const createdAt = formatTime(
+      new Date(Number(comment.created) - timezoneDiff).toISOString()
     )
     return {
       id: Number(comment.id),
