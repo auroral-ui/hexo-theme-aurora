@@ -30,8 +30,8 @@
 
           <ul>
             <template v-if="post.tags && post.tags.length > 0">
-              <li v-for="tag in post.tags" :key="tag.slug">
-                <em># {{ tag.name }}</em>
+              <li v-for="index in numberOfTags" :key="post.tags[index].slug">
+                <em># {{ post.tags[index].name }}</em>
               </li>
             </template>
             <template v-else-if="post.tags && post.tags.length <= 0">
@@ -70,12 +70,7 @@
             />
             <span class="text-ob-dim">
               <strong
-                class="
-                  text-ob-normal
-                  pr-1.5
-                  hover:text-ob hover:opacity-50
-                  cursor-pointer
-                "
+                class="text-ob-normal pr-1.5 hover:text-ob hover:opacity-50 cursor-pointer"
                 @click="handleAuthorClick(post.author.link)"
               >
                 {{ post.author.name }}
@@ -107,19 +102,27 @@
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
 import { useAppStore } from '@/stores/app'
+import { useCommonStore } from '@/stores/common'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+
+enum TagLimit {
+  forMobile = '2',
+  default = '5'
+}
 
 export default defineComponent({
   name: 'ObHorizontalArticle',
   components: { SvgIcon },
   props: {
     data: {
-      type: Object
+      type: Object,
+      default: {}
     }
   },
   setup(props) {
     const appStore = useAppStore()
+    const commonStore = useCommonStore()
     const { t } = useI18n()
     const post = toRefs(props).data
 
@@ -131,6 +134,14 @@ export default defineComponent({
     return {
       bannerHoverGradient: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
+      }),
+      isMobile: computed(() => commonStore.isMobile),
+      numberOfTags: computed(() => {
+        const tagCount = post.value.tags.length
+        if (commonStore.isMobile) {
+          return tagCount > TagLimit.forMobile ? TagLimit.forMobile : tagCount
+        }
+        return tagCount > TagLimit.default ? TagLimit.default : tagCount
       }),
       post,
       handleAuthorClick,
