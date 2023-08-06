@@ -24,6 +24,7 @@ site:
   police_beian:
     number: ''
     link: ''
+  started_date: # Start date of the blog YYY-MM-DD / 博客开始运行日期
 
 #! ---------------------------------------------------------------
 #! Authors Configs
