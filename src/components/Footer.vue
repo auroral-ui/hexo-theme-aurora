@@ -145,7 +145,11 @@ export default defineComponent({
         if (oldValue === '' && newValue) {
           window.setTimeout(
             () =>
-              intiCommentPluginPageView(newValue, appStore.themeConfig.plugins),
+              intiCommentPluginPageView(
+                newValue,
+                '/',
+                appStore.themeConfig.plugins
+              ),
             50
           )
         }

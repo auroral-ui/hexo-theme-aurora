@@ -85,173 +85,14 @@
             </div>
           </div>
 
-          <div
-            class="post-stats"
-            v-if="post.count_time.symbolsTime && post.date"
-          >
-            <span>
-              <SvgIcon
-                icon-class="clock-outline"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70">
-                {{ post.count_time.symbolsTime }}
-              </span>
-            </span>
-            <span>
-              <SvgIcon
-                icon-class="text-outline"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70">
-                {{ post.count_time.symbolsCount }}
-              </span>
-            </span>
-
-            <!-- Waline -->
-            <span v-if="enabledPlugin === 'waline'">
-              <SvgIcon
-                class="h-5 w-5"
-                icon-class="hot"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70">
-                <span class="waline-pageview-count" />
-              </span>
-            </span>
-            <span v-if="enabledPlugin === 'waline'">
-              <SvgIcon
-                class="h-5 w-5"
-                icon-class="quote"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70">
-                <span class="waline-comment-count" :data-path="currentPath" />
-              </span>
-            </span>
-
-            <!-- Twikoo -->
-            <span v-if="enabledPlugin === 'twikoo'">
-              <SvgIcon
-                class="h-5 w-5"
-                icon-class="hot"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70" id="twikoo_visitors">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-            <span v-if="enabledPlugin === 'twikoo'">
-              <SvgIcon
-                class="h-5 w-5"
-                icon-class="quote"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70">
-                {{ commentCount }}
-              </span>
-            </span>
-
-            <!-- Valine -->
-            <span v-if="enabledPlugin === 'valine'">
-              <SvgIcon
-                class="h-5 w-5"
-                icon-class="hot"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2 opacity-70">
-                <span
-                  :id="currentPath"
-                  class="leancloud_visitors"
-                  :data-flag-title="post.title"
-                >
-                  <i class="leancloud-visitors-count">
-                    <ob-skeleton width="40px" height="16px" />
-                  </i>
-                </span>
-              </span>
-            </span>
-          </div>
-
-          <div v-else class="post-stats">
-            <span>
-              <SvgIcon
-                icon-class="clock-outline"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-            <span>
-              <SvgIcon
-                icon-class="text-outline"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-            <span
-              v-if="
-                enabledPlugin === 'waline' ||
-                enabledPlugin === 'twikoo' ||
-                enabledPlugin === 'valine'
-              "
-            >
-              <SvgIcon
-                icon-class="hot"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-            <span
-              v-if="enabledPlugin === 'waline' || enabledPlugin === 'twikoo'"
-            >
-              <SvgIcon
-                icon-class="quote"
-                fill="none"
-                stroke="white"
-                height="1.25em"
-                width="1.25em"
-              />
-              <span class="pl-2">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-          </div>
+          <PostStats
+            :post-word-count="post.count_time.symbolsCount"
+            :post-time-count="post.count_time.symbolsTime"
+            :post-title="post.title"
+            :current-path="currentPath"
+            :plugin-configs="pluginConfigs"
+            ref="postStatsRef"
+          />
         </div>
       </div>
     </div>
@@ -336,7 +177,7 @@
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
+import { Ref, computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
@@ -349,17 +190,27 @@ import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
 
 import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
-import {
-  enabledCommentPlugin,
-  initCommentPluginCommentCount,
-  intiCommentPluginPageView
-} from '@/utils/comments/helpers'
+import PostStats from '@/components/Post/PostStats.vue'
+
+interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
+  getCommentCount(): void
+  getPostView(): void
+}
 
 declare const Prism: any
 
 export default defineComponent({
   name: 'ObPost',
-  components: { Sidebar, Toc, Comment, SubTitle, Article, Profile, SvgIcon },
+  components: {
+    Sidebar,
+    Toc,
+    Comment,
+    SubTitle,
+    Article,
+    Profile,
+    SvgIcon,
+    PostStats
+  },
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()
@@ -369,11 +220,7 @@ export default defineComponent({
     const { t } = useI18n()
     const post = ref(new Post())
     const loading = ref(true)
-    const commentCount = ref(0)
-
-    const enabledPlugin = computed(
-      () => enabledCommentPlugin(appStore.themeConfig.plugins).plugin
-    )
+    const postStatsRef = ref<PostStatsExpose>()
 
     const fetchData = async () => {
       loading.value = true
@@ -400,15 +247,8 @@ export default defineComponent({
         )
       }
       await nextTick()
-      intiCommentPluginPageView(
-        enabledPlugin.value,
-        appStore.themeConfig.plugins
-      )
-      commentCount.value = await initCommentPluginCommentCount(
-        enabledPlugin.value,
-        route.path,
-        appStore.themeConfig.plugins
-      )
+      postStatsRef.value?.getCommentCount()
+      postStatsRef.value?.getPostView()
       Prism.highlightAll()
     }
 
@@ -427,9 +267,9 @@ export default defineComponent({
     return {
       isMobile: computed(() => commonStore.isMobile),
       currentPath: computed(() => route.path),
-      commentCount,
+      pluginConfigs: computed(() => appStore.themeConfig.plugins),
+      postStatsRef,
       SvgTypes,
-      enabledPlugin,
       commonStore,
       fetchData,
       handleAuthorClick,
