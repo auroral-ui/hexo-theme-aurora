@@ -125,7 +125,6 @@ export function filterHTMLContent(content: string, length?: number): string {
 export function getDaysTillNow(from: string) {
   const today = new Date()
   const fromDate = new Date(from)
-  console.log(fromDate)
 
   // To calculate the time difference of two dates
   const timeDiff = today.getTime() - fromDate.getTime()
