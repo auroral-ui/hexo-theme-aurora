@@ -30,7 +30,10 @@
 
           <ul>
             <template v-if="post.tags && post.tags.length > 0">
-              <li v-for="index in numberOfTags" :key="post.tags[index].slug">
+              <li
+                v-for="index in numberOfTags - 1"
+                :key="post.tags[index].slug"
+              >
                 <em># {{ post.tags[index].name }}</em>
               </li>
             </template>
