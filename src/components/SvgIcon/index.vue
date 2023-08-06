@@ -5,7 +5,13 @@
     class="svg-external-icon svg-icon"
     v-bind="$attrs"
   />
-  <svg v-else :class="svgClass" aria-hidden="true" v-bind="$attrs">
+  <svg
+    v-else
+    :class="svgClass"
+    aria-hidden="true"
+    v-bind="$attrs"
+    :style="{ height: svgStyle.height, width: svgStyle.width }"
+  >
     <use
       :href="iconName"
       :fill="fill !== '' ? fill : svgStyle.fill"
@@ -47,9 +53,25 @@ export default defineComponent({
     svgType: {
       type: String as PropType<SvgTypes>,
       default: 'fill'
+    },
+    width: {
+      type: String,
+      default: '1em'
+    },
+    height: {
+      type: String,
+      default: '1em'
     }
   },
-  setup(props: { iconClass: string; className: string; svgType: SvgTypes }) {
+  setup(props: {
+    iconClass: string
+    className: string
+    svgType: SvgTypes
+    fill: string
+    stroke: string
+    width: string
+    height: string
+  }) {
     const appStore = useAppStore()
     const isExternalClass = computed(() => isExternalIcon(props.iconClass))
 
@@ -74,16 +96,25 @@ export default defineComponent({
       svgStyle: computed(() => {
         if (props.svgType === SvgTypes.fill) {
           return {
-            fill: 'currentColor',
-            stroke:
-              appStore.theme === 'theme-dark'
-                ? 'var(--background-primary)'
-                : 'white'
+            fill: props.fill ? props.fill : 'currentColor',
+            stroke: props.stroke
+              ? props.stroke
+              : appStore.theme === 'theme-dark'
+              ? 'var(--background-primary)'
+              : 'white',
+            width: props.width,
+            height: props.height
           }
         } else {
           return {
-            fill: 'none',
-            stroke: appStore.theme === 'theme-dark' ? 'white' : 'currentColor'
+            fill: props.fill ? props.fill : 'none',
+            stroke: props.stroke
+              ? props.stroke
+              : appStore.theme === 'theme-dark'
+              ? 'white'
+              : 'currentColor',
+            width: props.width,
+            height: props.height
           }
         }
       }),
@@ -98,8 +129,6 @@ export default defineComponent({
 
 <style scoped>
 .svg-icon {
-  width: 1em;
-  height: 1em;
   vertical-align: -0.15em;
   overflow: hidden;
   display: inline;
