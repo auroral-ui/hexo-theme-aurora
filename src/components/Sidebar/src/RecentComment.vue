@@ -106,6 +106,7 @@ import { useI18n } from 'vue-i18n'
 import { TwikooComments } from '@/utils/comments/twikoo-api'
 import { WalineComments } from '@/utils/comments/waline-api'
 import { SvgTypes } from '@/components/SvgIcon/index.vue'
+import { enabledCommentPlugin } from '@/utils/comments/helpers'
 
 export default defineComponent({
   name: 'ObRecentComment',
@@ -116,45 +117,20 @@ export default defineComponent({
     let recentComments = ref<RecentComment[]>([])
     let loading = ref<boolean>(true)
 
-    const enabledCommentPlugin = computed<string | undefined>(() => {
-      if (
-        !!appStore.themeConfig.plugins.gitalk.enable &&
-        !!appStore.themeConfig.plugins.gitalk.recentComment
-      ) {
-        return 'gitalk'
-      }
-
-      if (
-        !!appStore.themeConfig.plugins.valine.enable &&
-        !!appStore.themeConfig.plugins.valine.recentComment
-      ) {
-        return 'valine'
-      }
-
-      if (
-        !!appStore.themeConfig.plugins.twikoo.enable &&
-        !!appStore.themeConfig.plugins.twikoo.recentComment
-      ) {
-        return 'twikoo'
-      }
-
-      if (
-        !!appStore.themeConfig.plugins.waline.enable &&
-        !!appStore.themeConfig.plugins.waline.recentComment
-      ) {
-        return 'waline'
-      }
-
-      return undefined
+    const enabledPlugin = computed<string | undefined>(() => {
+      const result = enabledCommentPlugin(appStore.themeConfig.plugins)
+      return result.plugin !== '' && !!result.recentComment
+        ? result.plugin
+        : undefined
     })
 
     const initRecentComment = () => {
-      if (!appStore.configReady || enabledCommentPlugin.value === undefined) {
+      if (!appStore.configReady || enabledPlugin.value === undefined) {
         loading.value = false
         return
       }
 
-      switch (enabledCommentPlugin.value) {
+      switch (enabledPlugin.value) {
         case 'gitalk':
           const githubComments = new GithubComments({
             repo: appStore.themeConfig.plugins.gitalk.repo,
