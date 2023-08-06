@@ -85,38 +85,14 @@
             </div>
           </div>
 
-          <div
-            class="post-stats"
-            v-if="post.count_time.symbolsTime && post.date"
-          >
-            <span>
-              <SvgIcon icon-class="clock-outline" stroke="var(--text-white)" />
-              <span class="pl-2 opacity-70">
-                {{ post.count_time.symbolsTime }}
-              </span>
-            </span>
-            <span>
-              <SvgIcon icon-class="text-outline" stroke="var(--text-white)" />
-              <span class="pl-2 opacity-70">
-                {{ post.count_time.symbolsCount }}
-              </span>
-            </span>
-          </div>
-
-          <div v-else class="post-stats">
-            <span>
-              <SvgIcon icon-class="clock" />
-              <span class="pl-2">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-            <span>
-              <SvgIcon icon-class="text" />
-              <span class="pl-2">
-                <ob-skeleton width="40px" height="16px" />
-              </span>
-            </span>
-          </div>
+          <PostStats
+            :post-word-count="post.count_time.symbolsCount"
+            :post-time-count="post.count_time.symbolsTime"
+            :post-title="post.title"
+            :current-path="currentPath"
+            :plugin-configs="pluginConfigs"
+            ref="postStatsRef"
+          />
         </div>
       </div>
     </div>
@@ -201,15 +177,7 @@
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  onBeforeUnmount,
-  onMounted,
-  ref,
-  watch
-} from 'vue'
+import { Ref, computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
@@ -221,13 +189,28 @@ import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
 
-import SvgIcon from '@/components/SvgIcon/index.vue'
+import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
+import PostStats from '@/components/Post/PostStats.vue'
+
+interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
+  getCommentCount(): void
+  getPostView(): void
+}
 
 declare const Prism: any
 
 export default defineComponent({
   name: 'ObPost',
-  components: { Sidebar, Toc, Comment, SubTitle, Article, Profile, SvgIcon },
+  components: {
+    Sidebar,
+    Toc,
+    Comment,
+    SubTitle,
+    Article,
+    Profile,
+    SvgIcon,
+    PostStats
+  },
   setup() {
     const metaStore = useMetaStore()
     const postStore = usePostStore()
@@ -237,6 +220,7 @@ export default defineComponent({
     const { t } = useI18n()
     const post = ref(new Post())
     const loading = ref(true)
+    const postStatsRef = ref<PostStatsExpose>()
 
     const fetchData = async () => {
       loading.value = true
@@ -263,6 +247,8 @@ export default defineComponent({
         )
       }
       await nextTick()
+      postStatsRef.value?.getCommentCount()
+      postStatsRef.value?.getPostView()
       Prism.highlightAll()
     }
 
@@ -278,18 +264,25 @@ export default defineComponent({
       window.location.href = link
     }
 
-    onMounted(fetchData)
-    onBeforeUnmount(() => {
-      commonStore.resetHeaderImage()
-    })
-
     return {
       isMobile: computed(() => commonStore.isMobile),
+      currentPath: computed(() => route.path),
+      pluginConfigs: computed(() => appStore.themeConfig.plugins),
+      postStatsRef,
+      SvgTypes,
+      commonStore,
+      fetchData,
       handleAuthorClick,
       loading,
       post,
       t
     }
+  },
+  mounted() {
+    this.fetchData()
+  },
+  beforeUnmount() {
+    this.commonStore.resetHeaderImage()
   }
 })
 </script>

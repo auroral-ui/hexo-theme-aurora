@@ -55,6 +55,7 @@ export class Page implements Detail {
   content = ''
   count_time = {}
   toc = ''
+  text = ''
 
   constructor(raw?: { [key: string]: string }) {
     if (raw) {

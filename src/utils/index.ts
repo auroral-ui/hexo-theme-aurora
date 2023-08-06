@@ -121,3 +121,14 @@ export function filterHTMLContent(content: string, length?: number): string {
 
   return content
 }
+
+export function getDaysTillNow(from: string) {
+  const today = new Date()
+  const fromDate = new Date(from)
+
+  // To calculate the time difference of two dates
+  const timeDiff = today.getTime() - fromDate.getTime()
+
+  // To calculate the no. of days between two dates
+  return Math.floor(timeDiff / (1000 * 3600 * 24))
+}

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumbs :current="pageTitle" />
-    <PageContainer :post="pageData" :title="pageTitle">
+    <PageContent :post="pageData" :title="pageTitle">
       <div id="comments">
         <Comment
           :title="pageData.title"
@@ -9,7 +9,7 @@
           :uid="pageData.uid"
         />
       </div>
-    </PageContainer>
+    </PageContent>
   </div>
 </template>
 
@@ -21,13 +21,13 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
-import PageContainer from '@/components/PageContainer.vue'
+import PageContent from '@/components/PageContent.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Comment from '@/components/Comment.vue'
 
 export default defineComponent({
   name: 'Page',
-  components: { PageContainer, Breadcrumbs, Comment },
+  components: { PageContent, Breadcrumbs, Comment },
   setup() {
     const articleStore = useArticleStore()
     const appStore = useAppStore()

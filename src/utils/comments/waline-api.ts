@@ -2,6 +2,8 @@ declare const Waline: any
 
 import {
   init,
+  pageviewCount,
+  commentCount,
   RecentComments
   // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
@@ -73,6 +75,20 @@ export const walineInit = ({
   return init(options)
 }
 
+export const walinePageViewInit = (serverURL: string, path: string) => {
+  pageviewCount({
+    serverURL,
+    path
+  })
+}
+
+export const walineCommentViewInit = (serverURL: string, path: string) => {
+  commentCount({
+    serverURL,
+    path
+  })
+}
+
 export class WalineComments {
   configs: Partial<WalineConfig> = {
     serverURL: '',
@@ -94,7 +110,10 @@ export class WalineComments {
   }
 
   mapComment(comment: WalineComment): RecentComments {
-    const createdAt = formatTime(this.convertDateFormat(comment.insertedAt))
+    // slice off the last 5 character to remove the timezone.
+    const createdAt = formatTime(
+      new Date(comment.time).toISOString().slice(0, -5)
+    )
     return {
       id: comment.objectId,
       body: filterHTMLContent(comment.comment),
