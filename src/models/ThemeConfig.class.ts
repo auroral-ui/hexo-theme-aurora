@@ -379,6 +379,8 @@ export class Site {
     number: '',
     link: ''
   }
+  // Start date when the blog first started running
+  started_date = ''
 
   /**
    * Model class for Site general settings

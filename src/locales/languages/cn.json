@@ -70,6 +70,9 @@
     "empty-tag": "目前没有标签",
     "empty-recent-comments": "目前没有最新评论",
     "pinned": "置顶",
-    "featured": "推荐"
+    "featured": "推荐",
+    "page-views-value": "浏览次数：",
+    "site-running-for": "建站天数：",
+    "site-running-for-unit": "天"
   }
 }

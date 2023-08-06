@@ -58,14 +58,27 @@
               </span>
             </li>
           </ul>
-          <ul v-if="themeConfig.plugins.busuanzi.enable">
-            <li>
+          <ul class="flex flex-col min-w-[150px]">
+            <li class="flex" v-if="enabledPlugin === 'waline'">
+              <span>
+                <SvgIcon
+                  icon-class="hot"
+                  class="mr-1 text-lg inline-block"
+                  :svg-type="SvgTypes.fill"
+                />
+                {{ t('settings.page-views-value') }}
+              </span>
+              <span class="flex-1 text-right">
+                <span class="waline-pageview-count" data-path="/" />
+              </span>
+            </li>
+            <li v-if="themeConfig.plugins.busuanzi.enable">
               <span id="busuanzi_container_site_pv">
                 <SvgIcon icon-class="eye" class="mr-1 text-lg inline-block" />
                 <span id="busuanzi_value_site_pv" />
               </span>
             </li>
-            <li>
+            <li v-if="themeConfig.plugins.busuanzi.enable">
               <span id="busuanzi_container_site_uv">
                 <SvgIcon
                   icon-class="people"
@@ -73,6 +86,17 @@
                 />
                 <span id="busuanzi_value_site_uv"></span>
               </span>
+            </li>
+
+            <li v-if="runningDays" class="flex">
+              <span class="">
+                <SvgIcon icon-class="date" class="mr-1 text-lg inline-block" />
+                {{ t('settings.site-running-for') }}
+              </span>
+              <span class="flex-1 text-right"
+                >{{ runningDays }}
+                {{ t('settings.site-running-for-unit') }}</span
+              >
             </li>
           </ul>
         </div>
@@ -92,11 +116,17 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, watch } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
-import SvgIcon from '@/components/SvgIcon/index.vue'
+import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
 import beianImg from '@/assets/gongan-beian-40-40.png'
+import { walinePageViewInit } from '@/utils/comments/waline-api'
+import {
+  enabledCommentPlugin,
+  intiCommentPluginPageView
+} from '@/utils/comments/helpers'
+import { getDaysTillNow } from '@/utils'
 
 export default defineComponent({
   name: 'ObFooter',
@@ -105,7 +135,25 @@ export default defineComponent({
     const appStore = useAppStore()
     const { t } = useI18n()
 
+    const enabledPlugin = computed(
+      () => enabledCommentPlugin(appStore.themeConfig.plugins).plugin
+    )
+
+    watch(
+      () => enabledPlugin.value,
+      (newValue, oldValue) => {
+        if (oldValue === '' && newValue) {
+          window.setTimeout(
+            () =>
+              intiCommentPluginPageView(newValue, appStore.themeConfig.plugins),
+            50
+          )
+        }
+      }
+    )
+
     return {
+      SvgTypes,
       beianImg,
       avatarClass: computed(() => {
         return {
@@ -121,6 +169,13 @@ export default defineComponent({
       }),
       currentYear: computed(() => new Date().getUTCFullYear()),
       themeConfig: computed(() => appStore.themeConfig),
+      configReady: computed(() => appStore.configReady),
+      runningDays: computed(() => {
+        if (appStore.themeConfig.site.started_date === '') return undefined
+        return getDaysTillNow(`${appStore.themeConfig.site.started_date}`)
+      }),
+      intiCommentPluginPageView,
+      enabledPlugin,
       t
     }
   }
