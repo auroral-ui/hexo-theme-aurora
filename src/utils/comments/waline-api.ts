@@ -75,11 +75,10 @@ export const walineInit = ({
   return init(options)
 }
 
-export const walinePageViewInit = (serverURL: string) => {
-  console.log(123)
+export const walinePageViewInit = (serverURL: string, path: string) => {
   pageviewCount({
     serverURL,
-    path: window.location.pathname
+    path
   })
 }
 

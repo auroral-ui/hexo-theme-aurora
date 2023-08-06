@@ -10,6 +10,17 @@
         width="100%"
         height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
       />
+
+      <div class="flex flex-row items-center justify-start mt-8 mb-4">
+        <PostStats
+          :post-word-count="post.count_time.symbolsCount"
+          :post-time-count="post.count_time.symbolsTime"
+          :post-title="post.title"
+          :current-path="currentPath"
+          :plugin-configs="pluginConfigs"
+          ref="postStatsRef"
+        />
+      </div>
     </div>
     <div class="main-grid">
       <div class="relative">
@@ -21,15 +32,7 @@
         />
         <div
           v-else
-          class="
-            bg-ob-deep-800
-            px-14
-            py-16
-            rounded-2xl
-            shadow-xl
-            block
-            min-h-screen
-          "
+          class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
         >
           <ob-skeleton
             tag="div"
@@ -70,20 +73,31 @@
 
 <script lang="ts">
 import {
+  Ref,
   computed,
   defineComponent,
+  nextTick,
   onMounted,
   onUnmounted,
+  ref,
   toRefs,
   watch
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { useCommonStore } from '@/stores/common'
+import { useRoute } from 'vue-router'
+import PostStats from './Post/PostStats.vue'
+import { useAppStore } from '@/stores/app'
+
+interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
+  getCommentCount(): void
+  getPostView(): void
+}
 
 export default defineComponent({
-  name: 'ObPageContainer',
-  components: { Sidebar, Toc, Profile },
+  name: 'ObPageContent',
+  components: { Sidebar, Toc, Profile, PostStats },
   props: {
     post: {
       type: Object,
@@ -97,16 +111,29 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const appStore = useAppStore()
     const commonStore = useCommonStore()
+    const route = useRoute()
     const { t } = useI18n()
     const post = toRefs(props).post
     const title = toRefs(props).title
+    const postStatsRef = ref<PostStatsExpose>()
 
     watch(
       () => post.value.covers,
       value => {
-        console.log(value)
         if (value) commonStore.setHeaderImage(value)
+      }
+    )
+
+    watch(
+      () => post.value.count_time.symbolsTime,
+      async value => {
+        if (value) {
+          await nextTick()
+          postStatsRef.value?.getCommentCount()
+          postStatsRef.value?.getPostView()
+        }
       }
     )
 
@@ -123,6 +150,9 @@ export default defineComponent({
         if (title.value !== '') return title.value
         return post.value.title
       }),
+      currentPath: computed(() => route.path),
+      pluginConfigs: computed(() => appStore.themeConfig.plugins),
+      postStatsRef,
       t
     }
   }

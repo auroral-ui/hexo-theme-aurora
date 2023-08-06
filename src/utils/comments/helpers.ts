@@ -37,11 +37,12 @@ export const enabledCommentPlugin = (plugins: PluginsData) => {
 
 export const intiCommentPluginPageView = (
   plugin: string,
+  path: string,
   plugins: PluginsData
 ) => {
   switch (plugin) {
     case 'waline':
-      walinePageViewInit(plugins.waline.serverURL)
+      walinePageViewInit(plugins.waline.serverURL, path)
       break
   }
 }

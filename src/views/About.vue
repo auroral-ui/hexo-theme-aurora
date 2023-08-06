@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumbs :current="t('menu.about')" />
-    <PageContainer :post="pageData" />
+    <PageContent :post="pageData" />
   </div>
 </template>
 
@@ -9,13 +9,13 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import { useArticleStore } from '@/stores/article'
 import { Page } from '@/models/Article.class'
-import PageContainer from '@/components/PageContainer.vue'
+import PageContent from '@/components/PageContent.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'About',
-  components: { PageContainer, Breadcrumbs },
+  components: { PageContent, Breadcrumbs },
   setup() {
     const articleStore = useArticleStore()
     const pageData = ref(new Page())
