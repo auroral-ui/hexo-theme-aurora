@@ -2,6 +2,8 @@ declare const Waline: any
 
 import {
   init,
+  pageviewCount,
+  commentCount,
   RecentComments
   // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
@@ -71,6 +73,21 @@ export const walineInit = ({
 
   if (imageUploader === false) options = { imageUploader, ...options }
   return init(options)
+}
+
+export const walinePageViewInit = (serverURL: string) => {
+  console.log(123)
+  pageviewCount({
+    serverURL,
+    path: window.location.pathname
+  })
+}
+
+export const walineCommentViewInit = (serverURL: string, path: string) => {
+  commentCount({
+    serverURL,
+    path
+  })
 }
 
 export class WalineComments {
