@@ -9,11 +9,21 @@
       data-dia="search"
       @click="handleOpenModal(true)"
     >
-      <SvgIcon icon-class="search" stroke="var(--text-white)" />
+      <SvgIcon
+        icon-class="search"
+        stroke="var(--text-white)"
+        width="2rem"
+        height="2rem"
+      />
     </span>
     <Dropdown v-if="enableMultiLanguage" @command="handleClick">
       <span class="ob-drop-shadow" data-dia="language">
-        <SvgIcon icon-class="globe" stroke="var(--text-white)" />
+        <SvgIcon
+          icon-class="globe"
+          stroke="var(--text-white)"
+          width="2rem"
+          height="2rem"
+        />
         <span v-if="$i18n.locale == 'cn'">中文</span>
         <span v-if="$i18n.locale == 'en'">EN</span>
       </span>
@@ -93,8 +103,6 @@ export default defineComponent({
     }
     .svg-icon {
       stroke: #fff;
-      height: 2rem;
-      width: 2rem;
       margin-right: 0.5rem;
       pointer-events: none;
     }
