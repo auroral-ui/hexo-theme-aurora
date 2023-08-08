@@ -176,7 +176,6 @@ export default defineComponent({
     watch(
       () => appStore.locale,
       (newLocale, oldLocale) => {
-        console.log(newLocale, oldLocale)
         if (waline && newLocale !== undefined && newLocale !== oldLocale) {
           waline.update({
             lang: languages[newLocale]

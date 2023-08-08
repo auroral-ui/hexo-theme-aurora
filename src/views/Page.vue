@@ -14,7 +14,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  onBeforeMount,
+  ref,
+  watch
+} from 'vue'
 import { useArticleStore } from '@/stores/article'
 import { Page } from '@/models/Article.class'
 import { useI18n } from 'vue-i18n'
@@ -24,6 +31,8 @@ import { useMetaStore } from '@/stores/meta'
 import PageContent from '@/components/PageContent.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Comment from '@/components/Comment.vue'
+
+declare const Prism: any
 
 export default defineComponent({
   name: 'Page',
@@ -37,14 +46,16 @@ export default defineComponent({
     const { t } = useI18n()
     const pageTitle = ref()
 
-    const fetchArticle = () => {
-      articleStore.fetchArticle(String(route.params.slug)).then(response => {
-        pageData.value = response
+    const fetchArticle = async () => {
+      const response = await articleStore.fetchArticle(
+        String(route.params.slug)
+      )
 
-        pageTitle.value = pageData.value.title
-
-        updateTitle(appStore.locale)
-      })
+      pageData.value = response
+      pageTitle.value = response.title
+      updateTitle(appStore.locale)
+      await nextTick()
+      Prism.highlightAll()
     }
 
     const updateTitle = (locale: string | undefined) => {
