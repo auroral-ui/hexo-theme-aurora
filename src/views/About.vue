@@ -6,12 +6,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, nextTick, onMounted, ref } from 'vue'
 import { useArticleStore } from '@/stores/article'
 import { Page } from '@/models/Article.class'
 import PageContent from '@/components/PageContent.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useI18n } from 'vue-i18n'
+
+declare const Prism: any
 
 export default defineComponent({
   name: 'About',
@@ -21,10 +23,12 @@ export default defineComponent({
     const pageData = ref(new Page())
     const { t } = useI18n()
 
-    const fetchArticle = () => {
-      articleStore.fetchArticle('about').then(response => {
-        pageData.value = response
-      })
+    const fetchArticle = async () => {
+      const response = await articleStore.fetchArticle('about')
+
+      pageData.value = response
+      await nextTick()
+      Prism.highlightAll()
     }
 
     onMounted(fetchArticle)
