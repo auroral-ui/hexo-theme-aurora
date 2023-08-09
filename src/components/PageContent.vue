@@ -72,6 +72,7 @@
 </template>
 
 <script lang="ts">
+import '@/styles/prism-aurora-future.css'
 import {
   Ref,
   computed,
