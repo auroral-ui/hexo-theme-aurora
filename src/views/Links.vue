@@ -91,6 +91,7 @@
 </template>
 
 <script lang="ts">
+import '@/styles/prism-aurora-future.css'
 import { Ref, computed, defineComponent, nextTick, onMounted, ref } from 'vue'
 import PostStats from '@/components/Post/PostStats.vue'
 import LinkBox from '@/components/Link/LinkBox.vue'

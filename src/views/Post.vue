@@ -174,6 +174,7 @@
 </template>
 
 <script lang="ts">
+import '@/styles/prism-aurora-future.css'
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
@@ -186,7 +187,6 @@ import { Article } from '@/components/ArticleCard'
 import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
-
 import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
 import PostStats from '@/components/Post/PostStats.vue'
 
