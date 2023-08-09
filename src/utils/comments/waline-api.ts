@@ -7,7 +7,7 @@ import {
   RecentComments
   // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
-import { filterHTMLContent, formatTime } from '..'
+import { cleanPath, filterHTMLContent, formatTime } from '..'
 import { PluginsData } from '@/models/ThemeConfig.class'
 
 type WalinePlugin = PluginsData['waline']
@@ -78,14 +78,14 @@ export const walineInit = ({
 export const walinePageViewInit = (serverURL: string, path: string) => {
   pageviewCount({
     serverURL,
-    path
+    path: cleanPath(path)
   })
 }
 
 export const walineCommentViewInit = (serverURL: string, path: string) => {
   commentCount({
     serverURL,
-    path
+    path: cleanPath(path)
   })
 }
 
