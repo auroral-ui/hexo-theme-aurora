@@ -1,5 +1,8 @@
 <template>
-  <div class="post-stats" v-if="postTimeCount && postWordCount">
+  <div
+    class="post-stats"
+    v-if="postTimeCount !== undefined && postWordCount !== undefined"
+  >
     <span>
       <SvgIcon
         icon-class="clock-outline"

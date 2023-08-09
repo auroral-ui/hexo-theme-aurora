@@ -1,7 +1,10 @@
 <template>
-  <p :id="id" :class="titleClasses">
+  <p
+    :id="id"
+    class="relative opacity-90 flex items-center pt-12 pb-2 mb-8 text-3xl text-ob-bright uppercase"
+  >
     <SvgIcon v-if="icon" :icon-class="icon" class="inline-block mr-2" />
-    {{ t(titleStr) }} <span class="ml-2" v-if="count">({{ count }})</span>
+    {{ t(titleStr) }}
     <span
       class="absolute bottom-0 h-1 w-24 rounded-full"
       :style="gradientBackground"
@@ -16,7 +19,7 @@ import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
-  name: 'ObTitle',
+  name: 'ARLinkBoxTitle',
   components: { SvgIcon },
   props: {
     title: {
@@ -24,20 +27,7 @@ export default defineComponent({
       required: true
     },
     id: String,
-    icon: String,
-    textSize: {
-      type: String,
-      default: 'text-3xl'
-    },
-    paddings: {
-      type: String,
-      default: 'pt-12 pb-2'
-    },
-    margins: {
-      type: String,
-      default: 'mb-8'
-    },
-    count: Number
+    icon: String
   },
   setup(props) {
     const { t } = useI18n()
@@ -45,12 +35,6 @@ export default defineComponent({
     const titleStr = toRefs(props).title
 
     return {
-      titleClasses: computed(() => [
-        'relative opacity-90 flex items-center text-ob-bright uppercase',
-        props.paddings,
-        props.margins,
-        props.textSize
-      ]),
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),

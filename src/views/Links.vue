@@ -1,0 +1,176 @@
+<template>
+  <div>
+    <Breadcrumbs :current="t('menu.about')" />
+    <div class="flex flex-col">
+      <div class="post-header">
+        <h1 v-if="pageData.title" class="post-title text-white uppercase">
+          {{ pageData.title }}
+        </h1>
+        <ob-skeleton
+          v-else
+          class="post-title text-white uppercase"
+          width="100%"
+          height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
+        />
+
+        <div class="flex flex-row items-center justify-start mt-8 mb-4">
+          <PostStats
+            :post-word-count="pageData.count_time.symbolsCount"
+            :post-time-count="pageData.count_time.symbolsTime"
+            :post-title="pageData.title"
+            :current-path="currentPath"
+            :plugin-configs="pluginConfigs"
+            ref="postStatsRef"
+          />
+        </div>
+      </div>
+
+      <LinkBox
+        :gradient-background="gradientBackground"
+        :data="pageData.avatarWall"
+        @on-apply-clicked="jumpToComments()"
+      />
+
+      <template v-if="pageData.categoryMode === true">
+        <LinkCategoryList :links="(pageData.data as Record<string, Link[]>)" />
+      </template>
+
+      <template v-else>
+        <LinkList :links="(pageData.data as Link[])" />
+      </template>
+
+      <div class="mt-8" id="content">
+        <div
+          v-if="pageData.content"
+          class="post-html"
+          v-html="pageData.content"
+          v-scroll-spy="{ sectionSelector: 'h1, h2, h3, h4, h5, h6' }"
+        />
+        <div
+          v-else
+          class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
+        >
+          <ob-skeleton
+            tag="div"
+            :count="1"
+            height="36px"
+            width="150px"
+            class="mb-6"
+          />
+          <br />
+          <ob-skeleton
+            tag="div"
+            :count="35"
+            height="16px"
+            width="100px"
+            class="mr-2"
+          />
+          <br />
+          <br />
+          <ob-skeleton
+            tag="div"
+            :count="25"
+            height="16px"
+            width="100px"
+            class="mr-2"
+          />
+        </div>
+      </div>
+
+      <template v-if="pageData.title && pageData.text && pageData.uid">
+        <div id="comments">
+          <Comment
+            :title="pageData.title"
+            :body="pageData.text"
+            :uid="pageData.uid"
+          />
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { Ref, computed, defineComponent, nextTick, onMounted, ref } from 'vue'
+import PostStats from '@/components/Post/PostStats.vue'
+import LinkBox from '@/components/Link/LinkBox.vue'
+import LinkCard from '@/components/Link/LinkCard.vue'
+import { Page } from '@/models/Article.class'
+import { Title } from '@/components/Title'
+import { Link } from '@/models/Article.class'
+import { useAppStore } from '@/stores/app'
+import { useArticleStore } from '@/stores/article'
+import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
+import LinkCategoryList from '@/components/Link/LinkCategoryList.vue'
+import LinkList from '@/components/Link/LinkList.vue'
+import Comment from '@/components/Comment.vue'
+
+interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
+  getCommentCount(): void
+  getPostView(): void
+}
+
+declare const Prism: any
+
+export default defineComponent({
+  name: 'Links',
+  components: {
+    PostStats,
+    LinkBox,
+    LinkCard,
+    Title,
+    LinkCategoryList,
+    LinkList,
+    Comment
+  },
+  setup() {
+    const articleStore = useArticleStore()
+    const appStore = useAppStore()
+    const pageData = ref(new Page<Link[] | Record<string, Link[]>>())
+    const postStatsRef = ref<PostStatsExpose>()
+    const route = useRoute()
+    const { t } = useI18n()
+    const commentOffset = ref(0)
+    const contentEl = ref()
+
+    const fetchArticle = async () => {
+      pageData.value = await articleStore.fetchArticle('friends')
+
+      await nextTick()
+      postStatsRef.value?.getCommentCount()
+      postStatsRef.value?.getPostView()
+      Prism.highlightAll()
+    }
+
+    const jumpToComments = () => {
+      contentEl.value = document.getElementById('content')
+      if (contentEl.value) {
+        // 120 is the height of the header element
+        commentOffset.value =
+          contentEl.value && contentEl.value instanceof HTMLElement
+            ? contentEl.value.offsetTop + 120 - 30
+            : 0
+      }
+      window.scrollTo({
+        top: commentOffset.value,
+        behavior: 'smooth'
+      })
+    }
+
+    onMounted(fetchArticle)
+
+    return {
+      currentPath: computed(() => route.path),
+      pluginConfigs: computed(() => appStore.themeConfig.plugins),
+      gradientBackground: computed(() => {
+        return { background: appStore.themeConfig.theme.header_gradient_css }
+      }),
+      jumpToComments,
+      postStatsRef,
+      pageData,
+      t
+    }
+  }
+})
+</script>

@@ -72,7 +72,20 @@
     "pinned": "Pinned",
     "featured": "Featured",
     "page-views-value": "Site viewed: ",
-    "site-running-for": "Running for: ",
-    "site-running-for-unit": "days"
+    "site-running-for": "Ran for: ",
+    "site-running-for-unit": "days",
+    "links": "Friend Links",
+    "links-slogan": "Improving with bloggers",
+    "links-random-visit": "Random visit",
+    "links-apply": "Apply friend list",
+    "links-badge-personal": "Personal",
+    "links-badge-personal-desc": "Record every single step of the way.",
+    "links-badge-tech": "Tech",
+    "links-badge-tech-desc": "Technology related bloggers.",
+    "links-badge-designer": "Designer",
+    "links-badge-designer-desc": "Design related bloggers.",
+    "links-badge-vip": "Sponsors",
+    "links-badge-vip-desc": "Recent sponsors",
+    "notification-random-jump": "Picking a lucky blogger to jump to."
   }
 }

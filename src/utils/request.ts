@@ -2,7 +2,8 @@ import axios from 'axios'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: import.meta.env.VITE_APP_PUBLIC_PATH + import.meta.env.VITE_APP_BASE_API, // url = base url + request url
+  baseURL:
+    import.meta.env.VITE_APP_PUBLIC_PATH + import.meta.env.VITE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
@@ -15,7 +16,6 @@ service.interceptors.request.use(
   },
   error => {
     // do something with request error
-    console.log(error) // for debug
     return Promise.reject(error)
   }
 )

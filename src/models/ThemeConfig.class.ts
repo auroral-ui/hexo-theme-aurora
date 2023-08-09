@@ -110,6 +110,14 @@ export class ThemeMenu implements ObMenu {
           cn: '标签',
           en: 'Tags'
         }
+      },
+      Links: {
+        name: 'Links',
+        path: '/links',
+        i18n: {
+          cn: '友情链接',
+          en: 'Friend Links'
+        }
       }
     }
 
@@ -117,12 +125,18 @@ export class ThemeMenu implements ObMenu {
     if (raw) {
       // Theme default menus
       for (const menu of defaultMenus) {
-        if (typeof raw[menu] === 'boolean' && raw[menu]) {
+        const menuType = typeof raw[menu]
+        if ((menuType === 'boolean' || menuType === 'object') && raw[menu]) {
           Object.assign(this.menus, { [menu]: new Menu(extract[menu]) })
         }
       }
       // Theme custom menus
       for (const otherMenu of Object.keys(raw)) {
+        // Updating the i18n config from the menu config for default menus
+        if (defaultMenus.indexOf(otherMenu) > 0 && raw[otherMenu].i18n) {
+          Object.assign(this.menus[otherMenu].i18n, { ...raw[otherMenu].i18n })
+        }
+
         if (defaultMenus.indexOf(otherMenu) < 0 && raw[otherMenu].name) {
           Object.assign(this.menus, {
             [otherMenu]: new Menu(raw[otherMenu])

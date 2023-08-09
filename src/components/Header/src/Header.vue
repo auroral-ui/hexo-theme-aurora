@@ -4,20 +4,22 @@
       <Logo />
       <Navigation />
       <Controls />
+      <Notification />
     </header>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Logo, Navigation, Controls } from '../index'
+import { Logo, Navigation, Controls, Notification } from '../index'
 
 export default defineComponent({
   name: 'Header',
   components: {
     Logo,
     Navigation,
-    Controls
+    Controls,
+    Notification
   },
   props: {
     msg: String

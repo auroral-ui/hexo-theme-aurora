@@ -17,20 +17,22 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () =>
-      import('../views/About.vue')
+    component: () => import('../views/About.vue')
+  },
+  {
+    path: '/links',
+    name: 'links',
+    component: () => import('../views/Links.vue')
   },
   {
     path: '/categories',
     name: 'categories',
-    component: () =>
-      import('../views/Category.vue')
+    component: () => import('../views/Category.vue')
   },
   {
     path: '/archives',
     name: 'archives',
-    component: () =>
-      import('../views/Archives.vue')
+    component: () => import('../views/Archives.vue')
   },
   {
     path: '/tags',
@@ -40,8 +42,7 @@ const routes = [
   {
     path: '/tags/search',
     name: 'tags-search',
-    component: () =>
-      import('../views/Result.vue')
+    component: () => import('../views/Result.vue')
   },
   {
     path: '/post/:slug*',
@@ -58,8 +59,7 @@ const routes = [
   {
     path: '/result',
     name: 'result',
-    component: () =>
-      import('../views/Result.vue'),
+    component: () => import('../views/Result.vue'),
     props: true
   },
   // 404 page must be placed at the end !!!
