@@ -1,3 +1,11 @@
+## [2.2.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.2.0...v2.2.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* path with extra hash at the end when reloaded ([440b2a7](https://github.com/auroral-ui/hexo-theme-aurora/commit/440b2a757b018ff0b67e7fd78d83d9324cc721f1))
+* prism highlight custom css is overwritten by default ([b26850b](https://github.com/auroral-ui/hexo-theme-aurora/commit/b26850b3249f2c518d3b76215919b78b26e1350c))
+
 # [2.2.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.1.2...v2.2.0) (2023-08-09)
 
 
