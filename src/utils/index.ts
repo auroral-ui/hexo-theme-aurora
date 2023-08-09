@@ -148,3 +148,11 @@ export function convertToLocale(label: string) {
 
   return label
 }
+
+export function cleanPath(path: string) {
+  if (path.at(-1) === '/') {
+    return path.slice(0, -1)
+  }
+
+  return path
+}

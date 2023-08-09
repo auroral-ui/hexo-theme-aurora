@@ -1,3 +1,5 @@
+import { cleanPath } from '..'
+
 declare const Valine: any
 
 interface ValineConfig {
@@ -36,6 +38,6 @@ export const valineInit = ({
     meta: meta ?? [],
     requiredFields: requiredFields ?? [],
     avatarForce,
-    path
+    path: cleanPath(path)
   })
 }

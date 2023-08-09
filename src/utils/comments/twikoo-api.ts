@@ -1,4 +1,4 @@
-import { RecentComment, formatTime } from '..'
+import { RecentComment, cleanPath, formatTime } from '..'
 import { getGravatar, getGravatarUrl } from './gravatar'
 
 declare const twikoo: any
@@ -51,9 +51,10 @@ export const twikooCommentsCount = async (
   envId: string,
   path: string
 ): Promise<number> => {
+  const cleanedPath = cleanPath(path)
   const commentCounts = await twikoo.getCommentsCount({
     envId,
-    urls: [path],
+    urls: [cleanedPath],
     includeReply: true
   })
   return commentCounts[0] ? Number(commentCounts[0].count) : 0
