@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col">
     <div class="post-header">
-      <Breadcrumbs :current="t('menu.archives')" />
-      <h1 class="post-title text-white uppercase">{{ t('menu.archives') }}</h1>
+      <Breadcrumbs :current="pageTitle" />
+      <h1 class="post-title text-white uppercase">{{ pageTitle }}</h1>
     </div>
     <div
       class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
@@ -48,7 +48,7 @@
         :pageSize="12"
         :pageTotal="pagination.pageTotal"
         :page="pagination.page"
-        @pageChange="pageChangeHanlder"
+        @pageChange="pageChangeHandler"
       />
     </div>
   </div>
@@ -63,6 +63,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Paginator from '@/components/Paginator.vue'
 import { useCommonStore } from '@/stores/common'
 import defaultCover from '@/assets/default-cover.jpg'
+import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
   name: 'Archives',
@@ -76,16 +77,18 @@ export default defineComponent({
       pageTotal: 0,
       page: 1
     })
+    const { pageTitle, updateTitle } = usePageTitle()
 
-    const fetchData = () => {
-      postStore.fetchArchives(pagination.value.page).then(data => {
-        pagination.value.pageTotal = data.total
-        archives.value = data.data
-      })
+    const fetchData = async () => {
+      const data = await postStore.fetchArchives(pagination.value.page)
+
+      pagination.value.pageTotal = data.total
+      archives.value = data.data
       commonStore.setHeaderImage(defaultCover)
+      updateTitle()
     }
 
-    const pageChangeHanlder = (page: number) => {
+    const pageChangeHandler = (page: number) => {
       pagination.value.page = page
       window.scrollTo({
         top: 0,
@@ -99,7 +102,13 @@ export default defineComponent({
       commonStore.resetHeaderImage()
     })
 
-    return { pageChangeHanlder, pagination, archives, t }
+    return {
+      pageTitle,
+      pageChangeHandler,
+      pagination,
+      archives,
+      t
+    }
   }
 })
 </script>

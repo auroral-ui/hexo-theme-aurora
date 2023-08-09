@@ -1,24 +1,15 @@
 <template>
   <div class="flex flex-col">
     <div class="post-header">
-      <Breadcrumbs :current="t('menu.categories')" />
+      <Breadcrumbs :current="pageTitle" />
       <h1 class="post-title text-white uppercase">
-        {{ t('menu.categories') }}
+        {{ pageTitle }}
       </h1>
     </div>
     <div class="main-grid">
       <div class="relative">
         <div
-          class="
-            post-html
-            bg-ob-deep-800
-            px-14
-            py-16
-            rounded-2xl
-            shadow-xl
-            block
-            min-h-screen
-          "
+          class="post-html bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block min-h-screen"
         ></div>
       </div>
       <div class="col-span-1">
@@ -32,14 +23,14 @@
 import { defineComponent } from 'vue'
 import { Sidebar } from '@/components/Sidebar'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
-import { useI18n } from 'vue-i18n'
+import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
   name: 'Category',
   components: { Sidebar, Breadcrumbs },
   setup() {
-    const { t } = useI18n()
-    return { t }
+    const { pageTitle, updateTitle } = usePageTitle()
+    return { pageTitle }
   }
 })
 </script>
