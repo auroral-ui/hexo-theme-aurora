@@ -1,3 +1,22 @@
+# [2.2.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.1.2...v2.2.0) (2023-08-09)
+
+
+### Bug Fixes
+
+* article with only one tag cause a fatal error ([7478780](https://github.com/auroral-ui/hexo-theme-aurora/commit/747878044f485923026d00b7fa6f25e4b1a71b5f))
+* code fence is not highlighted by prism after refresh ([8b77aa2](https://github.com/auroral-ui/hexo-theme-aurora/commit/8b77aa268216a3b5eb47395a1f47b0da8e6ff9b0))
+* prism highlight not rendered on reload ([aa2328e](https://github.com/auroral-ui/hexo-theme-aurora/commit/aa2328ebd034d638325581117a95134471232548))
+* tags overflowing in mobile view for feature post ([cd9bae9](https://github.com/auroral-ui/hexo-theme-aurora/commit/cd9bae9096a86704dc159314005a3fff8b08b9b7))
+* waline different date format cause formatting error ([22477f2](https://github.com/auroral-ui/hexo-theme-aurora/commit/22477f2fa0a3b788820f48f88f63e00be03594f3))
+
+
+### Features
+
+* add friends link feature ([a4ae01a](https://github.com/auroral-ui/hexo-theme-aurora/commit/a4ae01a1a1d8ad7efc21b69c20182bb394d0a10e))
+* added page view and comment count for all pages ([d107853](https://github.com/auroral-ui/hexo-theme-aurora/commit/d107853e73bb255580dfdeb8c7da8d58c4b4cb46))
+* added site running stat and waline site PV ([2d15ac6](https://github.com/auroral-ui/hexo-theme-aurora/commit/2d15ac6f2ac73087098fa97cec13c3d0004b9ef5))
+* added valine, twikoo and valine post views stat ([517e9d0](https://github.com/auroral-ui/hexo-theme-aurora/commit/517e9d056831bf69341f07fedef4c2e25ec41176))
+
 ## [2.1.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.1.1...v2.1.2) (2023-08-04)
 
 
