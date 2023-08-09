@@ -16,7 +16,11 @@
         height="2rem"
       />
     </span>
-    <Dropdown v-if="enableMultiLanguage" @command="handleClick">
+    <Dropdown
+      v-if="enableMultiLanguage"
+      @command="handleClick"
+      :value="currentLocale"
+    >
       <span class="ob-drop-shadow" data-dia="language">
         <SvgIcon
           icon-class="globe"
@@ -28,8 +32,12 @@
         <span v-if="$i18n.locale == 'en'">EN</span>
       </span>
       <DropdownMenu>
-        <DropdownItem name="en">English</DropdownItem>
-        <DropdownItem name="cn">中文</DropdownItem>
+        <DropdownItem name="en" :active="currentLocale === 'en'">
+          English
+        </DropdownItem>
+        <DropdownItem name="cn" :active="currentLocale === 'cn'">
+          中文
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
     <span no-hover-effect class="ob-drop-shadow" data-dia="light-switch">
@@ -75,6 +83,7 @@ export default defineComponent({
     return {
       handleOpenModal,
       handleClick,
+      currentLocale: computed(() => appStore.locale),
       enableMultiLanguage: computed(
         () => appStore.themeConfig.site.multi_language
       )
