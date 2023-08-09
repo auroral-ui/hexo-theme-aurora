@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col">
     <div class="post-header">
-      <Breadcrumbs :current="t('menu.tags')" />
-      <h1 class="post-title text-white uppercase">{{ t('menu.tags') }}</h1>
+      <Breadcrumbs :current="pageTitle" />
+      <h1 class="post-title text-white uppercase">{{ pageTitle }}</h1>
     </div>
     <div class="bg-ob-deep-800 px-14 py-16 rounded-2xl shadow-xl block">
       <TagList>
@@ -39,6 +39,7 @@ import { TagList, TagItem } from '@/components/Tag'
 import { useCommonStore } from '@/stores/common'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import defaultCover from '@/assets/default-cover.jpg'
+import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
   name: 'Tag',
@@ -47,9 +48,11 @@ export default defineComponent({
     const commonStore = useCommonStore()
     const { t } = useI18n()
     const tagStore = useTagStore()
+    const { pageTitle, updateTitle } = usePageTitle()
 
     const fetchData = async () => {
-      tagStore.fetchAllTags()
+      await tagStore.fetchAllTags()
+      updateTitle()
       commonStore.setHeaderImage(defaultCover)
     }
 
@@ -59,6 +62,7 @@ export default defineComponent({
     })
 
     return {
+      pageTitle,
       tags: computed(() => {
         if (tagStore.isLoaded && tagStore.tags.length === 0) return null
         return tagStore.tags

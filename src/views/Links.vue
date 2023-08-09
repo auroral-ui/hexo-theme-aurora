@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Breadcrumbs :current="t('menu.about')" />
+    <Breadcrumbs :current="pageTitle" />
     <div class="flex flex-col">
       <div class="post-header">
-        <h1 v-if="pageData.title" class="post-title text-white uppercase">
-          {{ pageData.title }}
+        <h1 v-if="pageTitle" class="post-title text-white uppercase">
+          {{ pageTitle }}
         </h1>
         <ob-skeleton
           v-else
@@ -92,7 +92,15 @@
 
 <script lang="ts">
 import '@/styles/prism-aurora-future.css'
-import { Ref, computed, defineComponent, nextTick, onMounted, ref } from 'vue'
+import {
+  Ref,
+  computed,
+  defineComponent,
+  nextTick,
+  onMounted,
+  ref,
+  watch
+} from 'vue'
 import PostStats from '@/components/Post/PostStats.vue'
 import LinkBox from '@/components/Link/LinkBox.vue'
 import LinkCard from '@/components/Link/LinkCard.vue'
@@ -106,6 +114,9 @@ import { useRoute } from 'vue-router'
 import LinkCategoryList from '@/components/Link/LinkCategoryList.vue'
 import LinkList from '@/components/Link/LinkList.vue'
 import Comment from '@/components/Comment.vue'
+import Breadcrumbs from '@/components/Breadcrumbs.vue'
+import { useMetaStore } from '@/stores/meta'
+import usePageTitle from '@/hooks/usePageTitle'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -123,7 +134,8 @@ export default defineComponent({
     Title,
     LinkCategoryList,
     LinkList,
-    Comment
+    Comment,
+    Breadcrumbs
   },
   setup() {
     const articleStore = useArticleStore()
@@ -134,10 +146,11 @@ export default defineComponent({
     const { t } = useI18n()
     const commentOffset = ref(0)
     const contentEl = ref()
+    const { pageTitle, updateTitle } = usePageTitle()
 
     const fetchArticle = async () => {
       pageData.value = await articleStore.fetchArticle('friends')
-
+      updateTitle(appStore.locale)
       await nextTick()
       postStatsRef.value?.getCommentCount()
       postStatsRef.value?.getPostView()
@@ -167,6 +180,7 @@ export default defineComponent({
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
+      pageTitle,
       jumpToComments,
       postStatsRef,
       pageData,
