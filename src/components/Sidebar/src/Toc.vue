@@ -8,7 +8,7 @@
             v-html="tocData"
             v-scroll-spy-active="{ selector: '.toc-item' }"
             v-scroll-spy-link
-            :style="sideBoxStyle"
+            :style="(sideBoxStyle as StyleValue | undefined)"
           />
         </div>
       </transition>
@@ -18,7 +18,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, toRefs } from 'vue'
+import {
+  HTMLAttributes,
+  StyleValue,
+  computed,
+  defineComponent,
+  toRefs
+} from 'vue'
 import { SubTitle } from '@/components/Title'
 import Sticky from '@/components/Sticky.vue'
 import Navigator from './Navigator.vue'

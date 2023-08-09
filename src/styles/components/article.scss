@@ -603,7 +603,7 @@
     padding: 0;
   }
 
-  code {
+  code:not([class^="language-"]) {
     color: var(--text-normal);
     margin: 0;
     font-size: 0.85em;

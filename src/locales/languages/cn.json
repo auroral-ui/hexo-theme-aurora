@@ -73,6 +73,19 @@
     "featured": "推荐",
     "page-views-value": "浏览次数：",
     "site-running-for": "建站天数：",
-    "site-running-for-unit": "天"
+    "site-running-for-unit": "天",
+    "links": "友情链接",
+    "links-slogan": "与无数博主共同进步",
+    "links-random-visit": "随机访问",
+    "links-apply": "申请友链",
+    "links-badge-personal": "个人",
+    "links-badge-personal-desc": "记录关于自己的点点滴滴",
+    "links-badge-tech": "技术",
+    "links-badge-tech-desc": "技术为主的博主们",
+    "links-badge-designer": "设计",
+    "links-badge-designer-desc": "设计为主的博主们",
+    "links-badge-vip": "赞助者",
+    "links-badge-vip-desc": "最近赞助本站的友友们",
+    "notification-random-jump": "正在随机挑选一位幸运博主"
   }
 }

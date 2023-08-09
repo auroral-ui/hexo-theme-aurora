@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { fetchImplicitPageBySource } from '@/api'
-import { Page } from '@/models/Article.class'
+import { Link, Page } from '@/models/Article.class'
 
 export const useArticleStore = defineStore({
   // id is the name of the store
@@ -9,7 +9,9 @@ export const useArticleStore = defineStore({
   state: () => ({}),
   getters: {},
   actions: {
-    async fetchArticle(source: string): Promise<Page> {
+    async fetchArticle(
+      source: string
+    ): Promise<Page<Link[] | Record<string, Link[]>>> {
       const { data } = await fetchImplicitPageBySource(source)
       return new Promise(resolve =>
         setTimeout(() => {

@@ -197,13 +197,8 @@ class AuroraBotSoftware {
   }
 
   registerEventListener() {
-    const devtools = () => {
-      console.log('opened devtools')
-    }
-    console.log('%c', devtools)
-    devtools.toString = () => {
-      this.showMessage(this.botTips.console, 6000, 9)
-    }
+    // TODO: adding console opened function
+
     document.addEventListener('copy', () => {
       this.showMessage(this.botTips.copy, 6000, 9)
     })

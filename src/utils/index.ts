@@ -115,6 +115,7 @@ export function filterHTMLContent(content: string, length?: number): string {
     .replace(/(&nbsp;|<([^>]+)>)/gi, '')
 
   if (content.length > length) {
+    // TODO: replace deprecated `.substr` function
     content = content.substr(0, length)
     content += '...'
   }
@@ -131,4 +132,19 @@ export function getDaysTillNow(from: string) {
 
   // To calculate the no. of days between two dates
   return Math.floor(timeDiff / (1000 * 3600 * 24))
+}
+
+export function convertToLocale(label: string) {
+  const locales = [
+    'links-badge-tech',
+    'links-badge-design',
+    'links-badge-vip',
+    'links-badge-personal'
+  ]
+
+  if (locales.includes(label)) {
+    return `settings.${label}`
+  }
+
+  return label
 }

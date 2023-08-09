@@ -8,7 +8,9 @@ export const useCommonStore = defineStore({
     /** If current window width is for mobile */
     isMobile: false,
     /** Header image url */
-    headerImage: ''
+    headerImage: '',
+    notificationState: false,
+    notificationMessage: ''
   }),
   getters: {},
   actions: {
@@ -22,6 +24,13 @@ export const useCommonStore = defineStore({
     },
     changeMobileState(isMobile: boolean) {
       this.isMobile = isMobile
+    },
+    sendNotification(message: string) {
+      this.notificationState = true
+      this.notificationMessage = message
+    },
+    closeNotification() {
+      this.notificationState = false
     }
   }
 })

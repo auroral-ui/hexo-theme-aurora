@@ -9,7 +9,16 @@ export interface Detail {
   covers: string | null
   excerpt: string | null
   content: string
+  count_time: { symbolsTime?: string; symbolsCount?: number }
   toc: string
+}
+
+export interface Link {
+  nick: string
+  avatar: string
+  link: string
+  description: string
+  label: string
 }
 
 export class Article extends Post implements Detail {
@@ -25,7 +34,7 @@ export class Article extends Post implements Detail {
   covers: string | null = null
   excerpt: string | null = null
   content = ''
-  count_time = {}
+  count_time = { symbolsTime: undefined, symbolsCount: undefined }
 
   constructor(raw?: { [key: string]: [] }) {
     super(raw)
@@ -39,7 +48,9 @@ export class Article extends Post implements Detail {
   }
 }
 
-export class Page implements Detail {
+export class Page<DataType = Link[] | Record<string, Link[]>>
+  implements Detail
+{
   title = ''
   uid = ''
   date = {
@@ -53,9 +64,12 @@ export class Page implements Detail {
   covers: string | null = null
   excerpt: string | null = null
   content = ''
-  count_time = {}
+  count_time = { symbolsTime: undefined, symbolsCount: undefined }
   toc = ''
   text = ''
+  categoryMode = false
+  avatarWall: Array<Link[]> = []
+  data: DataType | undefined = undefined
 
   constructor(raw?: { [key: string]: string }) {
     if (raw) {
