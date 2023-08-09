@@ -1,29 +1,18 @@
 <template>
-  <div
-    @click.stop.prevent="handleClick"
-    class="
-      block
-      cursor-pointer
-      hover:bg-ob-trans
-      my-1
-      px-4
-      py-1
-      font-medium
-      hover:text-ob-bright
-    "
-  >
+  <div @click.stop.prevent="handleClick" :class="itemClasses">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, inject } from 'vue'
 import { useDropdownStore } from '@/stores/dropdown'
 
 export default defineComponent({
   name: 'ObDropdownItem',
   props: {
-    name: String
+    name: String,
+    active: Boolean
   },
   setup(props) {
     const dropdownStore = useDropdownStore()
@@ -32,9 +21,22 @@ export default defineComponent({
       dropdownStore.setCommand(String(props.name))
     }
 
-    return { handleClick }
+    return {
+      handleClick,
+      itemClasses: computed(() => {
+        return {
+          'block cursor-pointer hover:bg-ob-trans my-1 px-4 py-1 font-medium hover:text-ob-bright':
+            true,
+          active: !!props.active
+        }
+      })
+    }
   }
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.active {
+  @apply bg-ob-trans;
+}
+</style>
