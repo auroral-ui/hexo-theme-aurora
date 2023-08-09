@@ -13,6 +13,7 @@
 @import 'tailwindcss/utilities';
 
 @import './transitions.scss';
+@import './prism-aurora-future.css';
 
 .stroke-ob-bright {
   stroke: var(--text-bright) !important;
