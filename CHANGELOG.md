@@ -1,3 +1,11 @@
+## [2.2.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.2.1...v2.2.2) (2023-08-09)
+
+
+### Bug Fixes
+
+* clicking language menu is not auto closing the menu ([d9f77de](https://github.com/auroral-ui/hexo-theme-aurora/commit/d9f77de363e4aa81ffd6444f09f974704fbf0d1b))
+* dynamic page title with i18n menu config ([51972dd](https://github.com/auroral-ui/hexo-theme-aurora/commit/51972dd3e43730c6612310971ca96cf2ac8d461e))
+
 ## [2.2.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.2.0...v2.2.1) (2023-08-09)
 
 
