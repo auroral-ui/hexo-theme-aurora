@@ -7,6 +7,8 @@
       v-bind="externalSvg.attributes"
       v-html="externalSvg.content"
       :style="{ height: svgStyle.height, width: svgStyle.width }"
+      :fill="fill !== '' ? fill : svgStyle.fill"
+      :stroke="stroke !== '' ? stroke : svgStyle.stroke"
     ></svg>
   </span>
   <svg
