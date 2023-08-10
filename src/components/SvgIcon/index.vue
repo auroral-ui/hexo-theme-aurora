@@ -1,10 +1,14 @@
 <template>
-  <div
-    v-if="isExternalClass"
-    :style="styleExternalIcon"
-    class="svg-external-icon svg-icon"
-    v-bind="$attrs"
-  />
+  <span v-if="isExternalClass">
+    <object class="hidden" :data="iconName" />
+    <svg
+      :class="svgClass"
+      aria-hidden="true"
+      v-bind="externalSvg.attributes"
+      v-html="externalSvg.content"
+      :style="{ height: svgStyle.height, width: svgStyle.width }"
+    ></svg>
+  </span>
   <svg
     v-else
     :class="svgClass"
@@ -21,8 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType } from 'vue'
-// doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
+import { defineComponent, computed, PropType, h, ref, onMounted } from 'vue'
 import { isExternalIcon } from '@/utils/validate'
 import { useAppStore } from '@/stores/app'
 
@@ -74,22 +77,46 @@ export default defineComponent({
   }) {
     const appStore = useAppStore()
     const isExternalClass = computed(() => isExternalIcon(props.iconClass))
+    const externalSvg = ref({
+      content: '',
+      attributes: {}
+    })
 
-    const iconName = computed(() => `#icon-${props.iconClass}`)
+    const iconName = computed(() => {
+      return `#icon-${props.iconClass}`
+    })
 
     const svgClass = computed(() => {
-      if (props.className) {
-        return 'svg-icon ' + props.className
-      } else {
-        return 'svg-icon'
+      return {
+        'svg-icon': true,
+        'external-icon': isExternalClass.value,
+        [props.className]: props.className
       }
     })
 
-    const styleExternalIcon = computed(() => {
-      return {
-        mask: `url(${props.iconClass}) no-repeat 50% 50%`,
-        '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`
+    // solution @see https://stackoverflow.com/questions/76152412/how-to-transform-an-external-svg-to-a-vue3-component
+    const getExternalSvg = async () => {
+      const res = await fetch(props.iconClass)
+      const svgText = await res.text()
+
+      const svgDom = new DOMParser()
+        .parseFromString(svgText, 'image/svg+xml')
+        .querySelector('svg')
+
+      if (svgDom !== null) {
+        const attributeEntries = [...svgDom.attributes].map(a => [
+          a.name,
+          a.value
+        ])
+        externalSvg.value = {
+          content: svgDom.innerHTML,
+          attributes: Object.fromEntries(attributeEntries)
+        }
       }
+    }
+
+    onMounted(() => {
+      if (isExternalClass.value) getExternalSvg()
     })
 
     return {
@@ -121,18 +148,23 @@ export default defineComponent({
       isExternalClass,
       iconName,
       svgClass,
-      styleExternalIcon
+      externalSvg
     }
   }
 })
 </script>
 
-<style scoped>
+<style lang="scss">
 .svg-icon {
   vertical-align: -0.15em;
   overflow: hidden;
   display: inline;
   position: relative;
+}
+
+.external-icon svg {
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 .svg-external-icon {
