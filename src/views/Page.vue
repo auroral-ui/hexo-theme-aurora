@@ -2,13 +2,15 @@
   <div>
     <Breadcrumbs :current="pageTitle" />
     <PageContent :post="pageData" :title="pageTitle">
-      <div id="comments">
-        <Comment
-          :title="pageData.title"
-          :body="pageData.text"
-          :uid="pageData.uid"
-        />
-      </div>
+      <template v-if="enabledComment">
+        <div id="comments">
+          <Comment
+            :title="pageData.title"
+            :body="pageData.text"
+            :uid="pageData.uid"
+          />
+        </div>
+      </template>
     </PageContent>
   </div>
 </template>
@@ -31,6 +33,7 @@ import { useMetaStore } from '@/stores/meta'
 import PageContent from '@/components/PageContent.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Comment from '@/components/Comment.vue'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 declare const Prism: any
 
@@ -45,6 +48,7 @@ export default defineComponent({
     const route = useRoute()
     const { t } = useI18n()
     const pageTitle = ref()
+    const { enabledCommentPlugin } = useCommentPlugin()
 
     const fetchArticle = async () => {
       const response = await articleStore.fetchArticle(
@@ -79,6 +83,7 @@ export default defineComponent({
     onBeforeMount(fetchArticle)
 
     return {
+      enabledComment: computed(() => enabledCommentPlugin.value.plugin !== ''),
       pageTitle: computed(() => pageTitle.value),
       pageData,
       t

@@ -157,7 +157,7 @@
             <Article :data="post.next_post" />
           </div>
         </div>
-        <template v-if="post.title && post.text && post.uid">
+        <template v-if="enabledComment && post.title && post.text && post.uid">
           <div id="comments">
             <Comment :title="post.title" :body="post.text" :uid="post.uid" />
           </div>
@@ -189,6 +189,7 @@ import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
 import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
 import PostStats from '@/components/Post/PostStats.vue'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -219,6 +220,7 @@ export default defineComponent({
     const post = ref(new Post())
     const loading = ref(true)
     const postStatsRef = ref<PostStatsExpose>()
+    const { enabledCommentPlugin } = useCommentPlugin()
 
     const fetchData = async () => {
       loading.value = true
@@ -266,6 +268,7 @@ export default defineComponent({
       isMobile: computed(() => commonStore.isMobile),
       currentPath: computed(() => route.path),
       pluginConfigs: computed(() => appStore.themeConfig.plugins),
+      enabledComment: computed(() => enabledCommentPlugin.value.plugin !== ''),
       postStatsRef,
       SvgTypes,
       commonStore,
