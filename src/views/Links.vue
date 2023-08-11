@@ -77,7 +77,9 @@
         </div>
       </div>
 
-      <template v-if="pageData.title && pageData.text && pageData.uid">
+      <template
+        v-if="enabledComment && pageData.title && pageData.text && pageData.uid"
+      >
         <div id="comments">
           <Comment
             :title="pageData.title"
@@ -118,6 +120,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useMetaStore } from '@/stores/meta'
 import usePageTitle from '@/hooks/usePageTitle'
 import useJumpToEle from '@/hooks/useJumpToEle'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -145,10 +148,9 @@ export default defineComponent({
     const postStatsRef = ref<PostStatsExpose>()
     const route = useRoute()
     const { t } = useI18n()
-    const commentOffset = ref(0)
-    const contentEl = ref()
     const { pageTitle, updateTitle } = usePageTitle()
     const { jumpToEle } = useJumpToEle()
+    const { enabledCommentPlugin } = useCommentPlugin()
 
     const fetchArticle = async () => {
       pageData.value = await articleStore.fetchArticle('friends')
@@ -171,6 +173,7 @@ export default defineComponent({
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
+      enabledComment: computed(() => enabledCommentPlugin.value.plugin !== ''),
       pageTitle,
       jumpToContent,
       postStatsRef,
