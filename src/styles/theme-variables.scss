@@ -1,6 +1,6 @@
 :root {
   --max-width: 1600px;
-  --gap: 2rem;
+  --gap: 1.75rem;
   --main-gradient: linear-gradient(
     130deg,
     #24c6dc,
@@ -11,7 +11,7 @@
 }
 
 .theme-light {
-  --background-primary: #f1f3f9;
+  --background-primary: hsl(225, 40%, 96%);
   --background-primary-alt: #fafafa;
   --background-secondary: #ffffff;
   --background-secondary-alt: #2e3236;
@@ -76,6 +76,25 @@
     hsla(0, 0%, 98%, 0.987) 91.9%,
     var(--background-secondary)
   );
+  --banner-cover: linear-gradient(180deg,
+        hsla(225,
+          40%,
+          96%, 0) 0,
+        hsla(225, 40%, 96%, 0.013) 8.1%,
+        hsla(225, 40%, 96%, 0.049) 15.5%,
+        hsla(225, 40%, 96%, 0.104) 22.5%,
+        hsla(225, 40%, 96%, 0.175) 29%,
+        hsla(225, 40%, 96%, 0.259) 35.3%,
+        hsla(225, 40%, 96%, 0.352) 41.2%,
+        hsla(225, 40%, 96%, 0.45) 47.1%,
+        hsla(225, 40%, 96%, 0.55) 52.9%,
+        hsla(225, 40%, 96%, 0.648) 58.8%,
+        hsla(225, 40%, 96%, 0.741) 64.7%,
+        hsla(225, 40%, 96%, 0.825) 71%,
+        hsla(225, 40%, 96%, 0.896) 77.5%,
+        hsla(225, 40%, 96%, 0.951) 84.5%,
+        hsla(225, 40%, 96%, 0.987) 91.9%,
+        var(--background-primary));
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(232, 57, 255, 0.06),
     0 10px 10px -5px rgba(53, 11, 59, 0.1);
@@ -158,6 +177,23 @@
     hsla(00, 0%, 13%, 0.987) 91.9%,
     var(--background-secondary)
   );
+  --banner-cover: linear-gradient(180deg,
+        hsla(0, 0%, 10%, 0) 0,
+        hsla(0, 0%, 10%, 0.010) 8.1%,
+        hsla(0, 0%, 10%, 0.049) 15.5%,
+        hsla(0, 0%, 10%, 0.104) 22.5%,
+        hsla(0, 0%, 10%, 0.175) 29%,
+        hsla(0, 0%, 10%, 0.259) 35.3%,
+        hsla(0, 0%, 10%, 0.352) 41.2%,
+        hsla(0, 0%, 10%, 0.45) 47.1%,
+        hsla(0, 0%, 10%, 0.55) 52.9%,
+        hsla(0, 0%, 10%, 0.648) 58.8%,
+        hsla(0, 0%, 10%, 0.741) 64.7%,
+        hsla(0, 0%, 10%, 0.825) 71%,
+        hsla(0, 0%, 10%, 0.896) 77.5%,
+        hsla(0, 0%, 10%, 0.951) 84.5%,
+        hsla(00, 0%, 10%, 0.987) 91.9%,
+        var(--background-primary));
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(11, 42, 59, 0.35),
     0 10px 10px -5px rgba(11, 42, 59, 0.14);
@@ -198,7 +234,7 @@
 }
 
 .ob-avatar {
-  @apply h-28 w-28 shadow-xl m-0;
+  @apply h-24 w-24 shadow-xl m-0;
 }
 .footer-avatar {
   @apply h-20 w-20 shadow-xl m-0 opacity-40;

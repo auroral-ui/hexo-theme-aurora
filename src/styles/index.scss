@@ -24,11 +24,29 @@
 }
 
 .diamond-icon {
-  @apply w-12 h-12 text-xl flex items-center justify-center text-ob-bright hover:opacity-50 transition cursor-pointer;
+  @apply w-[2.7rem] h-[2.7rem] text-xl flex items-center justify-center text-ob-bright hover:opacity-50 transition cursor-pointer;
 }
 
 html {
   scrollbar-color: rgba(82, 82, 82, 0.8) transparent;
+  height: 100%;
+  font-size: 18px;
+}
+
+body {
+  min-height: 100%;
+  font-size: 16px;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
+  line-height: 2;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-size: inherit !important;
 }
 
 html::-webkit-scrollbar {
