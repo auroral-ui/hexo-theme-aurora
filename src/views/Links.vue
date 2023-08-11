@@ -28,7 +28,7 @@
       <LinkBox
         :gradient-background="gradientBackground"
         :data="pageData.avatarWall"
-        @on-apply-clicked="jumpToComments()"
+        @on-apply-clicked="jumpToContent()"
       />
 
       <template v-if="pageData.categoryMode === true">
@@ -117,6 +117,7 @@ import Comment from '@/components/Comment.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useMetaStore } from '@/stores/meta'
 import usePageTitle from '@/hooks/usePageTitle'
+import useJumpToEle from '@/hooks/useJumpToEle'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -147,6 +148,7 @@ export default defineComponent({
     const commentOffset = ref(0)
     const contentEl = ref()
     const { pageTitle, updateTitle } = usePageTitle()
+    const { jumpToEle } = useJumpToEle()
 
     const fetchArticle = async () => {
       pageData.value = await articleStore.fetchArticle('friends')
@@ -157,19 +159,8 @@ export default defineComponent({
       Prism.highlightAll()
     }
 
-    const jumpToComments = () => {
-      contentEl.value = document.getElementById('content')
-      if (contentEl.value) {
-        // 120 is the height of the header element
-        commentOffset.value =
-          contentEl.value && contentEl.value instanceof HTMLElement
-            ? contentEl.value.offsetTop + 120 - 30
-            : 0
-      }
-      window.scrollTo({
-        top: commentOffset.value,
-        behavior: 'smooth'
-      })
+    const jumpToContent = () => {
+      jumpToEle('content')
     }
 
     onMounted(fetchArticle)
@@ -181,7 +172,7 @@ export default defineComponent({
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       pageTitle,
-      jumpToComments,
+      jumpToContent,
       postStatsRef,
       pageData,
       t
