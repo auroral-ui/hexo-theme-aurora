@@ -16,7 +16,7 @@
       <SvgIcon class="inline-block text-3xl" icon-class="back-to-top" />
     </li>
     <li
-      v-if="enabledPlugin"
+      v-if="comments"
       class="flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="jumpToComments"
       data-dia="jump-to-comment"
@@ -36,10 +36,12 @@ import useCommentPlugin from '@/hooks/useCommentPlugin'
 export default defineComponent({
   name: 'Navigator',
   components: { SvgIcon },
+  props: {
+    comments: Boolean
+  },
   setup() {
     const router = useRouter()
     const { jumpToEle } = useJumpToEle()
-    const { enabledCommentPlugin } = useCommentPlugin()
 
     const backToTop = () => {
       window.scrollTo({
@@ -57,7 +59,6 @@ export default defineComponent({
     }
 
     return {
-      enabledPlugin: computed(() => enabledCommentPlugin.value.plugin !== ''),
       goBack,
       backToTop,
       jumpToComments

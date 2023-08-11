@@ -91,6 +91,7 @@
             :post-title="post.title"
             :current-path="currentPath"
             :plugin-configs="pluginConfigs"
+            :comments="enabledComment"
             ref="postStatsRef"
           />
         </div>
@@ -166,7 +167,7 @@
       <div>
         <Sidebar>
           <Profile :author="post.author.slug || ''" />
-          <Toc :toc="post.toc" />
+          <Toc :toc="post.toc" :comments="enabledComment" />
         </Sidebar>
       </div>
     </div>
@@ -268,7 +269,9 @@ export default defineComponent({
       isMobile: computed(() => commonStore.isMobile),
       currentPath: computed(() => route.path),
       pluginConfigs: computed(() => appStore.themeConfig.plugins),
-      enabledComment: computed(() => enabledCommentPlugin.value.plugin !== ''),
+      enabledComment: computed(
+        () => post.value.comments && enabledCommentPlugin.value.plugin !== ''
+      ),
       postStatsRef,
       SvgTypes,
       commonStore,

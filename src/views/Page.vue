@@ -83,7 +83,10 @@ export default defineComponent({
     onBeforeMount(fetchArticle)
 
     return {
-      enabledComment: computed(() => enabledCommentPlugin.value.plugin !== ''),
+      enabledComment: computed(
+        () =>
+          pageData.value.comments && enabledCommentPlugin.value.plugin !== ''
+      ),
       pageTitle: computed(() => pageTitle.value),
       pageData,
       t
