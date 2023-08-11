@@ -16,6 +16,7 @@
       <SvgIcon class="inline-block text-3xl" icon-class="back-to-top" />
     </li>
     <li
+      v-if="enabledPlugin"
       class="flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="jumpToComments"
       data-dia="jump-to-comment"
@@ -26,10 +27,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import useJumpToEle from '@/hooks/useJumpToEle'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 export default defineComponent({
   name: 'Navigator',
@@ -37,6 +39,7 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const { jumpToEle } = useJumpToEle()
+    const { enabledCommentPlugin } = useCommentPlugin()
 
     const backToTop = () => {
       window.scrollTo({
@@ -54,6 +57,7 @@ export default defineComponent({
     }
 
     return {
+      enabledPlugin: computed(() => enabledCommentPlugin.value.plugin !== ''),
       goBack,
       backToTop,
       jumpToComments
