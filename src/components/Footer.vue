@@ -121,12 +121,8 @@ import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
 import beianImg from '@/assets/gongan-beian-40-40.png'
-import { walinePageViewInit } from '@/utils/comments/waline-api'
-import {
-  enabledCommentPlugin,
-  intiCommentPluginPageView
-} from '@/utils/comments/helpers'
 import { getDaysTillNow } from '@/utils'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 export default defineComponent({
   name: 'ObFooter',
@@ -134,24 +130,14 @@ export default defineComponent({
   setup() {
     const appStore = useAppStore()
     const { t } = useI18n()
-
-    const enabledPlugin = computed(
-      () => enabledCommentPlugin(appStore.themeConfig.plugins).plugin
-    )
+    const { enabledCommentPlugin, intiCommentPluginPageView } =
+      useCommentPlugin()
 
     watch(
-      () => enabledPlugin.value,
+      () => enabledCommentPlugin.value.plugin,
       (newValue, oldValue) => {
         if (oldValue === '' && newValue) {
-          window.setTimeout(
-            () =>
-              intiCommentPluginPageView(
-                newValue,
-                '/',
-                appStore.themeConfig.plugins
-              ),
-            50
-          )
+          window.setTimeout(() => intiCommentPluginPageView('/'), 50)
         }
       }
     )
@@ -179,7 +165,7 @@ export default defineComponent({
         return getDaysTillNow(`${appStore.themeConfig.site.started_date}`)
       }),
       intiCommentPluginPageView,
-      enabledPlugin,
+      enabledPlugin: computed(() => enabledCommentPlugin.value.plugin),
       t
     }
   }

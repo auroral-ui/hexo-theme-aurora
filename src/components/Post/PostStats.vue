@@ -173,14 +173,10 @@
 </template>
 
 <script lang="ts">
-import { PropType, computed, defineComponent, ref, defineExpose } from 'vue'
+import { PropType, computed, defineComponent, ref } from 'vue'
 import SvgIcon from '@/components/SvgIcon/index.vue'
-import {
-  enabledCommentPlugin,
-  initCommentPluginCommentCount,
-  intiCommentPluginPageView
-} from '@/utils/comments/helpers'
 import { PluginsData, ThemeConfig } from '@/models/ThemeConfig.class'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 export default defineComponent({
   name: 'ObPostStats',
@@ -208,24 +204,20 @@ export default defineComponent({
   },
   setup(props, { expose }) {
     const commentCount = ref<number | undefined>(undefined)
-    const enabledPlugin = computed(
-      () => enabledCommentPlugin(props.pluginConfigs).plugin
-    )
+    const {
+      enabledCommentPlugin,
+      initCommentPluginCommentCount,
+      intiCommentPluginPageView
+    } = useCommentPlugin()
 
     const getCommentCount = async () => {
       commentCount.value = await initCommentPluginCommentCount(
-        enabledPlugin.value,
-        props.currentPath,
-        props.pluginConfigs
+        props.currentPath
       )
     }
 
     const getPostView = () => {
-      intiCommentPluginPageView(
-        enabledPlugin.value,
-        props.currentPath,
-        props.pluginConfigs
-      )
+      intiCommentPluginPageView(props.currentPath)
     }
 
     expose({
@@ -235,7 +227,7 @@ export default defineComponent({
 
     return {
       commentCount,
-      plugin: enabledPlugin
+      plugin: computed(() => enabledCommentPlugin.value.plugin)
     }
   }
 })
