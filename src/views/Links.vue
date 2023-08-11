@@ -20,6 +20,7 @@
             :post-title="pageData.title"
             :current-path="currentPath"
             :plugin-configs="pluginConfigs"
+            :comments="enabledComment"
             ref="postStatsRef"
           />
         </div>
@@ -117,7 +118,6 @@ import LinkCategoryList from '@/components/Link/LinkCategoryList.vue'
 import LinkList from '@/components/Link/LinkList.vue'
 import Comment from '@/components/Comment.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
-import { useMetaStore } from '@/stores/meta'
 import usePageTitle from '@/hooks/usePageTitle'
 import useJumpToEle from '@/hooks/useJumpToEle'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
@@ -173,7 +173,10 @@ export default defineComponent({
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
-      enabledComment: computed(() => enabledCommentPlugin.value.plugin !== ''),
+      enabledComment: computed(
+        () =>
+          pageData.value.comments && enabledCommentPlugin.value.plugin !== ''
+      ),
       pageTitle,
       jumpToContent,
       postStatsRef,

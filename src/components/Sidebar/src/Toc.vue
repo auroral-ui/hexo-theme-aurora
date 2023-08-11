@@ -12,7 +12,7 @@
           />
         </div>
       </transition>
-      <Navigator />
+      <Navigator :comments="comments" />
     </div>
   </Sticky>
 </template>
@@ -27,7 +27,8 @@ export default defineComponent({
   name: 'ObTOC',
   components: { SubTitle, Sticky, Navigator },
   props: {
-    toc: String
+    toc: String,
+    comments: Boolean
   },
   setup(props) {
     const tocData = toRefs(props).toc

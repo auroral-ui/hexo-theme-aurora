@@ -51,7 +51,7 @@ export class Post {
     year: 0
   }
   updated = ''
-  comments = false
+  comments = true
   path = ''
   excerpt: string | null = null
   keywords: string | null = null

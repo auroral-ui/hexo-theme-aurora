@@ -44,7 +44,7 @@
         </span>
       </span>
     </span>
-    <span v-if="plugin === 'waline'">
+    <span v-if="comments && plugin === 'waline'">
       <SvgIcon
         class="h-5 w-5"
         icon-class="quote"
@@ -74,7 +74,7 @@
         <ob-skeleton width="40px" height="16px" />
       </span>
     </span>
-    <span v-if="plugin === 'twikoo'">
+    <span v-if="comments && plugin === 'twikoo'">
       <SvgIcon
         class="h-5 w-5"
         icon-class="quote"
@@ -157,7 +157,7 @@
         <ob-skeleton width="40px" height="16px" />
       </span>
     </span>
-    <span v-if="plugin === 'waline' || plugin === 'twikoo'">
+    <span v-if="comments && (plugin === 'waline' || plugin === 'twikoo')">
       <SvgIcon
         icon-class="quote"
         fill="none"
@@ -200,7 +200,8 @@ export default defineComponent({
       type: String,
       default: '/',
       required: true
-    }
+    },
+    comments: Boolean
   },
   setup(props, { expose }) {
     const commentCount = ref<number | undefined>(undefined)

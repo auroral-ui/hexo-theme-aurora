@@ -18,6 +18,7 @@
           :post-title="post.title"
           :current-path="currentPath"
           :plugin-configs="pluginConfigs"
+          :comments="enabledComment"
           ref="postStatsRef"
         />
       </div>
@@ -64,7 +65,7 @@
       <div class="col-span-1">
         <Sidebar>
           <Profile author="blog-author" />
-          <Toc :toc="post.toc" />
+          <Toc :toc="post.toc" :comments="enabledComment" />
         </Sidebar>
       </div>
     </div>
@@ -90,6 +91,7 @@ import { useCommonStore } from '@/stores/common'
 import { useRoute } from 'vue-router'
 import PostStats from './Post/PostStats.vue'
 import { useAppStore } from '@/stores/app'
+import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -119,6 +121,7 @@ export default defineComponent({
     const post = toRefs(props).post
     const title = toRefs(props).title
     const postStatsRef = ref<PostStatsExpose>()
+    const { enabledCommentPlugin } = useCommentPlugin()
 
     watch(
       () => post.value.covers,
@@ -147,6 +150,9 @@ export default defineComponent({
     })
 
     return {
+      enabledComment: computed(
+        () => post.value.comments && enabledCommentPlugin.value.plugin !== ''
+      ),
       pageTitle: computed(() => {
         if (title.value !== '') return title.value
         return post.value.title

@@ -59,7 +59,7 @@ export class Page<DataType = Link[] | Record<string, Link[]>>
     year: 0
   }
   updated = ''
-  comments = false
+  comments = true
   path = ''
   covers: string | null = null
   excerpt: string | null = null
