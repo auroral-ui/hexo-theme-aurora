@@ -1,6 +1,8 @@
 <template>
-  <ul class="breadcrumbs flex flex-row gap-6 text-white">
-    <li>{{ t('menu.home') }}</li>
+  <ul class="breadcrumbs flex flex-row gap-6 text-white z-50">
+    <li>
+      {{ t('menu.home') }}
+    </li>
     <li>{{ current }}</li>
   </ul>
 </template>

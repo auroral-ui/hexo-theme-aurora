@@ -31,7 +31,7 @@ export default defineComponent({
 .header-container {
   .site-header {
     max-width: var(--max-width);
-    @apply relative flex z-50 my-0 mx-auto py-4;
+    @apply relative flex z-50 my-0 mx-auto py-4 mb-4;
   }
 }
 </style>

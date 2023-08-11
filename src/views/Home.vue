@@ -46,7 +46,7 @@
           <SvgIcon icon-class="chevron" />
         </span>
 
-        <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           <template v-if="posts.data.length === 0">
             <li v-for="n in 6" :key="n">
               <Article :data="{}" />
@@ -157,10 +157,10 @@ export default defineComponent({
       await categoryStore.fetchCategories()
 
       const articleListEl = document.getElementById('article-list')
-      // 120 is the height of the header element
+      // 150 is the height of the header element
       articleOffset.value =
         articleListEl && articleListEl instanceof HTMLElement
-          ? articleListEl.offsetTop + 120
+          ? articleListEl.offsetTop + 150
           : 0
     }
 

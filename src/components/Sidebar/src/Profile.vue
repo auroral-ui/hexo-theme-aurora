@@ -17,35 +17,36 @@
             :src="authorData.avatar"
             alt="avatar"
           />
-          <ob-skeleton v-else width="7rem" height="7rem" circle />
+          <ob-skeleton v-else width="6.4rem" height="6.4rem" circle />
 
-          <h2 class="text-center pt-4 text-4xl font-semibold text-ob-bright">
+          <h2 class="text-center pt-2 text-3xl font-semibold text-ob-bright">
             <template v-if="authorData.name">
               {{ authorData.name }}
             </template>
             <ob-skeleton v-else height="2.25rem" width="7rem" />
           </h2>
-
           <span
             class="h-1 w-14 rounded-full mt-2"
             :style="gradientBackground"
           />
-
+        </div>
+        <div
+          class="h-full w-full flex flex-col flex-1 justify-center items-end"
+        >
           <p
             v-if="authorData.description"
-            class="pt-6 px-10 w-full text-sm text-center"
+            class="flex-1 pt-8 px-8 w-full text-sm text-center"
             v-html="authorData.description"
           />
           <p
             v-else
-            class="pt-6 px-10 w-full text-sm text-center flex flex-col gap-2"
+            class="pt-8 px-8 w-full text-sm text-center flex flex-col gap-2 justify-center"
           >
-            <ob-skeleton :count="2" height="20px" width="10rem" />
+            <ob-skeleton :count="2" height="20px" width="100%" />
           </p>
-        </div>
-        <div class="h-full w-full flex flex-col flex-1 justify-end items-end">
+
           <Social :socials="authorData.socials" />
-          <ul class="grid grid-cols-4 pt-4 w-full px-2 text-lg">
+          <ul class="grid grid-cols-4 pt-2 w-full px-2 text-lg">
             <li class="col-span-1 text-center">
               <span class="text-ob-bright">{{ authorData.word_count }}</span>
               <p class="text-base">{{ t('settings.words') }}</p>

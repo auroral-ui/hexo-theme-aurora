@@ -10,7 +10,7 @@
     }
   }
   .article-tag {
-    @apply absolute flex items-start left-6 -top-1 pt-1 pb-3 px-1 rounded-md text-sm text-white font-bold shadow-lg uppercase transform;
+    @apply absolute flex items-start left-6 -top-1 pt-1 pb-3 px-1 rounded-md text-xs text-white font-bold shadow-lg uppercase transform;
     background: var(--main-gradient);
     > b {
       @apply py-1 px-3 rounded text-white stroke-current;
@@ -57,8 +57,12 @@
         @apply text-ob text-xs uppercase;
       }
       ul {
-        @apply inline-flex pl-4 text-xs;
+        @apply inline-flex pl-2;
+        font-size: 0.65rem;
         li {
+          em {
+            @apply not-italic opacity-50;
+          }
           @apply mr-3;
         }
       }
@@ -81,15 +85,15 @@
 }
 
 .feature-article {
-  @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-98 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800;
+  @apply grid grid-rows-3 lg:grid-cols-2 lg:grid-rows-none relative top-0 z-10 lg:w-full lg:h-97 rounded-2xl shadow-lg overflow-hidden bg-ob-deep-800;
   transition: transform 0.2s ease-in-out;
   .feature-thumbnail {
     @apply relative row-span-1 lg:row-auto;
     img {
-      @apply block absolute z-20 left-0 bg-cover bg-no-repeat w-full h-12/10 lg:h-98 lg:w-12/10 object-cover;
+      @apply block absolute z-20 left-0 bg-cover bg-no-repeat w-full h-12/10 lg:h-97 lg:w-12/10 object-cover;
     }
     span {
-      @apply z-30 absolute w-full h-12/10 lg:h-98 lg:w-12/10 left-0 pointer-events-none opacity-40;
+      @apply z-30 absolute w-full h-12/10 lg:h-97 lg:w-12/10 left-0 pointer-events-none opacity-40;
     }
     &:after {
       pointer-events: none;
@@ -111,6 +115,9 @@
     ul {
       @apply inline-flex pl-4;
       li {
+        em {
+          @apply not-italic opacity-50;
+        }
         @apply mr-3;
       }
     }
@@ -190,12 +197,12 @@
   }
 
   p {
-    @apply my-6;
+    @apply my-6 text-base;
     overflow-wrap: break-word;
   }
 
   ul {
-    margin: 1.5rem 0;
+    @apply my-1.5 text-base;
   }
 
   ul ul {
@@ -622,25 +629,29 @@
   .post-labels {
     @apply relative -bottom-1.5;
     > b {
-      @apply text-white text-xs uppercase opacity-90 p-0.5 rounded-md inline-flex;
+      @apply text-white text-xs uppercase py-1 px-2 rounded-md inline-flex;
+      background-color: rgba(255,255,255,0.25);
       text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     }
     ul {
       @apply inline-flex pl-2;
       li {
-        @apply text-white text-sm mr-3 opacity-70;
+        em {
+          @apply not-italic;
+        }
+        @apply text-white text-sm mr-3 opacity-80;
         text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
       }
     }
   }
   .post-title {
-    @apply mt-2 mb-4;
-    font-size: clamp(1.2rem, calc(1rem + 3.5vw), 4rem);
+    @apply mt-6 mb-4;
+    font-size: clamp(1.2rem, calc(1rem + 3.5vw), 3rem);
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     line-height: 1.1;
   }
   .post-stats {
-    @apply flex-row text-sm lg:text-base mr-4 hidden lg:flex;
+    @apply flex-row text-xs lg:text-sm mr-4 hidden lg:flex;
     > span {
       @apply text-white stroke-current flex flex-row items-center pr-4;
     }

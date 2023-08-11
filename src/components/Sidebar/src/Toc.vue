@@ -18,13 +18,7 @@
 </template>
 
 <script lang="ts">
-import {
-  HTMLAttributes,
-  StyleValue,
-  computed,
-  defineComponent,
-  toRefs
-} from 'vue'
+import { StyleValue, computed, defineComponent, toRefs } from 'vue'
 import { SubTitle } from '@/components/Title'
 import Sticky from '@/components/Sticky.vue'
 import Navigator from './Navigator.vue'
