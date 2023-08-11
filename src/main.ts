@@ -4,7 +4,6 @@ import { createApp } from 'vue'
 // also it's a much simpler State Management setup
 import { createPinia } from 'pinia'
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import '@/styles/index.scss'
 
 import App from './App.vue'
