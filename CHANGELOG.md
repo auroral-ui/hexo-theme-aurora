@@ -1,3 +1,17 @@
+# [2.3.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.2.2...v2.3.0) (2023-08-11)
+
+
+### Bug Fixes
+
+* external svg icon not loaded ([bfbe17e](https://github.com/auroral-ui/hexo-theme-aurora/commit/bfbe17e6a820b74f7152acca0ed6353235e2d705))
+
+
+### Features
+
+* add feature to disable comment on Pages or Posts individually ([6b3935f](https://github.com/auroral-ui/hexo-theme-aurora/commit/6b3935f7f03a676ffb9f896ed7636bf52574dfc2))
+* changed background wave to gradient ([e9f02e8](https://github.com/auroral-ui/hexo-theme-aurora/commit/e9f02e8237aaf45cc03dc6b93d8e79ac4ba08658))
+* hide comments if all plugins are disabled ([9b0db10](https://github.com/auroral-ui/hexo-theme-aurora/commit/9b0db1090f331079e4c97b09fc9fd11765616fbc))
+
 ## [2.2.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.2.1...v2.2.2) (2023-08-09)
 
 
