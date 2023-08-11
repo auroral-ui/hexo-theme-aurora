@@ -30,12 +30,12 @@
 
           <ul v-if="post.tags && post.tags.length > 0">
             <li v-for="tag in post.min_tags" :key="tag.slug">
-              <em># {{ tag.name }}</em>
+              <em># </em><span>{{ tag.name }}</span>
             </li>
           </ul>
           <ul v-else-if="post.tags && post.tags.length <= 0">
             <li>
-              <em># {{ t('settings.default-tag') }}</em>
+              <em>#</em><span>{{ t('settings.default-tag') }}</span>
             </li>
           </ul>
           <ul v-else>
@@ -70,12 +70,7 @@
             />
             <span class="text-ob-dim">
               <strong
-                class="
-                  text-ob-normal
-                  pr-1.5
-                  hover:text-ob hover:opacity-50
-                  cursor-pointer
-                "
+                class="text-ob-normal pr-1.5 hover:text-ob hover:opacity-50 cursor-pointer"
                 @click="handleAuthorClick(post.author.link)"
               >
                 {{ post.author.name }}

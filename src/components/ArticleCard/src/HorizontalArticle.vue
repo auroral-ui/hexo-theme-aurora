@@ -34,12 +34,12 @@
                 v-for="index in numberOfTags - 1"
                 :key="post.tags[index].slug"
               >
-                <em># {{ post.tags[index].name }}</em>
+                <em># </em><span>{{ post.tags[index].name }}</span>
               </li>
             </template>
             <template v-else-if="post.tags && post.tags.length <= 0">
               <li>
-                <em># {{ t('settings.default-tag') }}</em>
+                <em># </em><span>{{ t('settings.default-tag') }}</span>
               </li>
             </template>
             <ob-skeleton
