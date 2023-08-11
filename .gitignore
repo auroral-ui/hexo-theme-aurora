@@ -7,7 +7,6 @@ coverage
 /dist
 /source
 /layout
-/layout/index.ejs
 
 
 .pnp.*

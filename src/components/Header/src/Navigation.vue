@@ -2,7 +2,7 @@
   <nav class="items-center flex-1 hidden lg:flex">
     <ul class="flex flex-row list-none px-6 text-white">
       <li
-        class="not-italic font-medium text-xs h-full relative flex flex-col items-center justify-center cursor-pointer text-center py-4 px-2"
+        class="not-italic font-medium text-xs h-full relative flex flex-col items-center justify-center cursor-pointer text-center py-2 px-2"
         v-for="route in routes"
         :key="route.path"
       >

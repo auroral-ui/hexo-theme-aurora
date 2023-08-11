@@ -11,7 +11,7 @@
         height="clamp(1.2rem, calc(1rem + 3.5vw), 4rem)"
       />
 
-      <div class="flex flex-row items-center justify-start mt-8 mb-4">
+      <div class="flex flex-row items-center justify-start mt-8">
         <PostStats
           :post-word-count="post.count_time.symbolsCount"
           :post-time-count="post.count_time.symbolsTime"
@@ -162,12 +162,13 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .post-title {
-  @apply my-2;
-  font-size: clamp(1.2rem, calc(1rem + 3.5vw), 4rem);
+  @apply mt-6 mb-4;
+  font-size: clamp(1.2rem, calc(1rem + 3.5vw), 3rem);
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
 }
 .post-stats {
-  @apply w-full flex flex-row text-sm lg:text-base mb-6;
+  @apply w-full flex flex-row text-xs lg:text-sm mb-6;
   span {
     @apply text-white stroke-current flex flex-row items-center pr-4;
   }

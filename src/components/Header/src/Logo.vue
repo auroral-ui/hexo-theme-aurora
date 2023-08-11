@@ -1,16 +1,7 @@
 <template>
   <div class="flex items-start self-stretch relative">
     <div
-      class="
-        flex flex-col
-        relative
-        py-4
-        z-10
-        text-white
-        font-medium
-        ob-drop-shadow
-        cursor-pointer
-      "
+      class="flex flex-col relative py-2 z-10 text-white font-medium ob-drop-shadow cursor-pointer"
       @click="handleLogoClick"
     >
       <span class="flex text-4xl" v-if="themeConfig.site.author">

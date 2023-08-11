@@ -2,7 +2,7 @@
   <div
     class="bg-ob-deep-800 p-4 mt-8 lg:px-14 lg:py-10 rounded-2xl shadow-xl mb-8 lg:mb-0"
   >
-    <SubTitle :title="'titles.comment'" />
+    <Title :title="'titles.comment'" paddings="pb-2 pt-0" />
     <div id="gitalk-container"></div>
     <div id="vcomments"></div>
     <div id="tcomment"></div>
@@ -13,7 +13,7 @@
 <script lang="ts">
 import { useAppStore } from '@/stores/app'
 import { defineComponent, onMounted, toRefs, watch } from 'vue'
-import { SubTitle } from '@/components/Title'
+import { Title } from '@/components/Title'
 import { usePostStore } from '@/stores/post'
 import { twikooInit } from '@/utils/comments/twikoo-api'
 import { githubInit } from '@/utils/comments/github-api'
@@ -44,7 +44,7 @@ export default defineComponent({
       default: ''
     }
   },
-  components: { SubTitle },
+  components: { Title },
   setup(props) {
     const postTitle = toRefs(props).title
     const postBody = toRefs(props).body
