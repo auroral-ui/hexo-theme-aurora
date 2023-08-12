@@ -95,7 +95,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
+import { computed, defineComponent, watch } from 'vue'
 import { SubTitle } from '@/components/Title'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { useAppStore } from '@/stores/app'
