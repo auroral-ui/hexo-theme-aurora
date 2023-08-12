@@ -116,7 +116,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, watch } from 'vue'
+import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
@@ -134,10 +134,11 @@ export default defineComponent({
       useCommentPlugin()
 
     watch(
-      () => enabledCommentPlugin.value.plugin,
-      (newValue, oldValue) => {
-        if (oldValue === '' && newValue) {
-          window.setTimeout(() => intiCommentPluginPageView('/'), 50)
+      () => appStore.configReady,
+      async (newValue, oldValue) => {
+        if (!oldValue && newValue) {
+          await nextTick()
+          intiCommentPluginPageView('/')
         }
       }
     )
