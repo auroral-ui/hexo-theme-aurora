@@ -129,9 +129,7 @@ export default defineComponent({
     return {
       SvgTypes,
       isLoading: computed(() => commentPluginLoading.value),
-      comments: computed(() => {
-        return recentComments.value
-      }),
+      comments: computed(() => recentComments.value),
       isConfigReady: computed(() => appStore.configReady),
       fetchRecentComment,
       enabledCommentPlugin,

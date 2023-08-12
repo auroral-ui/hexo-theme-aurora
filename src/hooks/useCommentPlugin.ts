@@ -83,7 +83,7 @@ export default function useCommentPlugin() {
   /**
    * Fetching recent comments data base on comment plugin
    */
-  const fetchRecentComment = () => {
+  const fetchRecentComment = async () => {
     const enabledPlugin = computed<string | undefined>(() => {
       const result = enabledCommentPlugin.value
       return result.plugin !== '' && !!result.recentComment
@@ -109,9 +109,8 @@ export default function useCommentPlugin() {
           admin: appStore.themeConfig.plugins.gitalk.admin[0]
         })
 
-        githubComments.getComments().then(response => {
-          recentComments.value = response
-        })
+        recentComments.value = await githubComments.getComments()
+        commentPluginLoading.value = false
 
         break
 
@@ -124,10 +123,8 @@ export default function useCommentPlugin() {
           lang: appStore.themeConfig.plugins.valine.lang
         })
 
-        leadCloudComments.getRecentComments(7).then(res => {
-          recentComments.value = res
-          commentPluginLoading.value = false
-        })
+        recentComments.value = await leadCloudComments.getRecentComments(7)
+        commentPluginLoading.value = false
 
         break
 
@@ -137,10 +134,8 @@ export default function useCommentPlugin() {
           lang: appStore.themeConfig.plugins.twikoo.lang
         })
 
-        twikooComments.getRecentComments(7).then(res => {
-          recentComments.value = res
-          commentPluginLoading.value = false
-        })
+        recentComments.value = await twikooComments.getRecentComments(7)
+        commentPluginLoading.value = false
 
         break
 
@@ -150,10 +145,8 @@ export default function useCommentPlugin() {
           lang: appStore.locale ?? 'en'
         })
 
-        walineComments.getRecentComments(7).then(res => {
-          recentComments.value = res
-          commentPluginLoading.value = false
-        })
+        recentComments.value = await walineComments.getRecentComments(7)
+        commentPluginLoading.value = false
 
         break
 
