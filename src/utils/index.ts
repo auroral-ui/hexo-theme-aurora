@@ -150,7 +150,7 @@ export function convertToLocale(label: string) {
 }
 
 export function cleanPath(path: string) {
-  if (path.at(-1) === '/') {
+  if (path !== '/' && path.at(-1) === '/') {
     return path.slice(0, -1)
   }
 
