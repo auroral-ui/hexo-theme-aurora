@@ -135,9 +135,9 @@
             class="mr-2"
           />
         </div>
-        <div class="flex flex-col lg:flex-row justify-start items-end my-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols2 gap-6 mt-6">
           <div
-            class="w-full h-full self-stretch mr-0 lg:mr-4"
+            class="flex flex-col w-full h-full mr-0 lg:mr-4"
             v-if="post.prev_post.title"
           >
             <SubTitle
@@ -146,10 +146,7 @@
             />
             <Article :data="post.prev_post" />
           </div>
-          <div
-            class="w-full h-full self-stretch mt-8 lg:mt-0"
-            v-if="post.next_post.title"
-          >
+          <div class="flex flex-col w-full h-full" v-if="post.next_post.title">
             <SubTitle
               title="settings.paginator.next"
               :side="!isMobile ? 'right' : 'left'"
