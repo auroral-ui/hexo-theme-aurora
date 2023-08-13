@@ -137,7 +137,7 @@ export function getDaysTillNow(from: string) {
 export function convertToLocale(label: string) {
   const locales = [
     'links-badge-tech',
-    'links-badge-design',
+    'links-badge-designer',
     'links-badge-vip',
     'links-badge-personal'
   ]
