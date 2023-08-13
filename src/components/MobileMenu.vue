@@ -2,9 +2,9 @@
   <div class="flex flex-col justify-center items-center">
     <img
       v-if="authorData.avatar !== ''"
-      class="diamond-avatar h-28 w-28 shadow-xl m-0"
-      :src="authorData.avatar"
-      alt="avatar"
+        :class="avatarClass"
+        :src="authorData.avatar"
+        alt="avatar"
     />
     <ob-skeleton v-else width="7rem" height="7rem" circle />
 
@@ -151,6 +151,12 @@ export default defineComponent({
     onMounted(fetchAuthor)
 
     return {
+      avatarClass: computed(() => {
+        return {
+          'ob-avatar': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       themeConfig: computed(() => appStore.themeConfig),
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
