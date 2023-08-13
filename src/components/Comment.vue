@@ -463,7 +463,7 @@ export default defineComponent({
   }
 
   .primary.wl-btn {
-    color: var(--text-bright);
+    color: #fff;
     border: none;
     background: var(--main-gradient);
     transition: var(--trans-ease);
