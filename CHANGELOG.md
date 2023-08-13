@@ -1,3 +1,12 @@
+## [2.3.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.3.0...v2.3.1) (2023-08-13)
+
+
+### Bug Fixes
+
+* article next and previous posts cards have unequal height ([8f98e14](https://github.com/auroral-ui/hexo-theme-aurora/commit/8f98e14646ed7d8af88a5989fa6b70f6f392eb5c))
+* footer page view not update on load ([909c191](https://github.com/auroral-ui/hexo-theme-aurora/commit/909c1913e0f1b6ee280ae87ff59763320e5e219a))
+* gitalk loading state not closed when recent comments are loaded ([0595413](https://github.com/auroral-ui/hexo-theme-aurora/commit/0595413260f44d5ab82cc57e834a5786c0ad2379)), closes [#290](https://github.com/auroral-ui/hexo-theme-aurora/issues/290) [#280](https://github.com/auroral-ui/hexo-theme-aurora/issues/280)
+
 # [2.3.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.2.2...v2.3.0) (2023-08-11)
 
 
