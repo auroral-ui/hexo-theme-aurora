@@ -72,6 +72,7 @@
     "vite": "^4.3.9",
     "vite-plugin-html-transformer": "^4.0.0",
     "vite-plugin-svg-icons": "^2.0.1",
+    "vue-easy-lightbox": "^1.16.0",
     "vue-jest": "^3.0.7"
   }
 }

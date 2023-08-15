@@ -92,6 +92,7 @@ import { useRoute } from 'vue-router'
 import PostStats from './Post/PostStats.vue'
 import { useAppStore } from '@/stores/app'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
+import useLightBox from '@/hooks/useLightBox'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -122,6 +123,7 @@ export default defineComponent({
     const title = toRefs(props).title
     const postStatsRef = ref<PostStatsExpose>()
     const { enabledCommentPlugin } = useCommentPlugin()
+    const { initializeLightBox } = useLightBox()
 
     watch(
       () => post.value.covers,
@@ -135,6 +137,7 @@ export default defineComponent({
       async value => {
         if (value) {
           await nextTick()
+          initializeLightBox()
           postStatsRef.value?.getCommentCount()
           postStatsRef.value?.getPostView()
         }

@@ -127,6 +127,9 @@ devDependencies:
   vite-plugin-svg-icons:
     specifier: ^2.0.1
     version: 2.0.1(vite@4.3.9)
+  vue-easy-lightbox:
+    specifier: ^1.16.0
+    version: 1.16.0(vue@3.3.4)
   vue-jest:
     specifier: ^3.0.7
     version: 3.0.7(babel-core@6.26.3)(vue-template-compiler@2.7.14)(vue@3.3.4)
@@ -7982,6 +7985,15 @@ packages:
     dependencies:
       vue: 3.3.4
     dev: false
+
+  /vue-easy-lightbox@1.16.0(vue@3.3.4):
+    resolution: {integrity: sha512-9ckBIi56kTNkfbxioTBLKR3xnFjmkIs4SOvePn6XUciR+Dzuav0tgNjqDHkfsoo3nxIpUmfpQAT0YDl9TpJ5jA==}
+    engines: {node: '>=14.18.3'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.3.4
+    dev: true
 
   /vue-eslint-parser@9.3.1(eslint@8.0.0):
     resolution: {integrity: sha512-Clr85iD2XFZ3lJ52/ppmUDG/spxQu6+MAeHXjjyI4I1NUYZ9xmenQp4N0oaHJhrA8OOxltCVxMRfANGa70vU0g==}

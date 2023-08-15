@@ -32,6 +32,16 @@
   <teleport to="head">
     <title>{{ title }}</title>
   </teleport>
+
+  <VueEasyLightbox
+    :visible="lightBoxVisible"
+    :imgs="lightBoxImages"
+    :index="lightBoxIndex"
+    :moveDisabled="true"
+    :rotateDisabled="true"
+    :scrollDisabled="false"
+    @hide="onHideLightBox"
+  ></VueEasyLightbox>
 </template>
 
 <script lang="ts">
@@ -46,6 +56,7 @@ import {
 } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
+import { useLightBoxStore } from '@/stores/lightbox'
 import { useMetaStore } from '@/stores/meta'
 import { useSearchStore } from './stores/search'
 import HeaderMain from '@/components/Header/src/Header.vue'
@@ -55,6 +66,7 @@ import MobileMenu from '@/components/MobileMenu.vue'
 import Dia from '@/components/Dia.vue'
 import defaultCover from '@/assets/default-cover.jpg'
 import { useI18n } from 'vue-i18n'
+import VueEasyLightbox from 'vue-easy-lightbox'
 
 export default defineComponent({
   name: 'App',
@@ -63,10 +75,12 @@ export default defineComponent({
     Footer,
     Navigator,
     MobileMenu,
-    Dia
+    Dia,
+    VueEasyLightbox
   },
   setup() {
     const appStore = useAppStore()
+    const lightBoxStore = useLightBoxStore()
     const commonStore = useCommonStore()
     const metaStore = useMetaStore()
     const searchStore = useSearchStore()
@@ -127,6 +141,8 @@ export default defineComponent({
         }
       }
     }
+
+    const onHideLightBox = () => lightBoxStore.hideLightBox()
 
     /** Adding copy listner */
     const initialCopyrightScript = () => {
@@ -220,9 +236,13 @@ export default defineComponent({
           --main-gradient: ${appStore.themeConfig.theme.header_gradient_css};
         `
       }),
+      lightBoxVisible: computed(() => lightBoxStore.visible),
+      lightBoxIndex: computed(() => lightBoxStore.index),
+      lightBoxImages: computed(() => lightBoxStore.images),
       appWrapperClass,
       loadingBarClass,
       handleOpenModal,
+      onHideLightBox,
       t
     }
   }
