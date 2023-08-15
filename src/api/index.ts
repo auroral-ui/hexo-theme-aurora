@@ -26,6 +26,13 @@ export async function fetchPostsList(
   return request.get<PostList>(`/posts/${currentPage}.json`)
 }
 
+// GET /api/posts/:pageNum.json (default 1.json)
+export async function fetchArchivesList(
+  currentPage: number
+): Promise<AxiosResponse<any>> {
+  return request.get<PostList>(`/archives/${currentPage}.json`)
+}
+
 // GET /api/tags/:TagName.json
 export async function fetchPostsListByTag(
   tagName: string

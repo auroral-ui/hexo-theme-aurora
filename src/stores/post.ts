@@ -11,7 +11,8 @@ import {
   fetchPostsList,
   fetchPostBySlug,
   fetchPostsListByCategory,
-  fetchPostsListByTag
+  fetchPostsListByTag,
+  fetchArchivesList
 } from '@/api'
 
 export const usePostStore = defineStore({
@@ -52,7 +53,7 @@ export const usePostStore = defineStore({
     },
     async fetchArchives(page?: number): Promise<Archives> {
       if (!page) page = 1
-      const { data } = await fetchPostsList(page)
+      const { data } = await fetchArchivesList(page)
       return new Promise(resolve =>
         setTimeout(() => {
           resolve(new Archives(data))
