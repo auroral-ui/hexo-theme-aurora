@@ -188,6 +188,7 @@ import { useCommonStore } from '@/stores/common'
 import SvgIcon, { SvgTypes } from '@/components/SvgIcon/index.vue'
 import PostStats from '@/components/Post/PostStats.vue'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
+import useLightBox from '@/hooks/useLightBox'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -219,6 +220,7 @@ export default defineComponent({
     const loading = ref(true)
     const postStatsRef = ref<PostStatsExpose>()
     const { enabledCommentPlugin } = useCommentPlugin()
+    const { initializeLightBox } = useLightBox()
 
     const fetchData = async () => {
       loading.value = true
@@ -245,6 +247,7 @@ export default defineComponent({
         )
       }
       await nextTick()
+      initializeLightBox()
       postStatsRef.value?.getCommentCount()
       postStatsRef.value?.getPostView()
       Prism.highlightAll()
