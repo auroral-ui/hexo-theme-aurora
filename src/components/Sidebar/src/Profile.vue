@@ -49,21 +49,21 @@
           <ul class="grid grid-cols-4 pt-2 w-full px-2 text-lg">
             <li class="col-span-1 text-center">
               <span class="text-ob-bright">{{ authorData.word_count }}</span>
-              <p class="text-base">{{ t('settings.words') }}</p>
+              <p class="text-xs">{{ t('settings.words') }}</p>
             </li>
             <li class="col-span-1 text-center">
               <span class="text-ob-bright">
                 {{ authorData.post_list.length }}
               </span>
-              <p class="text-base">{{ t('settings.articles') }}</p>
+              <p class="text-xs">{{ t('settings.articles') }}</p>
             </li>
             <li class="col-span-1 text-center">
               <span class="text-ob-bright">{{ authorData.categories }}</span>
-              <p class="text-base">{{ t('settings.categories') }}</p>
+              <p class="text-xs">{{ t('settings.categories') }}</p>
             </li>
             <li class="col-span-1 text-center">
               <span class="text-ob-bright">{{ authorData.tags }}</span>
-              <p class="text-base">{{ t('settings.tags') }}</p>
+              <p class="text-xs">{{ t('settings.tags') }}</p>
             </li>
           </ul>
         </div>
