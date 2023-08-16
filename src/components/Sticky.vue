@@ -1,16 +1,6 @@
 <template>
   <div id="sticky" :style="{ height: height + 'px', zIndex: zIndex }">
-    <div
-      :class="className"
-      :style="{
-        top: isSticky ? (top === -1 ? 'initial' : top + 'px') : '',
-        bottom: isBottom ? 0 : 'initial',
-        zIndex: zIndex,
-        position: position,
-        width: width,
-        height: height + 'px'
-      }"
-    >
+    <div :class="className" :style="styles">
       <slot>
         <div>sticky</div>
       </slot>
@@ -19,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { StyleValue, computed, defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'ObSticky',
@@ -49,7 +39,7 @@ export default defineComponent({
       default: ''
     }
   },
-  setup() {
+  setup(props) {
     let active = ref(false),
       position = ref(''),
       width = ref(),
@@ -59,7 +49,24 @@ export default defineComponent({
       top = ref(0),
       isBottom = ref(false)
 
+    const styles = computed(
+      () =>
+        ({
+          top: isSticky.value
+            ? top.value === -1
+              ? 'initial'
+              : top.value + 'px'
+            : '',
+          bottom: isBottom.value ? 0 : 'initial',
+          zIndex: props.zIndex,
+          position: position.value,
+          width: width.value,
+          height: height.value + 'px'
+        } as StyleValue)
+    )
+
     return {
+      styles,
       active,
       position,
       width,
@@ -136,12 +143,17 @@ export default defineComponent({
           this.endingElId !== ''
             ? document.getElementById(this.endingElId)
             : null
+
+        const endingElSpacing = documentHeight - (endingEl?.offsetTop ?? 0)
+
         const wrapperEl = document.getElementById('App-Wrapper')
-        const endingElSpacing = parseInt(
+
+        const containerBottomSpacing = parseInt(
           window.getComputedStyle(wrapperEl || document.documentElement)
             .paddingBottom,
           10
         )
+
         const endingPos =
           endingEl && endingEl instanceof HTMLElement
             ? documentHeight -
@@ -149,8 +161,8 @@ export default defineComponent({
               height -
               this.stickyTop -
               this.stickyBottom -
-              endingEl.getBoundingClientRect().height -
-              endingElSpacing
+              endingElSpacing -
+              containerBottomSpacing
             : documentHeight
 
         if (offsetTop < this.stickyTop) {
@@ -166,7 +178,7 @@ export default defineComponent({
         }
 
         this.handleReset()
-      }, 16)
+      }, 1)
     },
     handleResize() {
       if (this.isSticky) {

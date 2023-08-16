@@ -21,6 +21,7 @@
     </div>
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
   </div>
+  <FooterLink :links="themeConfig.footerLinks.data" />
   <Footer :style="cssVariables" />
   <div class="App-Mobile-sidebar" v-if="isMobile">
     <div id="App-Mobile-Profile" class="App-Mobile-wrapper">
@@ -60,13 +61,14 @@ import { useLightBoxStore } from '@/stores/lightbox'
 import { useMetaStore } from '@/stores/meta'
 import { useSearchStore } from './stores/search'
 import HeaderMain from '@/components/Header/src/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Footer from '@/components/Footer/Footer.vue'
 import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
 import Dia from '@/components/Dia.vue'
 import defaultCover from '@/assets/default-cover.jpg'
 import { useI18n } from 'vue-i18n'
 import VueEasyLightbox from 'vue-easy-lightbox'
+import FooterLink from './components/Footer/FooterLink.vue'
 
 export default defineComponent({
   name: 'App',
@@ -76,7 +78,8 @@ export default defineComponent({
     Navigator,
     MobileMenu,
     Dia,
-    VueEasyLightbox
+    VueEasyLightbox,
+    FooterLink
   },
   setup() {
     const appStore = useAppStore()

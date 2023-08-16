@@ -12,7 +12,7 @@
           <Title
             title="settings.links-slogan"
             icon="friends"
-            text-size="text-2xl"
+            text-size="text-3xl"
             paddings="pb-2"
             margins="mb-0 mt-0"
           />
@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue'
+import { PropType, computed, defineComponent } from 'vue'
 import LinkAvatar from '@/components/Link/LinkAvatar.vue'
 import { Title } from '@/components/Title'
 import { useI18n } from 'vue-i18n'
@@ -70,6 +70,7 @@ import PrimaryButton from '@/components/Button/PrimaryButton.vue'
 import SecondaryButton from '@/components/Button/SecondaryButton.vue'
 import { Link } from '@/models/Article.class'
 import { useCommonStore } from '@/stores/common'
+import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ARLinkBox',
@@ -104,7 +105,11 @@ export default defineComponent({
       }, 6000)
     }
 
-    return { applyClicked, randomJump, t }
+    return {
+      applyClicked,
+      randomJump,
+      t
+    }
   }
 })
 </script>

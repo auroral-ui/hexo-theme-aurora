@@ -24,7 +24,14 @@ site:
   police_beian:
     number: ''
     link: ''
-  started_date: # Start date of the blog YYY-MM-DD / 博客开始运行日期
+  # Start date of the blog YYY-MM-DD
+  # 博客开始运行日期
+  started_date:
+  # Path unique identifier (文章 URL 唯一标识)
+  # uid: use unique ID
+  # slug: use generated slug base on title
+  # (Default is 'slug')
+  pathSlug: 'slug'
 
 #! ---------------------------------------------------------------
 #! Authors Configs
@@ -190,3 +197,17 @@ aurora_bot:
 injects:
   scripts:
   css:
+
+#! ---------------------------------------------------------------
+#! Footer links
+#! ---------------------------------------------------------------
+footer_links:
+  - title: # main title
+    links:
+      - title: # link title
+        url: # URL link
+      - title: # link title
+        url: # URL link
+      - title: Friends # link of friends mode / 友链模式
+        mode: 'links'
+
