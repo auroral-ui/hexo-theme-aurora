@@ -6,7 +6,12 @@
         v-if="currentPage > 1"
         @click="pageChangeEmitter(currentPage - 1)"
       >
-        <SvgIcon icon-class="arrow-left" />
+        <SvgIcon
+          class="font-bold"
+          icon-class="arrow-left"
+          height="1.25rem"
+          width="1.25rem"
+        />
         <span>{{ t('settings.paginator.newer') }}</span>
       </li>
       <li
@@ -37,7 +42,12 @@
         @click="pageChangeEmitter(currentPage + 1)"
       >
         <span>{{ t('settings.paginator.older') }}</span>
-        <SvgIcon icon-class="arrow-right" />
+        <SvgIcon
+          class="font-bold"
+          icon-class="arrow-right"
+          height="1.25rem"
+          width="1.25rem"
+        />
       </li>
     </ul>
   </div>
@@ -135,7 +145,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .paginator {
-  @apply flex flex-row justify-center my-8;
+  @apply flex flex-row justify-center mt-8;
   ul {
     @apply flex flex-row;
     li {

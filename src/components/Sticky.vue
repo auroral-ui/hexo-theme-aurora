@@ -178,7 +178,7 @@ export default defineComponent({
         }
 
         this.handleReset()
-      }, 1)
+      }, 16)
     },
     handleResize() {
       if (this.isSticky) {
