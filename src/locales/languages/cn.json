@@ -16,8 +16,8 @@
   "titles": {
     "articles": "文章列表",
     "about": "关于我",
-    "category_list": "分类目录",
-    "tag_list": "标签目录",
+    "category_list": "分类",
+    "tag_list": "标签",
     "toc": "文章目录",
     "comment": "评论区",
     "recent_comment": "最近评论"

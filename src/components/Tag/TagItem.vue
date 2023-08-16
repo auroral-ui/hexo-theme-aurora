@@ -1,49 +1,21 @@
 <template>
   <div
-    class="
-      flex flex-row
-      items-center
-      hover:opacity-50
-      mr-2
-      mb-2
-      cursor-pointer
-      transition-all
-    "
+    class="flex flex-row items-center mr-1 mb-1 cursor-pointer transition-all"
   >
     <router-link
-      class="
-        bg-ob-deep-900
-        text-center
-        px-3
-        py-1
-        rounded-tl-md rounded-bl-md
-        text-sm
-      "
+      :class="tagClasses"
       :to="{ name: 'tags-search', query: { slug: slug } }"
-      :style="stylingTag()"
     >
-      <em class="opacity-50">#</em>
       {{ name }}
+      <sub :class="countClasses">
+        {{ count }}
+      </sub>
     </router-link>
-    <span
-      class="
-        bg-ob-deep-900
-        text-ob-secondary text-center
-        px-2
-        py-1
-        rounded-tr-md rounded-br-md
-        text-sm
-        opacity-70
-      "
-      :style="stylingTag()"
-    >
-      {{ count }}
-    </span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from 'vue'
+import { PropType, computed, defineComponent, toRefs } from 'vue'
 
 export default defineComponent({
   name: 'ObTagItem',
@@ -55,56 +27,40 @@ export default defineComponent({
       default: 0
     },
     size: {
-      type: String,
-      default: 'base'
+      type: String as PropType<'small' | 'large'>,
+      default: 'small'
     }
   },
   setup(props) {
     const tagSize = toRefs(props).size
 
-    const stylingTag = () => {
-      if (tagSize.value === 'xs') {
-        return {
-          fontSize: '0.75rem',
-          lineHeight: '1rem'
-        }
-      }
-
-      if (tagSize.value === 'sm') {
-        return {
-          fontSize: '0.875rem',
-          lineHeight: '1.25rem'
-        }
-      }
-
-      if (tagSize.value === 'lg') {
-        return {
-          fontSize: '1.125rem',
-          lineHeight: '1.75rem'
-        }
-      }
-
-      if (tagSize.value === 'xl') {
-        return {
-          fontSize: '1.25rem',
-          lineHeight: '1.75rem'
-        }
-      }
-
-      if (tagSize.value === '2xl') {
-        return {
-          fontSize: '1.5rem',
-          lineHeight: '2rem'
-        }
-      }
-
-      return {
-        fontSize: '1rem',
-        lineHeight: '1.5rem'
-      }
+    return {
+      tagClasses: computed(() => ({
+        'flex p-1.5 rounded-md text-sm hover:bg-ob-deep-900 hover:opacity-100 hover:text-ob-bright font-bold':
+          tagSize.value === 'small',
+        'large-tag-item': tagSize.value === 'large'
+      })),
+      countClasses: computed(() => ({
+        'block -mt-1.5 ml-1 text-xs opacity-50': tagSize.value === 'small',
+        'block -mt-1.5 ml-2 rounded-full text-xs text-ob':
+          tagSize.value === 'large'
+      }))
     }
-
-    return { stylingTag }
   }
 })
 </script>
+
+<style lang="scss">
+.large-tag-item {
+  @apply flex py-2 px-4 rounded-md bg-ob-deep-900 text-ob-bright text-base hover:opacity-100;
+  sub {
+    transition: 300ms all ease-in-out;
+  }
+  &:hover {
+    @apply scale-110;
+  }
+  &:hover sub {
+    @apply text-lg;
+  }
+}
+</style>

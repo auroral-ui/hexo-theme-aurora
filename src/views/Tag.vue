@@ -13,7 +13,7 @@
             :name="tag.name"
             :slug="tag.slug"
             :count="tag.count"
-            size="xl"
+            size="large"
           />
         </template>
         <template v-else-if="tags">

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="links"
+    v-if="links && links.length > 0"
     id="footer-link"
     class="flex flex-col items-center py-8 bg-ob-deep-900"
   >

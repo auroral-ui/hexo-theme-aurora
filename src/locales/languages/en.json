@@ -45,8 +45,8 @@
     "visit_count": "Total visit count",
     "button-all": "All",
     "paginator": {
-      "newer": "Newer",
-      "older": "Older",
+      "newer": "Pre",
+      "older": "Next",
       "prev": "Previous",
       "next": "Next"
     },
