@@ -1,0 +1,148 @@
+<template>
+  <div
+    v-if="links"
+    id="footer-link"
+    class="flex flex-col items-center py-8 bg-ob-deep-900"
+  >
+    <div class="footer-link-divider" :style="gradientBackground">
+      <div class="footer-link-img-wrapper">
+        <img v-show="avatar" :class="avatarClass" :src="avatar" alt="avatar" />
+      </div>
+    </div>
+
+    <div
+      class="flex flex-row flex-wrap justify-start md:justify-center bg-ob-deep-900 rounded-lg max-w-10/12 lg:max-w-screen-2xl text-normal text-ob-normal w-full py-6 px-6 items-start gap-8 md:gap-10 xl:gap-16"
+    >
+      <div v-for="link of links" class="flex flex-col">
+        <div class="flex mb-4 items-center">
+          <h3 class="text-ob-dim font-bold mr-2">{{ link.title }}</h3>
+          <SvgIcon
+            v-if="link.mode === 'links'"
+            @click="refreshLinkData"
+            icon-class="reload"
+            :class="loadingSvgClasses"
+          />
+        </div>
+        <ul v-if="!link.mode" class="flex flex-col gap-1">
+          <li v-for="sub of link.links" class="cursor-pointer">
+            <a :href="sub.url" target="_blank">{{ sub.title }}</a>
+          </li>
+        </ul>
+        <ul v-if="link.mode === 'links' && linksData" class="flex flex-col">
+          <li v-for="avatar of linksData" class="cursor-pointer">
+            <a :href="avatar.link" target="_blank">{{ avatar.nick }}</a>
+          </li>
+        </ul>
+        <ul v-if="link.mode === 'links' && loadingLinks" class="flex flex-col">
+          <li v-for="i in 5" class="cursor-pointer">
+            <ob-skeleton :count="1" height="22px" width="7.5rem" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { Link } from '@/models/Article.class'
+import { FooterLink } from '@/models/ThemeConfig.class'
+import { useAppStore } from '@/stores/app'
+import { useArticleStore } from '@/stores/article'
+import { PropType, computed, defineComponent, onMounted, ref, watch } from 'vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
+
+export default defineComponent({
+  name: 'ARFooterLink',
+  components: { SvgIcon },
+  props: {
+    links: Array as PropType<FooterLink[]>
+  },
+  setup() {
+    const appStore = useAppStore()
+    const articleStore = useArticleStore()
+    const loadingLinks = ref<boolean>(true)
+    const linksData = ref<Link[]>([])
+    const bloggers = ref<Link[][]>([])
+
+    const refreshLinkData = () => {
+      loadingLinks.value = true
+      linksData.value = []
+      setTimeout(() => {
+        const recordSet = new Set()
+        let friendsCount = bloggers.value.length < 5 ? bloggers.value.length : 5
+
+        while (friendsCount > 0) {
+          const pair = bloggers.value[Math.floor(Math.random() * 24)]
+          const blogger = pair[Math.floor(Math.random() * 2)]
+          if (!recordSet.has(blogger.nick)) {
+            recordSet.add(blogger.nick)
+            linksData.value.push(blogger)
+            friendsCount--
+          }
+        }
+        loadingLinks.value = false
+      }, 1000)
+    }
+
+    const fetchLinks = async () => {
+      const linksArticle = await articleStore.fetchArticle('friends')
+      if (linksArticle && linksArticle.avatarWall) {
+        bloggers.value = linksArticle.avatarWall
+        refreshLinkData()
+      }
+    }
+
+    watch(
+      () => appStore.configReady,
+      (newValue, oldValue) => {
+        if (!oldValue && newValue && appStore.themeConfig.menu.menus['Links']) {
+          fetchLinks()
+        }
+      }
+    )
+
+    onMounted(() => {
+      if (appStore.themeConfig.menu.menus['Links']) {
+        fetchLinks()
+      }
+    })
+
+    return {
+      avatarClass: computed(() => {
+        return {
+          'footer-link-avatar': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
+      gradientBackground: computed(() => {
+        return { background: appStore.themeConfig.theme.header_gradient_css }
+      }),
+      avatar: computed(() => appStore.themeConfig.site.avatar),
+      loadingSvgClasses: computed(() => ({
+        'cursor-pointer': true,
+        'animate-spin': loadingLinks.value
+      })),
+      refreshLinkData,
+      loadingLinks,
+      linksData
+    }
+  }
+})
+</script>
+
+<style lang="scss">
+.footer-link-divider {
+  @apply flex h-1 w-2/3 lg:w-2/5 mt-4 mb-8 relative opacity-70 rounded-full shadow-xl;
+  /* .footer-link-img-wrapper {
+    border: 2rem solid var(--background-primary);
+  } */
+  .footer-link-avatar {
+    @apply m-0 h-10 w-10 shadow-xl absolute rounded-full box-content;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.8rem solid var(--background-primary);
+    background: var(--background-primary);
+  }
+}
+</style>

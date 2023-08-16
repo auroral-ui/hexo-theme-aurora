@@ -38,8 +38,6 @@ export const getGravatar = (
 ) => {
   const md5Mail = withMd5 ? mail : md5(mail)
 
-  console.log(mail)
-
   return String(mail).endsWith('@qq.com')
     ? 'https://q4.qlogo.cn/g?b=qq&nk=' + mail.replace('@qq.com', '') + '&s=100'
     : gravatarUrl + md5Mail + `?&v=${VERSION}`

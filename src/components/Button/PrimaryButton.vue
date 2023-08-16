@@ -1,6 +1,6 @@
 <template>
   <a
-    class="py-2 px-3 text-white flex items-center justify-center z-10 transition cursor-pointer rounded-xl font-semibold select-none"
+    class="py-1 px-3 text-white flex items-center justify-center z-10 transition cursor-pointer rounded-xl font-semibold select-none"
     :style="gradientBackground"
   >
     {{ text }}

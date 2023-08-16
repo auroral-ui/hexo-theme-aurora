@@ -1,5 +1,9 @@
 <template>
-  <Sticky :stickyTop="32" endingElId="footer" dynamicElClass="#sticky-sidebar">
+  <Sticky
+    :stickyTop="32"
+    endingElId="footer-link"
+    dynamicElClass="#sticky-sidebar"
+  >
     <div id="sticky-sidebar">
       <transition name="fade-slide-y" mode="out-in">
         <div v-show="showToc" class="sidebar-box mb-4">
