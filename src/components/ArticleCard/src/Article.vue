@@ -1,18 +1,15 @@
 <template>
   <li class="article-container">
-    <span v-if="post.pinned" class="article-tag">
-      <b>
-        <SvgIcon icon-class="pin" />
-        {{ t('settings.pinned') }}
-      </b>
-    </span>
-    <span v-else-if="post.feature" class="article-tag">
-      <b>
-        <SvgIcon icon-class="hot" />
-        {{ t('settings.featured') }}
-      </b>
-    </span>
     <div class="article">
+      <!-- <span  >
+
+      </span>
+      <span v-else-if="post.feature" class="article-tag">
+        <b>
+          <SvgIcon icon-class="hot" />
+          {{ t('settings.featured') }}
+        </b>
+      </span> -->
       <div class="article-thumbnail">
         <img v-if="post.cover" v-lazy="post.cover" alt="" />
         <img v-else src="@/assets/default-cover.jpg" />
@@ -20,6 +17,28 @@
       </div>
       <div class="article-content">
         <span>
+          <b v-if="post.pinned" class="article-tag">
+            <span>
+              <SvgIcon
+                icon-class="hot"
+                width="1.1rem"
+                height="1.1rem"
+                class="-mb-0.5 mr-1"
+              />
+              <span>{{ t('settings.pinned') }}</span>
+            </span>
+          </b>
+          <b v-if="post.feature" class="article-tag">
+            <span>
+              <SvgIcon
+                icon-class="hot"
+                width="1.1rem"
+                height="1.1rem"
+                class="-mb-0.5"
+              />
+              <span>{{ t('settings.featured') }}</span>
+            </span>
+          </b>
           <b v-if="post.categories && post.categories.length > 0">
             {{ post.categories[0].name }}
           </b>
@@ -27,7 +46,9 @@
             {{ t('settings.default-category') }}
           </b>
           <ob-skeleton v-else tag="b" height="20px" width="35px" />
+        </span>
 
+        <span class="flex flex-wrap">
           <ul v-if="post.tags && post.tags.length > 0">
             <li v-for="tag in post.min_tags" :key="tag.slug">
               <em># </em><span>{{ tag.name }}</span>

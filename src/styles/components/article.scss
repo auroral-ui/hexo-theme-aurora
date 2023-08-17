@@ -1,26 +1,14 @@
 .article-container {
-  @apply relative h-full rounded-2xl list-none;
+  @apply relative h-full rounded-2xl list-none transform-gpu;
   &:hover {
-    .article-tag {
-      transform: translateY(-60%);
+    .article-content span b.article-tag span span,
+    .feature-content span b.article-tag span span{
+      @apply opacity-100 mr-0;
     }
     .article,
     .feature-article {
       transform: scale(1.015);
     }
-  }
-  .article-tag {
-    @apply absolute flex items-start left-6 -top-1 pt-1 pb-3 px-1 rounded-md text-xs text-white font-bold shadow-lg uppercase transform;
-    background: var(--main-gradient);
-    > b {
-      @apply py-1 px-3 rounded text-white stroke-current;
-      width: 100%;
-      height: 100%;
-      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
-      background: rgba(0, 0, 0, 0.5);
-    }
-    z-index: 0;
-    transition: transform 200ms ease-in-out;
   }
 }
 
@@ -55,9 +43,26 @@
       filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.1));
       b {
         @apply text-ob text-xs uppercase;
+        &.article-tag {
+          @apply relative py-0.5 px-1.5 text-ob-bright mr-2;
+          span {
+            @apply relative z-10 text-xs;
+            position: relative;
+            z-index: 10;
+            span {
+              @apply -mr-[26px] opacity-0;
+              transition: 0.3s all ease-in-out;
+            }
+          }
+          &::after {
+            @apply absolute top-0 left-0 w-full h-full z-0 opacity-60 rounded-md;
+            content: '';
+            background: var(--main-gradient);
+          }
+        }
       }
       ul {
-        @apply inline-flex pl-2;
+        @apply inline-flex pr-2;
         font-size: 0.65rem;
         li {
           em {
@@ -111,9 +116,29 @@
     @apply flex flex-col relative px-6 pb-6 lg:p-12 z-40 row-span-2 lg:row-auto;
     b {
       @apply text-ob uppercase;
+      &.article-tag {
+        @apply relative py-0.5 px-1.5 text-ob-bright mr-3;
+
+        span {
+          @apply relative z-10 text-xs;
+          position: relative;
+          z-index: 10;
+
+          span {
+            @apply -mr-[26px] opacity-0;
+            transition: 0.3s all ease-in-out;
+          }
+        }
+
+        &::after {
+          @apply absolute top-0 left-0 w-full h-full z-0 opacity-60 rounded-md;
+          content: '';
+          background: var(--main-gradient);
+        }
+      }
     }
     ul {
-      @apply inline-flex pl-4;
+      @apply inline-flex pr-4;
       li {
         em {
           @apply not-italic opacity-50;
