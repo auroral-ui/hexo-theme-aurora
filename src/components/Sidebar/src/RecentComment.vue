@@ -10,7 +10,7 @@
           :key="comment.id"
         >
           <a
-            :href="comment.html_url"
+            :href="`${comment.html_url}#${comment.id}`"
             class="flex flex-row justify-items-center items-stretch cursor-pointer hover:opacity-100"
           >
             <div class="flex justify-start items-start">
@@ -25,9 +25,11 @@
             <div class="flex-1 text-xs">
               <div class="text-xs mb-2 pt-1">
                 <span class="text-ob-secondary pr-2">
-                  <a :href="comment.user.html_url">{{ comment.user.login }}</a>
+                  <a class="font-bold" :href="comment.user.html_url">{{
+                    comment.user.login
+                  }}</a>
                   <b
-                    class="text-ob bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
+                    class="ml-2 text-ob bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
                     v-if="comment.is_admin"
                   >
                     {{ t('settings.admin-user') }}

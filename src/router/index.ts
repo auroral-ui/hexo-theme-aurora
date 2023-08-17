@@ -68,7 +68,18 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    return new Promise(resolve => {
+      if (to.hash) {
+        setTimeout(() => {
+          resolve({ el: to.hash, behavior: 'smooth' })
+        }, 1500)
+      } else if (savedPosition) {
+        resolve(savedPosition)
+      }
+    })
+  }
 })
 
 export default router
