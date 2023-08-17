@@ -446,16 +446,89 @@ export default defineComponent({
   --waline-badge-color: var(--text-accent);
   --waline-disabled-bgcolor: var(--text-dim);
   .wl-editor {
-    @apply p-2 box-border;
+    @apply p-2 box-border bg-ob-deep-800 mx-1 my-0;
   }
 
-  .wl-login-nick,
+  .wl-login-nick {
+    @apply text-2xl pt-2;
+    color: var(--text-sub-accent);
+    img {
+      @apply h-9 w-9 mt-1.5;
+    }
+  }
+
+  .wl-avatar {
+    @apply mb-2;
+  }
+
+  .wl-header {
+    @apply flex gap-2 mb-2 ml-1 mr-2;
+    .wl-header-item {
+      @apply bg-ob-deep-800 rounded-md;
+      label {
+        @apply font-bold;
+      }
+      input {
+        @apply px-2 py-1 h-full w-full;
+        &:focus {
+          @apply bg-ob-deep-900;
+        }
+      }
+    }
+    border-bottom-width: 0;
+  }
+
+  .wl-input,
+  .wl-input.wl-nick {
+    @apply text-xs text-ob-dim;
+  }
+
   .wl-nick {
+    @apply text-2xl;
     color: var(--text-sub-accent);
   }
 
-  .wl-card {
+  .wl-cards {
+    @apply flex flex-col gap-2 pb-4;
+
+    .wl-user {
+      @apply flex justify-center pr-4 bg-ob-deep-900;
+      margin-inline-end: 0;
+      img {
+        @apply h-9 w-9 mt-1.5;
+      }
+      svg {
+        position: absolute;
+        top: calc(2.25rem * 3 / 4);
+        inset-inline-start: calc(2.2rem * 3 / 4);
+      }
+    }
+  }
+
+  .wl-comment {
+    @apply flex flex-col bg-ob-deep-900 p-4 rounded-lg;
+  }
+
+  .wl-login-info {
+    @apply flex flex-row items-center max-w-none mt-0;
+    .wl-logout-btn {
+      top: 0;
+      inset-inline-end: 0;
+    }
+    a.wl-login-nick {
+      @apply flex w-full;
+    }
+  }
+
+  .wl-card-item {
     @apply bg-ob-deep-900 p-4 rounded-lg;
+    .wl-card-item {
+      @apply shadow-ob mb-2;
+    }
+  }
+
+  .wl-card {
+    @apply pt-2 pb-0 border-b-0;
   }
 
   .wl-num {
@@ -463,7 +536,7 @@ export default defineComponent({
   }
 
   .primary.wl-btn {
-    color: #fff;
+    @apply px-4 text-white;
     border: none;
     background: var(--main-gradient);
     transition: var(--trans-ease);
@@ -472,23 +545,61 @@ export default defineComponent({
     }
   }
 
-  .wl-card .wl-delete,
-  .wl-card .wl-like,
-  .wl-card .wl-reply,
-  .wl-card .wl-edit {
-    color: var(--text-dim);
+  .wl-card {
+    .wl-quote {
+      border-inline-start: none;
+    }
+
+    .wl-delete,
+    .wl-like,
+    .wl-reply,
+    .wl-edit {
+      color: var(--text-dim);
+    }
   }
 
-  .wl-card .wl-quote {
-    border-inline-start: none;
+  .wl-sort {
+    li:hover {
+      color: var(--text-accent);
+    }
+  }
+
+  .wl-head {
+    @apply flex items-center mb-2;
+    .wl-time {
+      @apply mr-auto;
+    }
+  }
+
+  .wl-meta {
+    @apply mb-2;
+    span {
+      @apply rounded-md py-0.5 px-1.5 me-1;
+    }
   }
 
   .wl-header-item {
     @apply items-center;
   }
 
-  .wl-header input {
-    @apply p-2 m-2;
+  .wl-admin-actions {
+    @apply pt-4;
+    .wl-comment-status {
+    }
+    .wl-btn {
+      @apply py-1.5 px-2;
+      font-size: 0.65rem;
+    }
+    .wl-btn.wl-approved:disabled {
+      @apply bg-ob-deep-800 text-ob-normal;
+    }
+  }
+
+  .wl-comment-actions {
+    @apply flex gap-1.5;
+    > *:hover {
+      color: var(--text-accent);
+    }
   }
 }
 </style>
