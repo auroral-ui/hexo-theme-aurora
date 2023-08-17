@@ -35,7 +35,7 @@
         >
           <p
             v-if="authorData.description"
-            class="flex-1 pt-8 px-8 w-full text-sm text-center"
+            class="flex-1 pt-6 px-8 w-full text-sm leading-6"
             v-html="authorData.description"
           />
           <p
