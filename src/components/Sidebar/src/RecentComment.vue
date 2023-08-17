@@ -4,37 +4,44 @@
     <ul>
       <template v-if="isLoading === false">
         <li
-          class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg flex flex-row justify-items-center items-stretch shadow-sm hover:shadow-ob transition-shadow"
+          class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg shadow-sm hover:shadow-ob transition-shadow"
           v-if="comments.length > 0"
           v-for="comment in comments"
           :key="comment.id"
         >
-          <div class="flex justify-start items-start">
-            <img
-              class="col-span-1 mr-2 rounded-full p-1"
-              :src="comment.user.avatar_url"
-              alt="comment-avatar"
-              height="40"
-              width="40"
-            />
-          </div>
-          <div class="flex-1 text-xs">
-            <div class="text-xs mb-2 pt-1">
-              <span class="text-ob pr-2">
-                {{ comment.user.login }}
-                <b
-                  class="text-ob-secondary bg-ob-deep-800 py-0.5 px-1.5 rounded-md opacity-75"
-                  v-if="comment.is_admin"
-                >
-                  {{ t('settings.admin-user') }}
-                </b>
-              </span>
-              <p class="text-gray-500">{{ comment.created_at }}</p>
+          <a
+            :href="comment.html_url"
+            class="flex flex-row justify-items-center items-stretch cursor-pointer hover:opacity-100"
+          >
+            <div class="flex justify-start items-start">
+              <img
+                class="col-span-1 mr-2 rounded-full p-1"
+                :src="comment.user.avatar_url"
+                alt="comment-avatar"
+                height="28"
+                width="28"
+              />
             </div>
-            <div class="text-xs text-ob-bright pb-1">
-              {{ comment.body }}
+            <div class="flex-1 text-xs">
+              <div class="text-xs mb-2 pt-1">
+                <span class="text-ob-secondary pr-2">
+                  <a :href="comment.user.html_url">{{ comment.user.login }}</a>
+                  <b
+                    class="text-ob bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
+                    v-if="comment.is_admin"
+                  >
+                    {{ t('settings.admin-user') }}
+                  </b>
+                </span>
+                <span class="text-ob-dim text-[0.65rem]">{{
+                  comment.created_at
+                }}</span>
+              </div>
+              <div class="text-xs pb-1">
+                {{ comment.body }}
+              </div>
             </div>
-          </div>
+          </a>
         </li>
 
         <div

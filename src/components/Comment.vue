@@ -446,7 +446,11 @@ export default defineComponent({
   --waline-badge-color: var(--text-accent);
   --waline-disabled-bgcolor: var(--text-dim);
   .wl-editor {
-    @apply p-2 box-border bg-ob-deep-800 mx-1 my-0;
+    @apply p-2 box-border bg-ob-deep-800 mx-1 my-0 opacity-50;
+    transition: 0.3s opacity linear;
+    &:focus {
+      @apply opacity-100;
+    }
   }
 
   .wl-login-nick {
@@ -469,9 +473,10 @@ export default defineComponent({
         @apply font-bold;
       }
       input {
-        @apply px-2 py-1 h-full w-full;
+        @apply px-2 py-1 h-full w-full bg-ob-deep-800 opacity-50;
+        transition: 0.3s opacity ease-in-out;
         &:focus {
-          @apply bg-ob-deep-900;
+          @apply opacity-100;
         }
       }
     }
@@ -513,7 +518,7 @@ export default defineComponent({
     @apply flex flex-row items-center max-w-none mt-0;
     .wl-logout-btn {
       top: 0;
-      inset-inline-end: 0;
+      inset-inline-end: -0.5rem;
     }
     a.wl-login-nick {
       @apply flex w-full;
