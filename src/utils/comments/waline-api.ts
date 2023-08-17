@@ -112,7 +112,10 @@ export class WalineComments {
   mapComment(comment: WalineComment): RecentComments {
     // slice off the last 5 character to remove the timezone.
     const createdAt = formatTime(
-      new Date(comment.time).toISOString().slice(0, -5)
+      new Date(comment.time).toISOString().slice(0, -5),
+      {
+        lang: this.configs.lang
+      }
     )
     return {
       id: comment.objectId,

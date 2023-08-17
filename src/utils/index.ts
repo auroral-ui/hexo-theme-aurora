@@ -40,11 +40,11 @@ export function formatTime(
     },
     cn: {
       seconds: '刚刚',
-      minutes: '分钟前',
-      hours: '小时前',
-      days: '天前',
-      months: '个月前',
-      years: '年前'
+      minutes: ' 分钟前',
+      hours: ' 小时前',
+      days: ' 天前',
+      months: ' 个月前',
+      years: ' 年前'
     }
   }
 
