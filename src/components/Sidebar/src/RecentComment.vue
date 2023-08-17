@@ -4,7 +4,7 @@
     <ul>
       <template v-if="isLoading === false">
         <li
-          class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg shadow-sm hover:shadow-ob transition-shadow"
+          class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg shadow-sm transition-all duration-300 ease-in-out hover:scale-105"
           v-if="comments.length > 0"
           v-for="comment in comments"
           :key="comment.id"
@@ -61,7 +61,7 @@
       </template>
       <template v-else>
         <li
-          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-start shadow-sm hover:shadow-ob transition-shadow"
+          class="bg-ob-deep-900 px-2 py-3 mb-1.5 rounded-lg flex flex-row justify-items-center items-start shadow-sm transition-all"
           v-for="n in 7"
           :key="n"
         >
