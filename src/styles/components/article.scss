@@ -44,7 +44,7 @@
       b {
         @apply text-ob text-xs uppercase;
         &.article-tag {
-          @apply relative py-0.5 px-1.5 text-ob-bright mr-2;
+          @apply relative py-0.5 px-1.5 text-white mr-2;
           span {
             @apply relative z-10 text-xs;
             position: relative;
@@ -117,7 +117,7 @@
     b {
       @apply text-ob uppercase;
       &.article-tag {
-        @apply relative py-0.5 px-1.5 text-ob-bright mr-3;
+        @apply relative py-0.5 px-1.5 text-white mr-3;
 
         span {
           @apply relative z-10 text-xs;

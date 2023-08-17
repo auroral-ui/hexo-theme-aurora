@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-[25rem] w-full rounded-2xl relative shadow-xl mb-8"
+    class="h-[25rem] w-full rounded-2xl relative shadow-xl mb-8 flex"
     :style="gradientBackground"
   >
     <div
@@ -8,12 +8,14 @@
     >
       <div class="flex w-full relative overflow-hidden">
         <div class="top-6 left-6 absolute flex flex-col">
-          <div class="text-ob-dim text-sm">{{ t('settings.links') }}</div>
+          <div class="hidden md:flex text-ob-dim text-sm">
+            {{ t('settings.links') }}
+          </div>
           <Title
             title="settings.links-slogan"
             icon="friends"
             text-size="text-3xl"
-            paddings="pb-2"
+            paddings="hidden md:flex pb-2"
             margins="mb-0 mt-0"
           />
         </div>
