@@ -2,7 +2,11 @@
   <div
     class="bg-ob-deep-800 p-4 mt-8 lg:px-14 lg:py-10 rounded-2xl shadow-xl mb-8 lg:mb-0"
   >
-    <Title :title="'titles.comment'" paddings="pb-2 pt-0" />
+    <Title
+      :title="'titles.comment'"
+      paddings="pb-2 pt-0"
+      text-size="text-2xl md:text-3xl"
+    />
     <div id="gitalk-container"></div>
     <div id="vcomments"></div>
     <div id="tcomment"></div>
@@ -445,6 +449,8 @@ export default defineComponent({
   --waline-bgcolor-light: var(--background-secondary);
   --waline-badge-color: var(--text-accent);
   --waline-disabled-bgcolor: var(--text-dim);
+  --waline-avatar-size: 2.25rem;
+  --waline-m-avatar-size: 1.25rem;
   .wl-editor {
     @apply p-2 box-border bg-ob-deep-800 mx-1 my-0 opacity-50;
     transition: 0.3s opacity linear;
@@ -454,15 +460,19 @@ export default defineComponent({
   }
 
   .wl-login-nick {
-    @apply text-2xl pt-2;
+    @apply text-lg lg:text-2xl pt-0 lg:pt-2;
     color: var(--text-sub-accent);
     img {
-      @apply h-9 w-9 mt-1.5;
+      @apply h-6 w-6 lg:h-9 lg:w-9 mt-1.5;
     }
   }
 
+  .wl-text-number {
+    @apply hidden lg:block;
+  }
+
   .wl-avatar {
-    @apply mb-2;
+    @apply h-6 w-6 lg:h-9 lg:w-9 mb-3 lg:mb-5 mr-3;
   }
 
   .wl-header {
@@ -489,7 +499,7 @@ export default defineComponent({
   }
 
   .wl-nick {
-    @apply text-2xl;
+    @apply text-xl lg:text-2xl;
     color: var(--text-sub-accent);
   }
 
@@ -497,10 +507,13 @@ export default defineComponent({
     @apply flex flex-col gap-2 pb-4;
 
     .wl-user {
-      @apply flex justify-center pr-4 bg-ob-deep-900;
+      @apply flex justify-center pr-2 lg:pr-4 bg-ob-deep-900;
       margin-inline-end: 0;
+      .verified-icon {
+        @apply left-4 top-6 lg:left-6 lg:top-8;
+      }
       img {
-        @apply h-9 w-9 mt-1.5;
+        @apply h-6 w-6 lg:h-9 lg:w-9 mt-1.5;
       }
       svg {
         position: absolute;
@@ -526,14 +539,14 @@ export default defineComponent({
   }
 
   .wl-card-item {
-    @apply bg-ob-deep-900 p-4 rounded-lg;
+    @apply bg-ob-deep-900 p-2 lg:p-4 rounded-lg;
     .wl-card-item {
       @apply shadow-ob mb-2;
     }
   }
 
   .wl-card {
-    @apply pt-2 pb-0 border-b-0;
+    @apply pt-1 lg:pt-2 pb-0 border-b-0;
   }
 
   .wl-num {
@@ -561,6 +574,23 @@ export default defineComponent({
     .wl-edit {
       color: var(--text-dim);
     }
+
+    .wl-edit,
+    .wl-delete,
+    .wl-like {
+      @apply hidden lg:inline-flex;
+    }
+
+    .wl-badge {
+      @apply text-[0.55rem] text-xs px-1 py-0.5 me-0 mr-2 box-border border-none bg-ob-accent-55 text-ob;
+      &:first-of-type {
+        @apply text-white;
+        background: var(--main-gradient);
+      }
+      &:nth-of-type(2) {
+        @apply hidden lg:inline-flex;
+      }
+    }
   }
 
   .wl-sort {
@@ -579,7 +609,7 @@ export default defineComponent({
   .wl-meta {
     @apply mb-2;
     span {
-      @apply rounded-md py-0.5 px-1.5 me-1;
+      @apply rounded-md py-0.5 px-1.5 me-1 text-[0.55rem] lg:text-xs;
     }
   }
 

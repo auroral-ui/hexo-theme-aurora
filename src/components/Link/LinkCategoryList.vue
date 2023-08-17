@@ -9,7 +9,9 @@
       <span class="text-ob-dim mb-8 text-lg">
         {{ t(`${convertToLocale(category)}-desc`) }}
       </span>
-      <ul class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
+      <ul
+        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8"
+      >
         <template v-for="link of links[category]">
           <LinkCard
             :nick="link.nick"
