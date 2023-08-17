@@ -133,11 +133,17 @@ div.code-toolbar > .toolbar button {
 }
 div.code-toolbar > .toolbar a,
 div.code-toolbar > .toolbar button.copy-to-clipboard-button {
-  color: var(--foreground);
-  font-size: 0.8em;
-  padding: 0.5em;
-  background: var(--comment);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-normal);
+  font-size: 0.75rem;
+  height: 2rem;
+  width: 4rem;
+  background: var(--background-secondary);
   border-radius: 0.5em;
+  transition: 0.2s transform linear;
 }
 div.code-toolbar > .toolbar a:focus,
 div.code-toolbar > .toolbar a:hover,
@@ -145,10 +151,9 @@ div.code-toolbar > .toolbar button:focus,
 div.code-toolbar > .toolbar button:hover,
 div.code-toolbar > .toolbar span:focus,
 div.code-toolbar > .toolbar span:hover {
-  color: #ffffff;
   text-decoration: none;
-  opacity: 0.5;
-  background-color: var(--purple);
+  color: var(--text-bright);
+  transform: scale(1.1);
 }
 @media print {
   code[class*='language-'],
