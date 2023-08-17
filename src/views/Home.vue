@@ -43,7 +43,13 @@
         </ul>
 
         <span :class="expanderClass" @click="expandHandler">
-          <SvgIcon icon-class="chevron" />
+          <SvgIcon
+            icon-class="chevron"
+            height="1.2rem"
+            width="1.2rem"
+            fill="var(--text-normal)"
+            stroke="var(--text-normal)"
+          />
         </span>
 
         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
