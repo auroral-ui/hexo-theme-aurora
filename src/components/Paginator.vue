@@ -11,6 +11,8 @@
           icon-class="arrow-left"
           height="1.25rem"
           width="1.25rem"
+          fill="var(--text-accent)"
+          stroke="var(--text-accent)"
         />
         <span>{{ t('settings.paginator.newer') }}</span>
       </li>
@@ -47,6 +49,8 @@
           icon-class="arrow-right"
           height="1.25rem"
           width="1.25rem"
+          fill="var(--text-accent)"
+          stroke="var(--text-accent)"
         />
       </li>
     </ul>
