@@ -83,6 +83,10 @@ div::-webkit-scrollbar-track {
   background: transparent !important;
 }
 
+b {
+  @apply font-bold text-ob-bright;
+}
+
 .highlighted {
   @apply border-solid;
   border-width: 1px;
