@@ -118,9 +118,6 @@ export default defineComponent({
 .link-group-wrapper {
   @apply transform-gpu;
   animation: rowup 60s linear infinite;
-  &:hover {
-    animation-play-state: paused;
-  }
 }
 
 .links-group-avatar-pair {
