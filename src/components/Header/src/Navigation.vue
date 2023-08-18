@@ -1,13 +1,15 @@
 <template>
   <nav class="items-center flex-1 hidden lg:flex">
-    <ul class="flex flex-row list-none px-6 text-white">
+    <ul
+      class="flex flex-row items-center list-none px-6 text-white invert-text"
+    >
       <li
         class="not-italic font-medium text-xs h-full relative flex flex-col items-center justify-center cursor-pointer text-center py-2 px-2"
         v-for="route in routes"
         :key="route.path"
       >
         <div
-          class="nav-link text-sm block px-1.5 py-0.5 rounded-md relative uppercase cursor-pointer"
+          class="nav-link invert-text text-sm block px-1.5 py-0.5 rounded-md relative uppercase cursor-pointer"
           @click="pushPage(route.path)"
           v-if="route.children && route.children.length === 0"
           :data-menu="route.name"
@@ -111,10 +113,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .nav-link {
-  @apply hover:text-ob-bright;
+  @apply hover:text-ob-bright font-extrabold;
   &:hover {
     &:before {
-      @apply opacity-60;
+      @apply opacity-60 bg-gray-800;
     }
   }
   &:before {

@@ -1,13 +1,13 @@
 <template>
   <div id="App-Wrapper" :class="[appWrapperClass, theme]" :style="wrapperStyle">
+    <HeaderMain />
     <div
       id="App-Container"
-      class="app-container max-w-10/12 lg:max-w-screen-2xl px-3 lg:px-8"
+      class="app-container lg:max-w-screen-2xl px-3 lg:px-8"
       @keydown.meta.k.stop.prevent="handleOpenModal"
       tabindex="-1"
       :style="cssVariables"
     >
-      <HeaderMain />
       <div class="app-banner app-banner-image" :style="headerImage" />
       <div class="app-banner app-banner-screen" :style="headerBaseBackground" />
       <div class="app-banner app-banner-cover" />
@@ -23,12 +23,10 @@
   </div>
   <FooterLink :links="themeConfig.footerLinks.data" />
   <Footer :style="cssVariables" />
-  <div class="App-Mobile-sidebar" v-if="isMobile">
-    <div id="App-Mobile-Profile" class="App-Mobile-wrapper">
-      <MobileMenu />
-    </div>
-  </div>
-  <Navigator />
+  <template v-if="isMobile" ref="mobileSidebar">
+    <MobileMenu />
+  </template>
+  <!-- <Navigator /> -->
   <Dia v-if="!isMobile && configReady" />
   <teleport to="head">
     <title>{{ title }}</title>
@@ -89,6 +87,7 @@ export default defineComponent({
     const searchStore = useSearchStore()
     const MOBILE_WITH = 996 // Using the mobile width by Bootstrap design.
     const { t } = useI18n()
+    const mobileSidebar = ref()
 
     const appWrapperClass = 'app-wrapper'
     const loadingBarClass = ref({
@@ -242,6 +241,7 @@ export default defineComponent({
       lightBoxVisible: computed(() => lightBoxStore.visible),
       lightBoxIndex: computed(() => lightBoxStore.index),
       lightBoxImages: computed(() => lightBoxStore.images),
+      mobileSidebar,
       appWrapperClass,
       loadingBarClass,
       handleOpenModal,
@@ -280,16 +280,6 @@ body {
     top: 100px;
     left: 0;
     z-index: 1;
-  }
-
-  .App-Mobile-sidebar {
-    @apply fixed top-0 bottom-0 left-0;
-  }
-  .App-Mobile-wrapper {
-    @apply relative overflow-y-auto h-full -mr-4 pr-6 pl-4 pt-8 opacity-0;
-    transition: all 0.85s cubic-bezier(0, 1.8, 1, 1.2);
-    transform: translateY(-20%);
-    width: 280px;
   }
 }
 
