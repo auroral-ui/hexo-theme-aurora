@@ -1,3 +1,30 @@
+# [2.4.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.3.1...v2.4.0) (2023-08-18)
+
+
+### Bug Fixes
+
+* horizontal feature displaying tags incorrectly ([0c34591](https://github.com/auroral-ui/hexo-theme-aurora/commit/0c34591bc363006bf8d5d6f389de7c25bc71fcef))
+* no stopping link box animation on hover ([a1c4b51](https://github.com/auroral-ui/hexo-theme-aurora/commit/a1c4b51ad2ed1e5b2455fbf1f1dc8a19c5bae7c8))
+* prism copy button style ([a16cb48](https://github.com/auroral-ui/hexo-theme-aurora/commit/a16cb4830d40d2b6fec31748f8348bc6af239a1a))
+* statistic labels too large in English ([3c0e81f](https://github.com/auroral-ui/hexo-theme-aurora/commit/3c0e81fa6b11565898445284ab62386ecf87f0f1)), closes [#297](https://github.com/auroral-ui/hexo-theme-aurora/issues/297)
+* update to use archives endpoint to avoid feature post affect ([c207a16](https://github.com/auroral-ui/hexo-theme-aurora/commit/c207a16caaa75f09e11f3aac6e73964aa1c496fe)), closes [#262](https://github.com/auroral-ui/hexo-theme-aurora/issues/262) [#262](https://github.com/auroral-ui/hexo-theme-aurora/issues/262)
+
+
+### Features
+
+* add footer link feature ([8e29f0b](https://github.com/auroral-ui/hexo-theme-aurora/commit/8e29f0b7c63f9696a611f607d98b8d6c07945262))
+* add image enlarge feature ([bd5b862](https://github.com/auroral-ui/hexo-theme-aurora/commit/bd5b86272ca05925485f840223735998f655d678))
+* add recent comment link with anchor ([ef0a517](https://github.com/auroral-ui/hexo-theme-aurora/commit/ef0a517b5ba580a890fc466aedb929539d10bc14))
+* better page title for home page ([9c09e57](https://github.com/auroral-ui/hexo-theme-aurora/commit/9c09e57695f9e8a4a0133db4cd72022fb08c3c37))
+* new feature and pin effect ([c4b962f](https://github.com/auroral-ui/hexo-theme-aurora/commit/c4b962f2c6d5acc848da7d18cad1a6823a75b057))
+* pagination button UI upgrade ([689dd9b](https://github.com/auroral-ui/hexo-theme-aurora/commit/689dd9b383f5e490050c71d82914f3c0a4646f6c))
+* update comment and friends mobile mode style ([79e242c](https://github.com/auroral-ui/hexo-theme-aurora/commit/79e242c2894375b154953cf4bd71ac2e7b59bfad))
+* updated to high quality SVG icons ([aef2fb2](https://github.com/auroral-ui/hexo-theme-aurora/commit/aef2fb2564bfec40c7eaa3bdbfc550d204b372db))
+* upgrade both PC and mobile menu ([8682423](https://github.com/auroral-ui/hexo-theme-aurora/commit/8682423765238a4bbafa8bbff75e5285d7b1cc9f))
+* upgrade recent comment UI ([0d96066](https://github.com/auroral-ui/hexo-theme-aurora/commit/0d96066eeaee41958bc8f095b2b3d1bf5ef80416))
+* upgrade tags UI ([45944c6](https://github.com/auroral-ui/hexo-theme-aurora/commit/45944c627cd746327baa9e4096572582c82010a0))
+* upgrade waline comment UI ([1121a12](https://github.com/auroral-ui/hexo-theme-aurora/commit/1121a1296527b9d596e0af3c158fbd48d6b505fc))
+
 ## [2.3.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.3.0...v2.3.1) (2023-08-13)
 
 
