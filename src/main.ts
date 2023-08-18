@@ -35,7 +35,7 @@ registerScrollSpy(app)
 app.mount('#app')
 
 console.log(
-  '%c Aurora is developed by TriDiamond%c',
+  '%c Aurora is developed by Benny Guo (三钻)%c',
   'background:#24272A; color:#73ddd7',
   '',
   'https://github.com/auroral-ui/hexo-theme-aurora'

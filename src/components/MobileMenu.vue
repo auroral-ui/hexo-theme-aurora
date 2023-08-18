@@ -188,7 +188,6 @@ export default defineComponent({
             bodyEle.style.overflow = 'initial'
           }
           window.setTimeout(() => {
-            console.log(123)
             blurScreen.value.style.animation = 'none'
             blurScreen.value.style.display = 'none'
           }, 500)
