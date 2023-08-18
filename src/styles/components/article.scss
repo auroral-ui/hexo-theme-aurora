@@ -46,11 +46,11 @@
         &.article-tag {
           @apply relative py-0.5 px-1.5 text-white mr-2;
           span {
-            @apply relative z-10 text-xs;
+            @apply relative z-10 text-xs ml-0.5;
             position: relative;
             z-index: 10;
             span {
-              @apply -mr-[26px] opacity-0;
+              @apply -mr-[28px] opacity-0;
               transition: 0.3s all ease-in-out;
             }
           }
@@ -120,12 +120,12 @@
         @apply relative py-0.5 px-1.5 text-white mr-3;
 
         span {
-          @apply relative z-10 text-xs;
+          @apply relative z-10 text-xs ml-0.5;
           position: relative;
           z-index: 10;
 
           span {
-            @apply -mr-[26px] opacity-0;
+            @apply -mr-[30px] opacity-0;
             transition: 0.3s all ease-in-out;
           }
         }
@@ -653,7 +653,7 @@
 }
 
 .post-header {
-  @apply mb-4;
+  @apply mb-4 px-4;
   .post-labels {
     @apply relative -bottom-1.5;
     > b {
