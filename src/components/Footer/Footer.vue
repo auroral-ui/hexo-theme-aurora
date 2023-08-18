@@ -58,13 +58,13 @@
               </span>
             </li>
           </ul>
-          <ul class="flex flex-col min-w-[150px]">
+          <ul class="flex flex-col min-w-[150px] gap-1.5">
             <li class="flex" v-if="enabledPlugin === 'waline'">
               <span>
                 <SvgIcon
                   icon-class="hot"
                   class="mr-1 text-lg inline-block"
-                  :svg-type="SvgTypes.fill"
+                  stroke="currentColor"
                 />
                 {{ t('settings.page-views-value') }}
               </span>
@@ -90,7 +90,11 @@
 
             <li v-if="runningDays" class="flex">
               <span class="">
-                <SvgIcon icon-class="date" class="mr-1 text-lg inline-block" />
+                <SvgIcon
+                  icon-class="date"
+                  class="mr-1 text-lg inline-block"
+                  stroke="currentColor"
+                />
                 {{ t('settings.site-running-for') }}
               </span>
               <span class="flex-1 text-right"

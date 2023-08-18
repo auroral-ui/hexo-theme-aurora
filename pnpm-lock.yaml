@@ -38,9 +38,6 @@ dependencies:
   vue3-lazyload:
     specifier: ^0.3.6
     version: 0.3.6(vue@3.3.4)
-  vue3-scroll-spy:
-    specifier: ^1.0.8
-    version: 1.0.8
 
 devDependencies:
   '@commitlint/cli':
@@ -133,6 +130,9 @@ devDependencies:
   vue-jest:
     specifier: ^3.0.7
     version: 3.0.7(babel-core@6.26.3)(vue-template-compiler@2.7.14)(vue@3.3.4)
+  vue3-scroll-spy:
+    specifier: ^1.0.8
+    version: 1.0.8
 
 packages:
 
@@ -1023,7 +1023,7 @@ packages:
 
   /@tweenjs/tween.js@18.6.4:
     resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==}
-    dev: false
+    dev: true
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
@@ -8093,7 +8093,7 @@ packages:
     dependencies:
       '@tweenjs/tween.js': 18.6.4
       vue: 3.3.4
-    dev: false
+    dev: true
 
   /vue@3.3.4:
     resolution: {integrity: sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==}

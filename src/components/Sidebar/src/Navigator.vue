@@ -7,13 +7,23 @@
       class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="goBack"
     >
-      <SvgIcon class="inline-block text-3xl" icon-class="go-back" />
+      <SvgIcon
+        class="inline-block text-3xl"
+        icon-class="go-back"
+        fill="none"
+        stroke="currentColor"
+      />
     </li>
     <li
       class="border-r-4 border-ob-deep-900 flex justify-center py-3 w-full hover:opacity-50 hover:text-ob transition-all cursor-pointer"
       @click="backToTop"
     >
-      <SvgIcon class="inline-block text-3xl" icon-class="back-to-top" />
+      <SvgIcon
+        class="inline-block text-3xl"
+        icon-class="back-to-top"
+        fill="none"
+        stroke="currentColor"
+      />
     </li>
     <li
       v-if="comments"
@@ -21,17 +31,21 @@
       @click="jumpToComments"
       data-dia="jump-to-comment"
     >
-      <SvgIcon class="inline-block text-3xl" icon-class="quote" />
+      <SvgIcon
+        class="inline-block text-3xl"
+        icon-class="quote"
+        fill="none"
+        stroke="currentColor"
+      />
     </li>
   </ul>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import useJumpToEle from '@/hooks/useJumpToEle'
-import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 export default defineComponent({
   name: 'Navigator',

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import i18n from '@/locales/index'
 import { useAppStore } from './app'
+import { useRoute } from 'vue-router'
 
 interface StateData {
   title: string
@@ -33,7 +34,11 @@ export const useMetaStore = defineStore({
      */
     getTitle(): string {
       const appStore = useAppStore()
-      const subtitle = appStore.themeConfig.site.subtitle || 'Blog'
+      const route = useRoute()
+      let subtitle = appStore.themeConfig.site.subtitle || 'Blog'
+      if (route.name && route.name === 'home') {
+        subtitle = appStore.themeConfig.site.slogan
+      }
       if (this.title === '') return subtitle
       return `${this.title} | ${subtitle}`
     }

@@ -1,6 +1,6 @@
 <template>
   <Sticky
-    :stickyTop="32"
+    :stickyTop="32 + 81"
     endingElId="footer-link"
     dynamicElClass="#sticky-tag-box"
   >
@@ -22,8 +22,10 @@
               <SvgIcon
                 class="font-bold"
                 icon-class="more"
-                height="2rem"
-                width="2rem"
+                fill="currentColor"
+                stroke="none"
+                height="1.5rem"
+                width="1.5rem"
               />
               <span>{{ t('settings.more-tags') }}</span>
             </div>
@@ -94,7 +96,7 @@ export default defineComponent({
 }
 
 .more-btn {
-  @apply flex flex-col justify-center items-center h-11 cursor-pointer absolute bg-ob-deep-900 rounded-lg w-full shadow-md overflow-hidden;
+  @apply flex flex-col justify-center items-center h-9 cursor-pointer absolute bg-ob-deep-900 rounded-lg w-full shadow-md overflow-hidden;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -102,11 +104,11 @@ export default defineComponent({
     transition: 0.2s all ease-in-out;
   }
   span {
-    @apply opacity-0 font-bold -mb-8;
+    @apply opacity-0 font-bold -mb-7;
     transition: 0.2s all ease-in-out;
   }
   &:hover span {
-    @apply scale-110 opacity-100 mb-1.5;
+    @apply scale-110 opacity-100 mb-0.5;
   }
   &:hover svg {
     @apply opacity-0;

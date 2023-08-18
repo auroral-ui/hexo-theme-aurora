@@ -1,6 +1,12 @@
 <template>
   <p :id="id" :class="titleClasses">
-    <SvgIcon v-if="icon" :icon-class="icon" class="inline-block mr-2" />
+    <SvgIcon
+      v-if="icon"
+      :icon-class="icon"
+      class="inline-block mr-2"
+      fill="none"
+      stroke="currentColor"
+    />
     {{ t(titleStr) }} <span class="ml-2" v-if="count">({{ count }})</span>
     <span
       class="absolute bottom-0 h-1 w-24 rounded-full"

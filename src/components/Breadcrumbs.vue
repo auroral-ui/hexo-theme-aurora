@@ -1,5 +1,5 @@
 <template>
-  <ul class="breadcrumbs flex flex-row gap-6 text-white z-50">
+  <ul class="breadcrumbs flex flex-row gap-6 text-white z-50 px-4">
     <li>
       {{ t('menu.home') }}
     </li>
