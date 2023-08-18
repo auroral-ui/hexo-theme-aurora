@@ -16,7 +16,9 @@
   --background-secondary: #ffffff;
   --background-secondary-alt: #2e3236;
   --background-trans: rgba(0, 0, 0, 0.15);
+  --background-blur: rgba(255, 255, 255, 0.09);
   --text-bright: #000000;
+  --text-invert: #ffffff;
   --text-normal: #333333;
   --text-accent: #e93796;
   --text-sub-accent: #547ce7;
@@ -95,6 +97,25 @@
         hsla(225, 40%, 96%, 0.951) 84.5%,
         hsla(225, 40%, 96%, 0.987) 91.9%,
         var(--background-primary));
+  --nav-cover: linear-gradient(90deg,
+        hsla(225,
+          40%,
+          96%, 0) 0,
+        hsla(225, 40%, 96%, 0.013) 8.1%,
+        hsla(225, 40%, 96%, 0.049) 15.5%,
+        hsla(225, 40%, 96%, 0.104) 22.5%,
+        hsla(225, 40%, 96%, 0.175) 29%,
+        hsla(225, 40%, 96%, 0.259) 35.3%,
+        hsla(225, 40%, 96%, 0.352) 41.2%,
+        hsla(225, 40%, 96%, 0.45) 47.1%,
+        hsla(225, 40%, 96%, 0.55) 52.9%,
+        hsla(225, 40%, 96%, 0.648) 58.8%,
+        hsla(225, 40%, 96%, 0.741) 64.7%,
+        hsla(225, 40%, 96%, 0.825) 71%,
+        hsla(225, 40%, 96%, 0.896) 77.5%,
+        hsla(225, 40%, 96%, 0.951) 84.5%,
+        hsla(225, 40%, 96%, 0.987) 91.9%,
+        var(--background-primary));
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(232, 57, 255, 0.06),
     0 10px 10px -5px rgba(53, 11, 59, 0.1);
@@ -115,9 +136,11 @@
   --background-secondary: #212121;
   --background-secondary-alt: #0d0b12;
   --background-trans: rgba(255, 255, 255, 0.15);
+  --background-blur: rgba(0,0,0,0.09);
   --skeleton-bg: #2e2e2e;
   --skeleton-hl: #363636;
   --text-bright: #fff;
+  --text-invert: #000000;
   --text-normal: #bebebe;
   --text-accent: #0fb6d6;
   --text-sub-accent: #f4569d;
@@ -178,6 +201,23 @@
     var(--background-secondary)
   );
   --banner-cover: linear-gradient(180deg,
+        hsla(0, 0%, 10%, 0) 0,
+        hsla(0, 0%, 10%, 0.010) 8.1%,
+        hsla(0, 0%, 10%, 0.049) 15.5%,
+        hsla(0, 0%, 10%, 0.104) 22.5%,
+        hsla(0, 0%, 10%, 0.175) 29%,
+        hsla(0, 0%, 10%, 0.259) 35.3%,
+        hsla(0, 0%, 10%, 0.352) 41.2%,
+        hsla(0, 0%, 10%, 0.45) 47.1%,
+        hsla(0, 0%, 10%, 0.55) 52.9%,
+        hsla(0, 0%, 10%, 0.648) 58.8%,
+        hsla(0, 0%, 10%, 0.741) 64.7%,
+        hsla(0, 0%, 10%, 0.825) 71%,
+        hsla(0, 0%, 10%, 0.896) 77.5%,
+        hsla(0, 0%, 10%, 0.951) 84.5%,
+        hsla(00, 0%, 10%, 0.987) 91.9%,
+        var(--background-primary));
+  --nav-cover: linear-gradient(90deg,
         hsla(0, 0%, 10%, 0) 0,
         hsla(0, 0%, 10%, 0.010) 8.1%,
         hsla(0, 0%, 10%, 0.049) 15.5%,

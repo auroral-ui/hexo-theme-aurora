@@ -1,15 +1,6 @@
 <template>
   <li class="article-container">
     <div class="article">
-      <!-- <span  >
-
-      </span>
-      <span v-else-if="post.feature" class="article-tag">
-        <b>
-          <SvgIcon icon-class="hot" />
-          {{ t('settings.featured') }}
-        </b>
-      </span> -->
       <div class="article-thumbnail">
         <img v-if="post.cover" v-lazy="post.cover" alt="" />
         <img v-else src="@/assets/default-cover.jpg" />
@@ -21,9 +12,10 @@
             <span>
               <SvgIcon
                 icon-class="hot"
-                width="1.1rem"
-                height="1.1rem"
-                class="-mb-0.5 mr-1"
+                width="1.rem"
+                height="1.05rem"
+                class="-mb-0.5"
+                stroke="currentColor"
               />
               <span>{{ t('settings.pinned') }}</span>
             </span>
@@ -32,9 +24,10 @@
             <span>
               <SvgIcon
                 icon-class="hot"
-                width="1.1rem"
-                height="1.1rem"
+                width="1.05rem"
+                height="1.05rem"
                 class="-mb-0.5"
+                stroke="currentColor"
               />
               <span>{{ t('settings.featured') }}</span>
             </span>

@@ -12,9 +12,10 @@
             <span>
               <SvgIcon
                 icon-class="hot"
-                width="1.1rem"
-                height="1.1rem"
+                width="1.05rem"
+                height="1.05rem"
                 class="-mb-0.5 mr-1"
+                stroke="currentColor"
               />
               <span>{{ t('settings.pinned') }}</span>
             </span>
@@ -23,9 +24,10 @@
             <span>
               <SvgIcon
                 icon-class="hot"
-                width="1.1rem"
-                height="1.1rem"
-                class="-mb-0.5"
+                width="1.05rem"
+                height="1.05rem"
+                class="-mb-0.5 mr-1"
+                stroke="currentColor"
               />
               <span>{{ t('settings.featured') }}</span>
             </span>

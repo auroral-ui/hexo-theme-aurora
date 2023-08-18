@@ -15,6 +15,7 @@ export default {
         'ob-accent-55': 'var(--bg-accent-55)',
         'ob-secondary': 'var(--text-sub-accent)',
         'ob-bright': 'var(--text-bright)',
+        'ob-invert': 'var(--text-invert)',
         'ob-dim': 'var(--text-dim)',
         'ob-deep': {
           800: 'var(--background-secondary)',

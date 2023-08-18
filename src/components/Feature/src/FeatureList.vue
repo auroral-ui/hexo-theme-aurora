@@ -9,7 +9,7 @@
         <h2 class="text-3xl pb-8 lg:pb-14">
           <p :style="gradientText">EDITOR'S SELECTION</p>
           <span class="relative text-xl text-ob-bright font-semibold">
-            <SvgIcon class="inline-block" icon-class="hot" />
+            <SvgIcon class="inline-block" icon-class="hot" stroke="white" />
             {{ t('home.recommended') }}
           </span>
         </h2>
