@@ -144,7 +144,7 @@ export default defineComponent({
       setTimeout(() => {
         progress.value = Number(
           (
-            (window.pageYOffset /
+            (window.scrollY /
               (document.documentElement.scrollHeight - window.innerHeight)) *
             100
           ).toFixed(0)

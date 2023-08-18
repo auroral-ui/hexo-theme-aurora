@@ -9,10 +9,11 @@
 </template>
 
 <script lang="ts">
-import { StyleValue, computed, defineComponent, ref } from 'vue'
+import { StyleValue, computed, defineComponent, ref, watch } from 'vue'
 
 export default defineComponent({
   name: 'ObSticky',
+  emits: ['activeChange'],
   props: {
     stickyTop: {
       type: Number,
@@ -37,9 +38,13 @@ export default defineComponent({
     dynamicElClass: {
       type: String,
       default: ''
+    },
+    delay: {
+      type: Number,
+      default: 0
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
     let active = ref(false),
       position = ref(''),
       width = ref(),
@@ -99,6 +104,7 @@ export default defineComponent({
       this.active = true
       this.width = this.width + 'px'
       this.isSticky = true
+      this.$emit('activeChange', true)
     },
     handleReset() {
       if (!this.active) {
@@ -107,10 +113,13 @@ export default defineComponent({
       this.reset()
     },
     reset() {
-      this.position = ''
-      this.width = 'auto'
-      this.active = false
-      this.isSticky = false
+      this.$emit('activeChange', false)
+      setTimeout(() => {
+        this.position = ''
+        this.width = 'auto'
+        this.active = false
+        this.isSticky = false
+      }, this.delay)
     },
     handleScroll() {
       /**

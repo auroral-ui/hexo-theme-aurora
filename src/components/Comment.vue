@@ -4,6 +4,7 @@
   >
     <Title
       :title="'titles.comment'"
+      icon="quote"
       paddings="pb-2 pt-0"
       text-size="text-2xl md:text-3xl"
     />

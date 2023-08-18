@@ -1,7 +1,7 @@
 <template>
   <div :class="notificationClasses">
     <div
-      class="flex flex-col relative bg-ob-deep-900 rounded-xl pt-4 overflow-hidden"
+      class="flex flex-col relative bg-ob-deep-900 rounded-xl pt-3 overflow-hidden"
     >
       <div class="flex items-center space-x-4 px-6">
         <SvgIcon
@@ -13,7 +13,7 @@
         />
         <span>{{ message }}</span>
       </div>
-      <span class="progress-bar mt-4" :style="progressStyle"></span>
+      <span class="progress-bar mt-3" :style="progressStyle"></span>
     </div>
   </div>
 </template>
