@@ -1,6 +1,6 @@
 <template>
   <Sticky
-    :stickyTop="32"
+    :stickyTop="32 + 81"
     endingElId="footer-link"
     dynamicElClass="#sticky-sidebar"
   >

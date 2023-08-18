@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-20">
     <Breadcrumbs :current="pageTitle" />
     <div class="flex flex-col">
       <div class="post-header">

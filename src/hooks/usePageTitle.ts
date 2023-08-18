@@ -21,6 +21,10 @@ export default function usePageTitle() {
     metaStore.setTitle(pageTitle.value)
   }
 
+  const updateTitleByText = (text: string) => {
+    metaStore.setTitle(text)
+  }
+
   watch(
     () => appStore.locale,
     value => {
@@ -32,6 +36,7 @@ export default function usePageTitle() {
 
   return {
     pageTitle,
-    updateTitle
+    updateTitle,
+    updateTitleByText
   }
 }

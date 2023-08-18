@@ -1,19 +1,13 @@
 <template>
   <p
-    class="
-      relative
-      flex
-      items-center
-      pb-2
-      mb-4
-      text-xl text-ob-bright
-      uppercase
-    "
+    class="relative flex items-center pb-2 mb-4 text-xl text-ob-bright uppercase"
   >
     <SvgIcon
       v-if="icon && side === 'left'"
       :icon-class="icon"
       class="inline-block mr-2"
+      fill="none"
+      stroke="currentColor"
     />
     <span :class="titleClass">{{ t(titleStr) }}</span>
     <SvgIcon

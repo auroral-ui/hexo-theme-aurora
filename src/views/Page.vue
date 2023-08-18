@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-20">
     <Breadcrumbs :current="pageTitle" />
     <PageContent :post="pageData" :title="pageTitle">
       <template v-if="enabledComment">

@@ -5,7 +5,8 @@
   >
     <span>
       <SvgIcon
-        icon-class="clock-outline"
+        class="opacity-70"
+        icon-class="clock"
         fill="none"
         stroke="white"
         height="1.25em"
@@ -17,7 +18,8 @@
     </span>
     <span>
       <SvgIcon
-        icon-class="text-outline"
+        class="opacity-70"
+        icon-class="text"
         fill="none"
         stroke="white"
         height="1.25em"
@@ -31,7 +33,7 @@
     <!-- Waline -->
     <span v-if="plugin === 'waline'">
       <SvgIcon
-        class="h-5 w-5"
+        class="opacity-70"
         icon-class="hot"
         fill="none"
         stroke="white"
@@ -46,7 +48,7 @@
     </span>
     <span v-if="comments && plugin === 'waline'">
       <SvgIcon
-        class="h-5 w-5"
+        class="opacity-70"
         icon-class="quote"
         fill="none"
         stroke="white"
@@ -63,7 +65,7 @@
     <!-- Twikoo -->
     <span v-if="plugin === 'twikoo'">
       <SvgIcon
-        class="h-5 w-5"
+        class="opacity-70"
         icon-class="hot"
         fill="none"
         stroke="white"
@@ -76,7 +78,7 @@
     </span>
     <span v-if="comments && plugin === 'twikoo'">
       <SvgIcon
-        class="h-5 w-5"
+        class="opacity-70"
         icon-class="quote"
         fill="none"
         stroke="white"
@@ -97,7 +99,7 @@
     <!-- Valine -->
     <span v-if="plugin === 'valine'">
       <SvgIcon
-        class="h-5 w-5"
+        class="opacity-70"
         icon-class="hot"
         fill="none"
         stroke="white"
@@ -121,7 +123,8 @@
   <div v-else class="post-stats">
     <span>
       <SvgIcon
-        icon-class="clock-outline"
+        class="opacity-70"
+        icon-class="clock"
         fill="none"
         stroke="white"
         height="1.25em"
@@ -133,8 +136,9 @@
     </span>
     <span>
       <SvgIcon
-        icon-class="text-outline"
-        fill="none"
+        class="opacity-70"
+        icon-class="text"
+        fill="white"
         stroke="white"
         height="1.25em"
         width="1.25em"
@@ -147,6 +151,7 @@
       v-if="plugin === 'waline' || plugin === 'twikoo' || plugin === 'valine'"
     >
       <SvgIcon
+        class="opacity-70"
         icon-class="hot"
         fill="none"
         stroke="white"
@@ -159,6 +164,7 @@
     </span>
     <span v-if="comments && (plugin === 'waline' || plugin === 'twikoo')">
       <SvgIcon
+        class="opacity-70"
         icon-class="quote"
         fill="none"
         stroke="white"

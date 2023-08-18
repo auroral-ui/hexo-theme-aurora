@@ -373,6 +373,8 @@ export class CustomSocials {
 export class Site {
   /** Website subtitle (used after `-`) */
   subtitle = ''
+  /** Slog use in the title */
+  slogan = ''
   /** Author of the blog website */
   author = ''
   /** Author's nick name */

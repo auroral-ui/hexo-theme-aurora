@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col mt-20">
+    <Breadcrumbs :current="pageTitle" />
     <div class="post-header">
-      <Breadcrumbs :current="pageTitle" />
       <h1 class="post-title text-white uppercase">{{ pageTitle }}</h1>
     </div>
     <div

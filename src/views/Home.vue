@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="block mt-8">
     <Feature v-if="themeConfig.theme.feature" :data="topFeature">
       <FeatureList :data="featurePosts" />
     </Feature>
@@ -106,6 +106,7 @@ import { useCategoryStore } from '@/stores/category'
 import Paginator from '@/components/Paginator.vue'
 import { useMetaStore } from '@/stores/meta'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
   name: 'Home',
@@ -127,6 +128,7 @@ export default defineComponent({
     const postStore = usePostStore()
     const appStore = useAppStore()
     const categoryStore = useCategoryStore()
+    const { updateTitleByText } = usePageTitle()
     const { t } = useI18n()
 
     /** Variables Section */
@@ -159,8 +161,8 @@ export default defineComponent({
       })
 
       await fetchPostData()
-
       await categoryStore.fetchCategories()
+      updateTitleByText(appStore.themeConfig.site.subtitle)
 
       const articleListEl = document.getElementById('article-list')
       // 150 is the height of the header element

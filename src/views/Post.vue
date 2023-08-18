@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col mt-20">
     <div class="main-grid">
       <div class="post-header">
         <span class="post-labels">
