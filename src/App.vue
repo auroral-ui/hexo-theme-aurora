@@ -85,7 +85,7 @@ export default defineComponent({
     const commonStore = useCommonStore()
     const metaStore = useMetaStore()
     const searchStore = useSearchStore()
-    const MOBILE_WITH = 996 // Using the mobile width by Bootstrap design.
+    const MOBILE_WITH = 1024 // Using the mobile width by Bootstrap design.
     const { t } = useI18n()
     const mobileSidebar = ref()
 
