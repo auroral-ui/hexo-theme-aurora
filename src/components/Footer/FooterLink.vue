@@ -11,9 +11,12 @@
     </div>
 
     <div
-      class="flex flex-row flex-wrap justify-start md:justify-center bg-ob-deep-900 rounded-lg max-w-10/12 lg:max-w-screen-2xl text-normal text-ob-normal w-full py-6 px-6 items-start gap-8 md:gap-10 xl:gap-16"
+      class="flex flex-row flex-wrap justify-center bg-ob-deep-900 rounded-lg max-w-10/12 lg:max-w-screen-2xl text-normal text-ob-normal w-full py-6 px-6 items-start gap-8 md:gap-10 xl:gap-16"
     >
-      <div v-for="link of links" class="flex flex-col">
+      <div
+        v-for="link of links"
+        class="flex flex-col items-center md:items-start"
+      >
         <div class="flex mb-4 items-center">
           <h3 class="text-ob-dim font-bold mr-2">{{ link.title }}</h3>
           <SvgIcon
@@ -23,7 +26,10 @@
             :class="loadingSvgClasses"
           />
         </div>
-        <ul v-if="!link.mode" class="flex flex-col gap-1">
+        <ul
+          v-if="!link.mode"
+          class="flex flex-col gap-1 items-center md:items-start"
+        >
           <li v-for="sub of link.links" class="cursor-pointer">
             <a :href="sub.url" target="_blank">{{ sub.title }}</a>
           </li>
@@ -33,7 +39,10 @@
             <a :href="avatar.link" target="_blank">{{ avatar.nick }}</a>
           </li>
         </ul>
-        <ul v-if="link.mode === 'links' && loadingLinks" class="flex flex-col">
+        <ul
+          v-if="link.mode === 'links' && loadingLinks"
+          class="flex flex-col items-center md:items-start"
+        >
           <li v-for="i in 5" class="cursor-pointer">
             <ob-skeleton :count="1" height="22px" width="7.5rem" />
           </li>

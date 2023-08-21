@@ -24,7 +24,7 @@
  */
 declare const _: any
 
-import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { Logo, Navigation, Controls, Notification } from '../index'
 import Sticky from '@/components/Sticky.vue'
 import { useNavigatorStore } from '@/stores/navigator'
