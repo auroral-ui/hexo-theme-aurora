@@ -70,7 +70,7 @@
       </span>
 
       <span
-        class="icon-control flex md:hidden items-center"
+        class="icon-control flex lg:hidden items-center"
         data-dia="menu"
         @click="handleOpenMenu()"
       >
