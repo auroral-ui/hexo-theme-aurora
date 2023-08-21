@@ -7,7 +7,8 @@ export const useNavigatorStore = defineStore({
   state: () => ({
     openMenu: false,
     openNavigator: false,
-    isDone: false
+    isDone: false,
+    progress: 0
   }),
   getters: {},
   actions: {
@@ -23,6 +24,9 @@ export const useNavigatorStore = defineStore({
     },
     setOpenNavigator(status: boolean) {
       this.openNavigator = status
+    },
+    updateProgress(progress: number) {
+      this.progress = progress
     }
   }
 })

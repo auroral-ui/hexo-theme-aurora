@@ -9,6 +9,14 @@
 </template>
 
 <script lang="ts">
+/**
+ * Lodash package is imported through CDN.
+ *
+ * For version 4.17.21
+ */
+declare const _: any
+
+import { useNavigatorStore } from '@/stores/navigator'
 import { StyleValue, computed, defineComponent, ref, watch } from 'vue'
 
 export default defineComponent({
@@ -53,6 +61,7 @@ export default defineComponent({
       newTop = ref(0),
       top = ref(0),
       isBottom = ref(false)
+    const navigatorStore = useNavigatorStore()
 
     const styles = computed(
       () =>
@@ -71,6 +80,7 @@ export default defineComponent({
     )
 
     return {
+      navigatorStore,
       styles,
       active,
       position,
@@ -84,15 +94,16 @@ export default defineComponent({
   },
   mounted() {
     this.height = this.$el.getBoundingClientRect().height
-    window.addEventListener('scroll', this.handleScroll)
-    window.addEventListener('resize', this.handleResize)
+    this.updateScroll()
+    document.addEventListener('scroll', this.handleScroll)
+    document.addEventListener('resize', this.handleResize)
   },
   activated() {
-    this.handleScroll()
+    this.updateScroll()
   },
   unmounted() {
-    window.removeEventListener('scroll', this.handleScroll)
-    window.removeEventListener('resize', this.handleResize)
+    document.removeEventListener('scroll', this.handleScroll)
+    document.removeEventListener('resize', this.handleResize)
   },
   methods: {
     sticky(top: number, position: any) {
@@ -123,71 +134,83 @@ export default defineComponent({
     },
     handleScroll() {
       /**
-       * setTimeout is added due to the warning of
+       * throttle is added due to the warning of
        * "This site appears to use a scroll-linked
        * positioning effect. This may not work well
        * with asynchronous panning; " (On FireFox)
        */
-      setTimeout(() => {
-        const documentHeight = document.documentElement.scrollHeight
-        const width = this.$el.getBoundingClientRect().width
-        const height = this.$el.getBoundingClientRect().height
+      _.throttle(this.updateScroll, 100, { trailing: true, leading: true })()
+    },
+    updateProgress() {
+      const progress = Number(
+        (
+          (window.scrollY /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100
+        ).toFixed(0)
+      )
 
-        // Use `Dynamic Element Class` when your content will change
-        // which will affect the height of your fixed container
-        // this will update the height of your fixed container
-        if (this.dynamicElClass !== '') {
-          const dynamicEl = this.$el.querySelector(this.dynamicElClass)
-          this.height = dynamicEl.getBoundingClientRect().height || height
+      this.navigatorStore.updateProgress(progress)
+    },
+    updateScroll() {
+      this.updateProgress()
+
+      const documentHeight = document.documentElement.scrollHeight
+      const width = this.$el.getBoundingClientRect().width
+      const height = this.$el.getBoundingClientRect().height
+
+      // Use `Dynamic Element Class` when your content will change
+      // which will affect the height of your fixed container
+      // this will update the height of your fixed container
+      if (this.dynamicElClass !== '') {
+        const dynamicEl = this.$el.querySelector(this.dynamicElClass)
+        this.height = dynamicEl.getBoundingClientRect().height || height
+      }
+
+      const scrollTop = window.scrollY
+      this.width = width || 'auto'
+      const offsetTop = this.$el.getBoundingClientRect().top
+
+      // When the fixed container reaches the ending element container
+      // Fix position property will be turned off, and the fixed container
+      // will stop right before the ending element.
+      const endingEl =
+        this.endingElId !== '' ? document.getElementById(this.endingElId) : null
+
+      const endingElSpacing = documentHeight - (endingEl?.offsetTop ?? 0)
+
+      const wrapperEl = document.getElementById('App-Wrapper')
+
+      const containerBottomSpacing = parseInt(
+        window.getComputedStyle(wrapperEl || document.documentElement)
+          .paddingBottom,
+        10
+      )
+
+      const endingPos =
+        endingEl && endingEl instanceof HTMLElement
+          ? documentHeight -
+            scrollTop -
+            height -
+            this.stickyTop -
+            this.stickyBottom -
+            endingElSpacing -
+            containerBottomSpacing
+          : documentHeight
+
+      if (offsetTop < this.stickyTop) {
+        this.active = false
+        if (endingPos <= 0) {
+          this.isBottom = true
+          this.sticky(-1, 'absolute')
+        } else {
+          this.isBottom = false
+          this.sticky(this.stickyTop, 'fixed')
         }
+        return
+      }
 
-        const scrollTop = window.scrollY
-        this.width = width || 'auto'
-        const offsetTop = this.$el.getBoundingClientRect().top
-
-        // When the fixed container reaches the ending element container
-        // Fix position property will be turned off, and the fixed container
-        // will stop right before the ending element.
-        const endingEl =
-          this.endingElId !== ''
-            ? document.getElementById(this.endingElId)
-            : null
-
-        const endingElSpacing = documentHeight - (endingEl?.offsetTop ?? 0)
-
-        const wrapperEl = document.getElementById('App-Wrapper')
-
-        const containerBottomSpacing = parseInt(
-          window.getComputedStyle(wrapperEl || document.documentElement)
-            .paddingBottom,
-          10
-        )
-
-        const endingPos =
-          endingEl && endingEl instanceof HTMLElement
-            ? documentHeight -
-              scrollTop -
-              height -
-              this.stickyTop -
-              this.stickyBottom -
-              endingElSpacing -
-              containerBottomSpacing
-            : documentHeight
-
-        if (offsetTop < this.stickyTop) {
-          this.active = false
-          if (endingPos <= 0) {
-            this.isBottom = true
-            this.sticky(-1, 'absolute')
-          } else {
-            this.isBottom = false
-            this.sticky(this.stickyTop, 'fixed')
-          }
-          return
-        }
-
-        this.handleReset()
-      }, 16)
+      this.handleReset()
     },
     handleResize() {
       if (this.isSticky) {

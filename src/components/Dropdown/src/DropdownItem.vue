@@ -25,7 +25,7 @@ export default defineComponent({
       handleClick,
       itemClasses: computed(() => {
         return {
-          'block cursor-pointer hover:bg-ob-trans my-1 px-4 py-1 font-medium hover:text-ob-bright':
+          'text-ob-bright block cursor-pointer hover:bg-ob-trans my-1 px-4 py-1 font-medium text-invert hover:text-ob-bright':
             true,
           active: !!props.active
         }

@@ -7,6 +7,13 @@
 </template>
 
 <script lang="ts">
+/**
+ * Lodash package is imported through CDN.
+ *
+ * For version 4.17.21
+ */
+declare const _: any
+
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 
 export default defineComponent({
@@ -14,15 +21,19 @@ export default defineComponent({
   setup() {
     const progress = ref(0)
 
-    const scrollHandler = () =>
-      setTimeout(() => {
+    const scrollHandler = _.throttle(
+      () => {
         progress.value =
-          (window.pageYOffset /
+          (window.scrollY /
             (document.documentElement.scrollHeight - window.innerHeight)) *
           100
-      }, 16)
+      },
+      100,
+      { trailing: true, leading: true }
+    )
 
     onMounted(() => {
+      scrollHandler()
       document.addEventListener('scroll', scrollHandler)
     })
 
