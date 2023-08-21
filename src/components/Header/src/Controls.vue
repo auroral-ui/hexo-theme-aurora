@@ -1,12 +1,12 @@
 <template>
   <div
-    class="header-controls ml-auto top-0 right-0 flex flex-row items-center text-white invert-text"
+    class="header-controls ml-auto top-0 right-0 flex flex-row items-center text-white"
     @keydown.k="handleOpenModal(true)"
     tabindex="0"
   >
     <div :class="leftControlClasses">
       <span
-        class="icon-control flex items-center"
+        class="icon-control flex items-center text-invert"
         data-dia="search"
         @click="handleOpenModal(true)"
       >
@@ -23,7 +23,10 @@
         @command="handleClick"
         :value="currentLocale"
       >
-        <span class="icon-control flex items-center" data-dia="language">
+        <span
+          class="icon-control flex items-center text-invert"
+          data-dia="language"
+        >
           <SvgIcon
             icon-class="translate"
             fill="currentColor"

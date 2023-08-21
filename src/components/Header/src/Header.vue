@@ -17,9 +17,17 @@
 </template>
 
 <script lang="ts">
+/**
+ * Lodash package is imported through CDN.
+ *
+ * For version 4.17.21
+ */
+declare const _: any
+
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 import { Logo, Navigation, Controls, Notification } from '../index'
 import Sticky from '@/components/Sticky.vue'
+import { useNavigatorStore } from '@/stores/navigator'
 
 export default defineComponent({
   name: 'Header',
@@ -34,44 +42,20 @@ export default defineComponent({
     msg: String
   },
   setup() {
+    const navigatorStore = useNavigatorStore()
     const active = ref<boolean>(false)
-    const progress = ref(0)
-    let scrollingHandler = 0
 
     const handleActiveState = (value: boolean) => {
       active.value = value
     }
-
-    const scrollHandler = () => {
-      clearTimeout(scrollingHandler)
-
-      setTimeout(() => {
-        progress.value = Number(
-          (
-            (window.scrollY /
-              (document.documentElement.scrollHeight - window.innerHeight)) *
-            100
-          ).toFixed(0)
-        )
-      }, 0)
-    }
-
-    onMounted(() => {
-      document.addEventListener('scroll', scrollHandler)
-    })
-
-    onUnmounted(() => {
-      document.removeEventListener('scroll', scrollHandler)
-    })
 
     return {
       containerClasses: computed(() => ({
         'header-container': true,
         'header-active': active.value
       })),
+      progress: computed(() => navigatorStore.progress),
       handleActiveState,
-      scrollHandler,
-      progress,
       active
     }
   }
@@ -83,7 +67,7 @@ export default defineComponent({
   &.header-active {
     @apply bg-ob-deep-800 shadow-xl text-ob-bright;
   }
-  transition: 0.6s all ease;
+  transition: 0.5s all ease;
   .site-header {
     @apply relative flex z-50 py-4;
     margin: 0 auto;
@@ -91,11 +75,8 @@ export default defineComponent({
 }
 
 .header-active {
-  .logo-image {
-    @apply scale-125;
-  }
-  .invert-text {
-    @apply text-ob-bright;
+  .text-invert {
+    @apply text-ob-bright hover:opacity-60;
   }
 }
 </style>

@@ -164,3 +164,13 @@ export function shuffleArray<T = any>(array: T[]): T[] {
   }
   return array
 }
+
+export function throttle(func: () => void, timeFrame: number) {
+  let time = Number(new Date())
+  return function () {
+    if (time + timeFrame - Date.now() < 0) {
+      func()
+      time = Date.now()
+    }
+  }
+}

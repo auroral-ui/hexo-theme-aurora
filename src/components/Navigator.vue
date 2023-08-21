@@ -94,6 +94,13 @@
 </template>
 
 <script lang="ts">
+/**
+ * Lodash package is imported through CDN.
+ *
+ * For version 4.17.21
+ */
+declare const _: any
+
 import { useAppStore } from '@/stores/app'
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -122,26 +129,26 @@ export default defineComponent({
     let menuReopenHandler = 0
     let needReopen = ref(false)
 
-    const scrollHandler = () => {
-      clearTimeout(scrollingHandler)
-      clearTimeout(menuReopenHandler)
+    const scrollHandler = _.throttle(
+      () => {
+        clearTimeout(scrollingHandler)
+        clearTimeout(menuReopenHandler)
 
-      scrolling.value = true
-      scrollingHandler = window.setTimeout(() => {
-        scrolling.value = false
-      }, 700)
-
-      if (needReopen.value || navigatorStore.openNavigator === true) {
-        if (navigatorStore.openNavigator === true)
-          navigatorStore.setOpenNavigator(false)
-        needReopen.value = true
-        menuReopenHandler = window.setTimeout(() => {
-          navigatorStore.openNavigator = true
-          needReopen.value = false
+        scrolling.value = true
+        scrollingHandler = window.setTimeout(() => {
+          scrolling.value = false
         }, 700)
-      }
 
-      setTimeout(() => {
+        if (needReopen.value || navigatorStore.openNavigator === true) {
+          if (navigatorStore.openNavigator === true)
+            navigatorStore.setOpenNavigator(false)
+          needReopen.value = true
+          menuReopenHandler = window.setTimeout(() => {
+            navigatorStore.openNavigator = true
+            needReopen.value = false
+          }, 700)
+        }
+
         progress.value = Number(
           (
             (window.scrollY /
@@ -149,8 +156,10 @@ export default defineComponent({
             100
           ).toFixed(0)
         )
-      }, 0)
-    }
+      },
+      100,
+      { trailing: true, leading: true }
+    )
 
     const handleNavigatorToggle = () => {
       const timeNow = new Date().getTime()
@@ -188,6 +197,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
+      scrollHandler()
       document.addEventListener('scroll', scrollHandler)
     })
 

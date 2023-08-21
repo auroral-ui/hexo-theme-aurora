@@ -15,19 +15,19 @@
 
     <div class="flex flex-col justify-center">
       <span
-        class="invert-text flex text-xl leading-tight text-white font-extrabold"
+        class="text-invert flex text-xl leading-tight text-white font-extrabold"
         v-if="themeConfig.site.author"
       >
         {{ themeConfig.site.author }}
       </span>
       <span
         v-else
-        class="invert-text flex text-xl leading-tight text-white font-extrabold"
+        class="text-invert flex text-xl leading-tight text-white font-extrabold"
       >
         LOADING
       </span>
       <span
-        class="invert-text font-extrabold text-[0.45rem] leading-tight uppercase text-white"
+        class="text-invert font-extrabold text-[0.45rem] leading-tight uppercase text-white"
       >
         {{ themeConfig.site.nick || 'BLOG' }}
       </span>
@@ -58,7 +58,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header-logo {
   &:hover .logo-image {
     @apply scale-125;
@@ -68,5 +68,11 @@ export default defineComponent({
 .logo-image {
   @apply w-8 h-8;
   transition: 0.3s all ease;
+}
+
+.header-active {
+  .logo-image {
+    @apply scale-125;
+  }
 }
 </style>
