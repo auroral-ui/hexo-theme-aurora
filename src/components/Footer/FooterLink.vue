@@ -50,6 +50,12 @@ import { useAppStore } from '@/stores/app'
 import { useArticleStore } from '@/stores/article'
 import { PropType, computed, defineComponent, onMounted, ref, watch } from 'vue'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { shuffleArray } from '@/utils'
+
+enum FriendLinkRandomMode {
+  'RANDOM' = 'random',
+  'SHUFFLE' = 'SHUFFLE'
+}
 
 export default defineComponent({
   name: 'ARFooterLink',
@@ -63,21 +69,38 @@ export default defineComponent({
     const loadingLinks = ref<boolean>(true)
     const linksData = ref<Link[]>([])
     const bloggers = ref<Link[][]>([])
+    const maxShuffleLimit = 100
 
     const refreshLinkData = () => {
       loadingLinks.value = true
       linksData.value = []
+      let uniqueBloggers = [
+        ...new Map(bloggers.value.flat().map(m => [m.nick, m])).values()
+      ]
       setTimeout(() => {
         const recordSet = new Set()
-        let friendsCount = bloggers.value.length < 5 ? bloggers.value.length : 5
+        let friendsCount = uniqueBloggers.length < 5 ? uniqueBloggers.length : 5
+        let mode: FriendLinkRandomMode = FriendLinkRandomMode.SHUFFLE
+        if (uniqueBloggers.length > maxShuffleLimit) {
+          mode = FriendLinkRandomMode.RANDOM
+        }
+
+        if (mode === FriendLinkRandomMode.SHUFFLE) {
+          uniqueBloggers = shuffleArray(uniqueBloggers)
+        }
 
         while (friendsCount > 0) {
-          const pair = bloggers.value[Math.floor(Math.random() * 24)]
-          const blogger = pair[Math.floor(Math.random() * 2)]
-          if (!recordSet.has(blogger.nick)) {
-            recordSet.add(blogger.nick)
-            linksData.value.push(blogger)
+          if (mode === FriendLinkRandomMode.SHUFFLE) {
+            linksData.value.push(uniqueBloggers[friendsCount - 1])
             friendsCount--
+          } else {
+            const blogger =
+              uniqueBloggers[Math.floor(Math.random() * friendsCount)]
+            if (!recordSet.has(blogger.nick)) {
+              recordSet.add(blogger.nick)
+              linksData.value.push(blogger)
+              friendsCount--
+            }
           }
         }
         loadingLinks.value = false
