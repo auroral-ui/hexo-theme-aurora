@@ -1,3 +1,15 @@
+## [2.4.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.0...v2.4.1) (2023-08-22)
+
+
+### Bug Fixes
+
+* color style for header when switching mode and sticky issue ([e1f9075](https://github.com/auroral-ui/hexo-theme-aurora/commit/e1f90756f133c381d453ad2218e0b298c30b6b78)), closes [#321](https://github.com/auroral-ui/hexo-theme-aurora/issues/321) [#319](https://github.com/auroral-ui/hexo-theme-aurora/issues/319)
+* footer link random pick friend infinite loop ([425ec7c](https://github.com/auroral-ui/hexo-theme-aurora/commit/425ec7c5e92313ddf6855ba47f4c1b6d094c056f))
+* home page tag sticky overflow to the footer if no footer link ([6cb0a86](https://github.com/auroral-ui/hexo-theme-aurora/commit/6cb0a86373fb5d5177b579b0c6dc5569bba2b5e3))
+* improve the style of footer links for smaller devices ([a67370d](https://github.com/auroral-ui/hexo-theme-aurora/commit/a67370d268e73a7ccfbf3f2a6378170555ed6f15))
+* no hamburger menu on table view size ([ab6cfc0](https://github.com/auroral-ui/hexo-theme-aurora/commit/ab6cfc09218d2761b6649173f8eb53e777c58264))
+* update all avatar to adapt to dynamic avatar shape option ([be2ae7a](https://github.com/auroral-ui/hexo-theme-aurora/commit/be2ae7aeddf79c50d86b520186d1c9a810dd7254))
+
 # [2.4.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.3.1...v2.4.0) (2023-08-18)
 
 
