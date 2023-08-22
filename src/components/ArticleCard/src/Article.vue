@@ -138,12 +138,10 @@ export default defineComponent({
     }
 
     return {
-      avatarClasses: computed(() => {
-        return {
-          'hover:opacity-50 cursor-pointer': true,
-          [appStore.themeConfig.theme.profile_shape]: true
-        }
-      }),
+      avatarClasses: computed(() => ({
+        'hover:opacity-50 cursor-pointer': true,
+        [appStore.themeConfig.theme.profile_shape]: true
+      })),
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
