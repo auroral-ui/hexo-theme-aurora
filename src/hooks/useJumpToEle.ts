@@ -17,12 +17,14 @@ export default function useJumpToEle() {
     return offsetTop
   }
 
+  // -31 for top padding of the app container
+  // -81 for fixed header
   const jumpToEle = (id: string) => {
     element.value = document.getElementById(id)
     if (element.value) {
       elementOffsetTop.value =
         element.value && element.value instanceof HTMLElement
-          ? getOffsetTop(element.value) - 30
+          ? getOffsetTop(element.value) - 30 - 81
           : 0
     }
     window.scrollTo({
