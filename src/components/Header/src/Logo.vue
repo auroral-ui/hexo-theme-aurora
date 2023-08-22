@@ -6,7 +6,7 @@
     <span class="flex mr-3">
       <img
         v-if="themeConfig.site.author"
-        class="logo-image"
+        :class="avatarClass"
         :src="themeConfig.site.logo || themeConfig.site.avatar"
         alt="site-logo"
       />
@@ -52,6 +52,12 @@ export default defineComponent({
 
     return {
       handleLogoClick,
+      avatarClass: computed(() => {
+        return {
+          'logo-image': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       themeConfig: computed(() => appStore.themeConfig)
     }
   }

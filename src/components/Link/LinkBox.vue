@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, computed, defineComponent } from 'vue'
+import { PropType, defineComponent } from 'vue'
 import LinkAvatar from '@/components/Link/LinkAvatar.vue'
 import { Title } from '@/components/Title'
 import { useI18n } from 'vue-i18n'
@@ -72,7 +72,6 @@ import PrimaryButton from '@/components/Button/PrimaryButton.vue'
 import SecondaryButton from '@/components/Button/SecondaryButton.vue'
 import { Link } from '@/models/Article.class'
 import { useCommonStore } from '@/stores/common'
-import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ARLinkBox',
@@ -126,6 +125,10 @@ export default defineComponent({
   .links-group-avatar:nth-child(even) {
     @apply mt-4 transform-gpu;
     transform: translate(-60px);
+    &:has(.diamond-avatar) {
+      @apply mt-0;
+      transform: translate(-66px);
+    }
   }
 }
 

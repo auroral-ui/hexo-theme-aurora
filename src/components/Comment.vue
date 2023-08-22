@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="bg-ob-deep-800 p-4 mt-8 lg:px-14 lg:py-10 rounded-2xl shadow-xl mb-8 lg:mb-0"
-  >
+  <div :class="wrapperClasses">
     <Title
       :title="'titles.comment'"
       icon="quote"
@@ -17,7 +15,7 @@
 
 <script lang="ts">
 import { useAppStore } from '@/stores/app'
-import { defineComponent, onMounted, toRefs, watch } from 'vue'
+import { computed, defineComponent, onMounted, toRefs, watch } from 'vue'
 import { Title } from '@/components/Title'
 import { usePostStore } from '@/stores/post'
 import { twikooInit } from '@/utils/comments/twikoo-api'
@@ -192,6 +190,16 @@ export default defineComponent({
     onMounted(() => {
       enabledComment(postTitle.value, postBody.value, postUid.value)
     })
+
+    return {
+      wrapperClasses: computed(() => {
+        return {
+          'bg-ob-deep-800 p-4 mt-8 lg:px-14 lg:py-10 rounded-2xl shadow-xl mb-8 lg:mb-0':
+            true,
+          [`comment-${appStore.themeConfig.theme.profile_shape}`]: true
+        }
+      })
+    }
   }
 })
 </script>
@@ -443,6 +451,27 @@ export default defineComponent({
   }
 }
 
+.comment-diamond-avatar #waline {
+  .wl-user img,
+  .wl-login-nick img {
+    clip-path: polygon(50% 3%, 91% 25%, 91% 75%, 50% 97%, 9% 75%, 9% 25%);
+  }
+}
+.comment-circle-avatar #waline {
+  .wl-user img,
+  .wl-login-nick img {
+    @apply rounded-full border-ob-deep-900;
+    border-width: 6px;
+  }
+}
+.comment-rounded-avatar #waline {
+  .wl-user img,
+  .wl-login-nick img {
+    @apply rounded-2xl border-ob-deep-900;
+    border-width: 6px;
+  }
+}
+
 #waline {
   --waline-theme-color: var(--text-accent);
   --waline-border: var(--background-secondary);
@@ -461,10 +490,10 @@ export default defineComponent({
   }
 
   .wl-login-nick {
-    @apply text-lg lg:text-2xl pt-0 lg:pt-2;
+    @apply text-lg lg:text-2xl;
     color: var(--text-sub-accent);
     img {
-      @apply h-6 w-6 lg:h-9 lg:w-9 mt-1.5;
+      @apply h-6 w-6 lg:h-9 lg:w-9;
     }
   }
 
@@ -473,7 +502,7 @@ export default defineComponent({
   }
 
   .wl-avatar {
-    @apply h-6 w-6 lg:h-9 lg:w-9 mb-3 lg:mb-5 mr-3;
+    @apply h-6 w-6 lg:h-9 lg:w-9 mr-3;
   }
 
   .wl-header {
@@ -508,13 +537,13 @@ export default defineComponent({
     @apply flex flex-col gap-2 pb-4;
 
     .wl-user {
-      @apply flex justify-center pr-2 lg:pr-4 bg-ob-deep-900;
+      @apply flex justify-center pr-2 lg:pr-4 bg-ob-deep-900 mt-1.5;
       margin-inline-end: 0;
       .verified-icon {
         @apply left-4 top-6 lg:left-6 lg:top-8;
       }
       img {
-        @apply h-6 w-6 lg:h-9 lg:w-9 mt-1.5;
+        @apply h-6 w-6 lg:h-9 lg:w-9;
       }
       svg {
         position: absolute;
