@@ -1,23 +1,30 @@
 <template>
   <a
-    class="links-group-avatar h-[120px] w-[120px] flex items-center justify-center text-white text-6xl font-bold"
+    class="links-group-avatar h-[120px] w-[120px] flex items-center justify-center text-white text-6xl font-bold scale"
     :href="link"
     target="_blank"
     :title="title"
   >
     <img
       v-if="source"
-      class="h-full w-full shadow-xl m-0 rounded-full"
+      :class="avatarClasses"
       :src="source"
       alt="link-avatar"
       :title="title"
     />
-    <ob-skeleton v-else width="7rem" height="7rem" circle />
+    <ob-skeleton
+      :class="avatarClasses"
+      v-else
+      width="100%"
+      height="100%"
+      circle
+    />
   </a>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { useAppStore } from '@/stores/app'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ARLinkAvatar',
@@ -29,6 +36,19 @@ export default defineComponent({
       type: String
     }
   },
-  setup() {}
+  setup() {
+    const appStore = useAppStore()
+
+    return {
+      avatarClasses: computed(() => {
+        return {
+          'h-full w-full shadow-xl m-0 transform-gpu': true,
+          [appStore.themeConfig.theme.profile_shape]: true,
+          'scale-[1.15]':
+            appStore.themeConfig.theme.profile_shape === 'diamond-avatar'
+        }
+      })
+    }
+  }
 })
 </script>

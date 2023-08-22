@@ -165,12 +165,12 @@ export default defineComponent({
 <style lang="scss">
 .footer-link-divider {
   @apply flex h-1 w-2/3 lg:w-2/5 mt-4 mb-8 relative opacity-70 rounded-full shadow-xl;
-  .footer-link-avatar {
+  .footer-link-img-wrapper {
     @apply m-0 h-10 w-10 shadow-xl absolute rounded-full box-content;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 0.8rem solid var(--background-primary);
+    border: 4px solid var(--background-primary);
     background: var(--background-primary);
   }
 }

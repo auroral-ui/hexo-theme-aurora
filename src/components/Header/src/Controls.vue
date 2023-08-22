@@ -166,7 +166,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .header-controls {
   .progress-ball {
-    @apply flex flex-col justify-center items-center bg-ob-bright text-ob-invert h-6 w-6 rounded-full mr-4 scale-0 transform-cpu text-xs cursor-pointer overflow-hidden;
+    @apply flex flex-col justify-center items-center bg-ob-bright text-ob-invert h-6 w-6 rounded-full mr-4 scale-0 transform-gpu text-xs cursor-pointer overflow-hidden;
     transition: 0.3s transform ease;
     &:hover span {
       @apply mt-6 opacity-100;

@@ -15,11 +15,9 @@
           >
             <div class="flex justify-start items-start">
               <img
-                class="col-span-1 mr-2 rounded-full p-1"
+                :class="avatarClass"
                 :src="comment.user.avatar_url"
                 alt="comment-avatar"
-                height="28"
-                width="28"
               />
             </div>
             <div class="flex-1 text-xs">
@@ -135,10 +133,16 @@ export default defineComponent({
     )
 
     return {
-      SvgTypes,
+      avatarClass: computed(() => {
+        return {
+          'col-span-1 mr-2 h-6 w-6': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       isLoading: computed(() => commentPluginLoading.value),
       comments: computed(() => recentComments.value),
       isConfigReady: computed(() => appStore.configReady),
+      SvgTypes,
       fetchRecentComment,
       enabledCommentPlugin,
       t

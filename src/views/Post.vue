@@ -52,9 +52,9 @@
             v-if="post.author && post.count_time.symbolsTime"
           >
             <img
-              class="hover:opacity-50 cursor-pointer"
+              :class="avatarClasses"
               v-lazy="post.author.avatar || ''"
-              alt="author avatar"
+              :alt="`author-${post.author.name}`"
               @click="handleAuthorClick(post.author.link)"
             />
             <span class="text-white opacity-80">
@@ -266,6 +266,12 @@ export default defineComponent({
     }
 
     return {
+      avatarClasses: computed(() => {
+        return {
+          'hover:opacity-50 cursor-pointer': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       isMobile: computed(() => commonStore.isMobile),
       currentPath: computed(() => route.path),
       pluginConfigs: computed(() => appStore.themeConfig.plugins),

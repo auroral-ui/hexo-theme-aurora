@@ -80,9 +80,9 @@
         <div class="article-footer" v-if="post.count_time">
           <div class="flex flex-row items-center">
             <img
-              class="hover:opacity-50 cursor-pointer"
+              :class="avatarClass"
               v-lazy="post.author.avatar"
-              alt=""
+              :alt="`avatar-${post.author.name}`"
               @click="handleAuthorClick(post.author.link)"
             />
             <span class="text-ob-dim">
@@ -149,6 +149,12 @@ export default defineComponent({
     }
 
     return {
+      avatarClass: computed(() => {
+        return {
+          'hover:opacity-50 cursor-pointer': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       bannerHoverGradient: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),

@@ -77,9 +77,9 @@
         <div class="article-footer" v-if="post.author && post.date">
           <div class="flex flex-row items-center">
             <img
-              class="hover:opacity-50 cursor-pointer"
+              :class="avatarClasses"
               :src="post.author.avatar"
-              alt="author avatar"
+              :alt="`avatar-${post.author.name}`"
               @click="handleAuthorClick(post.author.link)"
             />
             <span class="text-ob-dim">
@@ -138,6 +138,12 @@ export default defineComponent({
     }
 
     return {
+      avatarClasses: computed(() => {
+        return {
+          'hover:opacity-50 cursor-pointer': true,
+          [appStore.themeConfig.theme.profile_shape]: true
+        }
+      }),
       gradientBackground: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
