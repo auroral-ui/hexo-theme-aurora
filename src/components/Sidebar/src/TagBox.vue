@@ -1,7 +1,7 @@
 <template>
   <Sticky
     :stickyTop="32 + 81"
-    endingElId="footer-link"
+    :endingElId="endEleId"
     dynamicElClass="#sticky-tag-box"
   >
     <div id="sticky-tag-box" class="sidebar-box">
@@ -53,11 +53,13 @@ import { TagList, TagItem } from '@/components/Tag'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import Sticky from '@/components/Sticky.vue'
+import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ObTag',
   components: { SubTitle, TagList, TagItem, SvgIcon, Sticky },
   setup() {
+    const appStore = useAppStore()
     const tagStore = useTagStore()
     const { t } = useI18n()
     const expand = ref<boolean>(false)
@@ -73,6 +75,11 @@ export default defineComponent({
     onMounted(fetchData)
 
     return {
+      endEleId: computed(() =>
+        appStore.themeConfig.footerLinks.data.length > 0
+          ? 'footer-link'
+          : 'footer'
+      ),
       tags: computed(() => {
         if (tagStore.isLoaded && tagStore.tags.length === 0) return null
         return tagStore.tags

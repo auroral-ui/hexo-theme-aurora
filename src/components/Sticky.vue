@@ -216,6 +216,7 @@ export default defineComponent({
       if (this.isSticky) {
         this.width = this.$el.getBoundingClientRect().width + 'px'
       }
+      this.updateScroll()
     }
   }
 })
