@@ -125,7 +125,7 @@ export default defineComponent({
   .links-group-avatar:nth-child(even) {
     @apply mt-4 transform-gpu;
     transform: translate(-60px);
-    &:has(.diamond-avatar) {
+    &.diamond-shape {
       @apply mt-0;
       transform: translate(-66px);
     }
