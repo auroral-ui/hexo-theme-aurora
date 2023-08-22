@@ -17,6 +17,7 @@
             text-size="text-3xl"
             paddings="hidden md:flex pb-2"
             margins="mb-0 mt-0"
+            :uppercase="false"
           />
         </div>
         <div class="absolute right-8 top-8 flex space-x-3">

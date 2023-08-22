@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Title title="settings.links" icon="friends" :count="links.length" />
+    <Title
+      title="settings.links"
+      icon="friends"
+      :count="links.length"
+      :uppercase="false"
+    />
     <ul class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
       <template v-for="link of links">
         <LinkCard

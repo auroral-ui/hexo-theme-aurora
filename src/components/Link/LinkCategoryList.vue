@@ -5,6 +5,7 @@
         :title="convertToLocale(category)"
         :count="links[category].length"
         margins="mb-2"
+        :uppercase="false"
       />
       <span class="text-ob-dim mb-8 text-lg">
         {{ t(`${convertToLocale(category)}-desc`) }}
