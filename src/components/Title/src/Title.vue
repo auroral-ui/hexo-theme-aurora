@@ -43,7 +43,11 @@ export default defineComponent({
       type: String,
       default: 'mb-8'
     },
-    count: Number
+    count: Number,
+    uppercase: {
+      type: Boolean,
+      default: true
+    }
   },
   setup(props) {
     const { t } = useI18n()
@@ -52,7 +56,8 @@ export default defineComponent({
 
     return {
       titleClasses: computed(() => [
-        'relative opacity-90 flex items-center text-ob-bright uppercase',
+        'relative opacity-90 flex items-center text-ob-bright',
+        props.uppercase ? 'uppercase' : '',
         props.paddings,
         props.margins,
         props.textSize

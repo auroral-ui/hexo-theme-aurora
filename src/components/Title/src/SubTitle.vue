@@ -1,7 +1,5 @@
 <template>
-  <p
-    class="relative flex items-center pb-2 mb-4 text-xl text-ob-bright uppercase"
-  >
+  <p class="relative flex items-center pb-2 mb-4 text-xl text-ob-bright">
     <SvgIcon
       v-if="icon && side === 'left'"
       :icon-class="icon"
