@@ -33,9 +33,17 @@ export const useSearchStore = defineStore({
      */
     setOpenModal(status: boolean) {
       this.openModal = status
-      if (status === true) document.body.classList.add('modal--active')
-      else document.body.classList.remove('modal--active')
-      document.getElementById('App-Container')?.focus()
+      let searchContainer: HTMLElement | null
+      if (status === true) {
+        document.body.classList.add('modal--active')
+      } else {
+        searchContainer = document.getElementById('search-modal')
+        if (searchContainer) {
+          searchContainer.style.animation =
+            '0.85s ease 0s 1 normal none running opacity_hide'
+        }
+        document.body.classList.remove('modal--active')
+      }
     },
     addRecentSearch(result: { [key: string]: string }) {
       this.recentResults.add(result)
