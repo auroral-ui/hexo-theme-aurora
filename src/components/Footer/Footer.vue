@@ -26,7 +26,6 @@
                   Aurora v{{ themeConfig.version }}
                 </b>
               </a>
-              .
             </li>
             <li
               v-if="
@@ -58,8 +57,11 @@
               </span>
             </li>
           </ul>
-          <ul class="flex flex-col min-w-[150px] gap-1.5">
-            <li class="flex" v-if="enabledPlugin === 'waline'">
+          <ul class="flex flex-col flex-1 gap-1.5">
+            <li
+              class="flex flex-row max-w-[11rem]"
+              v-if="enabledPlugin === 'waline'"
+            >
               <span>
                 <SvgIcon
                   icon-class="hot"
@@ -72,14 +74,22 @@
                 <span class="waline-pageview-count" data-path="/" />
               </span>
             </li>
+
             <li v-if="themeConfig.plugins.busuanzi.enable">
-              <span id="busuanzi_container_site_pv">
+              <span
+                id="busuanzi_container_site_pv"
+                class="flex flex-row max-w-[11rem]"
+              >
                 <SvgIcon icon-class="eye" class="mr-1 text-lg inline-block" />
                 <span id="busuanzi_value_site_pv" />
               </span>
             </li>
+
             <li v-if="themeConfig.plugins.busuanzi.enable">
-              <span id="busuanzi_container_site_uv">
+              <span
+                id="busuanzi_container_site_uv"
+                class="flex flex-row max-w-[11rem]"
+              >
                 <SvgIcon
                   icon-class="people"
                   class="mr-1 text-lg inline-block"
@@ -88,8 +98,8 @@
               </span>
             </li>
 
-            <li v-if="runningDays" class="flex">
-              <span class="">
+            <li v-if="runningDays" class="flex flex-row max-w-[11rem]">
+              <span>
                 <SvgIcon
                   icon-class="date"
                   class="mr-1 text-lg inline-block"
