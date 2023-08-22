@@ -282,13 +282,17 @@
 .diamond-avatar {
   clip-path: polygon(50% 3%, 91% 25%, 91% 75%, 50% 97%, 9% 75%, 9% 25%);
 }
-.circle-avatar {
-  @apply rounded-full border-ob-deep-900;
+.profile .circle-avatar,
+.profile .rounded-avatar {
+  @apply border-ob-deep-900;
   border-width: 6px;
 }
+.circle-avatar {
+  @apply rounded-full;
+
+}
 .rounded-avatar {
-  @apply rounded-2xl border-ob-deep-900;
-  border-width: 6px;
+  @apply rounded-2xl;
 }
 
 .animation-text {
