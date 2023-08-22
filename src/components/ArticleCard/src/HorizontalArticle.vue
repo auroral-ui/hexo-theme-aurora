@@ -29,7 +29,9 @@
                 class="-mb-0.5 mr-1"
                 stroke="currentColor"
               />
-              <span>{{ t('settings.featured') }}</span>
+              <span>
+                {{ t('settings.featured') }}
+              </span>
             </span>
           </b>
           <b v-if="post.categories && post.categories.length > 0">
@@ -149,12 +151,10 @@ export default defineComponent({
     }
 
     return {
-      avatarClass: computed(() => {
-        return {
-          'hover:opacity-50 cursor-pointer': true,
-          [appStore.themeConfig.theme.profile_shape]: true
-        }
-      }),
+      avatarClass: computed(() => ({
+        'hover:opacity-50 cursor-pointer': true,
+        [appStore.themeConfig.theme.profile_shape]: true
+      })),
       bannerHoverGradient: computed(() => {
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),

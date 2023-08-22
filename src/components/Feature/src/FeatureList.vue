@@ -8,7 +8,7 @@
       >
         <h2 class="text-3xl pb-8 lg:pb-14">
           <p :style="gradientText">EDITOR'S SELECTION</p>
-          <span class="relative text-xl text-ob-bright font-semibold">
+          <span class="relative text-lg text-ob-bright font-semibold">
             <SvgIcon class="inline-block" icon-class="hot" stroke="white" />
             {{ t('home.recommended') }}
           </span>
@@ -38,9 +38,10 @@
 <script lang="ts">
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
-import { computed, defineComponent, toRefs } from 'vue'
+import { PropType, StyleValue, computed, defineComponent, toRefs } from 'vue'
 import { Article } from '@/components/ArticleCard'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { Post } from '@/models/Post.class'
 
 export default defineComponent({
   name: 'ObFeatureList',
@@ -50,7 +51,7 @@ export default defineComponent({
   },
   props: {
     data: {
-      type: Array,
+      type: Array as PropType<Post[]>,
       required: true
     }
   },
@@ -60,11 +61,11 @@ export default defineComponent({
     const { t } = useI18n()
 
     return {
-      gradientBackground: computed(() => {
-        return { background: appStore.themeConfig.theme.header_gradient_css }
-      }),
+      gradientBackground: computed(() => ({
+        background: appStore.themeConfig.theme.header_gradient_css
+      })),
       gradientText: computed(
-        () => appStore.themeConfig.theme.background_gradient_style
+        () => appStore.themeConfig.theme.background_gradient_style as StyleValue
       ),
       featurePosts,
       t
