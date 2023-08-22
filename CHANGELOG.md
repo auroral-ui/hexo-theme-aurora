@@ -1,3 +1,15 @@
+## [2.4.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.1...v2.4.2) (2023-08-22)
+
+
+### Bug Fixes
+
+* avatar border too large for circle or rounded avatars ([4879043](https://github.com/auroral-ui/hexo-theme-aurora/commit/48790432fcf3f777ec780309ee61090a40ae8e15))
+* english footer stat text ([64d79e2](https://github.com/auroral-ui/hexo-theme-aurora/commit/64d79e2b6f0e6429a0ac724dc6fed90e1dcf8d14))
+* english text style problem ([4cefbc2](https://github.com/auroral-ui/hexo-theme-aurora/commit/4cefbc294b01db27e419dc5486ddae90d34bd65d))
+* include fixed header height for scroll to ([fb289cc](https://github.com/auroral-ui/hexo-theme-aurora/commit/fb289cc687e0dd09ead32f9d0e0daaba3eccb10f))
+* open search modal scroll down by three percent ([6244fd8](https://github.com/auroral-ui/hexo-theme-aurora/commit/6244fd87d7ae7eb04dafb48308f2963fe27afcb0))
+* subtitle and some main title uppercase ([9c07937](https://github.com/auroral-ui/hexo-theme-aurora/commit/9c079370b61732c3db70cd9fcbfe5ee926d16692))
+
 ## [2.4.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.0...v2.4.1) (2023-08-22)
 
 
