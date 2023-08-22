@@ -11,7 +11,11 @@
     tabindex="-1"
   >
     <transition name="fade-bounce-pure-y" mode="out-in">
-      <div class="search-container" v-if="openSearchContainer">
+      <div
+        id="search-container"
+        class="search-container"
+        v-if="openSearchContainer"
+      >
         <header class="flex pt-4 pr-4 pl-4">
           <form class="search-form" action="">
             <label
@@ -502,7 +506,15 @@ export default defineComponent({
          * of the search box container.
          */
         if (status === true) reloadRecentResult()
-        openModal.value = status
+
+        if (status === false) {
+          setTimeout(() => {
+            openModal.value = status
+          }, 850)
+        } else {
+          openModal.value = status
+        }
+
         setTimeout(() => {
           openSearchContainer.value = status
         }, 200)

@@ -1,5 +1,9 @@
 .modal--active {
+  max-height: 100vh;
   overflow: hidden !important;
+  #search-modal {
+    animation: 0.85s ease 0s 1 normal none running opacity_show;
+  }
 }
 
 #search-modal {
@@ -7,11 +11,11 @@
   --search-modal-searchbox-height: 56px;
   --search-modal-spacing: 12px;
   --search-modal-footer-height: 44px;
-  @apply fixed h-screen w-screen top-0 left-0 transition-colors;
-  background-color: rgba(26, 26, 26, 0.8);
-  z-index: 250;
+  @apply fixed h-screen w-screen top-0 left-0 transition-opacity backdrop-blur-lg;
+  background: var(--background-blur);
+  z-index: 1100;
   .search-container {
-    @apply bg-ob-deep-900 rounded-2xl shadow-2xl mt-16 mb-auto mr-2 lg:mr-auto ml-2 lg:ml-auto max-w-xl relative;
+    @apply bg-ob-deep-900 rounded-2xl shadow-2xl mt-[6rem] mb-auto mr-2 lg:mr-auto ml-2 lg:ml-auto max-w-xl relative;
   }
   .search-form {
     @apply bg-ob-deep-800 items-center rounded-xl shadow-md flex h-14 py-0 px-3 relative w-full border-ob border-2;
