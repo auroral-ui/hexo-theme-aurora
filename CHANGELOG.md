@@ -1,3 +1,10 @@
+## [2.4.3](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.2...v2.4.3) (2023-08-23)
+
+
+### Bug Fixes
+
+* refactor and fix post search page to support tag and category search ([89e35fb](https://github.com/auroral-ui/hexo-theme-aurora/commit/89e35fb1c1c4bf5096b6f03d259c195c01898a0a))
+
 ## [2.4.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.1...v2.4.2) (2023-08-22)
 
 
