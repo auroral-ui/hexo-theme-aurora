@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import Cookies from 'js-cookie'
 import i18n from '@/locales/index'
-import { ThemeConfig } from '@/models/ThemeConfig.class'
+import { Locales, ThemeConfig } from '@/models/ThemeConfig.class'
 import { HexoConfig } from '@/models/HexoConfig.class'
 import { fetchHexoConfig, fetchStatistic } from '@/api'
 import { Statistic } from '@/models/Statistic.class'
@@ -45,7 +45,7 @@ export const useAppStore = defineStore('app', {
       ? String(Cookies.get('theme'))
       : getSystemMode(),
     /** Current locale of the application */
-    locale: Cookies.get('locale') ? Cookies.get('locale') : 'en',
+    locale: (Cookies.get('locale') as Locales) ?? 'en',
     /** Hexo theme config data */
     themeConfig: new ThemeConfig(),
     /** Hexo engine's config data */
@@ -66,8 +66,8 @@ export const useAppStore = defineStore('app', {
     openSearchModal: false
   }),
   getters: {
-    getTheme: (state) => state.theme,
-    getAppLoading: (state) => state.appLoading
+    getTheme: state => state.theme,
+    getAppLoading: state => state.appLoading
   },
   actions: {
     /** Fetching Hexo and Hexo theme's config data */
@@ -107,7 +107,7 @@ export const useAppStore = defineStore('app', {
       setTheme(this.theme)
     },
     /** Changing the local of the app */
-    changeLocale(locale: string) {
+    changeLocale(locale: Locales) {
       Cookies.set('locale', locale)
       this.locale = locale
       i18n.global.locale.value = locale
@@ -116,7 +116,7 @@ export const useAppStore = defineStore('app', {
      * Setting the default locale of the app base on _config
      * @remarks If the user had choose a locale before, this default value will be ignored.
      */
-    setDefaultLocale(locale: string) {
+    setDefaultLocale(locale: Locales) {
       if (Cookies.get('locale')) return
       this.changeLocale(locale)
     },

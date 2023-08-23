@@ -63,9 +63,15 @@
           >
             <span
               class="relative z-50"
-              v-if="$i18n.locale === 'cn' && route.i18n.cn"
+              v-if="$i18n.locale === 'zh-CN' && route.i18n['zh-CN']"
             >
-              {{ route.i18n.cn }}
+              {{ route.i18n['zh-CN'] }}
+            </span>
+            <span
+              class="relative z-50"
+              v-if="$i18n.locale === 'zh-TW' && route.i18n['zh-TW']"
+            >
+              {{ route.i18n['zh-TW'] }}
             </span>
             <span
               class="relative z-50"
@@ -82,9 +88,15 @@
           >
             <span
               class="relative z-50"
-              v-if="$i18n.locale === 'cn' && route.i18n.cn"
+              v-if="$i18n.locale === 'zh-CN' && route.i18n['zh-CN']"
             >
-              {{ route.i18n.cn }}
+              {{ route.i18n['zh-CN'] }}
+            </span>
+            <span
+              class="relative z-50"
+              v-if="$i18n.locale === 'zh-TW' && route.i18n['zh-TW']"
+            >
+              {{ route.i18n['zh-TW'] }}
             </span>
             <span
               class="relative z-50"
@@ -101,9 +113,15 @@
               >
                 <span
                   class="relative z-50"
-                  v-if="$i18n.locale === 'cn' && sub.i18n.cn"
+                  v-if="$i18n.locale === 'zh-CN' && sub.i18n['zh-CN']"
                 >
-                  {{ sub.i18n.cn }}
+                  {{ sub.i18n['zh-CN'] }}
+                </span>
+                <span
+                  class="relative z-50"
+                  v-if="$i18n.locale === 'zh-TW' && sub.i18n['zh-TW']"
+                >
+                  {{ sub.i18n['zh-TW'] }}
                 </span>
                 <span
                   class="relative z-50"

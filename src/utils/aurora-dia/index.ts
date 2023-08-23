@@ -384,7 +384,7 @@ class AuroraBotSoftware {
   }
 
   showQuote() {
-    if (this.config.locale === 'cn') {
+    if (this.config.locale === 'zh-CN' || this.config.locale === 'zh-TW') {
       this.getHitokoto()
     }
   }

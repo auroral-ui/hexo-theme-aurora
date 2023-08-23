@@ -1,3 +1,5 @@
+import { Locales } from '@/models/ThemeConfig.class'
+
 export interface RecentComment {
   id: number
   body: string
@@ -23,13 +25,13 @@ export interface RecentComment {
  */
 export function formatTime(
   time: number | string,
-  options?: { template?: string; lang?: string }
+  options?: { template?: string; lang?: Locales }
 ): string {
-  const configs = {
+  const configs: { template: string; lang: Locales } = {
     template: '[TIME]',
     lang: 'en'
   }
-  const languages: { [lang: string]: { [type: string]: string } } = {
+  const languages: Record<Locales, { [type: string]: string }> = {
     en: {
       seconds: 'just seconds ago',
       minutes: ' minutes ago',
@@ -38,12 +40,20 @@ export function formatTime(
       months: ' months ago',
       years: ' years ago'
     },
-    cn: {
+    'zh-CN': {
       seconds: '刚刚',
       minutes: ' 分钟前',
       hours: ' 小时前',
       days: ' 天前',
       months: ' 个月前',
+      years: ' 年前'
+    },
+    'zh-TW': {
+      seconds: '剛剛',
+      minutes: ' 分鐘前',
+      hours: ' 小時前',
+      days: ' 天前',
+      months: ' 個月前',
       years: ' 年前'
     }
   }

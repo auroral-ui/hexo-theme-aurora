@@ -34,6 +34,7 @@ import PageContent from '@/components/PageContent.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Comment from '@/components/Comment.vue'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
+import { Locales } from '@/models/ThemeConfig.class'
 
 declare const Prism: any
 
@@ -62,8 +63,8 @@ export default defineComponent({
       Prism.highlightAll()
     }
 
-    const updateTitle = (locale: string | undefined) => {
-      const currentLocale = locale === 'cn' ? 'cn' : 'en'
+    const updateTitle = (locale?: Locales) => {
+      const currentLocale = locale ?? 'en'
       const routeInfo =
         appStore.themeConfig.menu.menus[String(route.params.slug)]
       pageTitle.value =

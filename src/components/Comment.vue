@@ -23,11 +23,6 @@ import { githubInit } from '@/utils/comments/github-api'
 import { valineInit } from '@/utils/comments/valine-api'
 import { walineInit } from '@/utils/comments/waline-api'
 
-const languages: Record<string, string> = {
-  en: 'en',
-  cn: 'zh'
-}
-
 export default defineComponent({
   name: 'ObComment',
   props: {
@@ -151,7 +146,7 @@ export default defineComponent({
 
         waline = walineInit({
           serverURL,
-          lang: languages[appStore.locale ?? 'en'],
+          lang: appStore.locale ?? 'en',
           login,
           reaction,
           meta,
@@ -181,7 +176,7 @@ export default defineComponent({
       (newLocale, oldLocale) => {
         if (waline && newLocale !== undefined && newLocale !== oldLocale) {
           waline.update({
-            lang: languages[newLocale]
+            lang: newLocale
           })
         }
       }
