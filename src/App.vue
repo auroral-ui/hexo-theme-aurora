@@ -114,15 +114,15 @@ export default defineComponent({
         if (appStore.themeConfig.plugins.copy_protection.enable) {
           const locale = appStore.locale
           const linkPlaceholder =
-            locale === 'cn'
+            locale === 'zh-CN'
               ? appStore.themeConfig.plugins.copy_protection.link.cn
               : appStore.themeConfig.plugins.copy_protection.link.en
           const authorPlaceholder =
-            locale === 'cn'
+            locale === 'zh-CN'
               ? appStore.themeConfig.plugins.copy_protection.author.cn
               : appStore.themeConfig.plugins.copy_protection.author.en
           const licensePlaceholder =
-            locale === 'cn'
+            locale === 'zh-CN'
               ? appStore.themeConfig.plugins.copy_protection.license.cn
               : appStore.themeConfig.plugins.copy_protection.license.en
 

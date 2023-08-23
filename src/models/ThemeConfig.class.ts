@@ -78,7 +78,8 @@ export class ThemeMenu implements ObMenu {
       name: 'Home',
       path: '/',
       i18n: {
-        cn: '首页',
+        'zh-CN': '首页',
+        'zh-TW': '首頁',
         en: 'Home'
       }
     })
@@ -95,7 +96,8 @@ export class ThemeMenu implements ObMenu {
         name: 'About',
         path: '/about',
         i18n: {
-          cn: '关于',
+          'zh-CN': '关于',
+          'zh-TW': '關於',
           en: 'About'
         }
       },
@@ -103,7 +105,8 @@ export class ThemeMenu implements ObMenu {
         name: 'Archives',
         path: '/archives',
         i18n: {
-          cn: '归档',
+          'zh-CN': '归档',
+          'zh-TW': '歸檔',
           en: 'Archives'
         }
       },
@@ -111,7 +114,8 @@ export class ThemeMenu implements ObMenu {
         name: 'Tags',
         path: '/tags',
         i18n: {
-          cn: '标签',
+          'zh-CN': '标签',
+          'zh-TW': '標簽',
           en: 'Tags'
         }
       },
@@ -119,7 +123,8 @@ export class ThemeMenu implements ObMenu {
         name: 'Links',
         path: '/links',
         i18n: {
-          cn: '友情链接',
+          'zh-CN': '友情链接',
+          'zh-TW': '友情鏈接',
           en: 'Friend Links'
         }
       }
@@ -151,13 +156,21 @@ export class ThemeMenu implements ObMenu {
   }
 }
 
+enum LocalesTypes {
+  en,
+  'zh-CN',
+  'zh-TW'
+}
+
+export type Locales = keyof typeof LocalesTypes
+
 export class Menu {
   /** Name of the menu */
   name = ''
   /** Vue router path for the menu */
   path = ''
   /** Translation key for vue-i18n */
-  i18n: { cn?: string; en?: string } = {}
+  i18n: Partial<Record<Locales, string>> = {}
   /** Sub menus */
   children: Menu[] = []
 
@@ -382,7 +395,7 @@ export class Site {
   /** Website description (used in the header meta tag) */
   description = ''
   /** Blog's default language */
-  language = 'en'
+  language: Locales = 'en'
   /** Allow use to change blog's locale */
   multi_language = true
   /** Site logo or brand logo */

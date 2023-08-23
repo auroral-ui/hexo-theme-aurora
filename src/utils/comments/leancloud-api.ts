@@ -12,6 +12,7 @@
 import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
 import pack from '../../../package.json'
 import { getGravatar, getGravatarUrl } from './gravatar'
+import { Locales } from '@/models/ThemeConfig.class'
 
 const VERSION = pack.version
 let AV_INITIALIZED = false
@@ -294,7 +295,7 @@ export class LeanCloudComment implements RecentComment {
    * @param raw Raw data from LeanCloud API
    * @param options Additional params
    */
-  constructor(raw?: { [key: string]: any }, lang?: string) {
+  constructor(raw?: { [key: string]: any }, lang?: Locales) {
     if (raw) {
       let cachedData = false
       for (const key of Object.keys(this)) {
@@ -306,7 +307,7 @@ export class LeanCloudComment implements RecentComment {
 
       // Skip filters if it's cache data.
       if (!cachedData) {
-        const language = lang === 'en' || lang === 'cn' ? lang : 'en'
+        const language = lang ?? 'en'
         this.filterBody()
         this.transformTime(language)
       }
@@ -326,10 +327,11 @@ export class LeanCloudComment implements RecentComment {
    *
    * eg. `10 minutes ago.`
    */
-  transformTime(lang: 'en' | 'cn'): void {
+  transformTime(lang: Locales): void {
     const templates = {
       en: 'commented [TIME]',
-      cn: '[TIME]评论了'
+      'zh-CN': '[TIME]评论了',
+      'zh-TW': '[TIME]評論了'
     }
 
     this.created_at = formatTime(this.created_at, {

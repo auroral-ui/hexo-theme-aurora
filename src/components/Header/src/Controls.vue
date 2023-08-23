@@ -34,15 +34,19 @@
             width="1.2rem"
             height="1.2rem"
           />
-          <span v-if="$i18n.locale == 'cn'">中文</span>
-          <span v-if="$i18n.locale == 'en'">EN</span>
+          <span v-if="$i18n.locale == 'zh-CN'">简体</span>
+          <span v-if="$i18n.locale == 'zh-TW'">繁體</span>
+          <span v-if="$i18n.locale == 'en'">En</span>
         </span>
         <DropdownMenu>
           <DropdownItem name="en" :active="currentLocale === 'en'">
             English
           </DropdownItem>
-          <DropdownItem name="cn" :active="currentLocale === 'cn'">
-            中文
+          <DropdownItem name="zh-CN" :active="currentLocale === 'zh-CN'">
+            简体
+          </DropdownItem>
+          <DropdownItem name="zh-TW" :active="currentLocale === 'zh-TW'">
+            繁體
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
@@ -98,6 +102,7 @@ import SearchModal from '@/components/SearchModal.vue'
 import { useSearchStore } from '@/stores/search'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { useNavigatorStore } from '@/stores/navigator'
+import { Locales } from '@/models/ThemeConfig.class'
 
 export default defineComponent({
   name: 'Controls',
@@ -121,7 +126,7 @@ export default defineComponent({
     const navigatorStore = useNavigatorStore()
     const ballProgress = toRefs(props).scrollProgress
 
-    const handleClick = (name: string): void => {
+    const handleClick = (name: Locales): void => {
       appStore.changeLocale(name)
     }
 

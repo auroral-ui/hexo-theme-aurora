@@ -1,3 +1,4 @@
+import { Locales } from '@/models/ThemeConfig.class'
 import { useAppStore } from '@/stores/app'
 import { useMetaStore } from '@/stores/meta'
 import { ref, watch } from 'vue'
@@ -9,8 +10,8 @@ export default function usePageTitle() {
   const metaStore = useMetaStore()
   const route = useRoute()
 
-  const updateTitle = (locale?: string | undefined) => {
-    const currentLocale = (locale ?? appStore.locale) === 'cn' ? 'cn' : 'en'
+  const updateTitle = (locale?: Locales | undefined) => {
+    const currentLocale: Locales = locale ?? appStore.locale
     const menuName = String(route.name)
     const routeInfo =
       appStore.themeConfig.menu.menus[

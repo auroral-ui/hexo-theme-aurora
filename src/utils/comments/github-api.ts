@@ -8,6 +8,7 @@ declare const Gitalk: any
 import request from '@/utils/external-request'
 import { AxiosResponse } from 'axios'
 import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
+import { Locales } from '@/models/ThemeConfig.class'
 
 const COMMENT_CACHE_KEY = 'github-comment-cache-key'
 const GITHUB_API_URL = 'https://api.github.com/repos'
@@ -27,7 +28,7 @@ export type GithubAttributes = {
    * Locale request
    * @default 'en'
    */
-  lang?: string
+  lang?: Locales
 }
 
 interface GithubCommentsInterface {
@@ -85,9 +86,19 @@ export const githubInit = ({
   gitalk.render('gitalk-container')
 }
 
+interface GithubConfigs {
+  repo: string
+  owner: string
+  clientId: string
+  clientSecret: string
+  admin: string
+  authorizationToken: string
+  lang: Locales
+}
+
 export class GithubComments implements GithubCommentsInterface {
   commentUrlCount = 0
-  configs = {
+  configs: GithubConfigs = {
     repo: '',
     owner: '',
     clientId: '',
@@ -270,7 +281,7 @@ export class GithubComment implements RecentComment {
       }
       // Skip filters if it's cache data.
       if (!cachedData) {
-        const lang = options && options.lang ? 'en' : 'cn'
+        const lang = options?.lang ?? 'en'
         this.filterBody()
         this.transformTime(lang)
       }
@@ -344,10 +355,11 @@ export class GithubComment implements RecentComment {
    *
    * eg. `10 minutes ago.`
    */
-  transformTime(lang: 'en' | 'cn'): void {
+  transformTime(lang: Locales): void {
     const templates = {
       en: 'commented [TIME]',
-      cn: '[TIME]评论了'
+      'zh-CN': '[TIME]评论了',
+      'zh-TW': '[TIME]評論了'
     }
 
     this.created_at = formatTime(this.created_at, {

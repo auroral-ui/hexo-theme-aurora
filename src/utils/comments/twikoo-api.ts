@@ -88,7 +88,10 @@ export class TwikooComments {
   }
 
   mapComment(comment: TwikooComment, gravatarUrl: string): RecentComment {
-    const timezoneDiff = this.configs.lang === 'cn' ? 8 * 1000 * 60 * 60 : 0
+    const timezoneDiff =
+      this.configs.lang === 'zh-CN' || this.configs.lang === 'zh-TW'
+        ? 8 * 1000 * 60 * 60
+        : 0
     const createdAt = formatTime(
       new Date(Number(comment.created) - timezoneDiff).toISOString()
     )
