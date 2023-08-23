@@ -1,20 +1,33 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col mt-10">
     <div class="post-header">
-      <Breadcrumbs :current="t(pageType)" />
-      <h1 class="post-title text-white uppercase">{{ title }}</h1>
+      <!-- <Breadcrumbs :current="t(pageType)" /> -->
+      <div class="flex flex-row gap-8">
+        <h1 v-if="categoryTitle" class="post-title text-white uppercase">
+          <span class="opacity-60">
+            <SvgIcon icon-class="category" stroke="white" />
+          </span>
+          {{ categoryTitle }}
+        </h1>
+        <h1 v-if="tagTitle" class="post-title text-white uppercase">
+          <span class="opacity-60">
+            <SvgIcon icon-class="tag" stroke="white" />
+          </span>
+          {{ tagTitle }}
+        </h1>
+      </div>
     </div>
     <div class="main-grid">
       <div class="relative">
         <transition name="fade-slide-y" mode="out-in">
           <div v-show="isEmpty" class="post-html flex flex-col items-center">
-            <h1>没有找到任何文章</h1>
+            <h1>{{ t('settings.no-search-result') }}</h1>
             <SvgIcon icon-class="empty-search" style="font-size: 35rem" />
           </div>
         </transition>
         <div class="flex flex-col relative">
-          <ul class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-8">
-            <template v-if="posts.data.length === 0">
+          <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <template v-if="isLoading || posts.data.length === 0">
               <li v-for="n in 12" :key="n">
                 <Article :data="{}" />
               </li>
@@ -27,18 +40,22 @@
           </ul>
 
           <Paginator
-            :pageSize="12"
+            :pageSize="pagination.pageSize"
             :pageTotal="pagination.pageTotal"
             :page="pagination.page"
-            @pageChange="pageChangeHanlder"
+            @pageChange="pageChangeHandler"
           />
         </div>
       </div>
       <div>
         <Sidebar>
-          <CategoryBox />
-          <TagBox />
-          <RecentComment />
+          <div class="sidebar-box flex flex-col gap-8">
+            <CategoryBox
+              :sidebar-box="false"
+              :active-category="categoryTitle"
+            />
+            <TagBox :sidebar-box="false" :active-tag="tagTitle" />
+          </div>
         </Sidebar>
       </div>
     </div>
@@ -55,12 +72,7 @@ import {
   watch
 } from 'vue'
 import { useI18n } from 'vue-i18n'
-import {
-  Sidebar,
-  RecentComment,
-  TagBox,
-  CategoryBox
-} from '@/components/Sidebar'
+import { Sidebar, TagBox, CategoryBox } from '@/components/Sidebar'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Paginator from '@/components/Paginator.vue'
 import { Article } from '@/components/ArticleCard'
@@ -75,7 +87,6 @@ export default defineComponent({
   components: {
     Breadcrumbs,
     Sidebar,
-    RecentComment,
     TagBox,
     Paginator,
     Article,
@@ -92,19 +103,20 @@ export default defineComponent({
     const isFetched = ref(false)
     const posts = ref(new SpecificPostsList())
     const pagination = ref({
+      pageSize: 12,
       pageTotal: 0,
       page: 1
     })
-    const queryKey = 'ob-query-key'
-    let querySlug = ref()
+    const queryTagKey = 'aurora-query-tag'
+    const queryCategoryKey = 'aurora-query-category'
+    const queryTag = ref()
+    const queryCategory = ref()
 
     const initPage = () => {
-      const path = route.path
-      if (path.indexOf('tags') !== -1) {
-        pageType.value = 'menu.tags'
+      if (queryTag.value) {
         fetchPostByTag()
-      } else {
-        pageType.value = 'menu.search'
+      } else if (queryCategory.value) {
+        fetchPostByCategory()
       }
 
       window.scrollTo({
@@ -116,19 +128,34 @@ export default defineComponent({
 
     const fetchPostByTag = () => {
       isFetched.value = false
-      postStore.fetchPostsByTag(querySlug.value).then(response => {
+      postStore.fetchPostsByTag(queryTag.value).then(response => {
         isFetched.value = true
         posts.value = response
+        pagination.value.pageTotal = response.total
       })
     }
 
-    const pageChangeHanlder = (toQuery: any = {}) => {
-      querySlug.value = toQuery.slug
-        ? String(toQuery.slug)
-        : localStorage.getItem(queryKey)
+    const fetchPostByCategory = () => {
+      isFetched.value = false
+      postStore.fetchPostsByCategory(queryCategory.value).then(response => {
+        isFetched.value = true
+        posts.value = response
+        pagination.value.pageTotal = response.total
+      })
+    }
 
-      if (querySlug.value && querySlug.value !== undefined) {
-        localStorage.setItem(queryKey, querySlug.value)
+    const pageChangeHandler = () => {
+      queryCategory.value = ''
+      queryTag.value = ''
+      const { tag, category } = route.query
+
+      if (category) {
+        queryCategory.value = category
+      } else if (tag) {
+        queryTag.value = tag
+      }
+
+      if (tag || category) {
         initPage()
       }
     }
@@ -136,29 +163,28 @@ export default defineComponent({
     watch(
       () => route.query,
       toQuery => {
-        pageChangeHanlder(toQuery)
+        pageChangeHandler()
       }
     )
 
     onBeforeMount(() => {
-      pageChangeHanlder(route.query)
+      pageChangeHandler()
     })
 
     onUnmounted(() => {
-      localStorage.removeItem(queryKey)
+      localStorage.removeItem(queryTagKey)
+      localStorage.removeItem(queryCategoryKey)
     })
 
     return {
-      isEmpty: computed(() => {
-        return posts.value.data.length === 0 && isFetched.value
-      }),
-      title: computed(() => {
-        return querySlug.value
-      }),
+      isLoading: computed(() => !isFetched.value),
+      isEmpty: computed(() => posts.value.data.length === 0 && isFetched.value),
+      categoryTitle: computed(() => queryCategory.value),
+      tagTitle: computed(() => queryTag.value),
       posts,
       pageType,
       pagination,
-      pageChangeHanlder,
+      pageChangeHandler,
       t
     }
   }

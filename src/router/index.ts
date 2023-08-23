@@ -40,8 +40,8 @@ const routes = [
     component: () => import('../views/Tag.vue')
   },
   {
-    path: '/tags/search',
-    name: 'tags-search',
+    path: '/post/search',
+    name: 'post-search',
     component: () => import('../views/Result.vue')
   },
   {

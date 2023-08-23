@@ -32,7 +32,10 @@
               <span>{{ t('settings.featured') }}</span>
             </span>
           </b>
-          <b v-if="post.categories && post.categories.length > 0">
+          <b
+            v-if="post.categories && post.categories.length > 0"
+            @click="navigateToCategory(post.categories[0].slug)"
+          >
             {{ post.categories[0].name }}
           </b>
           <b v-else-if="post.categories && post.categories.length <= 0">
@@ -43,7 +46,11 @@
 
         <span class="flex flex-wrap">
           <ul v-if="post.tags && post.tags.length > 0">
-            <li v-for="tag in post.min_tags" :key="tag.slug">
+            <li
+              v-for="tag in post.min_tags"
+              :key="tag.slug"
+              @click="navigateToTag(tag.slug)"
+            >
               <em># </em><span>{{ tag.name }}</span>
             </li>
           </ul>
@@ -118,6 +125,7 @@ import { useAppStore } from '@/stores/app'
 import { computed, defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'ObFeatureList',
@@ -129,12 +137,21 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const router = useRouter()
     const appStore = useAppStore()
     const { t } = useI18n()
 
     const handleAuthorClick = (link: string) => {
       if (link === '') link = window.location.href
       window.location.href = link
+    }
+
+    const navigateToTag = (slug: string) => {
+      router.push({ name: 'post-search', query: { tag: slug } })
+    }
+
+    const navigateToCategory = (slug: string) => {
+      router.push({ name: 'post-search', query: { category: slug } })
     }
 
     return {
@@ -146,6 +163,8 @@ export default defineComponent({
         return { background: appStore.themeConfig.theme.header_gradient_css }
       }),
       post: computed(() => props.data),
+      navigateToTag,
+      navigateToCategory,
       handleAuthorClick,
       t
     }

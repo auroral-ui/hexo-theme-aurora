@@ -85,7 +85,13 @@
         <Sidebar>
           <Profile author="blog-author" />
           <RecentComment />
-          <TagBox />
+          <Sticky
+            :stickyTop="32 + 81"
+            :endingElId="endEleId"
+            dynamicElClass="#sticky-tag-box"
+          >
+            <TagBox />
+          </Sticky>
         </Sidebar>
       </div>
     </div>
@@ -107,6 +113,7 @@ import Paginator from '@/components/Paginator.vue'
 import { useMetaStore } from '@/stores/meta'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import usePageTitle from '@/hooks/usePageTitle'
+import Sticky from '@/components/Sticky.vue'
 
 export default defineComponent({
   name: 'Home',
@@ -121,7 +128,8 @@ export default defineComponent({
     Paginator,
     RecentComment,
     Profile,
-    SvgIcon
+    SvgIcon,
+    Sticky
   },
   setup() {
     useMetaStore().setTitle('home')
@@ -221,6 +229,11 @@ export default defineComponent({
     }
 
     return {
+      endEleId: computed(() =>
+        appStore.themeConfig.footerLinks.data.length > 0
+          ? 'footer-link'
+          : 'footer'
+      ),
       gradientText: computed(
         () => appStore.themeConfig.theme.background_gradient_style
       ),

@@ -8,6 +8,7 @@
             v-else-if="
               !loading && post.categories && post.categories.length > 0
             "
+            @click="navigateToCategory(post.categories[0].slug)"
           >
             <span>{{ post.categories[0].name }}</span>
           </b>
@@ -22,7 +23,11 @@
               class="mr-2"
             />
             <template v-else-if="!loading && post.tags && post.tags.length > 0">
-              <li v-for="tag in post.tags" :key="tag.slug">
+              <li
+                v-for="tag in post.tags"
+                :key="tag.slug"
+                @click="navigateToTag(tag.slug)"
+              >
                 <em class="opacity-50">#</em>
                 {{ tag.name }}
               </li>
@@ -177,7 +182,7 @@ import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
 import { Ref, computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
 import { SubTitle } from '@/components/Title'
@@ -215,6 +220,7 @@ export default defineComponent({
     const appStore = useAppStore()
     const commonStore = useCommonStore()
     const route = useRoute()
+    const router = useRouter()
     const { t } = useI18n()
     const post = ref(new Post())
     const loading = ref(true)
@@ -265,6 +271,14 @@ export default defineComponent({
       window.location.href = link
     }
 
+    const navigateToTag = (slug: string) => {
+      router.push({ name: 'post-search', query: { tag: slug } })
+    }
+
+    const navigateToCategory = (slug: string) => {
+      router.push({ name: 'post-search', query: { category: slug } })
+    }
+
     return {
       avatarClasses: computed(() => {
         return {
@@ -283,6 +297,8 @@ export default defineComponent({
       commonStore,
       fetchData,
       handleAuthorClick,
+      navigateToTag,
+      navigateToCategory,
       loading,
       post,
       t
