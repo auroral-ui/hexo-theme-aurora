@@ -1,0 +1,60 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["\U0001F41E bug"]
+projects: ["auroral-ui/2"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        感谢您花时间填写这个bug报告!
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug 描述问题
+      description: A clear and concise description of what the bug is. 描述问题
+      placeholder: e.g. Could not see xxx in the xxx page.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To Reproduce
+      description: Steps to reproduce the behavior 如何重现
+      value: |
+        Steps:
+        1. On what '...' page
+        2. Do '...' action
+        3. See '...' bug
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior 应该是怎么样的
+      description: A clear and concise description of what you expected to happen.
+      placeholder: e.g. Should able to see xxxx
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on? 使用的浏览器
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots 截图
+      description: If applicable, add screenshots to help explain your problem.
+  - type: input
+    id: version
+    attributes:
+      label: Version 版本号
+      description: Which version did this appear on
+      placeholder: Version 2.4.2
