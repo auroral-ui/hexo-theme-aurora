@@ -1,48 +1,43 @@
 <template>
-  <Sticky
-    :stickyTop="32 + 81"
-    :endingElId="endEleId"
-    dynamicElClass="#sticky-tag-box"
-  >
-    <div id="sticky-tag-box" class="sidebar-box">
-      <SubTitle :title="'titles.tag_list'" icon="tag" />
-      <TagList :class="tagBoxClasses">
-        <template v-if="tags && tags.length > 0">
-          <TagItem
-            v-for="tag in tags"
-            :key="tag.slug"
-            :name="tag.name"
-            :slug="tag.slug"
-            :count="tag.count"
-            size="small"
-          />
-          <template v-if="!expand">
-            <div class="more-cover"></div>
-            <div class="more-btn" @click="expandBox">
-              <SvgIcon
-                class="font-bold"
-                icon-class="more"
-                fill="currentColor"
-                stroke="none"
-                height="1.5rem"
-                width="1.5rem"
-              />
-              <span>{{ t('settings.more-tags') }}</span>
-            </div>
-          </template>
-        </template>
-        <template v-else-if="tags">
-          <ob-skeleton tag="li" :count="10" height="20px" width="3rem" />
-        </template>
-        <template v-else>
-          <div class="flex flex-row justify-center items-center">
-            <SvgIcon class="stroke-ob-bright mr-2" icon-class="warning" />
-            {{ t('settings.empty-tag') }}
+  <div id="sticky-tag-box" :class="sidebarBoxClasses">
+    <SubTitle :title="'titles.tag_list'" icon="tag" />
+    <TagList :class="tagBoxClasses">
+      <template v-if="tags && tags.length > 0">
+        <TagItem
+          v-for="tag in tags"
+          :key="tag.slug"
+          :name="tag.name"
+          :slug="tag.slug"
+          :count="tag.count"
+          :active="!!activeTag && tag.slug === activeTag"
+          size="small"
+        />
+        <template v-if="!expand">
+          <div class="more-cover"></div>
+          <div class="more-btn" @click="expandBox">
+            <SvgIcon
+              class="font-bold"
+              icon-class="more"
+              fill="currentColor"
+              stroke="none"
+              height="1.5rem"
+              width="1.5rem"
+            />
+            <span>{{ t('settings.more-tags') }}</span>
           </div>
         </template>
-      </TagList>
-    </div>
-  </Sticky>
+      </template>
+      <template v-else-if="tags">
+        <ob-skeleton tag="li" :count="10" height="20px" width="3rem" />
+      </template>
+      <template v-else>
+        <div class="flex flex-row justify-center items-center">
+          <SvgIcon class="stroke-ob-bright mr-2" icon-class="warning" />
+          {{ t('settings.empty-tag') }}
+        </div>
+      </template>
+    </TagList>
+  </div>
 </template>
 
 <script lang="ts">
@@ -52,14 +47,18 @@ import { useTagStore } from '@/stores/tag'
 import { TagList, TagItem } from '@/components/Tag'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
-import Sticky from '@/components/Sticky.vue'
-import { useAppStore } from '@/stores/app'
 
 export default defineComponent({
   name: 'ObTag',
-  components: { SubTitle, TagList, TagItem, SvgIcon, Sticky },
-  setup() {
-    const appStore = useAppStore()
+  components: { SubTitle, TagList, TagItem, SvgIcon },
+  props: {
+    sidebarBox: {
+      type: Boolean,
+      default: true
+    },
+    activeTag: String
+  },
+  setup(props) {
     const tagStore = useTagStore()
     const { t } = useI18n()
     const expand = ref<boolean>(false)
@@ -75,11 +74,6 @@ export default defineComponent({
     onMounted(fetchData)
 
     return {
-      endEleId: computed(() =>
-        appStore.themeConfig.footerLinks.data.length > 0
-          ? 'footer-link'
-          : 'footer'
-      ),
       tags: computed(() => {
         if (tagStore.isLoaded && tagStore.tags.length === 0) return null
         return tagStore.tags
@@ -88,6 +82,9 @@ export default defineComponent({
         'overflow-hidden text-ellipsis relative': true,
         'max-h-98': !expand.value,
         'h-full': expand.value
+      })),
+      sidebarBoxClasses: computed(() => ({
+        'sidebar-box': props.sidebarBox
       })),
       expandBox,
       expand,

@@ -4,7 +4,8 @@
   >
     <router-link
       :class="tagClasses"
-      :to="{ name: 'tags-search', query: { slug: slug } }"
+      :to="{ name: 'post-search', query: { tag: slug } }"
+      :style="gradientBackground"
     >
       {{ name }}
       <sub :class="countClasses">
@@ -15,6 +16,7 @@
 </template>
 
 <script lang="ts">
+import { useAppStore } from '@/stores/app'
 import { PropType, computed, defineComponent, toRefs } from 'vue'
 
 export default defineComponent({
@@ -29,10 +31,15 @@ export default defineComponent({
     size: {
       type: String as PropType<'small' | 'large'>,
       default: 'small'
+    },
+    active: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
     const tagSize = toRefs(props).size
+    const appStore = useAppStore()
 
     return {
       tagClasses: computed(() => ({
@@ -44,7 +51,16 @@ export default defineComponent({
         'block -mt-1.5 ml-1 text-xs opacity-50': tagSize.value === 'small',
         'block -mt-1.5 ml-2 rounded-full text-xs text-ob':
           tagSize.value === 'large'
-      }))
+      })),
+      gradientBackground: computed(() => {
+        return props.active
+          ? {
+              background: appStore.themeConfig.theme.header_gradient_css,
+              color: '#fff',
+              opacity: 1
+            }
+          : {}
+      })
     }
   }
 })

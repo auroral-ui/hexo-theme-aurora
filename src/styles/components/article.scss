@@ -42,9 +42,9 @@
     span {
       filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.1));
       b {
-        @apply text-ob text-xs uppercase;
+        @apply text-ob text-xs uppercase cursor-pointer hover:opacity-60;
         &.article-tag {
-          @apply relative py-0.5 px-1.5 text-white mr-2;
+          @apply relative py-0.5 px-1.5 text-white mr-2 hover:opacity-100 cursor-default;
           span {
             @apply relative z-10 text-xs ml-0.5;
             position: relative;
@@ -68,7 +68,7 @@
           em {
             @apply not-italic opacity-50;
           }
-          @apply mr-3;
+          @apply mr-3 cursor-pointer hover:opacity-60;
         }
       }
     }
@@ -115,9 +115,9 @@
   .feature-content {
     @apply flex flex-col relative px-6 pb-6 lg:p-12 z-40 row-span-2 lg:row-auto;
     b {
-      @apply text-ob uppercase;
+      @apply text-ob uppercase hover:opacity-60 cursor-pointer;
       &.article-tag {
-        @apply relative py-0.5 px-1.5 text-white mr-3;
+        @apply relative py-0.5 px-1.5 text-white mr-3 hover:opacity-100 cursor-default;
 
         span {
           @apply relative z-10 text-xs ml-0.5;
@@ -143,7 +143,7 @@
         em {
           @apply not-italic opacity-50;
         }
-        @apply mr-3;
+        @apply mr-3 hover:opacity-60 cursor-pointer;
       }
     }
     h1 {
@@ -657,7 +657,7 @@
   .post-labels {
     @apply relative -bottom-1.5;
     > b {
-      @apply text-white text-xs uppercase py-1 px-2 rounded-md inline-flex;
+      @apply text-white text-xs uppercase py-1 px-2 rounded-md inline-flex hover:opacity-60 cursor-pointer;
       background-color: rgba(255,255,255,0.25);
       text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     }
@@ -667,7 +667,7 @@
         em {
           @apply not-italic;
         }
-        @apply text-white text-sm mr-3 opacity-80;
+        @apply text-white text-sm mr-3 opacity-80 hover:opacity-60 cursor-pointer;
         text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
       }
     }

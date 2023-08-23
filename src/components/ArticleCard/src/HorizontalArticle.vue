@@ -34,7 +34,10 @@
               </span>
             </span>
           </b>
-          <b v-if="post.categories && post.categories.length > 0">
+          <b
+            v-if="post.categories && post.categories.length > 0"
+            @click="navigateToCategory(post.categories[0].slug)"
+          >
             {{ post.categories[0].name }}
           </b>
           <b v-else-if="post.categories && post.categories.length <= 0">
@@ -49,6 +52,7 @@
               <li
                 v-for="index in numberOfTags"
                 :key="post.tags[index - 1].slug"
+                @click="navigateToTag(post.tags[index - 1].slug)"
               >
                 <em># </em><span>{{ post.tags[index - 1].name }}</span>
               </li>
@@ -124,6 +128,7 @@ import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import { useRouter } from 'vue-router'
 
 enum TagLimit {
   forMobile = '2',
@@ -140,6 +145,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const router = useRouter()
     const appStore = useAppStore()
     const commonStore = useCommonStore()
     const { t } = useI18n()
@@ -148,6 +154,14 @@ export default defineComponent({
     const handleAuthorClick = (link: string) => {
       if (link === '') link = window.location.href
       window.location.href = link
+    }
+
+    const navigateToTag = (slug: string) => {
+      router.push({ name: 'post-search', query: { tag: slug } })
+    }
+
+    const navigateToCategory = (slug: string) => {
+      router.push({ name: 'post-search', query: { category: slug } })
     }
 
     return {
@@ -166,6 +180,8 @@ export default defineComponent({
         }
         return tagCount > TagLimit.default ? TagLimit.default : tagCount
       }),
+      navigateToTag,
+      navigateToCategory,
       post,
       handleAuthorClick,
       t
