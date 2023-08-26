@@ -34,7 +34,9 @@
             </div>
             <div class="timeline-marker"></div>
             <div class="timeline-content">
-              <router-link :to="{ name: 'post', params: { slug: post.slug } }">
+              <router-link
+                :to="{ name: 'post-slug', params: { slug: post.slug } }"
+              >
                 <h3 class="timeline-title">{{ post.title }}</h3>
               </router-link>
               <p>

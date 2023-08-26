@@ -1,3 +1,6 @@
+// vite-env.d.ts
+/// <reference types="vite-plugin-pages/client" />
+
 /* eslint-disable */
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'

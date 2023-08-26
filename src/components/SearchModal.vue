@@ -366,7 +366,7 @@ export default defineComponent({
       reloadRecentResult()
       handleStatusChange(false)
       if (result.slug !== '')
-        router.push({ name: 'post', params: { slug: result.slug } })
+        router.push({ name: 'post-slug', params: { slug: result.slug } })
     }
 
     const handleResetInput = () => {
@@ -469,9 +469,9 @@ export default defineComponent({
     const initSearch = async () => {
       searchIndexStatus.value = false
       isEmpty.value = false
-      await searchStore.fetchSearchIndex().then(() => {
-        searchIndexStatus.value = true
-      })
+      // await searchStore.fetchSearchIndex().then(() => {
+      //   searchIndexStatus.value = true
+      // })
     }
 
     onBeforeMount(initSearch)

@@ -8,11 +8,11 @@ import {
   // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
 import { cleanPath, filterHTMLContent, formatTime } from '..'
-import { PluginsData } from '@/models/ThemeConfig.class'
+import { Locales, PluginsData } from '@/models/ThemeConfig.class'
 
 type WalinePlugin = PluginsData['waline']
 interface WalineConfig extends WalinePlugin {
-  lang: string
+  lang: Locales
 }
 
 interface WalineComment {
@@ -92,7 +92,7 @@ export const walineCommentViewInit = (serverURL: string, path: string) => {
 export class WalineComments {
   configs: Partial<WalineConfig> = {
     serverURL: '',
-    lang: ''
+    lang: 'en'
   }
 
   constructor({ serverURL, lang }: Partial<WalineConfig>) {
