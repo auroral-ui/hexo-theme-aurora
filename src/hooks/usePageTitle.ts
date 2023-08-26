@@ -12,13 +12,14 @@ export default function usePageTitle() {
 
   const updateTitle = (locale?: Locales | undefined) => {
     const currentLocale: Locales = locale ?? appStore.locale
-    const menuName = String(route.name)
+    const menuName = String(route.name === 'index' ? 'home' : route.name)
     const routeInfo =
       appStore.themeConfig.menu.menus[
         menuName.charAt(0).toUpperCase() + menuName.slice(1)
       ]
     pageTitle.value =
-      (routeInfo.i18n && routeInfo.i18n[currentLocale]) || routeInfo.name
+      (routeInfo && routeInfo.i18n && routeInfo.i18n[currentLocale]) ||
+      routeInfo.name
     metaStore.setTitle(pageTitle.value)
   }
 

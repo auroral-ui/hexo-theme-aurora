@@ -74,7 +74,7 @@
 
         <router-link
           v-if="post.title"
-          :to="{ name: 'post', params: { slug: post.slug } }"
+          :to="{ name: 'post-slug', params: { slug: post.slug } }"
         >
           <h1 data-dia="article-link">{{ post.title }}</h1>
         </router-link>

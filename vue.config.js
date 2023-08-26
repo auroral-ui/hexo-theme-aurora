@@ -80,14 +80,14 @@ module.exports = {
 
     config
       // https://webpack.js.org/configuration/devtool/#development
-      .when(process.env.NODE_ENV === 'development', (config) =>
+      .when(process.env.NODE_ENV === 'development', config =>
         config.devtool('cheap-source-map')
       )
 
-    config.when(process.env.NODE_ENV !== 'development', (config) => {
+    config.when(process.env.NODE_ENV !== 'development', config => {
       // htmlWebpackPlugin
       // https://github.com/jantimon/html-webpack-plugin
-      config.plugin('html').tap((args) => {
+      config.plugin('html').tap(args => {
         args[0].filename = path.resolve(__dirname, './layout/index.ejs')
         args[0].template = path.resolve(__dirname, './public/index_prod.html')
         return args
@@ -127,7 +127,7 @@ module.exports = {
 
       // CopyWebpackPlugin Configs
       // https://github.com/webpack-contrib/copy-webpack-plugin
-      config.plugin('copy').tap((args) => {
+      config.plugin('copy').tap(args => {
         args[0][0].to = path.resolve(__dirname, './source')
         args[0][0].ignore = ['.*', '*.html']
         return args

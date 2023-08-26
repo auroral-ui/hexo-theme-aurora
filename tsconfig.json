@@ -13,7 +13,13 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["vite/client", "jest", "node", "vite-plugin-svg-icons/client"],
+    "types": [
+      "vite/client",
+      "jest",
+      "node",
+      "vite-plugin-svg-icons/client",
+      "vite-plugin-pages/client"
+    ],
     "paths": {
       "@/*": ["src/*"]
     },
