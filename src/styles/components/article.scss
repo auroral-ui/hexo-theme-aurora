@@ -73,7 +73,7 @@
       }
     }
     h1 {
-      @apply text-ob-bright text-2xl font-extrabold mb-6 lg:mt-4 lg:mb-8;
+      @apply text-ob-bright text-2xl font-extrabold mb-6 lg:mt-4 lg:mb-8 line-clamp-3;
     }
     p {
       @apply text-sm lg:text-base pb-4 mb-2 lg:pb-6 lg:mb-2;
@@ -147,10 +147,10 @@
       }
     }
     h1 {
-      @apply text-ob-bright text-2xl lg:text-4xl font-extrabold mb-6 lg:mt-4 lg:mb-8;
+      @apply text-ob-bright text-2xl lg:text-4xl font-extrabold mb-6 lg:mt-4 lg:mb-8 line-clamp-2;
     }
     p {
-      @apply text-base lg:text-lg pb-4 mb-2 lg:pb-6 lg:mb-2;
+      @apply text-base lg:text-lg pb-4 mb-2 lg:pb-6 lg:mb-2 line-clamp-3;
     }
     .article-footer {
       @apply w-full flex justify-start flex-1 content-end items-end text-sm;
@@ -335,11 +335,11 @@
     border-bottom: transparent;
     border-right: transparent;
     background: linear-gradient(
-      135deg,
-      var(--background-primary),
-      var(--background-primary) 41.07%,
-      var(--background-secondary) 76.05%,
-      var(--background-secondary)
+        135deg,
+        var(--background-primary),
+        var(--background-primary) 41.07%,
+        var(--background-secondary) 76.05%,
+        var(--background-secondary)
     );
   }
 
@@ -352,9 +352,9 @@
     height: 2px;
     width: 76%;
     background: linear-gradient(
-      90deg,
-      var(--text-accent),
-      var(--background-secondary) 76.05%
+        90deg,
+        var(--text-accent),
+        var(--background-secondary) 76.05%
     );
   }
 
@@ -367,9 +367,9 @@
     height: 2px;
     width: 45%;
     background: linear-gradient(
-      90deg,
-      var(--text-accent),
-      var(--background-primary) 45%
+        90deg,
+        var(--text-accent),
+        var(--background-primary) 45%
     );
   }
 
@@ -409,17 +409,17 @@
 
   .custom-quote.tip::before {
     background: linear-gradient(
-      90deg,
-      var(--custom-quote-tip),
-      var(--background-primary)
+        90deg,
+        var(--custom-quote-tip),
+        var(--background-primary)
     );
   }
 
   .custom-quote.tip::after {
     background: linear-gradient(
-      90deg,
-      var(--custom-quote-tip),
-      var(--background-primary)
+        90deg,
+        var(--custom-quote-tip),
+        var(--background-primary)
     );
   }
 
@@ -436,17 +436,17 @@
 
   .custom-quote.warning::before {
     background: linear-gradient(
-      90deg,
-      var(--custom-quote-warning),
-      var(--background-primary)
+        90deg,
+        var(--custom-quote-warning),
+        var(--background-primary)
     );
   }
 
   .custom-quote.warning::after {
     background: linear-gradient(
-      90deg,
-      var(--custom-quote-warning),
-      var(--background-primary)
+        90deg,
+        var(--custom-quote-warning),
+        var(--background-primary)
     );
   }
 
@@ -463,17 +463,17 @@
 
   .custom-quote.danger::before {
     background: linear-gradient(
-      90deg,
-      var(--custom-quote-danger),
-      var(--background-primary)
+        90deg,
+        var(--custom-quote-danger),
+        var(--background-primary)
     );
   }
 
   .custom-quote.danger::after {
     background: linear-gradient(
-      90deg,
-      var(--custom-quote-danger),
-      var(--background-primary)
+        90deg,
+        var(--custom-quote-danger),
+        var(--background-primary)
     );
   }
 
@@ -481,11 +481,11 @@
     @apply rounded-xl;
     padding: 1rem;
     background: linear-gradient(
-      135deg,
-      var(--background-primary),
-      var(--background-primary) 41.07%,
-      var(--background-secondary) 76.05%,
-      var(--background-secondary)
+        135deg,
+        var(--background-primary),
+        var(--background-primary) 41.07%,
+        var(--background-secondary) 76.05%,
+        var(--background-secondary)
     );
     summary {
       @apply rounded-lg cursor-pointer transition-all;
@@ -497,9 +497,9 @@
       user-select: none; /* Non-prefixed version, currently */
       padding: 0.5rem 1.2rem;
       background: linear-gradient(
-        135deg,
-        var(--bg-accent-55),
-        transparent 46.07%
+          135deg,
+          var(--bg-accent-55),
+          transparent 46.07%
       );
       opacity: 1;
       &:hover {
@@ -555,9 +555,9 @@
 
   a {
     text-shadow: -1px -1px 2px var(--background-primary),
-      -1px 1px 2px var(--background-primary),
-      1px -1px 2px var(--background-primary),
-      1px 1px 2px var(--background-primary);
+    -1px 1px 2px var(--background-primary),
+    1px -1px 2px var(--background-primary),
+    1px 1px 2px var(--background-primary);
     -webkit-text-fill-color: var(--text-bright);
     background-position: 0 100%;
     background-repeat: repeat-x;
@@ -565,9 +565,9 @@
     text-decoration: none;
     transition: all 350ms ease;
     background-image: linear-gradient(
-      to bottom,
-      var(--bg-sub-accent-55) 0%,
-      var(--bg-sub-accent-55) 100%
+        to bottom,
+        var(--bg-sub-accent-55) 0%,
+        var(--bg-sub-accent-55) 100%
     );
   }
 
@@ -581,9 +581,9 @@
 
   a:hover {
     text-shadow: -1px -1px 2px var(--background-modifier-border),
-      -1px 1px 2px var(--background-modifier-border),
-      1px -1px 2px var(--background-modifier-border),
-      1px 1px 2px var(--background-modifier-border);
+    -1px 1px 2px var(--background-modifier-border),
+    1px -1px 2px var(--background-modifier-border),
+    1px 1px 2px var(--background-modifier-border);
     -webkit-text-fill-color: var(--text-bright);
     background-size: 4px 50px;
   }

@@ -22,8 +22,8 @@
     <div id="loading-bar-wrapper" :class="loadingBarClass"></div>
   </div>
   <FooterLink :links="themeConfig.footerLinks.data" />
-  <Footer :style="cssVariables" />
-  <template v-if="isMobile" ref="mobileSidebar">
+  <FooterContainer :style="cssVariables" />
+  <template v-if="isMobile">
     <MobileMenu />
   </template>
   <!-- <Navigator /> -->
@@ -59,7 +59,7 @@ import { useLightBoxStore } from '@/stores/lightbox'
 import { useMetaStore } from '@/stores/meta'
 import { useSearchStore } from './stores/search'
 import HeaderMain from '@/components/Header/src/Header.vue'
-import Footer from '@/components/Footer/Footer.vue'
+import FooterContainer from '@/components/Footer/FooterContainer.vue'
 import Navigator from '@/components/Navigator.vue'
 import MobileMenu from '@/components/MobileMenu.vue'
 import Dia from '@/components/Dia.vue'
@@ -72,7 +72,7 @@ export default defineComponent({
   name: 'App',
   components: {
     HeaderMain,
-    Footer,
+    FooterContainer,
     Navigator,
     MobileMenu,
     Dia,
@@ -87,7 +87,6 @@ export default defineComponent({
     const searchStore = useSearchStore()
     const MOBILE_WITH = 1024 // Using the mobile width by Bootstrap design.
     const { t } = useI18n()
-    const mobileSidebar = ref()
 
     const appWrapperClass = 'app-wrapper'
     const loadingBarClass = ref({
@@ -96,7 +95,7 @@ export default defineComponent({
 
     let pagelink = `\n\nRead more at: ${document.location.href}`
 
-    /** Intiallizing App config and other setups */
+    /** Initializing App config and other setups */
     const initialApp = async () => {
       initResizeEvent()
       await appStore.fetchConfig().then(() => {
@@ -184,9 +183,7 @@ export default defineComponent({
       let wrapperHeight = screen.height
       const footerEl = document.getElementById('footer')
       const footerHeight = footerEl?.getBoundingClientRect().height
-      if (typeof footerHeight === 'number') {
-        wrapperHeight = wrapperHeight - footerHeight * 2
-      }
+      wrapperHeight = wrapperHeight - footerHeight * 2
       wrapperStyle.value = {
         'min-height': wrapperHeight + 'px'
       }
@@ -241,7 +238,6 @@ export default defineComponent({
       lightBoxVisible: computed(() => lightBoxStore.visible),
       lightBoxIndex: computed(() => lightBoxStore.index),
       lightBoxImages: computed(() => lightBoxStore.images),
-      mobileSidebar,
       appWrapperClass,
       loadingBarClass,
       handleOpenModal,
