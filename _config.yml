@@ -181,10 +181,10 @@ copy_protection:
     en: This content is shared under the CC BY-NC-SA 4.0 protocol (Non-Commercial)
 
 algolia:
-  enable: true
-  appId: "SZO6SBQ093"
-  apiKey: "13ac9f2c1f827d8d70f3d748431ff129e"
-  adminApiKey: "4a2260dcb4a87f5b597bc4446ae3061d"
+  enable: false
+  appId: "<api_id>"
+  apiKey: "<api_key>"
+  adminApiKey: "<admin_key>"
   chunkSize: 5000
   indexName: "hexo-blog"
   fields:
