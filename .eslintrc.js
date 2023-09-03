@@ -1,6 +1,14 @@
 module.exports = {
   root: true,
-  es2022: true,
+  parserOptions: {
+    ecmaVersion: 2020
+  },
+  rules: {
+    '@typescript-eslint/no-explicit-any': ['off'],
+    'prettier/prettier': ['error', { semi: false }],
+    'no-console': 'warn',
+    'no-debugger': 'warn'
+  },
   env: {
     node: true
   },
@@ -11,15 +19,6 @@ module.exports = {
     '@vue/typescript/recommended',
     '@vue/prettier'
   ],
-  parserOptions: {
-    ecmaVersion: 2020
-  },
-  rules: {
-    '@typescript-eslint/no-explicit-any': ['off'],
-    'prettier/prettier': ['error', { semi: false }],
-    'no-console': import.meta.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': import.meta.env.NODE_ENV === 'production' ? 'warn' : 'off'
-  },
   overrides: [
     {
       files: [
