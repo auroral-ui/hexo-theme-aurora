@@ -73,7 +73,7 @@
       }
     }
     h1 {
-      @apply text-ob-bright text-2xl font-extrabold mb-6 lg:mt-4 lg:mb-8;
+      @apply text-ob-bright text-2xl font-extrabold mb-6 lg:mt-4 lg:mb-8 line-clamp-3;
     }
     p {
       @apply text-sm lg:text-base pb-4 mb-2 lg:pb-6 lg:mb-2;
@@ -147,10 +147,10 @@
       }
     }
     h1 {
-      @apply text-ob-bright text-2xl lg:text-4xl font-extrabold mb-6 lg:mt-4 lg:mb-8;
+      @apply text-ob-bright text-2xl lg:text-4xl font-extrabold mb-6 lg:mt-4 lg:mb-8 line-clamp-2;
     }
     p {
-      @apply text-base lg:text-lg pb-4 mb-2 lg:pb-6 lg:mb-2;
+      @apply text-base lg:text-lg pb-4 mb-2 lg:pb-6 lg:mb-2 line-clamp-3;
     }
     .article-footer {
       @apply w-full flex justify-start flex-1 content-end items-end text-sm;

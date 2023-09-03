@@ -126,10 +126,11 @@ import { computed, defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { useRouter } from 'vue-router'
+import ObSkeleton from '@/components/LoadingSkeleton/Skeleton.vue'
 
 export default defineComponent({
   name: 'ObFeatureList',
-  components: { SvgIcon },
+  components: { ObSkeleton, SvgIcon },
   props: {
     data: {
       type: Object,
