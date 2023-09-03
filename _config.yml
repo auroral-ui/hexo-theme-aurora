@@ -55,7 +55,7 @@ menu:
   About: true
   Tags: true
   Archives: true
-  Friends: false
+  Links: false
 
 #! ---------------------------------------------------------------
 #! Theme Config
@@ -179,6 +179,22 @@ copy_protection:
   license:
     cn: 博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议
     en: This content is shared under the CC BY-NC-SA 4.0 protocol (Non-Commercial)
+
+algolia:
+  enable: true
+  appId: "SZO6SBQ093"
+  apiKey: "13ac9f2c1f827d8d70f3d748431ff129e"
+  adminApiKey: "4a2260dcb4a87f5b597bc4446ae3061d"
+  chunkSize: 5000
+  indexName: "hexo-blog"
+  fields:
+    - content:strip:truncate,0,2000
+    - text:strip
+    - permalink
+    - slug
+    - tags
+    - categories
+    - title
 
 #! ---------------------------------------------------------------
 #! Enable Aurora Bot Dia
