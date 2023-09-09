@@ -1,15 +1,6 @@
 <template>
   <ul
-    class="
-      flex flex-row
-      justify-evenly
-      flex-wrap
-      w-full
-      py-4
-      px-2
-      text-center
-      items-center
-    "
+    class="flex flex-row justify-evenly flex-wrap w-full py-4 px-2 text-center items-center"
   >
     <a
       :href="socials.github"

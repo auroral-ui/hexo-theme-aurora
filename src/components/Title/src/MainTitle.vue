@@ -22,7 +22,7 @@ import { useI18n } from 'vue-i18n'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
-  name: 'ObTitle',
+  name: 'ARTitle',
   components: { SvgIcon },
   props: {
     title: {

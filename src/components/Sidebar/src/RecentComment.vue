@@ -3,46 +3,47 @@
     <SubTitle :title="'titles.recent_comment'" icon="quote" />
     <ul>
       <template v-if="isLoading === false">
-        <li
-          class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg shadow-sm transition-all duration-300 ease-in-out hover:scale-105"
-          v-if="comments.length > 0"
-          v-for="comment in comments"
-          :key="comment.id"
-        >
-          <a
-            :href="`${comment.html_url}#${comment.id}`"
-            class="flex flex-row justify-items-center items-stretch cursor-pointer hover:opacity-100"
+        <template v-if="comments.length > 0">
+          <li
+            class="bg-ob-deep-900 px-2 py-2 mb-1.5 rounded-lg shadow-sm transition-all duration-300 ease-in-out hover:scale-105"
+            v-for="comment in comments"
+            :key="comment.id"
           >
-            <div class="flex justify-start items-start">
-              <img
-                :class="avatarClass"
-                :src="comment.user.avatar_url"
-                alt="comment-avatar"
-              />
-            </div>
-            <div class="flex-1 text-xs">
-              <div class="text-xs mb-2 pt-1">
-                <span class="text-ob-secondary pr-2">
-                  <a class="font-bold" :href="comment.user.html_url">{{
-                    comment.user.login
-                  }}</a>
-                  <b
-                    class="ml-2 text-ob bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
-                    v-if="comment.is_admin"
-                  >
-                    {{ t('settings.admin-user') }}
-                  </b>
-                </span>
-                <span class="text-ob-dim text-[0.65rem]">{{
-                  comment.created_at
-                }}</span>
+            <a
+              :href="`${comment.html_url}#${comment.id}`"
+              class="flex flex-row justify-items-center items-stretch cursor-pointer hover:opacity-100"
+            >
+              <div class="flex justify-start items-start">
+                <img
+                  :class="avatarClass"
+                  :src="comment.user.avatar_url"
+                  alt="comment-avatar"
+                />
               </div>
-              <div class="text-xs pb-1">
-                {{ comment.body }}
+              <div class="flex-1 text-xs">
+                <div class="text-xs mb-2 pt-1">
+                  <span class="text-ob-secondary pr-2">
+                    <a class="font-bold" :href="comment.user.html_url">{{
+                      comment.user.login
+                    }}</a>
+                    <b
+                      class="ml-2 text-ob bg-ob-deep-800 py-0.5 px-1.5 rounded-md"
+                      v-if="comment.is_admin"
+                    >
+                      {{ t('settings.admin-user') }}
+                    </b>
+                  </span>
+                  <span class="text-ob-dim text-[0.65rem]">{{
+                    comment.created_at
+                  }}</span>
+                </div>
+                <div class="text-xs pb-1">
+                  {{ comment.body }}
+                </div>
               </div>
-            </div>
-          </a>
-        </li>
+            </a>
+          </li>
+        </template>
 
         <div
           v-else
@@ -110,7 +111,7 @@ import { SvgTypes } from '@/components/SvgIcon/index.vue'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
 
 export default defineComponent({
-  name: 'ObRecentComment',
+  name: 'ArRecentComment',
   components: { SubTitle, SvgIcon },
   setup() {
     const appStore = useAppStore()

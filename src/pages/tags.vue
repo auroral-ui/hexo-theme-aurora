@@ -42,7 +42,7 @@ import defaultCover from '@/assets/default-cover.jpg'
 import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
-  name: 'Tag',
+  name: 'ArTag',
   components: { Breadcrumbs, TagList, TagItem, SvgIcon },
   setup() {
     const commonStore = useCommonStore()

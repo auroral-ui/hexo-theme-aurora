@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onMounted, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { useArticleStore } from '@/stores/article'
 import { Page } from '@/models/Article.class'
 import PageContent from '@/components/PageContent.vue'

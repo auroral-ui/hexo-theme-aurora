@@ -40,7 +40,7 @@ export default defineComponent({
       }
     )
 
-    let sharedState: { active: boolean } = reactive({
+    const sharedState: { active: boolean } = reactive({
       active: false
     })
 

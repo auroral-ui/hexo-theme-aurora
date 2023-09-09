@@ -88,23 +88,21 @@ export default defineComponent({
   flex-direction: column;
   width: 100%;
   height: 100%;
-  --auora-dia--width: 65px; /* 110px */
-  --auora-dia--height: 50px; /* 95px */
-  --auora-dia--hover-height: 60px; /* 105px */
-  --auora-dia--jump-1: 55px; /* 95px */
-  --auora-dia--jump-2: 60px; /* 100px */
-  --auora-dia--jump-3: 45px; /* 85px */
-  --auora-dia--eye-top: 10px; /* 25px */
-  --auora-dia--eye-height: 15px; /* 25px */
-  --auora-dia--eye-width: 8px; /* 15px */
-  --auora-dia--eye-top: 10px; /* 20px */
-  --auora-dia--platform-size: var(--auora-dia--jump-2); /* 100px */
-  --auora-dia--platform-size-shake-1: 75px; /* 115px */
-  --auora-dia--platform-size-shake-2: 45px; /* 115px */
-  --auora-dia--platform-top: -15px; /* 0 */
-  --aurora-dia--linear-gradient: var(
-    --main-gradient
-  ); /* linear-gradient(to bottom, #5fc, #1a8) */
+  --auora-dia--width: 65px;
+  --auora-dia--height: 50px;
+  --auora-dia--hover-height: 60px;
+  --auora-dia--jump-1: 55px;
+  --auora-dia--jump-2: 60px;
+  --auora-dia--jump-3: 45px;
+  --auora-dia--eye-top: 10px;
+  --auora-dia--eye-height: 15px;
+  --auora-dia--eye-width: 8px;
+  --auora-dia--eye-top: 10px;
+  --auora-dia--platform-size: var(--auora-dia--jump-2);
+  --auora-dia--platform-size-shake-1: 75px;
+  --auora-dia--platform-size-shake-2: 45px;
+  --auora-dia--platform-top: -15px;
+  --aurora-dia--linear-gradient: var(--main-gradient);
   --aurora-dia--linear-gradient-hover: linear-gradient(
     to bottom,
     #25b0cc,
@@ -139,7 +137,9 @@ export default defineComponent({
   transition: 0.3s linear all;
 }
 .Aurora-Dia.active {
-  animation: deactivate 0.75s linear, bounce-then-breathe 5s linear infinite;
+  animation:
+    deactivate 0.75s linear,
+    bounce-then-breathe 5s linear infinite;
 }
 
 .Aurora-Dia--eyes > .Aurora-Dia--eye {
@@ -168,8 +168,8 @@ export default defineComponent({
   transform: rotateX(70deg);
   width: var(--auora-dia--platform-size);
   height: var(--auora-dia--platform-size);
-  box-shadow: 0 0 var(--auora-dia--platform-size)
-      var(--aurora-dia--platform-light),
+  box-shadow:
+    0 0 var(--auora-dia--platform-size) var(--aurora-dia--platform-light),
     0 0 15px var(--aurora-dia--platform-light) inset;
   animation: jump-pulse 3s linear infinite;
 }
@@ -193,7 +193,8 @@ export default defineComponent({
   box-shadow: 0 0 5px var(--text-accent);
 }
 .Aurora-Dia:hover + .Aurora-Dia--platform {
-  box-shadow: 0 0 var(--auora-dia--platform-size) var(--text-accent),
+  box-shadow:
+    0 0 var(--auora-dia--platform-size) var(--text-accent),
     0 0 15px var(--text-accent) inset;
   animation: shake-pulse 0.5s linear;
 }
@@ -331,18 +332,21 @@ export default defineComponent({
   40%,
   80%,
   100% {
-    box-shadow: 0 0 30px var(--aurora-dia--platform-light),
+    box-shadow:
+      0 0 30px var(--aurora-dia--platform-light),
       0 0 45px var(--aurora-dia--platform-light) inset;
   }
   20%,
   60%,
   70%,
   90% {
-    box-shadow: 0 0 70px var(--aurora-dia--platform-light),
+    box-shadow:
+      0 0 70px var(--aurora-dia--platform-light),
       0 0 25px var(--aurora-dia--platform-light) inset;
   }
   85% {
-    box-shadow: 0 0 100px var(--aurora-dia--platform-light),
+    box-shadow:
+      0 0 100px var(--aurora-dia--platform-light),
       0 0 15px var(--aurora-dia--platform-light) inset;
   }
 }
@@ -379,7 +383,8 @@ export default defineComponent({
   60%,
   80%,
   100% {
-    box-shadow: 0 0 var(--auora-dia--platform-size) #2cdcff,
+    box-shadow:
+      0 0 var(--auora-dia--platform-size) #2cdcff,
       0 0 15px #2cdcff inset;
   }
   10%,
@@ -387,7 +392,8 @@ export default defineComponent({
   35%,
   50%,
   65% {
-    box-shadow: 0 0 var(--auora-dia--platform-size-shake-1) #2cdcff,
+    box-shadow:
+      0 0 var(--auora-dia--platform-size-shake-1) #2cdcff,
       0 0 15px #2cdcff inset;
   }
   15%,
@@ -395,7 +401,8 @@ export default defineComponent({
   45%,
   55%,
   70% {
-    box-shadow: 0 0 var(--auora-dia--platform-size-shake-2) #2cdcff,
+    box-shadow:
+      0 0 var(--auora-dia--platform-size-shake-2) #2cdcff,
       0 0 15px #2cdcff inset;
   }
 }

@@ -149,7 +149,7 @@
               title="settings.paginator.prev"
               icon="arrow-left-circle"
             />
-            <Article :data="post.prev_post" />
+            <ArticleCard :data="post.prev_post" />
           </div>
           <div class="flex flex-col w-full h-full" v-if="post.next_post.title">
             <SubTitle
@@ -157,7 +157,7 @@
               :side="!isMobile ? 'right' : 'left'"
               icon="arrow-right-circle"
             />
-            <Article :data="post.next_post" />
+            <ArticleCard :data="post.next_post" />
           </div>
         </div>
         <template v-if="enabledComment && post.title && post.text && post.uid">
@@ -185,7 +185,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import Comment from '@/components/Comment.vue'
 import { SubTitle } from '@/components/Title'
-import { Article } from '@/components/ArticleCard'
+import { ArticleCard } from '@/components/ArticleCard'
 import { useMetaStore } from '@/stores/meta'
 import { useAppStore } from '@/stores/app'
 import { useCommonStore } from '@/stores/common'
@@ -206,7 +206,7 @@ export default defineComponent({
     Toc,
     Comment,
     SubTitle,
-    Article,
+    ArticleCard,
     Profile,
     SvgIcon,
     PostStats
@@ -240,11 +240,13 @@ export default defineComponent({
         loading.value = false
       })
       if (appStore.hexoConfig.writing.highlight.enable) {
+        // eslint-disable-next-line no-console
         console.error(
           '[Aurora Config Error]: Please turn off [Hightlightjs] and enable [Prismjs] instead. '
         )
       }
       if (appStore.hexoConfig.writing.prismjs.preprocess) {
+        // eslint-disable-next-line no-console
         console.error(
           "[Aurora Config Error]: Please set Hexo config's prismjs' [preprocess] property to false! "
         )

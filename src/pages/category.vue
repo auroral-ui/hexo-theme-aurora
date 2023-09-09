@@ -26,10 +26,10 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
-  name: 'Category',
+  name: 'ArCategory',
   components: { Sidebar, Breadcrumbs },
   setup() {
-    const { pageTitle, updateTitle } = usePageTitle()
+    const { pageTitle } = usePageTitle()
     return { pageTitle }
   }
 })

@@ -16,14 +16,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  onBeforeMount,
-  ref,
-  watch
-} from 'vue'
+import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { useArticleStore } from '@/stores/article'
 import { Page } from '@/models/Article.class'
 import { useI18n } from 'vue-i18n'

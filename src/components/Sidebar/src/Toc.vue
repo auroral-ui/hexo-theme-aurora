@@ -12,7 +12,7 @@
             v-html="tocData"
             v-scroll-spy-active="{ selector: '.toc-item' }"
             v-scroll-spy-link
-            :style="(sideBoxStyle as StyleValue | undefined)"
+            :style="sideBoxStyle"
           />
         </div>
       </transition>
@@ -47,7 +47,7 @@ export default defineComponent({
           maxHeight: `${window.innerHeight - 64 - 64 - 52 - 74}px`,
           overflowY: 'scroll',
           overflowX: 'hidden'
-        }
+        } as StyleValue | undefined
       })
     }
   }

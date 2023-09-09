@@ -29,7 +29,7 @@ export default defineComponent({
   },
   setup() {
     const appStore = useAppStore()
-    let defaultStatus = appStore.theme === 'theme-dark' ? true : false
+    const defaultStatus = appStore.theme === 'theme-dark' ? true : false
 
     const svgStyle = reactive({
       fill: 'yellow',

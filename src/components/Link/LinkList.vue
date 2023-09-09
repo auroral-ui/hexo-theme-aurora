@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Title
+    <SubTitle
       title="settings.links"
       icon="friends"
       :count="links.length"
       :uppercase="false"
     />
     <ul class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-8">
-      <template v-for="link of links">
+      <template v-for="[i, link] of links.entries()" :key="i">
         <LinkCard
           :nick="link.nick"
           :link="link.link"
@@ -25,7 +25,7 @@
 import { Link } from '@/models/Article.class'
 import { PropType, defineComponent } from 'vue'
 import { convertToLocale } from '@/utils'
-import SubTitle from '../Title/src/SubTitle.vue'
+import { SubTitle } from '../Title'
 
 export default defineComponent({
   name: 'ARLinkList',
@@ -33,7 +33,7 @@ export default defineComponent({
   props: {
     links: {
       type: Array as PropType<Link[]>,
-      default: [],
+      default: () => [],
       required: true
     }
   },

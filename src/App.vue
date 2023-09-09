@@ -182,7 +182,7 @@ export default defineComponent({
     onMounted(() => {
       let wrapperHeight = screen.height
       const footerEl = document.getElementById('footer')
-      const footerHeight = footerEl?.getBoundingClientRect().height
+      const footerHeight = footerEl?.getBoundingClientRect().height ?? 0
       wrapperHeight = wrapperHeight - footerHeight * 2
       wrapperStyle.value = {
         'min-height': wrapperHeight + 'px'

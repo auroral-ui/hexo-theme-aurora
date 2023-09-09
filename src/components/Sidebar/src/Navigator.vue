@@ -48,7 +48,7 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import useJumpToEle from '@/hooks/useJumpToEle'
 
 export default defineComponent({
-  name: 'Navigator',
+  name: 'ArNavigator',
   components: { SvgIcon },
   props: {
     comments: Boolean

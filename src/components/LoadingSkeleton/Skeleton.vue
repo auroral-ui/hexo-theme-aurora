@@ -41,7 +41,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const themeStyle = inject('_themeStyle', SkeletonStyle)
     const theme = inject('_skeletonTheme', { loading: false })
-    let isLoading = toRefs(props).loading
+    const isLoading = toRefs(props).loading
 
     return {
       themeStyle,
