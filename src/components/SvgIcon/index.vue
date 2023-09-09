@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType, h, ref, onMounted } from 'vue'
+import { defineComponent, computed, PropType, ref, onMounted } from 'vue'
 import { isExternalIcon } from '@/utils/validate'
 import { useAppStore } from '@/stores/app'
 

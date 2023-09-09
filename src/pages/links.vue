@@ -99,7 +99,6 @@ import PostStats from '@/components/Post/PostStats.vue'
 import LinkBox from '@/components/Link/LinkBox.vue'
 import LinkCard from '@/components/Link/LinkCard.vue'
 import { Link, Page } from '@/models/Article.class'
-import { Title } from '@/components/Title'
 import { useAppStore } from '@/stores/app'
 import { useArticleStore } from '@/stores/article'
 import { useI18n } from 'vue-i18n'
@@ -125,7 +124,6 @@ export default defineComponent({
     PostStats,
     LinkBox,
     LinkCard,
-    Title,
     LinkCategoryList,
     LinkList,
     Comment,
