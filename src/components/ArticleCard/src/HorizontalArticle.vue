@@ -141,7 +141,7 @@ export default defineComponent({
   props: {
     data: {
       type: Object,
-      default: {}
+      default: () => ({})
     }
   },
   setup(props) {

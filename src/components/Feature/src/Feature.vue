@@ -11,13 +11,13 @@ import { defineComponent, toRefs } from 'vue'
 import HorizontalArticle from '@/components/ArticleCard/src/HorizontalArticle.vue'
 
 export default defineComponent({
-  name: 'Feature',
+  name: 'ArFeature',
   props: {
     data: Object
   },
   components: { HorizontalArticle },
   setup(props) {
-    let featurePost = toRefs(props).data
+    const featurePost = toRefs(props).data
 
     return {
       featurePost

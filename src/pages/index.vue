@@ -7,7 +7,7 @@
       <horizontal-article class="mb-8" :data="posts.data[0] || {}" />
     </template>
     <span v-if="themeConfig.theme.feature">
-      <Title id="article-list" :title="'titles.articles'" icon="article" />
+      <MainTitle id="article-list" :title="'titles.articles'" icon="article" />
     </span>
     <div class="main-grid">
       <div class="flex flex-col relative">
@@ -55,21 +55,21 @@
         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           <template v-if="posts.data.length === 0">
             <li v-for="n in 6" :key="n">
-              <Article :data="{}" />
+              <ArticleCard :data="{}" />
             </li>
           </template>
 
           <template v-else-if="!themeConfig.theme.feature">
             <template v-for="(post, key) in posts.data" :key="post.slug">
               <li v-if="key !== 0">
-                <Article :data="post" />
+                <ArticleCard :data="post" />
               </li>
             </template>
           </template>
 
           <template v-else>
             <li v-for="post in posts.data" :key="post.slug">
-              <Article :data="post" />
+              <ArticleCard :data="post" />
             </li>
           </template>
         </ul>
@@ -101,8 +101,8 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { Feature, FeatureList } from '@/components/Feature'
-import { Article, HorizontalArticle } from '@/components/ArticleCard'
-import { Title } from '@/components/Title'
+import { ArticleCard, HorizontalArticle } from '@/components/ArticleCard'
+import { MainTitle } from '@/components/Title'
 import { Sidebar, TagBox, RecentComment, Profile } from '@/components/Sidebar'
 import { usePostStore } from '@/stores/post'
 import { FeaturePosts, PostList } from '@/models/Post.class'
@@ -120,9 +120,9 @@ export default defineComponent({
   components: {
     Feature,
     FeatureList,
-    Article,
+    ArticleCard,
     HorizontalArticle,
-    Title,
+    MainTitle,
     Sidebar,
     TagBox,
     Paginator,

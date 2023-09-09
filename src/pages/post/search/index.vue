@@ -29,12 +29,12 @@
           <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             <template v-if="isLoading || posts.data.length === 0">
               <li v-for="n in 12" :key="n">
-                <Article :data="{}" />
+                <ArticleCard :data="{}" />
               </li>
             </template>
             <template v-else>
               <li v-for="post in posts.data" :key="post.slug">
-                <Article :data="post" />
+                <ArticleCard :data="post" />
               </li>
             </template>
           </ul>
@@ -73,9 +73,8 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Sidebar, TagBox, CategoryBox } from '@/components/Sidebar'
-import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import Paginator from '@/components/Paginator.vue'
-import { Article } from '@/components/ArticleCard'
+import { ArticleCard } from '@/components/ArticleCard'
 import { SpecificPostsList } from '@/models/Post.class'
 import { useRoute } from 'vue-router'
 import { usePostStore } from '@/stores/post'
@@ -83,13 +82,12 @@ import { useMetaStore } from '@/stores/meta'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
 export default defineComponent({
-  name: 'Result',
+  name: 'ArResult',
   components: {
-    Breadcrumbs,
     Sidebar,
     TagBox,
     Paginator,
-    Article,
+    ArticleCard,
     CategoryBox,
     SvgIcon
   },
@@ -162,7 +160,7 @@ export default defineComponent({
 
     watch(
       () => route.query,
-      toQuery => {
+      () => {
         pageChangeHandler()
       }
     )

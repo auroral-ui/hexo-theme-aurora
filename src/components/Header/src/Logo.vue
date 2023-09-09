@@ -41,7 +41,7 @@ import { computed, defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
-  name: 'Logo',
+  name: 'ArLogo',
   setup() {
     const appStore = useAppStore()
     const router = useRouter()

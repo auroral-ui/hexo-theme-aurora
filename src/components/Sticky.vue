@@ -17,7 +17,7 @@
 declare const _: any
 
 import { useNavigatorStore } from '@/stores/navigator'
-import { StyleValue, computed, defineComponent, ref, watch } from 'vue'
+import { StyleValue, computed, defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'ObSticky',
@@ -52,8 +52,8 @@ export default defineComponent({
       default: 0
     }
   },
-  setup(props, { emit }) {
-    let active = ref(false),
+  setup(props) {
+    const active = ref(false),
       position = ref(''),
       width = ref(),
       height = ref(),
@@ -76,7 +76,7 @@ export default defineComponent({
           position: position.value,
           width: width.value,
           height: height.value + 'px'
-        } as StyleValue)
+        }) as StyleValue
     )
 
     return {

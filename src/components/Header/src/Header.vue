@@ -17,20 +17,13 @@
 </template>
 
 <script lang="ts">
-/**
- * Lodash package is imported through CDN.
- *
- * For version 4.17.21
- */
-declare const _: any
-
 import { computed, defineComponent, ref } from 'vue'
 import { Logo, Navigation, Controls, Notification } from '../index'
 import Sticky from '@/components/Sticky.vue'
 import { useNavigatorStore } from '@/stores/navigator'
 
 export default defineComponent({
-  name: 'Header',
+  name: 'ArHeader',
   components: {
     Logo,
     Navigation,

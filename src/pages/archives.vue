@@ -68,7 +68,7 @@ import defaultCover from '@/assets/default-cover.jpg'
 import usePageTitle from '@/hooks/usePageTitle'
 
 export default defineComponent({
-  name: 'Archives',
+  name: 'ArArchives',
   components: { Breadcrumbs, Paginator },
   setup() {
     const commonStore = useCommonStore()
@@ -175,7 +175,9 @@ export default defineComponent({
     top: 4px;
     left: 0;
     width: 15px;
-    transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition:
+      background 0.3s ease-in-out,
+      border 0.3s ease-in-out;
   }
   &:after {
     content: '';

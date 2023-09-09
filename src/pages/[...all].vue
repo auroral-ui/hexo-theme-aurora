@@ -101,6 +101,14 @@
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'App'
+})
+</script>
+
 <style lang="css" scoped>
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 /*Variables*/
@@ -113,7 +121,7 @@
 #not-found-page {
   margin: 0;
   padding: 0;
-  color: var(--text-noraml);
+  color: var(--text-normal);
 }
 
 .background {

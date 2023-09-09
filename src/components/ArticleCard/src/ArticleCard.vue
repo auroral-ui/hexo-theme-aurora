@@ -128,7 +128,7 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
-  name: 'ObFeatureList',
+  name: 'ARArticleCard',
   components: { SvgIcon },
   props: {
     data: {

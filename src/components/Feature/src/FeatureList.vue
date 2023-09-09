@@ -23,12 +23,12 @@
     <ul class="grid lg:grid-cols-2 gap-7">
       <template v-if="featurePosts.length > 0">
         <li v-for="post in featurePosts" :key="post.slug">
-          <Article :data="post" />
+          <ArticleCard :data="post" />
         </li>
       </template>
       <template v-else>
         <li v-for="n in 2" :key="n">
-          <Article :data="{}" />
+          <ArticleCard :data="{}" />
         </li>
       </template>
     </ul>
@@ -39,14 +39,14 @@
 import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
 import { PropType, StyleValue, computed, defineComponent, toRefs } from 'vue'
-import { Article } from '@/components/ArticleCard'
+import { ArticleCard } from '@/components/ArticleCard'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { Post } from '@/models/Post.class'
 
 export default defineComponent({
   name: 'ObFeatureList',
   components: {
-    Article,
+    ArticleCard,
     SvgIcon
   },
   props: {

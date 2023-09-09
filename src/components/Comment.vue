@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClasses">
-    <Title
+    <MainTitle
       :title="'titles.comment'"
       icon="quote"
       paddings="pb-2 pt-0"
@@ -16,7 +16,7 @@
 <script lang="ts">
 import { useAppStore } from '@/stores/app'
 import { computed, defineComponent, onMounted, toRefs, watch } from 'vue'
-import { Title } from '@/components/Title'
+import { MainTitle } from '@/components/Title'
 import { usePostStore } from '@/stores/post'
 import { twikooInit } from '@/utils/comments/twikoo-api'
 import { githubInit } from '@/utils/comments/github-api'
@@ -42,7 +42,7 @@ export default defineComponent({
       default: ''
     }
   },
-  components: { Title },
+  components: { MainTitle },
   setup(props) {
     const postTitle = toRefs(props).title
     const postBody = toRefs(props).body

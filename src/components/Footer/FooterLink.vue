@@ -14,8 +14,9 @@
       class="flex flex-row flex-wrap justify-center bg-ob-deep-900 rounded-lg max-w-10/12 lg:max-w-screen-2xl text-normal text-ob-normal w-full py-6 px-6 items-start gap-8 md:gap-10 xl:gap-16"
     >
       <div
-        v-for="link of links"
+        v-for="[i, link] of links.entries()"
         class="flex flex-col items-center md:items-start"
+        :key="i"
       >
         <div class="flex mb-4 items-center">
           <h3 class="text-ob-dim font-bold mr-2">{{ link.title }}</h3>
@@ -30,12 +31,20 @@
           v-if="!link.mode"
           class="flex flex-col gap-1 items-center md:items-start"
         >
-          <li v-for="sub of link.links" class="cursor-pointer">
+          <li
+            v-for="[i, sub] of link.links.entries()"
+            class="cursor-pointer"
+            :key="i"
+          >
             <a :href="sub.url" target="_blank">{{ sub.title }}</a>
           </li>
         </ul>
         <ul v-if="link.mode === 'links' && linksData" class="flex flex-col">
-          <li v-for="avatar of linksData" class="cursor-pointer">
+          <li
+            v-for="[i, avatar] of linksData.entries()"
+            class="cursor-pointer"
+            :key="i"
+          >
             <a :href="avatar.link" target="_blank">{{ avatar.nick }}</a>
           </li>
         </ul>
@@ -43,7 +52,7 @@
           v-if="link.mode === 'links' && loadingLinks"
           class="flex flex-col items-center md:items-start"
         >
-          <li v-for="i in 5" class="cursor-pointer">
+          <li v-for="i in 5" class="cursor-pointer" :key="i">
             <ob-skeleton :count="1" height="22px" width="7.5rem" />
           </li>
         </ul>

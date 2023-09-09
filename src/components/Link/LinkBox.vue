@@ -11,7 +11,7 @@
           <div class="hidden md:flex text-ob-dim text-sm">
             {{ t('settings.links') }}
           </div>
-          <Title
+          <MainTitle
             title="settings.links-slogan"
             icon="friends"
             text-size="text-3xl"
@@ -35,6 +35,7 @@
             <div
               v-for="index of 48"
               class="links-group-avatar-pair ml-4 pb-7 pt-4 select-none"
+              :key="index"
             >
               <LinkAvatar />
               <LinkAvatar />
@@ -43,8 +44,9 @@
 
           <template v-else>
             <div
-              v-for="links of data"
+              v-for="[i, links] of data.entries()"
               class="links-group-avatar-pair ml-4 pb-7 pt-4 select-none"
+              :key="i"
             >
               <LinkAvatar
                 :title="links[0].nick"
@@ -67,7 +69,7 @@
 <script lang="ts">
 import { PropType, defineComponent } from 'vue'
 import LinkAvatar from '@/components/Link/LinkAvatar.vue'
-import { Title } from '@/components/Title'
+import { MainTitle } from '@/components/Title'
 import { useI18n } from 'vue-i18n'
 import PrimaryButton from '@/components/Button/PrimaryButton.vue'
 import SecondaryButton from '@/components/Button/SecondaryButton.vue'
@@ -76,17 +78,17 @@ import { useCommonStore } from '@/stores/common'
 
 export default defineComponent({
   name: 'ARLinkBox',
-  components: { LinkAvatar, Title, PrimaryButton, SecondaryButton },
+  components: { LinkAvatar, MainTitle, PrimaryButton, SecondaryButton },
   emits: ['onApplyClicked'],
   props: {
     gradientBackground: {
       type: Object,
-      default: '',
+      default: () => ({}),
       required: true
     },
     data: {
-      type: Object as PropType<Array<Link[]>>,
-      default: [],
+      type: Array as PropType<Array<Link[]>>,
+      default: () => [],
       required: true
     }
   },

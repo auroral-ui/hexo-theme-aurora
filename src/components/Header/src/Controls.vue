@@ -105,7 +105,7 @@ import { useNavigatorStore } from '@/stores/navigator'
 import { Locales } from '@/models/ThemeConfig.class'
 
 export default defineComponent({
-  name: 'Controls',
+  name: 'ArControls',
   components: {
     Dropdown,
     DropdownMenu,

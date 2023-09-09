@@ -54,7 +54,7 @@ import { Dropdown, DropdownMenu, DropdownItem } from '@/components/Dropdown'
 import { isExternal } from '@/utils/validate'
 
 export default defineComponent({
-  name: 'Navigation',
+  name: 'ArNavigation',
   components: { Dropdown, DropdownMenu, DropdownItem },
   setup() {
     const { t, te } = useI18n()
