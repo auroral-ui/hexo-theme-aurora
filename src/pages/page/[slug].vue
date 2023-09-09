@@ -36,10 +36,8 @@ import Comment from '@/components/Comment.vue'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
 import { Locales } from '@/models/ThemeConfig.class'
 
-declare const Prism: any
-
 export default defineComponent({
-  name: 'Page',
+  name: 'ARPage',
   components: { PageContent, Breadcrumbs, Comment },
   setup() {
     const articleStore = useArticleStore()
@@ -59,8 +57,6 @@ export default defineComponent({
       pageData.value = response
       pageTitle.value = response.title
       updateTitle(appStore.locale)
-      await nextTick()
-      Prism.highlightAll()
     }
 
     const updateTitle = (locale?: Locales) => {

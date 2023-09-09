@@ -73,26 +73,26 @@
 </template>
 
 <script lang="ts">
-import '@/styles/prism-aurora-future.css'
 import {
-  Ref,
   computed,
   defineComponent,
   nextTick,
   onMounted,
   onUnmounted,
+  Ref,
   ref,
   toRefs,
   watch
 } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Sidebar, Toc, Profile } from '@/components/Sidebar'
+import { Profile, Sidebar, Toc } from '@/components/Sidebar'
 import { useCommonStore } from '@/stores/common'
 import { useRoute } from 'vue-router'
 import PostStats from './Post/PostStats.vue'
 import { useAppStore } from '@/stores/app'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
 import useLightBox from '@/hooks/useLightBox'
+import ObSkeleton from '@/components/LoadingSkeleton/Skeleton.vue'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
@@ -101,7 +101,7 @@ interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
 
 export default defineComponent({
   name: 'ObPageContent',
-  components: { Sidebar, Toc, Profile, PostStats },
+  components: { ObSkeleton, Sidebar, Toc, Profile, PostStats },
   props: {
     post: {
       type: Object,

@@ -634,15 +634,30 @@
     overflow-wrap: normal !important;
   }
 
+  pre::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  pre::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background-color: var(--background-secondary);
+    border-radius: 0.5em;
+    box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+  }
+
   pre code {
+    @apply inline-block;
     padding: 0;
   }
 
-  code:not([class^="language-"]) {
-    color: var(--text-normal);
+  p code {
     margin: 0;
     font-size: 0.85em;
-    border-radius: 3px;
     overflow-wrap: break-word;
     background-color: var(--bg-accent-05);
     word-wrap: break-word;
@@ -650,6 +665,24 @@
     border-radius: 0.3rem;
     color: var(--text-accent) !important;
   }
+}
+
+div[class^="language-"] {
+  @apply relative rounded-2xl overflow-hidden shadow my-6;
+}
+
+div[class^="language-"] .lang,
+div[class^="language-"] button,
+{
+  @apply absolute top-4 right-5 z-50 opacity-40 capitalize;
+}
+
+div[class^="language-"] pre {
+  @apply py-4 relative;
+}
+
+div[class^="language-"] pre code {
+  @apply px-4 relative block;
 }
 
 .post-header {

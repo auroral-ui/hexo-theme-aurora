@@ -211,3 +211,10 @@ footer_links:
       - title: Friends # link of friends mode / 友链模式
         mode: 'links'
 
+#! ---------------------------------------------------------------
+#! Highlighter Shiki
+#! ---------------------------------------------------------------
+shiki:
+  enable: true
+  backgroundColor: "#1a1a1a"
+
