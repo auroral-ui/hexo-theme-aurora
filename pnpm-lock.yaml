@@ -116,7 +116,7 @@ devDependencies:
     specifier: 3.3.3
     version: 3.3.3(ts-node@10.9.1)
   typescript:
-    specifier: ~5.2.2
+    specifier: ^5.1.0
     version: 5.2.2
   vite:
     specifier: ^4.4.9
