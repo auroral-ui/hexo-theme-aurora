@@ -14,10 +14,8 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useI18n } from 'vue-i18n'
 import usePageTitle from '@/hooks/usePageTitle'
 
-declare const Prism: any
-
 export default defineComponent({
-  name: 'About',
+  name: 'ARAbout',
   components: { PageContent, Breadcrumbs },
   setup() {
     const articleStore = useArticleStore()
@@ -29,8 +27,6 @@ export default defineComponent({
       pageData.value = await articleStore.fetchArticle('about')
 
       updateTitle()
-      await nextTick()
-      Prism.highlightAll()
     }
 
     onMounted(fetchArticle)

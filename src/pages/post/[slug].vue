@@ -177,7 +177,6 @@
 </template>
 
 <script lang="ts">
-import '@/styles/prism-aurora-future.css'
 import { Sidebar, Toc, Profile } from '@/components/Sidebar'
 import { Post } from '@/models/Post.class'
 import { usePostStore } from '@/stores/post'
@@ -200,10 +199,8 @@ interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getPostView(): void
 }
 
-declare const Prism: any
-
 export default defineComponent({
-  name: 'ObPost',
+  name: 'ARPost',
   components: {
     Sidebar,
     Toc,
@@ -256,7 +253,6 @@ export default defineComponent({
       initializeLightBox()
       postStatsRef.value?.getCommentCount()
       postStatsRef.value?.getPostView()
-      Prism.highlightAll()
     }
 
     watch(

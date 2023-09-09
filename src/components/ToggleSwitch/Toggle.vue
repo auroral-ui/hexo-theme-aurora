@@ -23,13 +23,13 @@ export default defineComponent({
   },
   emits: ['changeStatus'],
   setup(props, { emit }) {
-    let { status } = toRefs(props)
+    const { status } = toRefs(props)
 
     onMounted(() => {
       changeTransform()
     })
 
-    let toggleStyle = reactive({
+    const toggleStyle = reactive({
       transform: '',
       background: '#6e40c9'
     })

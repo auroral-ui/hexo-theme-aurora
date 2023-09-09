@@ -116,7 +116,7 @@ import usePageTitle from '@/hooks/usePageTitle'
 import Sticky from '@/components/Sticky.vue'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'ARHome',
   components: {
     Feature,
     FeatureList,

@@ -32,12 +32,12 @@
         @on-apply-clicked="jumpToContent()"
       />
 
-      <template v-if="pageData.categoryMode === true">
-        <LinkCategoryList :links="(pageData.data as Record<string, Link[]>)" />
+      <template v-if="pageData.categoryMode">
+        <LinkCategoryList :links="pageData.data as Record<string, Link[]>" />
       </template>
 
       <template v-else>
-        <LinkList :links="(pageData.data as Link[])" />
+        <LinkList :links="pageData.data as Link[]" />
       </template>
 
       <div class="mt-8" id="content">
@@ -94,22 +94,12 @@
 </template>
 
 <script lang="ts">
-import '@/styles/prism-aurora-future.css'
-import {
-  Ref,
-  computed,
-  defineComponent,
-  nextTick,
-  onMounted,
-  ref,
-  watch
-} from 'vue'
+import { computed, defineComponent, nextTick, onMounted, Ref, ref } from 'vue'
 import PostStats from '@/components/Post/PostStats.vue'
 import LinkBox from '@/components/Link/LinkBox.vue'
 import LinkCard from '@/components/Link/LinkCard.vue'
-import { Page } from '@/models/Article.class'
+import { Link, Page } from '@/models/Article.class'
 import { Title } from '@/components/Title'
-import { Link } from '@/models/Article.class'
 import { useAppStore } from '@/stores/app'
 import { useArticleStore } from '@/stores/article'
 import { useI18n } from 'vue-i18n'
@@ -121,17 +111,17 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import usePageTitle from '@/hooks/usePageTitle'
 import useJumpToEle from '@/hooks/useJumpToEle'
 import useCommentPlugin from '@/hooks/useCommentPlugin'
+import ObSkeleton from '@/components/LoadingSkeleton/Skeleton.vue'
 
 interface PostStatsExpose extends Ref<InstanceType<typeof PostStats>> {
   getCommentCount(): void
   getPostView(): void
 }
 
-declare const Prism: any
-
 export default defineComponent({
-  name: 'Links',
+  name: 'ARLinks',
   components: {
+    ObSkeleton,
     PostStats,
     LinkBox,
     LinkCard,
@@ -158,7 +148,6 @@ export default defineComponent({
       await nextTick()
       postStatsRef.value?.getCommentCount()
       postStatsRef.value?.getPostView()
-      Prism.highlightAll()
     }
 
     const jumpToContent = () => {
