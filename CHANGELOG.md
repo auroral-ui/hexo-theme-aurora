@@ -1,3 +1,24 @@
+# [2.5.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.3...v2.5.0) (2023-09-10)
+
+
+### Bug Fixes
+
+* dia bot not able to be initialised in version 2+ ([248b42c](https://github.com/auroral-ui/hexo-theme-aurora/commit/248b42c3ffaf9340d510cc0892961a5b12756bba))
+* header width is not updated after resize of the browser window ([9f84fbf](https://github.com/auroral-ui/hexo-theme-aurora/commit/9f84fbfc02567e73536cb23ace99e550ba5557d3))
+* title too long overflowing issue ([9123bbe](https://github.com/auroral-ui/hexo-theme-aurora/commit/9123bbea21e620946b180a2c2b6a79e5bbeed91b))
+
+
+### Features
+
+* added traditional chinese language support ([2e4c3e5](https://github.com/auroral-ui/hexo-theme-aurora/commit/2e4c3e5064ff3771ef3dd59863de0bc5dad74b3b))
+* change to new link cards styles ([c95eda1](https://github.com/auroral-ui/hexo-theme-aurora/commit/c95eda1bc19318fc5108f70ce5e558c51aa4e81d))
+* replace prismjs with shiki ([ab2b51f](https://github.com/auroral-ui/hexo-theme-aurora/commit/ab2b51fb23034bdf4de56f2e087ed7d6aa4fa8e0))
+
+
+### Performance Improvements
+
+* upgrade to use vite-plugin-page for better page setup ([a51eb6e](https://github.com/auroral-ui/hexo-theme-aurora/commit/a51eb6e417da43fe449c0c4da3b73ec7e6adb3d6))
+
 ## [2.4.3](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.2...v2.4.3) (2023-08-23)
 
 
