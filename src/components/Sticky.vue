@@ -96,14 +96,14 @@ export default defineComponent({
     this.height = this.$el.getBoundingClientRect().height
     this.updateScroll()
     document.addEventListener('scroll', this.handleScroll)
-    document.addEventListener('resize', this.handleResize)
+    window.addEventListener('resize', this.handleResize)
   },
   activated() {
     this.updateScroll()
   },
   unmounted() {
     document.removeEventListener('scroll', this.handleScroll)
-    document.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     sticky(top: number, position: any) {
