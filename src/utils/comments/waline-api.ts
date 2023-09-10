@@ -1,10 +1,9 @@
-declare const Waline: any
-
 import {
   init,
   pageviewCount,
   commentCount,
   RecentComments
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
 } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs'
 import { cleanPath, filterHTMLContent, formatTime } from '..'
