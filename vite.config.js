@@ -28,10 +28,10 @@ export default ({ mode }) => {
             if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
               extType = 'img'
             }
-            return `static/${extType}/[name]-[hash][extname]`
+            return `static/${extType}/[hash][extname]`
           },
-          chunkFileNames: 'static/js/[name]-[hash].js',
-          entryFileNames: 'static/js/[name]-[hash].js'
+          chunkFileNames: 'static/js/[hash].js',
+          entryFileNames: 'static/js/[hash].js'
         },
         plugins: []
       }
