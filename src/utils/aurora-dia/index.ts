@@ -187,10 +187,9 @@ class AuroraBotSoftware {
 
     if (botScript !== undefined) {
       botScriptKeys = Object.keys(botScript)
-
       if (botScriptKeys.length > 0) {
         botScriptKeys.forEach(key => {
-          this.botTips[key] = botScript[key]
+          this.botTips = { ...this.botTips, [key]: botScript[key] }
         })
       }
     }
