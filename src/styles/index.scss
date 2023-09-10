@@ -88,9 +88,7 @@ b {
 }
 
 .highlighted {
-  @apply border-solid;
-  border-width: 1px;
-  border-color: var(--bg-sub-accent-55);
+  @apply relative;
 }
 
 .highlighted:before {

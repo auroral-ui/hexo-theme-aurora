@@ -10,9 +10,7 @@
       <span class="text-ob-dim mb-8 text-lg">
         {{ t(`${convertToLocale(category)}-desc`) }}
       </span>
-      <ul
-        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8"
-      >
+      <ul :class="linkWrapperClasses(category)">
         <template v-for="[i, link] of links[category].entries()" :key="i">
           <LinkCard
             :nick="link.nick"
@@ -50,8 +48,15 @@ export default defineComponent({
     const { t } = useI18n()
 
     return {
-      t,
-      convertToLocale
+      linkWrapperClasses: (category: string) => {
+        return {
+          'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6': true,
+          'xl:grid-cols-5': category !== 'links-badge-vip',
+          'xl:grid-cols-4': category === 'links-badge-vip'
+        }
+      },
+      convertToLocale,
+      t
     }
   }
 })
