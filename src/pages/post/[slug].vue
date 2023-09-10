@@ -241,15 +241,11 @@ export default defineComponent({
       })
       if (appStore.hexoConfig.writing.highlight.enable) {
         // eslint-disable-next-line no-console
-        console.error(
-          '[Aurora Config Error]: Please turn off [Hightlightjs] and enable [Prismjs] instead. '
-        )
+        console.warn('[Aurora Config Error]: Please turn off [Hightlightjs].')
       }
-      if (appStore.hexoConfig.writing.prismjs.preprocess) {
+      if (appStore.hexoConfig.writing.prismjs.enable) {
         // eslint-disable-next-line no-console
-        console.error(
-          "[Aurora Config Error]: Please set Hexo config's prismjs' [preprocess] property to false! "
-        )
+        console.warn('[Aurora Config Error]: Please turn off [prismjs]. ')
       }
       await nextTick()
       initializeLightBox()
