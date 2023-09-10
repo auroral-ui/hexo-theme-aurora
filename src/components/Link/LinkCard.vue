@@ -74,8 +74,8 @@ export default defineComponent({
   @apply relative;
 
   &.highlighted.category-mode .article .article-content p {
-    @apply h-12 sm:h-14 lg:h-[4.6rem];
-    -webkit-line-clamp: 3;
+    @apply h-8 sm:h-10 lg:h-10;
+    -webkit-line-clamp: 2;
   }
 
   &.article-container {
@@ -99,7 +99,7 @@ export default defineComponent({
   }
 
   .article .article-content p {
-    @apply h-10 sm:h-10 lg:h-12;
+    @apply h-10 sm:h-10 lg:h-10 text-sm;
     display: -webkit-box;
     margin: 0 auto;
     -webkit-line-clamp: 2;
