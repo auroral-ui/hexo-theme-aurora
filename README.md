@@ -153,3 +153,5 @@ You can give me feedback or issue you have through the following methods:
 - Discord
 
 <a href="https://discord.gg/VC7CrYfds5" target="_blank"><img src="https://discordapp.com/api/guilds/801943105913225246/widget.png?style=banner3" alt="ObsidiaNext Community Discord Server"></a>
+
+![Alt](https://repobeats.axiom.co/api/embed/6418e88616e9d9bd3c7aff0edc3b6c1be0cbe42f.svg "Repobeats analytics image")
