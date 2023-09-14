@@ -469,9 +469,9 @@ export default defineComponent({
     const initSearch = async () => {
       searchIndexStatus.value = false
       isEmpty.value = false
-      // await searchStore.fetchSearchIndex().then(() => {
-      //   searchIndexStatus.value = true
-      // })
+      await searchStore.fetchSearchIndex().then(() => {
+        searchIndexStatus.value = true
+      })
     }
 
     onBeforeMount(initSearch)
