@@ -655,7 +655,8 @@
     padding: 0;
   }
 
-  p code {
+  p code,
+  li code, {
     margin: 0;
     font-size: 0.85em;
     overflow-wrap: break-word;
