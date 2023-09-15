@@ -8,6 +8,7 @@
       tabindex="-1"
       :style="cssVariables"
     >
+      <div class="app-banner bg-[#1a1a1a]" />
       <div class="app-banner app-banner-image" :style="headerImage" />
       <div class="app-banner app-banner-screen" :style="headerBaseBackground" />
       <div class="app-banner app-banner-cover" />
@@ -45,6 +46,7 @@
 
 <script lang="ts">
 import {
+  StyleValue,
   computed,
   defineComponent,
   onBeforeMount,
@@ -208,13 +210,14 @@ export default defineComponent({
       headerImage: computed(() => {
         return {
           backgroundImage: `url(${commonStore.headerImage}), url(${defaultCover})`,
-          opacity: commonStore.headerImage !== '' ? 1 : 0
-        }
+          backgroundColor: '#0d0b12',
+          opacity: commonStore.headerImage !== '' ? 0.2 : 0
+        } as StyleValue
       }),
       headerBaseBackground: computed(() => {
         return {
           background: appStore.themeConfig.theme.header_gradient_css,
-          opacity: commonStore.headerImage !== '' ? 0.91 : 0.99
+          opacity: commonStore.headerImage !== '' ? 0.8 : 0.99
         }
       }),
       wrapperStyle: computed(() => wrapperStyle.value),
@@ -305,15 +308,22 @@ body {
 }
 
 .app-banner-image {
+  /* @apply blur; */
   z-index: 1;
   background-size: cover;
-  opacity: 0;
+  opacity: 1;
   transition: ease-in-out opacity 300ms;
+  background-color: #1a1a1a;
 }
 
 .app-banner-screen {
-  transition: ease-in-out opacity 300ms;
+  @apply blur-[72px] rounded;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: ease-in-out opacity 500ms;
   z-index: 2;
   opacity: 0.91;
+  width: 85%;
+  height: 400px;
 }
 </style>
