@@ -1,6 +1,6 @@
 <template>
   <div
-    class="header-logo flex items-center self-stretch relative cursor-pointer"
+    class="header-logo flex items-center self-stretch relative cursor-pointer hover:scale-110 transition-transform transform-gpu duration-500"
     @click="handleLogoClick"
   >
     <span class="flex mr-3">
@@ -65,20 +65,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.header-logo {
-  &:hover .logo-image {
-    @apply scale-125;
-  }
-}
-
 .logo-image {
-  @apply w-8 h-8;
+  @apply w-8 h-8 scale-125;
   transition: 0.3s all ease;
 }
 
 .header-active {
   .logo-image {
-    @apply scale-125;
+    @apply scale-100;
   }
 }
 </style>

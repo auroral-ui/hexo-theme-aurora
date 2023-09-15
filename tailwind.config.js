@@ -12,6 +12,7 @@ export default {
         ob: 'var(--text-accent)',
         'ob-normal': 'var(--text-normal)',
         'ob-trans': 'var(--background-trans)',
+        'ob-backdrop': 'var(--background-backdrop)',
         'ob-accent-55': 'var(--bg-accent-55)',
         'ob-secondary': 'var(--text-sub-accent)',
         'ob-bright': 'var(--text-bright)',
