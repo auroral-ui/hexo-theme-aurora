@@ -1,5 +1,5 @@
 .article-container {
-  @apply relative h-full rounded-2xl list-none transform-gpu;
+  @apply relative h-full rounded-2xl list-none cursor-pointer transform-gpu;
   &:hover {
     .article-content span b.article-tag span span,
     .feature-content span b.article-tag span span{

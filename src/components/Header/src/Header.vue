@@ -58,11 +58,15 @@ export default defineComponent({
 <style lang="scss">
 .header-container {
   &.header-active {
-    @apply bg-ob-deep-800 shadow-xl text-ob-bright;
+    @apply bg-ob-backdrop backdrop-blur shadow-xl text-ob-bright;
+    .site-header {
+      @apply py-2;
+    }
   }
-  transition: 0.5s all ease;
+  transition: 0.3s background ease;
   .site-header {
     @apply relative flex z-50 py-4;
+    transition: 0.3s padding ease-in-out;
     margin: 0 auto;
   }
 }
