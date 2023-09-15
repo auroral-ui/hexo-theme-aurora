@@ -101,53 +101,58 @@ export default function useCommentPlugin() {
 
     switch (enabledPlugin.value) {
       case 'gitalk':
-        const githubComments = new GithubComments({
-          repo: appStore.themeConfig.plugins.gitalk.repo,
-          clientId: appStore.themeConfig.plugins.gitalk.clientID,
-          clientSecret: appStore.themeConfig.plugins.gitalk.clientSecret,
-          owner: appStore.themeConfig.plugins.gitalk.owner,
-          admin: appStore.themeConfig.plugins.gitalk.admin[0]
-        })
+        {
+          const githubComments = new GithubComments({
+            repo: appStore.themeConfig.plugins.gitalk.repo,
+            clientId: appStore.themeConfig.plugins.gitalk.clientID,
+            clientSecret: appStore.themeConfig.plugins.gitalk.clientSecret,
+            owner: appStore.themeConfig.plugins.gitalk.owner,
+            admin: appStore.themeConfig.plugins.gitalk.admin[0]
+          })
 
-        recentComments.value = await githubComments.getComments()
-        commentPluginLoading.value = false
-
+          recentComments.value = await githubComments.getComments()
+          commentPluginLoading.value = false
+        }
         break
 
       case 'valine':
-        const leadCloudComments = new LeanCloudComments({
-          appId: appStore.themeConfig.plugins.valine.app_id,
-          appKey: appStore.themeConfig.plugins.valine.app_key,
-          avatar: appStore.themeConfig.plugins.valine.avatar,
-          admin: appStore.themeConfig.plugins.valine.admin,
-          lang: appStore.themeConfig.plugins.valine.lang
-        })
+        {
+          const leadCloudComments = new LeanCloudComments({
+            appId: appStore.themeConfig.plugins.valine.app_id,
+            appKey: appStore.themeConfig.plugins.valine.app_key,
+            avatar: appStore.themeConfig.plugins.valine.avatar,
+            admin: appStore.themeConfig.plugins.valine.admin,
+            lang: appStore.themeConfig.plugins.valine.lang
+          })
 
-        recentComments.value = await leadCloudComments.getRecentComments(7)
-        commentPluginLoading.value = false
-
+          recentComments.value = await leadCloudComments.getRecentComments(7)
+          commentPluginLoading.value = false
+        }
         break
 
       case 'twikoo':
-        const twikooComments = new TwikooComments({
-          envId: appStore.themeConfig.plugins.twikoo.envId,
-          lang: appStore.themeConfig.plugins.twikoo.lang
-        })
+        {
+          const twikooComments = new TwikooComments({
+            envId: appStore.themeConfig.plugins.twikoo.envId,
+            lang: appStore.themeConfig.plugins.twikoo.lang
+          })
 
-        recentComments.value = await twikooComments.getRecentComments(7)
-        commentPluginLoading.value = false
-
+          recentComments.value = await twikooComments.getRecentComments(7)
+          commentPluginLoading.value = false
+        }
         break
 
       case 'waline':
-        const walineComments = new WalineComments({
-          serverURL: 'https://' + appStore.themeConfig.plugins.waline.serverURL,
-          lang: appStore.locale ?? 'en'
-        })
+        {
+          const walineComments = new WalineComments({
+            serverURL:
+              'https://' + appStore.themeConfig.plugins.waline.serverURL,
+            lang: appStore.locale ?? 'en'
+          })
 
-        recentComments.value = await walineComments.getRecentComments(7)
-        commentPluginLoading.value = false
-
+          recentComments.value = await walineComments.getRecentComments(7)
+          commentPluginLoading.value = false
+        }
         break
 
       default:
