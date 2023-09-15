@@ -1,5 +1,5 @@
 <template>
-  <div class="article-container">
+  <div class="article-container" @click="handleCardClick(post?.slug)">
     <div class="feature-article">
       <div class="feature-thumbnail">
         <img v-if="post.cover" class="ob-hz-thumbnail" v-lazy="post.cover" />
@@ -151,6 +151,11 @@ export default defineComponent({
     const { t } = useI18n()
     const post = toRefs(props).data
 
+    const handleCardClick = (slug?: string) => {
+      if (!slug) return
+      router.push({ name: 'post-slug', params: { slug } })
+    }
+
     const handleAuthorClick = (link: string) => {
       if (link === '') link = window.location.href
       window.location.href = link
@@ -184,6 +189,7 @@ export default defineComponent({
       navigateToCategory,
       post,
       handleAuthorClick,
+      handleCardClick,
       t
     }
   }

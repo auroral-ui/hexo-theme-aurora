@@ -1,5 +1,5 @@
 <template>
-  <li class="article-container">
+  <li class="article-container" @click="handleCardClick(post?.slug)">
     <div class="article">
       <div class="article-thumbnail">
         <img v-if="post.cover" v-lazy="post.cover" alt="" />
@@ -141,6 +141,11 @@ export default defineComponent({
     const appStore = useAppStore()
     const { t } = useI18n()
 
+    const handleCardClick = (slug?: string) => {
+      if (!slug) return
+      router.push({ name: 'post-slug', params: { slug } })
+    }
+
     const handleAuthorClick = (link: string) => {
       if (link === '') link = window.location.href
       window.location.href = link
@@ -166,6 +171,7 @@ export default defineComponent({
       navigateToTag,
       navigateToCategory,
       handleAuthorClick,
+      handleCardClick,
       t
     }
   }
