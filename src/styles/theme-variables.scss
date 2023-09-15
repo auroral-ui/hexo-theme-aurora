@@ -11,12 +11,12 @@
 }
 
 .theme-light {
-  --background-primary: hsl(225, 40%, 96%);
+  --background-primary: rgb(241, 243, 249);
   --background-primary-alt: #fafafa;
   --background-secondary: #ffffff;
   --background-secondary-alt: #2e3236;
   --background-trans: rgba(0, 0, 0, 0.15);
-  --background-blur: rgba(255, 255, 255, 0.09);
+  --background-backdrop: rgba(241, 243, 249, 0.8);
   --text-bright: #000000;
   --text-invert: #ffffff;
   --text-normal: #333333;
@@ -136,6 +136,7 @@
   --background-secondary: #212121;
   --background-secondary-alt: #0d0b12;
   --background-trans: rgba(255, 255, 255, 0.15);
+  --background-backdrop: rgba(26, 26, 26, 0.8);
   --background-blur: rgba(0,0,0,0.09);
   --skeleton-bg: #2e2e2e;
   --skeleton-hl: #363636;

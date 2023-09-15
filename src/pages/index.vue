@@ -6,10 +6,7 @@
     <template v-else>
       <horizontal-article class="mb-8" :data="posts.data[0] || {}" />
     </template>
-    <span v-if="themeConfig.theme.feature">
-      <MainTitle id="article-list" :title="'titles.articles'" icon="article" />
-    </span>
-    <div class="main-grid">
+    <div class="main-grid" id="article-list">
       <div class="flex flex-col relative">
         <ul :class="tabClass">
           <li
@@ -176,7 +173,7 @@ export default defineComponent({
       // 150 is the height of the header element
       articleOffset.value =
         articleListEl && articleListEl instanceof HTMLElement
-          ? articleListEl.offsetTop + 150
+          ? articleListEl.offsetTop
           : 0
     }
 
@@ -203,7 +200,8 @@ export default defineComponent({
 
     const backToArticleTop = () => {
       window.scrollTo({
-        top: articleOffset.value
+        top: articleOffset.value,
+        behavior: 'smooth'
       })
     }
 
