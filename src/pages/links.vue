@@ -141,7 +141,7 @@ export default defineComponent({
     const { enabledCommentPlugin } = useCommentPlugin()
 
     const fetchArticle = async () => {
-      pageData.value = await articleStore.fetchArticle('friends')
+      pageData.value = await articleStore.fetchArticle('links')
       updateTitle(appStore.locale)
       await nextTick()
       postStatsRef.value?.getCommentCount()
