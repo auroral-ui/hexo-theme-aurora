@@ -21,7 +21,8 @@ export default {
         'ob-deep': {
           800: 'var(--background-secondary)',
           900: 'var(--background-primary)'
-        }
+        },
+        'ob-screen': 'var(--app-screen-bg)'
       },
       boxShadow: {
         ob: 'var(--accent-shadow)'

@@ -116,6 +116,7 @@
         hsla(225, 40%, 96%, 0.951) 84.5%,
         hsla(225, 40%, 96%, 0.987) 91.9%,
         var(--background-primary));
+  --app-screen-bg: #1a1a1a;
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(232, 57, 255, 0.06),
     0 10px 10px -5px rgba(53, 11, 59, 0.1);
@@ -235,6 +236,7 @@
         hsla(0, 0%, 10%, 0.951) 84.5%,
         hsla(00, 0%, 10%, 0.987) 91.9%,
         var(--background-primary));
+  --app-screen-bg: var(--background-primary);
   --trans-ease: all 250ms ease;
   --accent-shadow: 0 20px 25px -5px rgba(11, 42, 59, 0.35),
     0 10px 10px -5px rgba(11, 42, 59, 0.14);
