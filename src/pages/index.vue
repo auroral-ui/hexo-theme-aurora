@@ -83,7 +83,7 @@
           <Profile author="blog-author" />
           <RecentComment />
           <Sticky
-            :stickyTop="32 + 81"
+            :stickyTop="32 + 63"
             :endingElId="endEleId"
             dynamicElClass="#sticky-tag-box"
           >

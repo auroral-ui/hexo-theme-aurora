@@ -1,6 +1,6 @@
 <template>
   <Sticky
-    :stickyTop="32 + 81"
+    :stickyTop="16 + 63"
     endingElId="footer-link"
     dynamicElClass="#sticky-sidebar"
   >
@@ -9,6 +9,7 @@
         <div v-show="showToc" class="sidebar-box mb-4">
           <SubTitle :title="'titles.toc'" icon="toc" />
           <div
+            id="toc-side-box"
             v-html="tocData"
             v-scroll-spy-active="{ selector: '.toc-item' }"
             v-scroll-spy-link
@@ -22,7 +23,15 @@
 </template>
 
 <script lang="ts">
-import { StyleValue, computed, defineComponent, toRefs } from 'vue'
+import {
+  StyleValue,
+  computed,
+  defineComponent,
+  onMounted,
+  onUnmounted,
+  ref,
+  toRefs
+} from 'vue'
 import { SubTitle } from '@/components/Title'
 import Sticky from '@/components/Sticky.vue'
 import Navigator from './Navigator.vue'
@@ -36,6 +45,35 @@ export default defineComponent({
   },
   setup(props) {
     const tocData = toRefs(props).toc
+    const sidebarNavigatorHeight = ref(0)
+    const sideBoxMaxHeight = ref(0)
+
+    const updateSideBoxMaxHeight = () => {
+      const sidebarNavigator = document.getElementById('sidebar-navigator')
+
+      sidebarNavigatorHeight.value = sidebarNavigator
+        ? sidebarNavigator.clientHeight
+        : 0
+
+      sideBoxMaxHeight.value =
+        window.innerHeight -
+        sidebarNavigatorHeight.value -
+        63 - // header height
+        18 - // spacing between header and TOC
+        46 - // top + bottom padding of TOC box
+        18 - // spacing between header and navigator
+        60 - // height of navigator
+        18 // leave a 18px bottom spacing
+    }
+
+    onMounted(() => {
+      updateSideBoxMaxHeight()
+      window.addEventListener('resize', updateSideBoxMaxHeight)
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', updateSideBoxMaxHeight)
+    })
 
     return {
       tocData,
@@ -44,7 +82,7 @@ export default defineComponent({
       }),
       sideBoxStyle: computed(() => {
         return {
-          maxHeight: `${window.innerHeight - 64 - 64 - 52 - 74}px`,
+          maxHeight: `${sideBoxMaxHeight.value}px`,
           overflowY: 'scroll',
           overflowX: 'hidden'
         } as StyleValue | undefined
