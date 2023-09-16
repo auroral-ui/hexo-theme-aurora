@@ -1,3 +1,12 @@
+## [2.5.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.5.1...v2.5.2) (2023-09-16)
+
+
+### Bug Fixes
+
+* improve light mode header background color ([2c30969](https://github.com/auroral-ui/hexo-theme-aurora/commit/2c309693e25dde664e9adfe77f90b755ddafb061))
+* inconsistance links page setup and configs ([719f3c4](https://github.com/auroral-ui/hexo-theme-aurora/commit/719f3c4662c71dfdaa11f50dbcdf326ea8b5a76d))
+* toc sidebar max height now adapt to new ui ([65ce7fd](https://github.com/auroral-ui/hexo-theme-aurora/commit/65ce7fd64a961ebe366c8e4a5441f260177bfb1b))
+
 ## [2.5.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.5.0...v2.5.1) (2023-09-16)
 
 
