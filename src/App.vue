@@ -8,7 +8,7 @@
       tabindex="-1"
       :style="cssVariables"
     >
-      <div class="app-banner bg-[#1a1a1a]" />
+      <div class="app-banner bg-ob-screen" />
       <div class="app-banner app-banner-image" :style="headerImage" />
       <div class="app-banner app-banner-screen" :style="headerBaseBackground" />
       <div class="app-banner app-banner-cover" />
@@ -302,9 +302,17 @@ body {
   background: var(--banner-cover);
 }
 
-.theme-light .app-banner-cover {
-  top: 300px;
-  height: 300px;
+.theme-light {
+  .app-banner-cover {
+    top: 300px;
+    height: 300px;
+  }
+
+  .app-banner-screen {
+    @apply blur-0 rounded-none;
+    width: 100%;
+    height: 600px;
+  }
 }
 
 .app-banner-image {
@@ -320,7 +328,7 @@ body {
   @apply blur-[72px] rounded;
   left: 50%;
   transform: translateX(-50%);
-  transition: ease-in-out opacity 500ms;
+  transition: ease-in-out all 500ms;
   z-index: 2;
   opacity: 0.91;
   width: 85%;
