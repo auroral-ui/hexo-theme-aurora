@@ -1,3 +1,12 @@
+## [2.5.1](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.5.0...v2.5.1) (2023-09-16)
+
+
+### Bug Fixes
+
+* code not styled in li tag ([5718581](https://github.com/auroral-ui/hexo-theme-aurora/commit/57185813dade583c266942ccd9e242aaa844f640))
+* search function not working ([856dd28](https://github.com/auroral-ui/hexo-theme-aurora/commit/856dd28c7d4329189b639e8c6f0ace19da86dc0a))
+* waline comment data could return without time field ([#379](https://github.com/auroral-ui/hexo-theme-aurora/issues/379)) ([c213819](https://github.com/auroral-ui/hexo-theme-aurora/commit/c213819ad04b9da286e2a2f7d75da1a15ef4ad18))
+
 # [2.5.0](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.4.3...v2.5.0) (2023-09-10)
 
 
