@@ -126,7 +126,7 @@ export default defineComponent({
     }
 
     const fetchLinks = async () => {
-      const linksArticle = await articleStore.fetchArticle('friends')
+      const linksArticle = await articleStore.fetchArticle('links')
       if (linksArticle && linksArticle.avatarWall) {
         bloggers.value = linksArticle.avatarWall
         refreshLinkData()
