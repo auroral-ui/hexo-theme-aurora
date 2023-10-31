@@ -75,7 +75,7 @@
           :pageSize="pagination.pageSize"
           :pageTotal="pagination.pageTotal"
           :page="pagination.page"
-          @pageChange="pageChangeHanlder"
+          @pageChange="pageChangeHandler"
         />
       </div>
       <div>
@@ -135,6 +135,7 @@ export default defineComponent({
     const categoryStore = useCategoryStore()
     const { updateTitleByText } = usePageTitle()
     const { t } = useI18n()
+    const DEFAULT_PAGE_SIZE = 12
 
     /** Variables Section */
 
@@ -152,7 +153,7 @@ export default defineComponent({
     const activeTab = ref('')
     const articleOffset = ref(0)
     const pagination = ref({
-      pageSize: 12,
+      pageSize: DEFAULT_PAGE_SIZE,
       pageTotal: 0,
       page: 1
     })
@@ -188,11 +189,7 @@ export default defineComponent({
       activeTab.value = slug
       backToArticleTop()
       if (slug !== '') {
-        posts.value = new PostList()
-        postStore.fetchPostsByCategory(slug).then(postList => {
-          posts.value = postList
-          pagination.value.pageTotal = postList.total
-        })
+        fetchSlugData(slug)
       } else {
         fetchPostData()
       }
@@ -216,14 +213,32 @@ export default defineComponent({
       await postStore.fetchPostsList(pagination.value.page).then(() => {
         posts.value = postStore.posts
         pagination.value.pageTotal = postStore.posts.total
-        pagination.value.pageSize = postStore.posts.pageSize
       })
     }
 
-    const pageChangeHanlder = async (page: number) => {
+    const fetchSlugData = async (slug: string) => {
+      posts.value = new PostList()
+      await postStore
+        .fetchPostsByCategory(
+          slug,
+          pagination.value.page,
+          pagination.value.pageSize
+        )
+        .then(postList => {
+          posts.value = postList
+          pagination.value.pageTotal = postList.total
+        })
+    }
+
+    const pageChangeHandler = async (page: number) => {
       pagination.value.page = page
       backToArticleTop()
-      await fetchPostData()
+
+      if (activeTab.value) {
+        await fetchSlugData(activeTab.value)
+      } else {
+        await fetchPostData()
+      }
     }
 
     return {
@@ -255,7 +270,7 @@ export default defineComponent({
       activeTabStyle,
       activeTab,
       pagination,
-      pageChangeHanlder,
+      pageChangeHandler,
       t
     }
   }

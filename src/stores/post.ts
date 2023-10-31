@@ -68,16 +68,24 @@ export const usePostStore = defineStore({
         }, 200)
       )
     },
-    async fetchPostsByCategory(category: string): Promise<SpecificPostsList> {
-      const { data } = await fetchPostsListByCategory(category)
+    async fetchPostsByCategory(
+      category: string,
+      page: number = 1,
+      pageSize: number = 12
+    ): Promise<SpecificPostsList> {
+      const { data } = await fetchPostsListByCategory(category, page, pageSize)
       return new Promise(resolve =>
         setTimeout(() => {
           resolve(new SpecificPostsList(data))
         }, 200)
       )
     },
-    async fetchPostsByTag(slug: string): Promise<SpecificPostsList> {
-      const { data } = await fetchPostsListByTag(slug)
+    async fetchPostsByTag(
+      slug: string,
+      page: number = 1,
+      pageSize: number = 12
+    ): Promise<SpecificPostsList> {
+      const { data } = await fetchPostsListByTag(slug, page, pageSize)
       return new Promise(resolve => {
         setTimeout(() => {
           resolve(new SpecificPostsList(data))
