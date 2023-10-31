@@ -1,5 +1,16 @@
 import { Social } from './ThemeConfig.class'
 
+export interface PostRaw {
+  [key: string]: Array<any> | string | { [key: string]: any }
+}
+
+export interface SpecificPostListRaw {
+  pageCount: number
+  pageSize: number
+  total: number
+  postlist: PostRaw[]
+}
+
 export class NavPost {
   title = ''
   uid = ''
@@ -77,9 +88,7 @@ export class Post {
   feature = false
   pinned = false
 
-  constructor(raw?: {
-    [key: string]: Array<any> | string | { [key: string]: any }
-  }) {
+  constructor(raw?: PostRaw) {
     if (raw) {
       for (const key of Object.keys(this)) {
         if (Object.prototype.hasOwnProperty.call(raw, key)) {
@@ -152,13 +161,13 @@ export class SpecificPostsList {
   pageSize = 0
   total = 0
 
-  constructor(raw?: { [key: string]: [] }) {
+  constructor(raw?: SpecificPostListRaw) {
     if (raw && raw.postlist) {
       Object.assign(this, {
-        data: raw.postlist.map((one: { [key: string]: [] }) => new Post(one)),
-        pageCount: raw.postlist.length,
-        pageSize: raw.postlist.length,
-        total: raw.postlist.length
+        data: raw.postlist.map(one => new Post(one)),
+        pageCount: raw.pageCount,
+        pageSize: raw.pageSize,
+        total: raw.total
       })
     }
   }

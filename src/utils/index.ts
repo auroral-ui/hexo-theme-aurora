@@ -184,3 +184,11 @@ export function throttle(func: () => void, timeFrame: number) {
     }
   }
 }
+
+export function paginator<T>(data: T[], page: number, pageSize: number) {
+  const skip = pageSize * (page - 1)
+  // slice function's endIndex will not be included
+  // therefore the ending index should be pageSize not pageSize - 1
+  const endIndex = skip > data.length - 1 ? undefined : pageSize * page
+  return data.slice(skip, endIndex)
+}
