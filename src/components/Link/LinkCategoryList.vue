@@ -2,13 +2,13 @@
   <template v-if="links">
     <template v-for="category in Object.keys(links)" :key="category">
       <MainTitle
-        :title="convertToLocale(category)"
+        :title="localizeLink(category)"
         :count="links[category].length"
         margins="mb-2"
         :uppercase="false"
       />
       <span class="text-ob-dim mb-8 text-lg">
-        {{ t(`${convertToLocale(category)}-desc`) }}
+        {{ t(`${localizeLink(category + '-desc')}`) }}
       </span>
       <ul :class="linkWrapperClasses(category)">
         <template v-for="[i, link] of links[category].entries()" :key="i">
@@ -17,7 +17,7 @@
             :link="link.link"
             :avatar="link.avatar"
             :description="link.description"
-            :type="convertToLocale(link.label)"
+            :type="localizeLink(link.label)"
             :vip="link.label === 'links-badge-vip'"
             :category-mode="true"
           />
@@ -32,7 +32,7 @@ import { Link } from '@/models/Article.class'
 import { PropType, defineComponent } from 'vue'
 import LinkCard from './LinkCard.vue'
 import { MainTitle } from '../Title'
-import { convertToLocale } from '@/utils'
+import { localizeLink } from '@/utils/localization'
 import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
@@ -55,7 +55,7 @@ export default defineComponent({
           'xl:grid-cols-4': category === 'links-badge-vip'
         }
       },
-      convertToLocale,
+      localizeLink,
       t
     }
   }

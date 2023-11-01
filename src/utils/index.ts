@@ -144,21 +144,6 @@ export function getDaysTillNow(from: string) {
   return Math.floor(timeDiff / (1000 * 3600 * 24))
 }
 
-export function convertToLocale(label: string) {
-  const locales = [
-    'links-badge-tech',
-    'links-badge-designer',
-    'links-badge-vip',
-    'links-badge-personal'
-  ]
-
-  if (locales.includes(label)) {
-    return `settings.${label}`
-  }
-
-  return label
-}
-
 export function cleanPath(path: string) {
   if (path !== '/' && path.at(-1) === '/') {
     return path.slice(0, -1)
