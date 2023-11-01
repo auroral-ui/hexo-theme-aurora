@@ -13,7 +13,7 @@
           :link="link.link"
           :avatar="link.avatar"
           :description="link.description"
-          :type="convertToLocale(link.label)"
+          :type="localizeLink(link.label)"
           :vip="link.label === 'links-badge-vip'"
         />
       </template>
@@ -24,7 +24,7 @@
 <script lang="ts">
 import { Link } from '@/models/Article.class'
 import { PropType, defineComponent } from 'vue'
-import { convertToLocale } from '@/utils'
+import { localizeLink } from '@/utils/localization'
 import { SubTitle } from '../Title'
 
 export default defineComponent({
@@ -38,7 +38,7 @@ export default defineComponent({
     }
   },
   setup() {
-    return { convertToLocale }
+    return { localizeLink }
   }
 })
 </script>
