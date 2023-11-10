@@ -197,10 +197,13 @@ export default defineComponent({
 
   .left-control,
   .right-control {
-    @apply flex justify-center items-center font-extrabold;
+    @apply flex relative left-0 justify-center items-center font-extrabold;
+  }
+  .right-control {
+    @apply z-40;
   }
   .left-control {
-    @apply -mr-10;
+    @apply -mr-10 z-50;
     transition: 0.2s margin ease-out;
     &.moved-right {
       @apply -mr-0;
