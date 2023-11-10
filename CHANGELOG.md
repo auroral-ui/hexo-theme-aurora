@@ -1,3 +1,13 @@
+## [2.5.3](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.5.2...v2.5.3) (2023-11-10)
+
+
+### Bug Fixes
+
+* category is not paginated probably ([eb8c641](https://github.com/auroral-ui/hexo-theme-aurora/commit/eb8c6415e5202d65345395309eaaa67fa11a6606))
+* custom link label trying to localize ([10c4a5b](https://github.com/auroral-ui/hexo-theme-aurora/commit/10c4a5b15a65c81f9c1bcd43a25b80a1af579468))
+* footer friends link not loaded ([1546685](https://github.com/auroral-ui/hexo-theme-aurora/commit/1546685e424f1096d216c3f8db0a283b0da00545))
+* search icon is not clickable when multi-lang is off ([a4cd157](https://github.com/auroral-ui/hexo-theme-aurora/commit/a4cd15756606fe24291ef5860d824d6c1bfd16ff))
+
 ## [2.5.2](https://github.com/auroral-ui/hexo-theme-aurora/compare/v2.5.1...v2.5.2) (2023-09-16)
 
 
