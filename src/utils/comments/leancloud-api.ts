@@ -329,6 +329,7 @@ export class LeanCloudComment implements RecentComment {
    */
   transformTime(lang: Locales): void {
     const templates = {
+      es: 'comentado [TIME]',
       en: 'commented [TIME]',
       'zh-CN': '[TIME]评论了',
       'zh-TW': '[TIME]評論了'
