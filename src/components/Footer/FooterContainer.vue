@@ -75,27 +75,38 @@
               </span>
             </li>
 
-            <li v-if="themeConfig.plugins.busuanzi.enable">
-              <span
-                id="busuanzi_container_site_pv"
-                class="flex flex-row max-w-[11rem]"
-              >
-                <SvgIcon icon-class="eye" class="mr-1 text-lg inline-block" />
-                <span id="busuanzi_value_site_pv" />
+            <li
+              class="flex flex-row max-w-[11rem]"
+              v-if="themeConfig.plugins.busuanzi.enable"
+            >
+              <span>
+                <SvgIcon
+                  icon-class="hot"
+                  class="mr-1 text-lg inline-block"
+                  stroke="currentColor"
+                />
+                {{ t('settings.page-views-value') }}
               </span>
+              <span class="flex-1 text-right" id="busuanzi_container_site_pv">
+                <span id="busuanzi_value_site_pv"
+              /></span>
             </li>
 
-            <li v-if="themeConfig.plugins.busuanzi.enable">
-              <span
-                id="busuanzi_container_site_uv"
-                class="flex flex-row max-w-[11rem]"
-              >
+            <li
+              class="flex flex-row max-w-[11rem]"
+              v-if="themeConfig.plugins.busuanzi.enable"
+            >
+              <span>
                 <SvgIcon
-                  icon-class="people"
+                  icon-class="friends"
                   class="mr-1 text-lg inline-block"
+                  stroke="currentColor"
                 />
-                <span id="busuanzi_value_site_uv"></span>
+                {{ t('settings.unique_visitor-value') }}
               </span>
+              <span id="busuanzi_container_site_uv" class="flex-1 text-right">
+                <span id="busuanzi_value_site_uv"
+              /></span>
             </li>
 
             <li v-if="runningDays" class="flex flex-row max-w-[11rem]">
