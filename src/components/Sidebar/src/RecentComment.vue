@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!!enabledCommentPlugin" class="sidebar-box">
+  <div v-if="!!enabledCommentPlugin.recentComment" class="sidebar-box">
     <SubTitle :title="'titles.recent_comment'" icon="quote" />
     <ul>
       <template v-if="isLoading === false">
