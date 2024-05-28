@@ -37,10 +37,14 @@
           <span v-if="$i18n.locale == 'zh-CN'">简体</span>
           <span v-if="$i18n.locale == 'zh-TW'">繁體</span>
           <span v-if="$i18n.locale == 'en'">En</span>
+          <span v-if="$i18n.locale == 'es'">Es</span>
         </span>
         <DropdownMenu>
           <DropdownItem name="en" :active="currentLocale === 'en'">
             English
+          </DropdownItem>
+          <DropdownItem name="es" :active="currentLocale === 'es'">
+            Español
           </DropdownItem>
           <DropdownItem name="zh-CN" :active="currentLocale === 'zh-CN'">
             简体

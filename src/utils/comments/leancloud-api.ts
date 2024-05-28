@@ -10,11 +10,9 @@
 // import request from '@/utils/external-request'
 // import { AxiosResponse } from 'axios'
 import { formatTime, filterHTMLContent, RecentComment } from '@/utils'
-import pack from '../../../package.json'
 import { getGravatar, getGravatarUrl } from './gravatar'
 import { Locales } from '@/models/ThemeConfig.class'
 
-const VERSION = pack.version
 let AV_INITIALIZED = false
 
 /**
@@ -23,13 +21,6 @@ let AV_INITIALIZED = false
  * For version 4.10.1
  */
 declare const AV: any
-
-/**
- * js-md5 package is imported through CDN.
- *
- * For version v0.7.3
- */
-declare const md5: any
 
 type LeanCloudApiOption = {
   /** Application appId from Leancloud. */
@@ -329,6 +320,7 @@ export class LeanCloudComment implements RecentComment {
    */
   transformTime(lang: Locales): void {
     const templates = {
+      es: 'comentado [TIME]',
       en: 'commented [TIME]',
       'zh-CN': '[TIME]评论了',
       'zh-TW': '[TIME]評論了'

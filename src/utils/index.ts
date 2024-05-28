@@ -32,6 +32,14 @@ export function formatTime(
     lang: 'en'
   }
   const languages: Record<Locales, { [type: string]: string }> = {
+    es: {
+      seconds: 'hace un momento',
+      minutes: ' minutos',
+      hours: ' horas',
+      days: ' días',
+      months: ' meses',
+      years: ' años'
+    },
     en: {
       seconds: 'just seconds ago',
       minutes: ' minutes ago',

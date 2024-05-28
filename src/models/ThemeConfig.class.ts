@@ -80,7 +80,8 @@ export class ThemeMenu implements ObMenu {
       i18n: {
         'zh-CN': '首页',
         'zh-TW': '首頁',
-        en: 'Home'
+        en: 'Home',
+        es: 'Inicio'
       }
     })
   }
@@ -98,7 +99,8 @@ export class ThemeMenu implements ObMenu {
         i18n: {
           'zh-CN': '关于',
           'zh-TW': '關於',
-          en: 'About'
+          en: 'About',
+          es: 'Acerca de'
         }
       },
       Archives: {
@@ -107,7 +109,8 @@ export class ThemeMenu implements ObMenu {
         i18n: {
           'zh-CN': '归档',
           'zh-TW': '歸檔',
-          en: 'Archives'
+          en: 'Archives',
+          es: 'Archivos'
         }
       },
       Tags: {
@@ -116,7 +119,8 @@ export class ThemeMenu implements ObMenu {
         i18n: {
           'zh-CN': '标签',
           'zh-TW': '標簽',
-          en: 'Tags'
+          en: 'Tags',
+          es: 'Etiquetas'
         }
       },
       Links: {
@@ -125,7 +129,8 @@ export class ThemeMenu implements ObMenu {
         i18n: {
           'zh-CN': '友情链接',
           'zh-TW': '友情鏈接',
-          en: 'Friend Links'
+          en: 'Friend Links',
+          es: 'Links Amigos'
         }
       }
     }
@@ -157,6 +162,7 @@ export class ThemeMenu implements ObMenu {
 }
 
 enum LocalesTypes {
+  es,
   en,
   'zh-CN',
   'zh-TW'
