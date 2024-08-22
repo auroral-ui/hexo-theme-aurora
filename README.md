@@ -28,7 +28,7 @@
 
 **[预览](http://tridiamond.tech)** |
 **[更变日志](https://github.com/auroral-ui/hexo-theme-aurora/blob/main/CHANGELOG_CN.md)** |
-**[使用文档](https://aurora.tridiamond.tech/zh)**
+**[使用文档](https://aurora.tridiamond.tech/cn)**
 
 </div>
 
